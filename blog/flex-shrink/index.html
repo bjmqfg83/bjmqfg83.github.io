@@ -140,21 +140,21 @@
 <p>2.內部元素每個為300px</p>
 <p>3.flex-shrink為1、2、1</p>
 <p>由於內部元素的總寬度超過容器300px,每個設有flex-shrink的元素寬度都會做縮減,用公式算一下每個元素縮減的多少</p>
-<p>元素1</p>
+<p><strong>元素1</strong></p>
 <p><code>75px = 超出的寬度 300px * 各別flex-shrink 1 / flex-shrink總和 4</code></p>
-<p>元素2</p>
+<p><strong>元素2</strong></p>
 <p><code>150px = 超出的寬度 300px * 各別flex-shrink 2/ flex-shrink總和 4</code></p>
-<p>元素3</p>
+<p><strong>元素3</strong></p>
 <p><code>75px = 超出的寬度 300px * 各別flex-shrink 1 / flex-shrink總和 4</code></p>
 <p>元素寬度為225px、150px、225px,看起來公式沒什麼問題</p>
 <p>如果元素寬度不相同的情況下呢?</p>
 <p>我們先將內部元素寬度設為300px、250px、150px而flex-shrink跟原本一樣為1、2、1</p>
 <p>我們來用公式計算一下</p>
-<p>元素1</p>
+<p><strong>元素1</strong></p>
 <p><code>25px = 超出的寬度 100px * 各別flex-shrink 1 / flex-shrink總和 4</code></p>
-<p>元素2</p>
+<p><strong>元素2</strong></p>
 <p><code>50px = 超出的寬度 100px * 各別flex-shrink 2/ flex-shrink總和 4</code></p>
-<p>元素3</p>
+<p><strong>元素3</strong></p>
 <p><code>25px = 超出的寬度 100px * 各別flex-shrink 1 / flex-shrink總和 4</code></p>
 <p>計算出來的寬度為275px、200px、125px</p>
 <p>那我們現在實際來看一下程式碼</p>
@@ -167,11 +167,11 @@
 <p>修正的公式如下:</p>
 <p><code>元素縮減的寬度 = 超出的總寬度 * 各別flex-shrink * 各別元素的寬度 / 總權重</code></p>
 <p>現在來重新計算縮減的寬度</p>
-<p>元素1</p>
+<p><strong>元素1</strong></p>
 <p><code>31.57px = 100px * 1 * 300px / 950</code></p>
-<p>元素2</p>
+<p><strong>元素2</strong></p>
 <p><code>52.63px = 100px * 2 * 250px / 950</code></p>
-<p>元素3</p>
+<p><strong>元素3</strong></p>
 <p><code>15.78px = 100px * 1 * 150px / 950</code></p>
 <p>計算出來的寬度為268.43px、197.39px、134.22px</p>
 <p>實際來看一下程式碼</p>
@@ -186,11 +186,11 @@
 <p><code>元素縮減的寬度 = 超出的總寬度 * 各別flex-shrink * 各別元素的寬度 / 總權重</code></p>
 <p>計算新的總權重</p>
 <p><code>125px = 300px * 0.1 + 250px * 0.2 + 150px * 0.3</code></p>
-<p>元素1</p>
+<p><strong>元素1</strong></p>
 <p><code>14.4px = 60px * 0.1 * 300px / 125</code></p>
-<p>元素2</p>
+<p><strong>元素2</strong></p>
 <p><code>24px = 60px * 0.2 * 250px / 125</code></p>
-<p>元素3</p>
+<p><strong>元素3</strong></p>
 <p><code>21.6px = 60px * 0.3 * 150px / 125</code></p>
 <p>計算出來的寬度為 285.6px、226px、128.4px</p>
 <p>跟實際的結果會有有零點幾的誤差</p>
