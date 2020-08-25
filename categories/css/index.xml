@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Leo&#39;s blog</title>
-    <link>https://bjmqfg83.github.io/</link>
-    <description>Recent content on Leo&#39;s blog</description>
+    <title>css on Leo&#39;s blog</title>
+    <link>https://bjmqfg83.github.io/categories/css/</link>
+    <description>Recent content in css on Leo&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <lastBuildDate>Tue, 25 Aug 2020 12:54:00 +0800</lastBuildDate>
     
-	<atom:link href="https://bjmqfg83.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://bjmqfg83.github.io/categories/css/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -21,20 +21,6 @@
 那flex-shrink到底是怎麼做寬度的縮減?
 基礎公式如下
 元素縮減的寬度 = 超出的總寬度 * 該元素的flex-shrink / 各元素flex-shrink總和</description>
-    </item>
-    
-    <item>
-      <title>99乘法表-Javascript新手地下城</title>
-      <link>https://bjmqfg83.github.io/blog/multiplication_table/</link>
-      <pubDate>Tue, 25 Aug 2020 10:12:30 +0800</pubDate>
-      
-      <guid>https://bjmqfg83.github.io/blog/multiplication_table/</guid>
-      <description>最近想複習HTML、CSS、Javascript的基礎概念
-所以開始寫六角學院的新手地下城題目
-使用技術:
-JS : let變數、Template literals樣板字串、for迴圈
-CSS: SCSS(CSS前處理語言)、BEM風格規範(其實這我不確定名稱是否有完全符合BEM的規範)
-開發歷程:</description>
     </item>
     
   </channel>

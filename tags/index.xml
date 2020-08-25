@@ -6,80 +6,35 @@
     <description>Recent content in Tags on Leo&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Fri, 21 Aug 2020 10:07:47 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2020 12:54:00 +0800</lastBuildDate>
     
 	<atom:link href="https://bjmqfg83.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>生活分享</title>
-      <link>https://bjmqfg83.github.io/tags/%E7%94%9F%E6%B4%BB%E5%88%86%E4%BA%AB/</link>
-      <pubDate>Fri, 21 Aug 2020 10:07:47 +0800</pubDate>
+      <title>css</title>
+      <link>https://bjmqfg83.github.io/tags/css/</link>
+      <pubDate>Tue, 25 Aug 2020 12:54:00 +0800</pubDate>
       
-      <guid>https://bjmqfg83.github.io/tags/%E7%94%9F%E6%B4%BB%E5%88%86%E4%BA%AB/</guid>
+      <guid>https://bjmqfg83.github.io/tags/css/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>程式學習</title>
-      <link>https://bjmqfg83.github.io/tags/%E7%A8%8B%E5%BC%8F%E5%AD%B8%E7%BF%92/</link>
-      <pubDate>Fri, 21 Aug 2020 10:07:47 +0800</pubDate>
+      <title>flexbox</title>
+      <link>https://bjmqfg83.github.io/tags/flexbox/</link>
+      <pubDate>Tue, 25 Aug 2020 12:54:00 +0800</pubDate>
       
-      <guid>https://bjmqfg83.github.io/tags/%E7%A8%8B%E5%BC%8F%E5%AD%B8%E7%BF%92/</guid>
+      <guid>https://bjmqfg83.github.io/tags/flexbox/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Game</title>
-      <link>https://bjmqfg83.github.io/tags/game/</link>
-      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
+      <title>javascript</title>
+      <link>https://bjmqfg83.github.io/tags/javascript/</link>
+      <pubDate>Tue, 25 Aug 2020 10:12:30 +0800</pubDate>
       
-      <guid>https://bjmqfg83.github.io/tags/game/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>HTML</title>
-      <link>https://bjmqfg83.github.io/tags/html/</link>
-      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
-      
-      <guid>https://bjmqfg83.github.io/tags/html/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>New</title>
-      <link>https://bjmqfg83.github.io/tags/new/</link>
-      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
-      
-      <guid>https://bjmqfg83.github.io/tags/new/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Photos</title>
-      <link>https://bjmqfg83.github.io/tags/photos/</link>
-      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
-      
-      <guid>https://bjmqfg83.github.io/tags/photos/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Python</title>
-      <link>https://bjmqfg83.github.io/tags/python/</link>
-      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
-      
-      <guid>https://bjmqfg83.github.io/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>React</title>
-      <link>https://bjmqfg83.github.io/tags/react/</link>
-      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
-      
-      <guid>https://bjmqfg83.github.io/tags/react/</guid>
+      <guid>https://bjmqfg83.github.io/tags/javascript/</guid>
       <description></description>
     </item>
     

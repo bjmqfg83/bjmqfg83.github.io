@@ -6,71 +6,26 @@
     <description>Recent content in Categories on Leo&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Fri, 21 Aug 2020 10:07:47 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2020 12:54:00 +0800</lastBuildDate>
     
 	<atom:link href="https://bjmqfg83.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>心得</title>
-      <link>https://bjmqfg83.github.io/categories/%E5%BF%83%E5%BE%97/</link>
-      <pubDate>Fri, 21 Aug 2020 10:07:47 +0800</pubDate>
+      <title>css</title>
+      <link>https://bjmqfg83.github.io/categories/css/</link>
+      <pubDate>Tue, 25 Aug 2020 12:54:00 +0800</pubDate>
       
-      <guid>https://bjmqfg83.github.io/categories/%E5%BF%83%E5%BE%97/</guid>
+      <guid>https://bjmqfg83.github.io/categories/css/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Android And Gmaing</title>
-      <link>https://bjmqfg83.github.io/categories/android-and-gmaing/</link>
-      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
+      <title>javascript</title>
+      <link>https://bjmqfg83.github.io/categories/javascript/</link>
+      <pubDate>Tue, 25 Aug 2020 10:12:30 +0800</pubDate>
       
-      <guid>https://bjmqfg83.github.io/categories/android-and-gmaing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Go Language</title>
-      <link>https://bjmqfg83.github.io/categories/go-language/</link>
-      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
-      
-      <guid>https://bjmqfg83.github.io/categories/go-language/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>HTML</title>
-      <link>https://bjmqfg83.github.io/categories/html/</link>
-      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
-      
-      <guid>https://bjmqfg83.github.io/categories/html/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>HTML &amp; CSS</title>
-      <link>https://bjmqfg83.github.io/categories/html-css/</link>
-      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
-      
-      <guid>https://bjmqfg83.github.io/categories/html-css/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Programming Language</title>
-      <link>https://bjmqfg83.github.io/categories/programming-language/</link>
-      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
-      
-      <guid>https://bjmqfg83.github.io/categories/programming-language/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Web Design</title>
-      <link>https://bjmqfg83.github.io/categories/web-design/</link>
-      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
-      
-      <guid>https://bjmqfg83.github.io/categories/web-design/</guid>
+      <guid>https://bjmqfg83.github.io/categories/javascript/</guid>
       <description></description>
     </item>
     
