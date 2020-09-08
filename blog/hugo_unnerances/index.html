@@ -3,14 +3,14 @@
   <meta charset="utf-8">
   <title>
     
-    Leo&#39;s blog
+    如何在hugo上安裝utterances?
     
   </title>
   <!-- mobile responsive meta -->
   <meta name="viewport"
     content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description"
-    content="This is a blog that wish can share something about website Knowledge and life for you">
+    content="介紹如何透過utterances在hugo上面添加可以給訪客留言的留言區塊">
   
   <meta name="author"
     content="Leo">
@@ -122,117 +122,93 @@
   </div>
 </header>
 <!-- /navigation -->
-
-
-<section class="section-sm blog-index pt-100">
+<section class="section-sm article-container">
   <div class="container">
     <div class="row">
-      
-      <div class="col-lg-4">
-  
-  <div class="widget">
-    
-    <h4 class="widget-title">About Me</h4>
-    
-    <img src="https://bjmqfg83.github.io/images/blogger_backup.jpg" alt=""
-      class="img-fluid author-thumb-sm d-block mx-auto rounded-circle mb-4">
-    
-    <p>Front End Developer</p>
-    <a href="https://bjmqfg83.github.io/about/" class="btn btn-outline-primary">Know More</a>
-    
-  </div>
-  
-  <div class="widget">
-    <h4 class="widget-title">Category</h4>
-    <ul class="list-unstyled">
-      <li><a
-          href="/categories/css">Css</a>
-      </li>
-      <li><a
-          href="/categories/hugo">Hugo</a>
-      </li>
-      <li><a
-          href="/categories/javascript">Javascript</a>
-      </li>
-    </ul>
-  </div>
-  
-  <div class="widget">
-    <h4 class="widget-title">Tag</h4>
-    <ul class="list-inline">
-      <li class="list-inline-item"><a class="d-block p-2 bg-primary text-white"
-          href="/tags/css">Css</a></li>
-      <li class="list-inline-item"><a class="d-block p-2 bg-primary text-white"
-          href="/tags/flexbox">Flexbox</a></li>
-      <li class="list-inline-item"><a class="d-block p-2 bg-primary text-white"
-          href="/tags/javascript">Javascript</a></li>
-      <li class="list-inline-item"><a class="d-block p-2 bg-primary text-white"
-          href="/tags/%e7%a8%8b%e5%bc%8f%e5%ad%b8%e7%bf%92">程式學習</a></li>
-    </ul>
-  </div>
-  
-  <div class="widget">
-    <h4 class="widget-title">Social</h4>
-    <ul class="list-inline social-links">
-      
-      <li class="list-inline-item"><a href="https://www.facebook.com/profile.php?id=100002498349630"><i class="ti-facebook"></i></a></li>
-      
-      <li class="list-inline-item"><a href="https://www.instagram.com/bjmqfg83/"><i class="ti-instagram"></i></a></li>
-      
-      <li class="list-inline-item"><a href="https://github.com/bjmqfg83"><i class="ti-github"></i></a></li>
-      
-    </ul>
-  </div>
-  
-  
-</div>
-
-      
-      <div class="col-lg-8 mb-5 mb-lg-0">
-        <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <h2 class="article-font">如何在hugo上安裝utterances?</h2>
+        <div class="mb-3 post-meta">
+          <span>By Leo</span>
           
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          <span>08 September 2020</span>
           
-          <div class="col-md-12 mb-4">
-    <article class="card">
-        
-        <div class="card-body">
-            <h3 class="h3">
-                <a href="https://bjmqfg83.github.io/blog/flex-shrink/"
-                    class="my-3 text-dark">Css flex-shrink是怎麼縮的?</a>
-            </h3>
-            <div class="mb-3 post-meta">
-                <span>By Leo</span>
-                
-                <span class="border-bottom border-primary px-2 mx-1"></span>
-                <span>25 August 2020</span>
-                
-                <span class="border-bottom border-primary px-2 mx-1"></span>
-                
-                <a href="/categories/css"
-                    class="text-primary">Css</a>
-                
-            </div>
-            
-            <p class="card-text">粗略介紹css的flex-shrink在容器內元素寬度不一致時是如何縮減寬度的</p>
-            <a href="https://bjmqfg83.github.io/blog/flex-shrink/"
-                class="btn btn-outline-primary">read more</a>
-        </div>
-    </article>
-</div>
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          
+          <a href="/categories/hugo"
+            class="text-primary">Hugo</a>
           
         </div>
-      </div>
-
-      
-      <div class="col-12 mt-5">
         
+        <img src="https://bjmqfg83.github.io/images/post/hugo_cover.png"
+          class="img-fluid w-100 mb-4"
+          alt="如何在hugo上安裝utterances?">
+        
+        <div class="content mb-5 article">
+          <!-- raw HTML omitted -->
+<p>如果想要讓訪客針對你的文章發表評論的話我們可以透過
+<a href="https://disqus.com/">Disqus</a>
+或是
+<a href="https://utteranc.es/">Utterances</a>
+快速建立評論留言板</p>
+<p>其實一開始建立個人部落格時評論的套件我使用的是disqus，但是我丟到google的
+<a href="https://utteranc.es/https://developers.google.com/speed/pagespeed/insights/?hl=zh-TW">PageSpeed</a>
+測試時發現整個網頁的載入時間有大半以上都花在disqus上面且有很多載入後卻沒有使用到，所以之後便決定改用utterances</p>
+<p><img src="/images/post/disqus_efficacy1.png" alt=""></p>
+<p><img src="/images/post/disqus_efficacy2.png" alt=""></p>
+<p>另外上網查了相關的文章說disqus有個資相關的問題，文章結尾會附上相關連結有興趣的可以看一下</p>
+<h2 id="utterances是什麼">Utterances是什麼?</h2>
+<p>utterances是一個基於github issue的套件，其原理是在github上建立一個公開的repo讓訪客可以針對文章在repo上建立相關的issue，接下來就來跟大家介紹如何在頁面上添加utterances</p>
+<ol>
+<li>在github上建立公開的repository</li>
+</ol>
+<p><img src="/images/post/utterances_step1.png" alt=""></p>
+<ol start="2">
+<li>到utterances<a href="https://github.com/apps/utterances">安裝頁面</a>後點選install</li>
+</ol>
+<p><img src="/images/post/utterances_step2.png" alt=""></p>
+<ol start="3">
+<li>選擇要安裝utterances的github repo</li>
+</ol>
+<p><img src="/images/post/utterances_step3.png" alt=""></p>
+<ol start="4">
+<li>之後在<a href="https://utteranc.es/">utterances</a>官網下可以找到區塊進行設置</li>
+</ol>
+<p><img src="/images/post/utterances_step4.png" alt=""></p>
+<p><img src="/images/post/utterances_step5.png" alt=""></p>
+<ol start="5">
+<li>選擇想要的主題樣式</li>
+</ol>
+<p><img src="/images/post/utterances_step6.png" alt=""></p>
+<ol start="6">
+<li>將產生的script複製下來後放到想要的地方</li>
+</ol>
+<p><img src="/images/post/utterances_step7.png" alt=""></p>
+<p>這樣就完成utterances的設置了</p>
+<p>但要注意utterances是基於github issue所以留言的人需要有github帳號才可以留言</p>
+<p>如果有問題的話歡迎在底下留言</p>
+<h2 id="補充資料">補充資料</h2>
+<p><a href="https://creativecrap.com/article/news/leaving-disqus.html">移除disqus留言系統</a></p>
+<p><a href="https://fadeyev.net/the-problem-with-disqus/">The Problem With Disqus</a></p>
+<p><a href="https://fatfrogmedia.com/delete-disqus-comments-wordpress/">Why I Deleted Disqus and Why You Should Too</a></p>
 
+        </div>
 
+        
+        
+        
+        
+        <script src="https://utteranc.es/client.js"
+          repo="bjmqfg83/comment-utterances"
+          issue-term="title"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+          </script>
       </div>
     </div>
   </div>
 </section>
-
 
 
 
