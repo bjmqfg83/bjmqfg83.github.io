@@ -12,6 +12,19 @@
     
     
     <item>
+      <title>愛的魔力轉圈圈-不斷重複的迴圈動態</title>
+      <link>https://bjmqfg83.github.io/blog/looping_ani/</link>
+      <pubDate>Fri, 25 Dec 2020 10:12:30 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/looping_ani/</guid>
+      <description>前一陣子同事丟了一個問題要我動動腦練習寫一個迴圈動態，規則如下
+ 以中心點做為起始點 不斷重複 不論版面是3x3、5x5、7x7、9x9甚至是以上都要能夠正常執行  開發歷程:
+開發的時候在元素上標示上數字可以在開發時幫忙找出中點以及跑迴圈的相關邏輯,建議標上去
+接下來就是找出所需的相關資訊，稍後會在說明要迴圈數、轉折點的主因
+ 起始點 迴圈數 轉折點  起始點直接除以2取最小整數即可</description>
+    </item>
+    
+    <item>
       <title>如何在hugo上安裝utterances?</title>
       <link>https://bjmqfg83.github.io/blog/hugo_unnerances/</link>
       <pubDate>Tue, 08 Sep 2020 11:40:00 +0800</pubDate>
