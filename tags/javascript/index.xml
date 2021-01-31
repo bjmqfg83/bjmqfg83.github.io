@@ -6,10 +6,21 @@
     <description>Recent content in javascript on Leo&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Fri, 25 Dec 2020 10:12:30 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 31 Jan 2021 16:00:30 +0800</lastBuildDate>
     
 	<atom:link href="https://bjmqfg83.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>時鐘clock-Javascript新手地下城</title>
+      <link>https://bjmqfg83.github.io/blog/clock/</link>
+      <pubDate>Sun, 31 Jan 2021 16:00:30 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/clock/</guid>
+      <description>使用技術: JS : Const變數、Date物件、SetInterval、Template literals樣板字串
+CSS: SCSS(CSS前處理語言)、clip-path
+開發歷程: JS的部分透過Date物件獲取當前的時間、setInterval更新時間並且在內部判斷指針的轉動、Template literals用於方便將計算指出來的旋轉角度整合進字串內</description>
+    </item>
     
     <item>
       <title>愛的魔力轉圈圈-不斷重複的迴圈動態</title>
@@ -36,17 +47,6 @@
 JS : let變數、Template literals樣板字串、for迴圈
 CSS: SCSS(CSS前處理語言)、BEM風格規範(其實這我不確定名稱是否有完全符合BEM的規範)
 開發歷程:</description>
-    </item>
-    
-    <item>
-      <title>時鐘clock-Javascript新手地下城</title>
-      <link>https://bjmqfg83.github.io/blog/clock/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://bjmqfg83.github.io/blog/clock/</guid>
-      <description>使用技術: JS : Const變數、Date物件、SetInterval、Template literals樣板字串
-CSS: SCSS(CSS前處理語言)、clip-path
-開發歷程: JS的部分透過Date物件獲取當前的時間、setInterval更新時間並且在內部判斷指針的轉動、Template literals用於方便將計算指出來的旋轉角度整合進字串內</description>
     </item>
     
   </channel>
