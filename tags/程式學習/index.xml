@@ -62,5 +62,16 @@ CSS: SCSS(CSS前處理語言)、BEM風格規範(其實這我不確定名稱是�
 開發歷程:</description>
     </item>
     
+    <item>
+      <title>時鐘clock-Javascript新手地下城</title>
+      <link>https://bjmqfg83.github.io/blog/clock/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/clock/</guid>
+      <description>使用技術: JS : Const變數、Date物件、SetInterval、Template literals樣板字串
+CSS: SCSS(CSS前處理語言)、clip-path
+開發歷程: JS的部分透過Date物件獲取當前的時間、setInterval更新時間並且在內部判斷指針的轉動、Template literals用於方便將計算指出來的旋轉角度整合進字串內</description>
+    </item>
+    
   </channel>
 </rss>
