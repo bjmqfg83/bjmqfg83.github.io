@@ -6,10 +6,22 @@
     <description>Recent content in javascript on Leo&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 31 Jan 2021 16:00:30 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 08 Feb 2021 11:20:30 +0800</lastBuildDate>
     
 	<atom:link href="https://bjmqfg83.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>計算機Calculator-Javascript新手地下城</title>
+      <link>https://bjmqfg83.github.io/blog/hex_calculator/</link>
+      <pubDate>Mon, 08 Feb 2021 11:20:30 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/hex_calculator/</guid>
+      <description>使用技術 JS : Vue、正規表達式、String(substring、replace、split)、For迴圈、Array(reverse)
+CSS: SCSS(CSS前處理語言)、Customize Scrollbar
+開發歷程 這次寫題目時想順便複習FrameWork所以使用了Vue做開發，花了滿多時間想怎麼在千分位前加上「,」以及避免計算結果出現「undefined」、「NAN」
+千分位資料處理 整數位數超過三位時要加上千分位符「,」需要使用正規表達式、字串、陣列的方法來處理</description>
+    </item>
     
     <item>
       <title>時鐘clock-Javascript新手地下城</title>

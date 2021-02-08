@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+  <meta charset="utf-8">
+  <title>
+    
+    計算機Calculator-Javascript新手地下城
+    
+  </title>
+  <!-- mobile responsive meta -->
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description"
+    content="六角學院Javscript新手地下城3F計算機心得分享">
+  
+  <meta name="author"
+    content="Leo">
+  <meta name="generator" content="Hugo 0.68.3" />
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/bootstrap/bootstrap.min.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/slick/slick.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/themify-icons/themify-icons.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/venobox/venobox.css ">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/scss/style.min.css"
+    media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon"
+    href="https://bjmqfg83.github.io/images/favicon.png "
+    type="image/x-icon">
+  <link rel="icon"
+    href="https://bjmqfg83.github.io/images/favicon.png "
+    type="image/x-icon">
+
+  
+
+</head><body>
+<!-- preloader start -->
+<div class="preloader">
+  
+</div>
+<!-- preloader end -->
+<!-- navigation -->
+<header class="navigation">
+  <div class="container">
+    
+    <nav class="navbar navbar-expand-lg navbar-white bg-transparent border-bottom pl-0">
+      <a class="navbar-brand mobile-view text-dark"
+        href="https://bjmqfg83.github.io"><img class="img-fluid header-logo mr-3"
+          src="https://bjmqfg83.github.io/images/favicon.png"
+          alt="Leo&#39;s blog">Leo&#39;s blog</a>
+      <button class="navbar-toggler border-0"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navigation">
+        <i class="ti-menu h3"></i>
+      </button>
+
+      <div class="collapse navbar-collapse text-center"
+        id="navigation">
+        
+
+        <a class="navbar-brand mr-auto desktop-view text-dark"
+          href="https://bjmqfg83.github.io"><img class="img-fluid header-logo mr-3"
+            src="https://bjmqfg83.github.io/images/favicon.png"
+            alt="Leo&#39;s blog">Leo&#39;s blog</a>
+
+        <ul class="navbar-nav">
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+              href="https://bjmqfg83.github.io/">Home</a>
+          </li>
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+              href="https://bjmqfg83.github.io/about">About</a>
+          </li>
+          
+          
+        </ul>
+
+        
+        <!-- search -->
+        <div class="search pl-lg-4">
+          <button id="searchOpen"
+            class="search-btn"><i class="ti-search"></i></button>
+          <div class="search-wrapper">
+            <form action="https://bjmqfg83.github.io/search"
+              class="h-100">
+              <input class="search-box px-4"
+                id="search-query"
+                name="s"
+                type="search"
+                placeholder="Type & Hit Enter...">
+            </form>
+            <button id="searchClose"
+              class="search-close"><i class="ti-close text-dark"></i></button>
+          </div>
+        </div>
+        
+
+        
+      </div>
+    </nav>
+  </div>
+</header>
+<!-- /navigation -->
+<section class="section-sm article-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <h2 class="article-font">計算機Calculator-Javascript新手地下城</h2>
+        <div class="mb-3 post-meta">
+          <span>By Leo</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          <span>08 February 2021</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          
+          <a href="/categories/javascript"
+            class="text-primary">Javascript</a>
+          
+        </div>
+        
+        <img src="https://bjmqfg83.github.io/images/post/hex_calculator.png"
+          class="img-fluid w-100 mb-4"
+          alt="計算機Calculator-Javascript新手地下城">
+        
+        <div class="content mb-5 article">
+          <h3 id="使用技術">使用技術</h3>
+<p>JS : Vue、正規表達式、String(substring、replace、split)、For迴圈、Array(reverse)</p>
+<p>CSS: SCSS(CSS前處理語言)、Customize Scrollbar</p>
+<h3 id="開發歷程">開發歷程</h3>
+<p>這次寫題目時想順便複習FrameWork所以使用了Vue做開發，花了滿多時間想怎麼在千分位前加上「,」以及避免計算結果出現「undefined」、「NAN」</p>
+<h3 id="千分位資料處理">千分位資料處理</h3>
+<p>整數位數超過三位時要加上千分位符「,」需要使用正規表達式、字串、陣列的方法來處理</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#999;font-style:italic">//當計算機輸入到加、減、乘、除時對運算符前的數字做千分位符的處理
+</span><span style="color:#999;font-style:italic">// +號在正規表達式有特定意思所以要單純匹配需在前面加上「反斜線」
+</span><span style="color:#999;font-style:italic">// g表示要找出所有符合條件的結果，不加的話只會找出第一筆符合條件的結果就結束
+</span><span style="color:#999;font-style:italic"></span><span style="color:#6ab825;font-weight:bold">const</span> comma_rule = <span style="color:#ed9d13">/(\+|-|×|÷)/g</span>;
+<span style="color:#6ab825;font-weight:bold">let</span> prev_comma = <span style="color:#ed9d13">&#34;&#34;</span>; <span style="color:#999;font-style:italic">//整數位
+</span><span style="color:#999;font-style:italic"></span><span style="color:#6ab825;font-weight:bold">let</span> after_comma = <span style="color:#ed9d13">&#34;&#34;</span>; <span style="color:#999;font-style:italic">//小數位
+</span><span style="color:#999;font-style:italic"></span><span style="color:#6ab825;font-weight:bold">let</span> comma_val = <span style="color:#ed9d13">&#34;&#34;</span>; <span style="color:#999;font-style:italic">//加上千分位的結果
+</span><span style="color:#999;font-style:italic"></span><span style="color:#6ab825;font-weight:bold">function</span> compute_comma(){
+    comma_arr = result.split(comma_rule); <span style="color:#999;font-style:italic">//依據規則分隔出符合條件的陣列資料
+</span><span style="color:#999;font-style:italic"></span>    comma_arr.forEach((item, index) =&gt; {
+      <span style="color:#6ab825;font-weight:bold">if</span> (!<span style="color:#24909d">isNaN</span>(<span style="color:#24909d">parseFloat</span>(item))) { <span style="color:#999;font-style:italic">// 判斷是否為加、減、乘、除,只處理非NAN的資料
+</span><span style="color:#999;font-style:italic"></span>        prev_comma = (item.split(<span style="color:#ed9d13">&#34;.&#34;</span>)[<span style="color:#3677a9">0</span>] || <span style="color:#ed9d13">&#34;&#34;</span>).split(<span style="color:#ed9d13">&#34;&#34;</span>).reverse(); <span style="color:#999;font-style:italic">//整數位轉成陣列處理
+</span><span style="color:#999;font-style:italic"></span>        after_comma = item.split(<span style="color:#ed9d13">&#34;.&#34;</span>)[<span style="color:#3677a9">1</span>] || <span style="color:#ed9d13">&#34;&#34;</span>; <span style="color:#999;font-style:italic">//小數點先暫存進變數等處理完整數之後再整合進去
+</span><span style="color:#999;font-style:italic"></span>        comma_val = <span style="color:#ed9d13">&#34;&#34;</span>; <span style="color:#999;font-style:italic">//每次迴圈前先清空
+</span><span style="color:#999;font-style:italic"></span>        <span style="color:#999;font-style:italic">//前面的reverse()用來方便拼接字串
+</span><span style="color:#999;font-style:italic"></span>        <span style="color:#999;font-style:italic">//ex:[3,8,5,6].reverse() =&gt; [6,5,8,3]
+</span><span style="color:#999;font-style:italic"></span>        <span style="color:#6ab825;font-weight:bold">for</span> (<span style="color:#6ab825;font-weight:bold">let</span> i = <span style="color:#3677a9">0</span>; i &lt; prev_comma.length; i++) {
+          <span style="color:#999;font-style:italic">//當到第四位時在第三位前加上千分位符「,」
+</span><span style="color:#999;font-style:italic"></span>          <span style="color:#6ab825;font-weight:bold">if</span> (i % <span style="color:#3677a9">3</span> === <span style="color:#3677a9">0</span> &amp;&amp; i !== <span style="color:#3677a9">0</span>) {
+            <span style="color:#999;font-style:italic">// step 4 =&gt; &#34;3&#34;+&#34;,&#34;+&#34;856&#34;
+</span><span style="color:#999;font-style:italic"></span>            comma_val = prev_comma[i] + <span style="color:#ed9d13">&#34;,&#34;</span> + comma_val;
+          <span style="color:#999;font-style:italic">//非第四位則單純拼接
+</span><span style="color:#999;font-style:italic"></span>          } <span style="color:#6ab825;font-weight:bold">else</span> {
+            <span style="color:#999;font-style:italic">// step 1 =&gt; &#34;6&#34;+ &#34;&#34;、step 2 =&gt; &#34;5&#34; + &#34;6&#34;、step 3 =&gt; &#34;8&#34; + &#34;56&#34;
+</span><span style="color:#999;font-style:italic"></span>            comma_val = prev_comma[i] + comma_val;
+          }
+        }
+      }
+    });
+}
+</code></pre></div><p>其餘的輸入規則如避免「NAN」、「undefined」讀者可以稍微思考一下如何處理，這邊就不贅述</p>
+<h4 id="scrollbar客製化">Scrollbar客製化</h4>
+<p>稍微看過其他人做的計算機在位數過多時滿多都是使用js調整字體大小來避免畫面破格,但我個人不太想要調整字體大小所以選擇用css處理位數過多的問題，在畫面位數過多時會出現scrollbar可以滑動，可能會有人覺得瀏覽器預設的不是很好看，這部分可以透過css去調整</p>
+<p><strong>注:scrollbar的調整Firefox要額外寫</strong></p>
+<h5 id="firefox">Firefox</h5>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#6ab825;font-weight:bold">scrollbar-width</span>: <span style="color:#6ab825;font-weight:bold">auto</span> | <span style="color:#6ab825;font-weight:bold">thin</span> | <span style="color:#6ab825;font-weight:bold">none</span> | <span style="color:#6ab825;font-weight:bold">1em</span> | <span style="color:#6ab825;font-weight:bold">inherit</span> | <span style="color:#6ab825;font-weight:bold">initial</span> | <span style="color:#6ab825;font-weight:bold">unset</span> ;
+<span style="color:#6ab825;font-weight:bold">scrollbar-color</span>: <span style="color:#6ab825;font-weight:bold">auto</span> | <span style="color:#6ab825;font-weight:bold">dark</span> | <span style="color:#6ab825;font-weight:bold">light</span> | <span style="color:#6ab825;font-weight:bold">color1</span>(<span style="color:#6ab825;font-weight:bold">滾動條本身的顏色thumb</span>) <span style="color:#6ab825;font-weight:bold">color2</span>(<span style="color:#6ab825;font-weight:bold">滾動條外容器的顏色track</span>);
+</code></pre></div><p><strong>注: color1、color2可以用關鍵字(red、blue&hellip;)或是色碼</strong></p>
+<h5 id="chromeie-edgesafari">Chrome、IE Edge、Safari</h5>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#999;font-style:italic">/* 屬性前要加::-webkit-前綴字  */</span>
+::<span style="color:#ffa500">-webkit-scrollbar</span>: <span style="color:#6ab825;font-weight:bold">width</span> | <span style="color:#6ab825;font-weight:bold">height</span> ;
+::<span style="color:#ffa500">-webkit-scrollbar-thumb</span>: <span style="color:#6ab825;font-weight:bold">background</span> | <span style="color:#6ab825;font-weight:bold">box-shadow</span> | ... ;
+</code></pre></div><p><img src="/images/post/scrollbar_nofirefox.png" alt=""></p>
+<p><strong>注: 這邊簡單列出有使用到的，有需要的話可參考底下連結</strong></p>
+<h3 id="計算機-codepen連結">計算機 codepen連結</h3>
+
+
+
+
+
+
+
+<script
+    data-slug-hash="qBqEgNY"
+    data-user="mgnlhdsl"
+    data-height="600"
+    data-default-tab="result"
+    data-theme-id="8862"
+    class='codepen'
+    async
+    src="//codepen.io/assets/embed/ei.js"
+></script>
+<h4 id="參考資料">參考資料:</h4>
+<p><a href="https://css-tricks.com/custom-scrollbars-in-webkit/">https://css-tricks.com/custom-scrollbars-in-webkit/</a></p>
+<p><a href="https://css-tricks.com/examples/WebKitScrollbars/">https://css-tricks.com/examples/WebKitScrollbars/</a></p>
+<p><a href="https://stackoverflow.com/questions/6165472/custom-css-scrollbar-for-firefox/53739309#53739309">https://stackoverflow.com/questions/6165472/custom-css-scrollbar-for-firefox/53739309#53739309</a></p>
+<p><a href="https://github.com/Aris-t2/CustomCSSforFx/issues/160">https://github.com/Aris-t2/CustomCSSforFx/issues/160</a></p>
+
+        </div>
+
+        
+        
+        
+        
+        <script src="https://utteranc.es/client.js"
+          repo="bjmqfg83/comment-utterances"
+          issue-term="title"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+          </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<script>
+  var indexURL = "https://bjmqfg83.github.io/index.json"
+</script>
+
+<!-- JS Plugins -->
+
+<script src="https://bjmqfg83.github.io/plugins/jQuery/jquery.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/slick/slick.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/venobox/venobox.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/fuse.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/mark.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/search.js"></script>
+
+<!-- Main Script -->
+
+<script src="https://bjmqfg83.github.io/js/script.min.js"></script>
+<!-- google analitycs -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'UA-176082228-1', 'auto');
+  ga('send', 'pageview');
+</script></body>
+</html>
