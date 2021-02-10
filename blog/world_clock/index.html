@@ -154,7 +154,7 @@
 <h3 id="時間戳timestamp">時間戳timestamp</h3>
 <p>timestamp指的是從1970年1月1日0時0分0秒開始到現在總共經過多少豪秒數，可用於追蹤時間、計算時間差、日期排序等等&hellip;，在js內可透過new Date().getTime()取得，不過在查詢資料的時候看到有人說是經過的「秒數」，但使用相關函式獲取到的到底是毫秒還是秒這部分可能跟程式語言、系統環境有關，javascript獲取到的是「毫秒數」、php獲取到的是「秒數」，有興趣的可以到<a href="https://www.epochconverter.com/">epochconverter</a>、<a href="https://www.unixtimestamp.com/">unixtimestamp</a>看看</p>
 <h3 id="gmtutc">GMT、UTC</h3>
-<p>GMT全稱為格林威治標準時間(Greenwich Mean Time)、UTC全稱為世界協調時間(Coordinated Universal Time),台灣所在的時區快八小時所以可以表示成「GMT+8」或是「UTC+8」，那至於GMT、UTC的差別詳細的可以參考泛科學的<a href="https://pansci.asia/archives/84978?fbclid=IwAR0O3OFctmf9szayS9dB-JcK-sfij-SlWJctwmorwFs4y0SS6Cro_ZyXkOg">到底是 GMT+8 還是 UTC+8 ?</a>，日常生活中兩者沒什麼區別可以混用,只是由於地球自轉速度在變慢導致GMT的1秒越來越長，會在UTC超過GMT快1秒時加入「閏秒」來抵消超前的量</p>
+<p>GMT全稱為格林威治標準時間(Greenwich Mean Time)、UTC全稱為世界協調時間(Coordinated Universal Time),台灣所在的時區快八小時所以可以表示成「GMT+8」或是「UTC+8」，那至於GMT、UTC的差別詳細的可以參考泛科學的<a href="https://pansci.asia/archives/84978?fbclid=IwAR0O3OFctmf9szayS9dB-JcK-sfij-SlWJctwmorwFs4y0SS6Cro_ZyXkOg">到底是 GMT+8 還是 UTC+8 ?</a>，日常生活中兩者沒什麼區別可以混用,只是由於地球自轉速度在變慢導致GMT的1秒越來越長，UTC會在超過GMT快1秒時加入「閏秒」來抵消超前的量</p>
 <h3 id="world-clock時區">world clock時區</h3>
 <p>要獲取指定地區的日期時間我們可使用Date物件的toLocaleString</p>
 <pre><code>new Date().toLocaleString([locales[, options]])
