@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>計算機WORLD CLOCK-Javascript新手地下城</title>
+      <link>https://bjmqfg83.github.io/blog/world_clock/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:30 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/world_clock/</guid>
+      <description>使用技術 JS : For迴圈、Date、string、setInterval
+CSS: SCSS(CSS前處理語言)、Grid Layout
+Others: google fonts</description>
+    </item>
+    
+    <item>
       <title>計算機Calculator-Javascript新手地下城</title>
       <link>https://bjmqfg83.github.io/blog/hex_calculator/</link>
       <pubDate>Mon, 08 Feb 2021 11:20:30 +0800</pubDate>
