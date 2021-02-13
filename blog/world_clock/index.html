@@ -208,9 +208,9 @@
     });
   }
   world_clock();
-  <span style="color:#999;font-style:italic">// 每秒鐘調用一次判斷getSeconds()是否為0，為0表示1分鐘已到可以調用函數更新時間
+  <span style="color:#999;font-style:italic">// 每秒鐘調用一次判斷getSeconds()是否為59，為59示1分鐘要到可以調用函數更新時間
 </span><span style="color:#999;font-style:italic"></span>  <span style="color:#6ab825;font-weight:bold">var</span> clock_timer = setInterval(<span style="color:#6ab825;font-weight:bold">function</span>(){
-    <span style="color:#6ab825;font-weight:bold">if</span>(<span style="color:#6ab825;font-weight:bold">new</span> <span style="color:#24909d">Date</span>().getSeconds()===<span style="color:#3677a9">0</span>){
+    <span style="color:#6ab825;font-weight:bold">if</span>(<span style="color:#6ab825;font-weight:bold">new</span> <span style="color:#24909d">Date</span>().getSeconds()===<span style="color:#3677a9">59</span>){
       world_clock();
     }
   },<span style="color:#3677a9">1000</span>);
