@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>全台空氣指標儀表板-Javascript新手地下城</title>
+      <link>https://bjmqfg83.github.io/blog/air_quality/</link>
+      <pubDate>Thu, 11 Feb 2021 00:00:30 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/air_quality/</guid>
+      <description>使用技術 JS : Vue、axios、For迴圈、Regular expressions、Array
+CSS: SCSS(CSS前處理語言)、flex、customize scrollbar
+Others: google fonts、政府資料開放平台-空氣品質指標(AQI)</description>
+    </item>
+    
+    <item>
       <title>WORLD CLOCK-Javascript新手地下城</title>
       <link>https://bjmqfg83.github.io/blog/world_clock/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:30 +0800</pubDate>
