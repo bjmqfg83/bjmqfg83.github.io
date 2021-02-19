@@ -271,7 +271,7 @@ xhr.send(msg);
 <li>不同port ex: &quot;https://example.com&quot;、&quot;https://example.com:8080&quot;</li>
 </ol>
 <p>跟後端協作串接API時如果遇到CORS通常後端會去設定<strong>Access-Control-Allow-Origin</strong>來讓特定來源能夠存取資源或是乾脆使用*號(通配符)讓所有不同來源都能夠存取</p>
-<p>但如果要串接的是第三方的API的話可以參考一下六角助教<a href="https://hsiangfeng.github.io/javascript/20190617/3829122039/">Google Apps Script</a>寫的這篇文章去試看看，大概的理解是CORS是因為瀏覽器請求非同源的資源所發生，那就不用瀏覽器去請求來規避這個問題</p>
+<p>但如果要串接的是第三方的API的話可以參考一下六角助教寫的<a href="https://hsiangfeng.github.io/javascript/20190617/3829122039/">Google Apps Script</a>這篇文章去試看看，大概的理解是CORS是因為瀏覽器請求非同源的資源所發生，那就不用瀏覽器去請求來規避這個問題</p>
 <p>我用<a href="https://data.gov.tw/dataset/136489">新竹縣政府公務人員參訓人數</a>這個API去試了之後沒問題，但是對於像是需要API_KEY金鑰的API如<a href="https://data.gov.tw/dataset/40448">空氣品質指標(AQI)</a>一樣還是會有CORS的問題發生，所以Google Apps Script只是一個暫時性的方式，實作上還是要因應情況去做調整</p>
 <h3 id="aqi-demo連結">AQI Demo連結</h3>
 
