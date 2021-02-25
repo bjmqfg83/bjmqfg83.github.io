@@ -6,10 +6,19 @@
     <description>Recent content on Leo&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Fri, 19 Feb 2021 18:00:30 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 25 Feb 2021 00:00:30 +0800</lastBuildDate>
     
 	<atom:link href="https://bjmqfg83.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>60秒算數遊戲-Javascript新手地下城</title>
+      <link>https://bjmqfg83.github.io/blog/mathgame/</link>
+      <pubDate>Thu, 25 Feb 2021 00:00:30 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/mathgame/</guid>
+      <description>遊戲規則  0~20 秒為 1位數計算 (5-3)，21~40 秒為 2 位數計算 (30*19)，41~60 秒為 3 位數計算 (332+312)，加減乘除規則請用隨機產生，不可寫死題目，60 秒內可無限次數答題。 0~40 秒答對加一分，41~60 秒答對加五分，答錯扣一分，最多僅能扣到零分 【特定技術】不可設計跳轉頁面，都得在同一頁內部切換頁面完成。  使用技術 JS : Vue、if else、Math、switch、localStorage、setInterval</description>
+    </item>
     
     <item>
       <title>全台空氣指標儀表板-Javascript新手地下城</title>

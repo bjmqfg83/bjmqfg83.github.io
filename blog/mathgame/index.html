@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+  <meta charset="utf-8">
+  <title>
+    
+    60秒算數遊戲-Javascript新手地下城
+    
+  </title>
+  <!-- mobile responsive meta -->
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description"
+    content="六角學院Javscript新手地下城6F60秒算數遊戲">
+  
+  <meta name="author"
+    content="Leo">
+  <meta name="generator" content="Hugo 0.68.3" />
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/bootstrap/bootstrap.min.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/slick/slick.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/themify-icons/themify-icons.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/venobox/venobox.css ">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/scss/style.min.css"
+    media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon"
+    href="https://bjmqfg83.github.io/images/favicon.png "
+    type="image/x-icon">
+  <link rel="icon"
+    href="https://bjmqfg83.github.io/images/favicon.png "
+    type="image/x-icon">
+
+  
+
+</head><body>
+<!-- preloader start -->
+<div class="preloader">
+  
+</div>
+<!-- preloader end -->
+<!-- navigation -->
+<header class="navigation">
+  <div class="container">
+    
+    <nav class="navbar navbar-expand-lg navbar-white bg-transparent border-bottom pl-0">
+      <a class="navbar-brand mobile-view text-dark"
+        href="https://bjmqfg83.github.io"><img class="img-fluid header-logo mr-3"
+          src="https://bjmqfg83.github.io/images/favicon.png"
+          alt="Leo&#39;s blog">Leo&#39;s blog</a>
+      <button class="navbar-toggler border-0"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navigation">
+        <i class="ti-menu h3"></i>
+      </button>
+
+      <div class="collapse navbar-collapse text-center"
+        id="navigation">
+        
+
+        <a class="navbar-brand mr-auto desktop-view text-dark"
+          href="https://bjmqfg83.github.io"><img class="img-fluid header-logo mr-3"
+            src="https://bjmqfg83.github.io/images/favicon.png"
+            alt="Leo&#39;s blog">Leo&#39;s blog</a>
+
+        <ul class="navbar-nav">
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+              href="https://bjmqfg83.github.io/">Home</a>
+          </li>
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+              href="https://bjmqfg83.github.io/about">About</a>
+          </li>
+          
+          
+        </ul>
+
+        
+        <!-- search -->
+        <div class="search pl-lg-4">
+          <button id="searchOpen"
+            class="search-btn"><i class="ti-search"></i></button>
+          <div class="search-wrapper">
+            <form action="https://bjmqfg83.github.io/search"
+              class="h-100">
+              <input class="search-box px-4"
+                id="search-query"
+                name="s"
+                type="search"
+                placeholder="Type & Hit Enter...">
+            </form>
+            <button id="searchClose"
+              class="search-close"><i class="ti-close text-dark"></i></button>
+          </div>
+        </div>
+        
+
+        
+      </div>
+    </nav>
+  </div>
+</header>
+<!-- /navigation -->
+<section class="section-sm article-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <h2 class="article-font">60秒算數遊戲-Javascript新手地下城</h2>
+        <div class="mb-3 post-meta">
+          <span>By Leo</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          <span>25 February 2021</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          
+          <a href="/categories/javascript"
+            class="text-primary">Javascript</a>
+          
+        </div>
+        
+        <img src="https://bjmqfg83.github.io/images/post/mathgame.png"
+          class="img-fluid w-100 mb-4"
+          alt="60秒算數遊戲-Javascript新手地下城">
+        
+        <div class="content mb-5 article">
+          <h3 id="遊戲規則">遊戲規則</h3>
+<ol>
+<li>0~20 秒為 1位數計算 (5-3)，21~40 秒為 2 位數計算 (30*19)，41~60 秒為 3 位數計算 (332+312)，加減乘除規則請用隨機產生，不可寫死題目，60 秒內可無限次數答題。</li>
+<li>0~40 秒答對加一分，41~60 秒答對加五分，答錯扣一分，最多僅能扣到零分</li>
+<li>【特定技術】不可設計跳轉頁面，都得在同一頁內部切換頁面完成。</li>
+</ol>
+<h3 id="使用技術">使用技術</h3>
+<p>JS : Vue、if else、Math、switch、localStorage、setInterval</p>
+<p>CSS: SCSS(CSS前處理語言)、flex、Input Number customize</p>
+<p>Others: google fonts</p>
+<h3 id="開發歷程">開發歷程</h3>
+<ol>
+<li>使用Vue做開發(<del>我就懶</del>)，讓vue做畫面渲染並使開發過程專注在程式邏輯上</li>
+<li>時間上透過setInterval去執行60秒的倒數,時間倒數到0時清除週期性定時器Interval並跳至最後一個頁面，當使用者在最後的頁面點擊try again時重新開始遊戲</li>
+<li>使用Math.random亂數產生題目，使用者送出答案時除了對答案還會依據目前所剩時間給予相對應的分數並依所剩時間產生相對應難度的題目</li>
+<li>新增小功能為透過localStorage去儲存自己遊戲的最高分,這是純前端的作法，如果有跟後端配合的話可以延伸至分數排行榜等等&hellip;</li>
+</ol>
+<h3 id="input-number-customize">Input Number customize</h3>
+<p>我們要讓使用者輸入數字時會使用 <strong>&lt;input type=&quot;number&quot;&gt;</strong>這個HTML表單元件,這個元件會有預設的上下箭頭讓使用者去調整數字,但是元件的上下箭頭個人認為跟整體設計非常不搭所以移除掉，現在來看一下CSS語法吧</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SCSS" data-lang="SCSS">  <span style="color:#6ab825;font-weight:bold">input</span>[<span style="color:#6ab825;font-weight:bold">type</span>=<span style="color:#ed9d13">&#34;number&#34;</span>] {
+    <span style="color:#6ab825;font-weight:bold">width</span><span style="color:#ffa500">:</span> <span style="color:#6ab825;font-weight:bold">255px</span>;
+    <span style="color:#6ab825;font-weight:bold">height</span><span style="color:#ffa500">:</span> <span style="color:#6ab825;font-weight:bold">131px</span>;
+    <span style="color:#6ab825;font-weight:bold">outline</span><span style="color:#ffa500">:</span> <span style="color:#6ab825;font-weight:bold">none</span>;
+    <span style="color:#6ab825;font-weight:bold">font-size</span><span style="color:#ffa500">:</span> <span style="color:#6ab825;font-weight:bold">112px</span>;
+    <span style="color:#6ab825;font-weight:bold">font-weight</span><span style="color:#ffa500">:</span> <span style="color:#6ab825;font-weight:bold">bold</span>;
+    <span style="color:#6ab825;font-weight:bold">text-align</span><span style="color:#ffa500">:</span> <span style="color:#6ab825;font-weight:bold">center</span>;
+    <span style="color:#6ab825;font-weight:bold">border</span><span style="color:#ffa500">:</span> <span style="color:#6ab825;font-weight:bold">none</span>;
+    <span style="color:#999;font-style:italic">/* default style firefox */</span>
+    <span style="color:#6ab825;font-weight:bold">-moz-appearance</span><span style="color:#ffa500">:</span> <span style="color:#6ab825;font-weight:bold">textfield</span>;
+    <span style="color:#999;font-style:italic">/* default style safari、chrome、ie */</span>
+    <span style="color:#6ab825;font-weight:bold">&amp;</span><span style="color:#ffa500">::-webkit-inner-spin-button</span>,<span style="color:#6ab825;font-weight:bold">&amp;</span><span style="color:#ffa500">::-webkit-outer-spin-button</span> {
+      <span style="color:#6ab825;font-weight:bold">appearance</span><span style="color:#ffa500">:</span> <span style="color:#6ab825;font-weight:bold">none</span>;
+      <span style="color:#6ab825;font-weight:bold">-webkit-appearance</span><span style="color:#ffa500">:</span> <span style="color:#6ab825;font-weight:bold">none</span>;
+      <span style="color:#6ab825;font-weight:bold">margin</span><span style="color:#ffa500">:</span> <span style="color:#6ab825;font-weight:bold">0</span>;
+    }
+  }
+</code></pre></div><p><strong>註:在客製化樣式方面發現firefox很常需要下跟其他瀏覽器不同的前綴字，想客製化元件樣式的時候要注意一下</strong></p>
+<h3 id="localstoragesessionstorage">localStorage、sessionStorage</h3>
+<ul>
+<li>
+<p>localStorage以及sessionStorage為客戶端的資料儲存技術容量大小都為5MB,透過設定key:value的方式來儲存資料進瀏覽器，跟cookie不同的是在與server溝通時不會被自動帶入</p>
+</li>
+<li>
+<p>localStorage以及sessionStorage兩者之間唯一的不同就是localStorage如果使用者不刪除資料該筆資料會永遠存在在瀏覽器內但sessionStorage只要該分頁關閉時資料就會清除掉</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">  <span style="color:#999;font-style:italic">// localStorage
+</span><span style="color:#999;font-style:italic"></span>  localStorage.setItem(<span style="color:#ed9d13">&#39;myName&#39;</span>, <span style="color:#ed9d13">&#39;Tom&#39;</span>);
+  localStorage.getItem(<span style="color:#ed9d13">&#39;myName&#39;</span>);
+  localStorage.removeItem(<span style="color:#ed9d13">&#39;myName&#39;</span>);
+  localStorage.clear();
+
+  <span style="color:#999;font-style:italic">// sessionStorage
+</span><span style="color:#999;font-style:italic"></span>  sessionStorage.setItem(<span style="color:#ed9d13">&#39;myName&#39;</span>, <span style="color:#ed9d13">&#39;Tom&#39;</span>);
+  sessionStorage.getItem(<span style="color:#ed9d13">&#39;myName&#39;</span>);
+  sessionStorage.removeItem(<span style="color:#ed9d13">&#39;myName&#39;</span>);
+  sessionStorage.clear();
+</code></pre></div><p>透過localStorage去儲存玩家遊戲的分數，如果當次分數比上次高就會儲存進去</p>
+<h3 id="安全性">安全性</h3>
+<p>當我們要使用Vue時大多習慣這樣寫</p>
+<pre><code>const app = new Vue({...});
+</code></pre><p>但這樣使用者其實可以打開瀏覽器的console端去把分數改掉</p>
+<p><img src="/images/post/info_security.jpg" alt=""></p>
+<p><img src="/images/post/info_security2.jpg" alt=""></p>
+<p>可以把const app移除掉讓使用者沒辦法透過console端去修改資料</p>
+<p>但是這樣還不夠，使用者可以透過瀏覽器去修改localStorage的值去更改最高紀錄的分數</p>
+<p><img src="/images/post/info_security3.jpg" alt=""></p>
+<p>這時候我們可以新增一個storage的事件監聽,只要在遊戲進行時偵測到localStorage的值被修改就將分數歸0並重新開始遊戲，只有在遊戲結束時分數要進行更新時允許更新localStorage,更新完後一樣禁止再次修改localStorage的值</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">  <span style="color:#6ab825;font-weight:bold">function</span> security(){
+      <span style="color:#24909d">window</span>.addEventListener(<span style="color:#ed9d13">&#39;storage&#39;</span>,()=&gt;{
+        <span style="color:#6ab825;font-weight:bold">if</span>(<span style="color:#6ab825;font-weight:bold">this</span>.higest !== localStorage.getItem(<span style="color:#ed9d13">&#34;higestscore&#34;</span>)){
+          alert(<span style="color:#ed9d13">&#34;偵測到分數被修改，遊戲積分歸0&#34;</span>);
+          localStorage.setItem(<span style="color:#ed9d13">&#34;higestscore&#34;</span>,<span style="color:#3677a9">0</span>);
+          <span style="color:#999;font-style:italic">// history.go(0);
+</span><span style="color:#999;font-style:italic"></span>          <span style="color:#6ab825;font-weight:bold">this</span>.try_again();
+        }
+      });
+    }
+</code></pre></div><p>因為程式內部的賦值也是更新,所以遊戲結束要賦值前記得先將事件監聽移除，等到程式內部的更新完成後再重新註冊一次事件監聽</p>
+<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">  <span style="color:#24909d">window</span>.removeEventListener(<span style="color:#ed9d13">&#39;storage&#39;</span>);
+</code></pre></div><p>我個人是透過修改資料內的狀態來重新開始遊戲,不過可能會有人想透過history.go(0)或是window.reload()等方式重新開始遊戲，但是這在codepen會有問題,建議要試的可以將自己的檔案下載下來後再測試</p>
+<p><img src="/images/post/codepen_error1.jpg" alt=""></p>
+<p>codepen針對reload頁面的說明我放在參考資料內</p>
+<h3 id="demo-連結">Demo 連結</h3>
+
+
+
+
+
+
+
+<script
+    data-slug-hash="dyOzKam"
+    data-user="mgnlhdsl"
+    data-height="600"
+    data-default-tab="result"
+    data-theme-id="8862"
+    class='codepen'
+    async
+    src="//codepen.io/assets/embed/ei.js"
+></script>
+<h4 id="參考資料">參考資料:</h4>
+<p><a href="https://stackoverflow.com/questions/23372903/hide-spinner-in-input-number-firefox-29">Input Number 客製化</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API">Web Storage MDN</a></p>
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Window/localStorage">localStorage MDN</a></p>
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Window/sessionStorage">sessionStorage MDN</a></p>
+<p><a href="https://blog.codepen.io/documentation/referred-from-pen-message/">referred-from-pen-message</a></p>
+
+        </div>
+
+        
+        
+        
+        
+        <script src="https://utteranc.es/client.js"
+          repo="bjmqfg83/comment-utterances"
+          issue-term="title"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+          </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<script>
+  var indexURL = "https://bjmqfg83.github.io/index.json"
+</script>
+
+<!-- JS Plugins -->
+
+<script src="https://bjmqfg83.github.io/plugins/jQuery/jquery.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/slick/slick.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/venobox/venobox.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/fuse.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/mark.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/search.js"></script>
+
+<!-- Main Script -->
+
+<script src="https://bjmqfg83.github.io/js/script.min.js"></script>
+<!-- google analitycs -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'UA-176082228-1', 'auto');
+  ga('send', 'pageview');
+</script></body>
+</html>
