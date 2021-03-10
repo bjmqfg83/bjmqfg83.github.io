@@ -6,10 +6,22 @@
     <description>Recent content in 程式學習 on Leo&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Thu, 25 Feb 2021 00:00:30 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 03 Mar 2021 08:40:00 +0800</lastBuildDate>
     
 	<atom:link href="https://bjmqfg83.github.io/tags/%E7%A8%8B%E5%BC%8F%E5%AD%B8%E7%BF%92/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>畫板drawing board-六角學院Javascript新手地下城</title>
+      <link>https://bjmqfg83.github.io/blog/drawing_board/</link>
+      <pubDate>Wed, 03 Mar 2021 08:40:00 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/drawing_board/</guid>
+      <description>這座山終於快爬完一半了&amp;hellip;不得不說如果真的不知道該怎麼做時參考網路上類似的範例是一個還不錯的選擇,不然你可能卡在路上半天還在迷路&amp;hellip;
+Photo by pixabay
+BOSS 弱點 【特定技術】遊戲規則
+ 繪圖區請使用 Canvas 來設計，上方的控制列與下方的畫筆調整可不用 SAVE ：點擊後可直接下載轉出的 PNG 圖片 CLEAR ALL：清除畫版樣式 UNDO、REDO：上一步、下一步 點擊箭頭時，功能列介面皆可進行收闔 【擴充功能】請再自行增加「兩個功能」，我相信勇者們都是很有梗的~  Canvas DOM vs Canvas</description>
+    </item>
     
     <item>
       <title>60秒算數遊戲-Javascript新手地下城</title>
