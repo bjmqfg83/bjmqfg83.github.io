@@ -6,10 +6,19 @@
     <description>Recent content on Leo&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 03 Mar 2021 08:40:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 18 Mar 2021 17:14:00 +0800</lastBuildDate>
     
 	<atom:link href="https://bjmqfg83.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tic Tac Toe 井字遊戲-六角學院Javascript新手地下城</title>
+      <link>https://bjmqfg83.github.io/blog/tictactoe/</link>
+      <pubDate>Thu, 18 Mar 2021 17:14:00 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/tictactoe/</guid>
+      <description>BOSS 弱點  【特定技術】先手為 O，後手為 X，某方獲勝時，上方會紀錄各方的獲勝戰績 【特定技術】每回合結束後，會判定結果頁(平手、Ｏ 獲勝、X 獲勝) 【特定技術】需符合 RWD，能在低螢幕解析度也能遊玩，介面不能超出 x 軸，至少在以下解析度能夠遊玩。 iPhone SE 320px iPhone 8 375px iPhone PLUS 414px 【特定技術】請使用瀏覽器離線儲存技術，將戰績保留起來，重新打開遊戲也仍可觀看到歷史戰績。技術請任選以下幾種 Cookie LocalStorage 【書寫能力】請寫 BLOG，描述你在開發「滿足獲勝條件」解題思維來進行加強描述 上面三個 O 符合獲勝條件 斜線三個 X 符合獲勝條件 請先不要參考網路上的寫法，試著用自身開發能力來解題，進以提升開發思維。但這段並非強制，真的卡關到爆炸，就還是試圖尋找攻略吧，但我相信想立志成為前端之碑的樓主，一定辦得到的！（崇拜眼神  程式邏輯 這次要細心一點的是RWD的縮放,程式邏輯的部分倒是還好,而程式邏輯有兩個地方要注意</description>
+    </item>
     
     <item>
       <title>畫板drawing board-六角學院Javascript新手地下城</title>
