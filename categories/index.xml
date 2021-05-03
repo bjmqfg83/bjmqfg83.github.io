@@ -6,10 +6,19 @@
     <description>Recent content in Categories on Leo&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Thu, 18 Mar 2021 17:14:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 03 May 2021 12:00:30 +0800</lastBuildDate>
     
 	<atom:link href="https://bjmqfg83.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>css</title>
+      <link>https://bjmqfg83.github.io/categories/css/</link>
+      <pubDate>Mon, 03 May 2021 12:00:30 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/categories/css/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>javascript</title>
@@ -26,15 +35,6 @@
       <pubDate>Tue, 08 Sep 2020 11:40:00 +0800</pubDate>
       
       <guid>https://bjmqfg83.github.io/categories/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>css</title>
-      <link>https://bjmqfg83.github.io/categories/css/</link>
-      <pubDate>Tue, 25 Aug 2020 12:54:00 +0800</pubDate>
-      
-      <guid>https://bjmqfg83.github.io/categories/css/</guid>
       <description></description>
     </item>
     

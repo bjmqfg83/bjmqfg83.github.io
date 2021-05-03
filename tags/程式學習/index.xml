@@ -6,10 +6,22 @@
     <description>Recent content in 程式學習 on Leo&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Thu, 18 Mar 2021 17:14:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 03 May 2021 12:00:30 +0800</lastBuildDate>
     
 	<atom:link href="https://bjmqfg83.github.io/tags/%E7%A8%8B%E5%BC%8F%E5%AD%B8%E7%BF%92/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>移動時的殘影-CSS Motion Blur</title>
+      <link>https://bjmqfg83.github.io/blog/motionblur/</link>
+      <pubDate>Mon, 03 May 2021 12:00:30 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/motionblur/</guid>
+      <description>最近在專心看Vue3的東西所以疏於更新blog了 (其實是懶的&amp;hellip;) &amp;hellip;,想說在要寫Vue的文章之前先來寫點小東西練練手感,不然有點久沒寫部落格真的是會生疏。
+Motion Blur Motion blur又稱作動態模糊、運動模糊,主要是當相機拍攝一個快速移動的物體或是對拍攝物進行長時間的曝光所產生的模糊效果,那如果我們要讓網頁的元素做出物體移動時的模糊效果的話該怎麼做呢?
+我們可以透過CSS來達到類似的效果,將複數的元素包起來並設絕對定位讓元素堆疊起來並且給與元素不同的過渡或動畫延遲時間,這樣物體在移動時就會有那種好像因為動的很快所以產生殘引的感覺。
+ Motionblurjs 如果不想要自己一個個新增物件的話可以使用MotionBlurJS提供的涵式庫來完成,只需要在元素上加上特定的class後自己定義CSS動畫即可</description>
+    </item>
     
     <item>
       <title>Tic Tac Toe 井字遊戲-六角學院Javascript新手地下城</title>
