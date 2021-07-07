@@ -12,6 +12,18 @@
     
     
     <item>
+      <title>厲害了我的Safari-Safari影片播放踩坑</title>
+      <link>https://bjmqfg83.github.io/blog/videoissues/</link>
+      <pubDate>Sat, 03 Jul 2021 17:14:00 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/videoissues/</guid>
+      <description>最近公司接到一個案子,其中一個功能是當使用者進到網站時會自動播放一個滿版的影片,播放完後停在最後一卡不會重複播放，原本想說這應該穩穩的沒事,直到我遇到了那個萬惡的Safari
+當使用者進到頁面播放影片時,如果使用者使用行動裝置上的Safari播放影片的話,當使用者在影片播放「途中」讓手機待機會使影片直接停在待機前的狀態不會播放
+我們要讓safari在待機結束後可以繼續播放影片的話需要偵測手機是否待機,在待機時暫停播放、沒有在待機時繼續播放，雖然Javascript沒辦法偵測手機是否待機,但是Web APIs裡有提供一個可以做為替代方式的API
+Page Visibility API Page Visibility API會在網頁處於背景或是對於使用者來說看不到的情形下觸發,測試過手機待機時同樣有效，首先註冊 「visibilitychange」 的事件監聽,當使用者待機觸發事件時再透過 「document.</description>
+    </item>
+    
+    <item>
       <title>移動時的殘影-CSS Motion Blur</title>
       <link>https://bjmqfg83.github.io/blog/motionblur/</link>
       <pubDate>Mon, 03 May 2021 12:00:30 +0800</pubDate>
