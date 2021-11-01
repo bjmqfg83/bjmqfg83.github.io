@@ -6,10 +6,23 @@
     <description>Recent content in css on Leo&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 03 May 2021 12:00:30 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 01 Nov 2021 05:05:00 +0800</lastBuildDate>
     
 	<atom:link href="https://bjmqfg83.github.io/tags/css/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>tailwindcss筆記</title>
+      <link>https://bjmqfg83.github.io/blog/tailwindcss/</link>
+      <pubDate>Mon, 01 Nov 2021 05:05:00 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/tailwindcss/</guid>
+      <description>從去年起tailwind在台灣熱度越來越高,另外最近也在HISKIO上買了tailwind的課程學習,所以想說也來蹭一下分享一下所學順便兼做筆記方便日後複習
+tailwindcss解決什麼問題? tailwindcss是一個utility-first的css框架,而且由於tailwind將絕大部分的css樣式通通寫成class使用(ex:mt、flex、grid&amp;hellip;),所以可以讓工程師在寫html的時候一併處理樣式而幾乎不用寫額外的css,跟bootstrap之間最大的不同是tailwind沒有像是「Accordion」、「Dropdown」之類的組件,全部都是功能性的class，另外由於使用tailwind等同於直接在html上寫style,所以可以避免樣式幾乎相同卻硬是要命名不同的class,大大減少多餘的css
+註:想要玩一下tailwind的話可以先到tailwindplay嚐嚐鮮
+tailwindcss配置 tailwind官方有提供三種配置方式
+ cdn tailwind cli npm  CDN &amp;lt;link href=&amp;#34;https://unpkg.</description>
+    </item>
     
     <item>
       <title>移動時的殘影-CSS Motion Blur</title>
