@@ -6,51 +6,14 @@
     <description>Recent content in javascript on Leo&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 03 Jul 2021 17:14:00 +0800</lastBuildDate>
-    
-	<atom:link href="https://bjmqfg83.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Safari渲染問題</title>
-      <link>https://bjmqfg83.github.io/blog/safari-render-issue/</link>
-      <pubDate>Sat, 03 Jul 2021 17:14:00 +0800</pubDate>
-      
-      <guid>https://bjmqfg83.github.io/blog/safari-render-issue/</guid>
-      <description>之前在執行公司的專案時遇到兩個跟safari有關的問題
- 透過js的click事件給元素添加class更改樣式以及執行transform後視覺上並無變化,但從開發者工具來看class以及裡面的樣式是有加上元素的 當使用者使用iphone播放影片「途中」突然待機後再開啟,畫面會直接停在待機前的畫面無法操作  這兩個問題嚴格意義上應該算一個問題,推測跟safari本身的渲染機制有關,不過不確定是什麼原因導致畫面沒有repaint就是了&amp;hellip;
-第一個問題是樣式沒有渲染上去,所以我們要做的是強行觸發瀏覽器的渲染機制,以下的屬性當js訪問時會先渲染dom後才會去獲得相關屬性
- offsetTop offsetLeft offsetWidth offsetHeight scrollTop scrollLeft scrollWidth scrollHeight clientTop clientLeft clientWidth clientHeight  我們先將元素的display設為「none」後訪問上述其中一個屬性再將元素的display設為「block」</description>
-    </item>
-    
-    <item>
-      <title>Tic Tac Toe 井字遊戲-六角學院Javascript新手地下城</title>
-      <link>https://bjmqfg83.github.io/blog/tictactoe/</link>
-      <pubDate>Thu, 18 Mar 2021 17:14:00 +0800</pubDate>
-      
-      <guid>https://bjmqfg83.github.io/blog/tictactoe/</guid>
-      <description>BOSS 弱點  【特定技術】先手為 O，後手為 X，某方獲勝時，上方會紀錄各方的獲勝戰績 【特定技術】每回合結束後，會判定結果頁(平手、Ｏ 獲勝、X 獲勝) 【特定技術】需符合 RWD，能在低螢幕解析度也能遊玩，介面不能超出 x 軸，至少在以下解析度能夠遊玩。 iPhone SE 320px iPhone 8 375px iPhone PLUS 414px 【特定技術】請使用瀏覽器離線儲存技術，將戰績保留起來，重新打開遊戲也仍可觀看到歷史戰績。技術請任選以下幾種 Cookie LocalStorage 【書寫能力】請寫 BLOG，描述你在開發「滿足獲勝條件」解題思維來進行加強描述 上面三個 O 符合獲勝條件 斜線三個 X 符合獲勝條件 請先不要參考網路上的寫法，試著用自身開發能力來解題，進以提升開發思維。但這段並非強制，真的卡關到爆炸，就還是試圖尋找攻略吧，但我相信想立志成為前端之碑的樓主，一定辦得到的！（崇拜眼神  程式邏輯 這次要細心一點的是RWD的縮放,程式邏輯的部分倒是還好,而程式邏輯有兩個地方要注意</description>
-    </item>
-    
-    <item>
-      <title>畫板drawing board-六角學院Javascript新手地下城</title>
-      <link>https://bjmqfg83.github.io/blog/drawing_board/</link>
-      <pubDate>Wed, 03 Mar 2021 08:40:00 +0800</pubDate>
-      
-      <guid>https://bjmqfg83.github.io/blog/drawing_board/</guid>
-      <description>這座山終於快爬完一半了&amp;hellip;不得不說如果真的不知道該怎麼做時參考網路上類似的範例是一個還不錯的選擇,不然你可能卡在路上半天還在迷路&amp;hellip;
-Photo by pixabay
-BOSS 弱點 【特定技術】遊戲規則
- 繪圖區請使用 Canvas 來設計，上方的控制列與下方的畫筆調整可不用 SAVE ：點擊後可直接下載轉出的 PNG 圖片 CLEAR ALL：清除畫版樣式 UNDO、REDO：上一步、下一步 點擊箭頭時，功能列介面皆可進行收闔 【擴充功能】請再自行增加「兩個功能」，我相信勇者們都是很有梗的~  Canvas DOM vs Canvas</description>
-    </item>
-    
+    <lastBuildDate>Thu, 25 Feb 2021 00:00:30 +0800</lastBuildDate><atom:link href="https://bjmqfg83.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>60秒算數遊戲-Javascript新手地下城</title>
       <link>https://bjmqfg83.github.io/blog/mathgame/</link>
       <pubDate>Thu, 25 Feb 2021 00:00:30 +0800</pubDate>
       
       <guid>https://bjmqfg83.github.io/blog/mathgame/</guid>
-      <description>遊戲規則  0~20 秒為 1位數計算 (5-3)，21~40 秒為 2 位數計算 (30*19)，41~60 秒為 3 位數計算 (332+312)，加減乘除規則請用隨機產生，不可寫死題目，60 秒內可無限次數答題。 0~40 秒答對加一分，41~60 秒答對加五分，答錯扣一分，最多僅能扣到零分 【特定技術】不可設計跳轉頁面，都得在同一頁內部切換頁面完成。  使用技術 JS : Vue、if else、Math、switch、localStorage、setInterval</description>
+      <description>遊戲規則 0~20 秒為 1位數計算 (5-3)，21~40 秒為 2 位數計算 (30*19)，41~60 秒為 3 位數計算 (332+312)，加減乘除規則請用隨機產生，不可寫死題目，60 秒內可無限次數答題。 0~40 秒答對加一分，41~60 秒答對加五分，答錯扣一分，最多僅能扣到零分 【特定技術】不可設計跳轉頁面，都得在同一頁內部切換頁面完成。 使用技術 JS : Vue、if else、Math、switch、localStorage、setInterval</description>
     </item>
     
     <item>
@@ -105,10 +68,10 @@ CSS: SCSS(CSS前處理語言)、clip-path
       
       <guid>https://bjmqfg83.github.io/blog/looping_ani/</guid>
       <description>前一陣子同事丟了一個問題要我動動腦練習寫一個迴圈動態，規則如下
- 以中心點做為起始點 不斷重複 不論版面是3x3、5x5、7x7、9x9甚至是以上都要能夠正常執行  開發歷程:
+以中心點做為起始點 不斷重複 不論版面是3x3、5x5、7x7、9x9甚至是以上都要能夠正常執行 開發歷程:
 開發的時候在元素上標示上數字可以在開發時幫忙找出中點以及跑迴圈的相關邏輯,建議標上去
 接下來就是找出所需的相關資訊，稍後會在說明要迴圈數、轉折點的主因
- 起始點 迴圈數 轉折點  起始點直接除以2取最小整數即可</description>
+起始點 迴圈數 轉折點 起始點直接除以2取最小整數即可</description>
     </item>
     
     <item>

@@ -14,7 +14,7 @@
   
   <meta name="author"
     content="Leo">
-  <meta name="generator" content="Hugo 0.68.3" />
+  <meta name="generator" content="Hugo 0.101.0" />
 
   <!-- plugins -->
   
@@ -157,10 +157,10 @@
 <p>GMT全稱為格林威治標準時間(Greenwich Mean Time)、UTC全稱為世界協調時間(Coordinated Universal Time),台灣所在的時區快八小時所以可以表示成「GMT+8」或是「UTC+8」，那至於GMT、UTC的差別詳細的可以參考泛科學的<a href="https://pansci.asia/archives/84978?fbclid=IwAR0O3OFctmf9szayS9dB-JcK-sfij-SlWJctwmorwFs4y0SS6Cro_ZyXkOg">到底是 GMT+8 還是 UTC+8 ?</a>，日常生活中兩者沒什麼區別可以混用,只是由於地球自轉速度在變慢導致GMT的1秒越來越長，UTC會在超過GMT快1秒時加入「閏秒」來抵消超前的量</p>
 <h3 id="world-clock時區">world clock時區</h3>
 <p>要獲取指定地區的日期時間我們可使用Date物件的toLocaleString</p>
-<pre><code>new Date().toLocaleString([locales[, options]])
+<pre tabindex="0"><code>new Date().toLocaleString([locales[, options]])
 </code></pre><p>locales為語言環境，簡單來說是讓時間以該語言的格式顯示，比如說你locales給'zh-tw(台灣)'的話顯示的格式為&quot;2021/2/10 下午1:42:31&quot;，如果給'en-GB(英國)'的話顯示的格式為&quot;10/02/2021, 13:48:17&quot;，但這只是顯示的格式而已,時區還是在使用者所在的地區,如果要顯示別的時區的時間需要透過options做設定</p>
 <p>options可以設定時區以及年、月、日等等的顯示格式，這邊列出有使用到的</p>
-<pre><code>    timeZone =&gt; 設定要顯示的地區時間
+<pre tabindex="0"><code>    timeZone =&gt; 設定要顯示的地區時間
     hour12 =&gt; 設定顯示是否為12小時制
     year  =&gt; 設定顯示年分格式
     month  =&gt; 設定顯示月份格式,可為英文或數字
@@ -169,52 +169,52 @@
     minute =&gt; 設定顯示分鐘格式
 </code></pre><p><strong>注: locales、options內詳細的參數設定可以直接看最後面的參考資料</strong></p>
 <h4 id="js程式邏輯">JS程式邏輯</h4>
-<div class="highlight"><pre style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">  <span style="color:#999;font-style:italic">// 時區依序為美國、英國倫敦、曼谷、台北、澳洲雪梨
-</span><span style="color:#999;font-style:italic"></span>  <span style="color:#6ab825;font-weight:bold">const</span> timeZones = [
-    <span style="color:#ed9d13">&#34;America/New_York&#34;</span>,
-    <span style="color:#ed9d13">&#34;Europe/London&#34;</span>,
-    <span style="color:#ed9d13">&#34;Asia/Bangkok&#34;</span>,
-    <span style="color:#ed9d13">&#34;Asia/Taipei&#34;</span>,
-    <span style="color:#ed9d13">&#34;Australia/Sydney&#34;</span>
-  ];
-  <span style="color:#999;font-style:italic">// toLocaleString options參數 
-</span><span style="color:#999;font-style:italic"></span>  <span style="color:#6ab825;font-weight:bold">const</span> options = {
-    timeZone: <span style="color:#ed9d13">&#34;Asia/Taipei&#34;</span>, <span style="color:#999;font-style:italic">// 時區設定台北
-</span><span style="color:#999;font-style:italic"></span>    hour12: <span style="color:#6ab825;font-weight:bold">false</span>, <span style="color:#999;font-style:italic">//不以12小時制顯示,會以24小時制顯示
-</span><span style="color:#999;font-style:italic"></span>    year: <span style="color:#ed9d13">&#34;numeric&#34;</span>, <span style="color:#999;font-style:italic">//正常數字顯示
-</span><span style="color:#999;font-style:italic"></span>    month: <span style="color:#ed9d13">&#34;short&#34;</span>, <span style="color:#999;font-style:italic">//short只會顯示三位英文 ex: February =&gt; Feb
-</span><span style="color:#999;font-style:italic"></span>    day: <span style="color:#ed9d13">&#34;2-digit&#34;</span>, <span style="color:#999;font-style:italic">//顯示兩位 ex: 1 =&gt; 01
-</span><span style="color:#999;font-style:italic"></span>    hour: <span style="color:#ed9d13">&#34;2-digit&#34;</span>, <span style="color:#999;font-style:italic">//顯示兩位
-</span><span style="color:#999;font-style:italic"></span>    minute: <span style="color:#ed9d13">&#34;2-digit&#34;</span> <span style="color:#999;font-style:italic">//顯示兩位
-</span><span style="color:#999;font-style:italic"></span>  };
-  <span style="color:#6ab825;font-weight:bold">function</span> world_clock() {
-    timeZones.forEach((item, index) =&gt; {
-      <span style="color:#6ab825;font-weight:bold">var</span> temp_clockInfo = <span style="color:#ed9d13">&#34;&#34;</span>;
-      <span style="color:#6ab825;font-weight:bold">var</span> temp_dateInfo = <span style="color:#ed9d13">&#34;&#34;</span>;
-      options.timeZone = item;
-      <span style="color:#999;font-style:italic">// 時區使用英國(en-GB)顯示結果就會是日、月、年、時間
-</span><span style="color:#999;font-style:italic"></span>      temp_clockInfo = <span style="color:#6ab825;font-weight:bold">new</span> <span style="color:#24909d">Date</span>().toLocaleString(<span style="color:#ed9d13">&#34;en-GB&#34;</span>, options);
-      <span style="color:#999;font-style:italic">//月份後面添加「. 」後重新拼接日期字串
-</span><span style="color:#999;font-style:italic"></span>      temp_dateInfo =
-        temp_clockInfo.split(<span style="color:#ed9d13">&#34;,&#34;</span>)[<span style="color:#3677a9">0</span>].split(<span style="color:#ed9d13">&#34; &#34;</span>)[<span style="color:#3677a9">0</span>] +
-        <span style="color:#ed9d13">&#34; &#34;</span> +
-        temp_clockInfo.split(<span style="color:#ed9d13">&#34;,&#34;</span>)[<span style="color:#3677a9">0</span>].split(<span style="color:#ed9d13">&#34; &#34;</span>)[<span style="color:#3677a9">1</span>] +
-        <span style="color:#ed9d13">&#34;. &#34;</span> +
-        temp_clockInfo.split(<span style="color:#ed9d13">&#34;,&#34;</span>)[<span style="color:#3677a9">0</span>].split(<span style="color:#ed9d13">&#34; &#34;</span>)[<span style="color:#3677a9">2</span>];
-      <span style="color:#999;font-style:italic">//更新年月日的元素
-</span><span style="color:#999;font-style:italic"></span>      <span style="color:#24909d">document</span>.querySelectorAll(<span style="color:#ed9d13">&#34;.location-info .location-date&#34;</span>)[index].innerText = temp_dateInfo;
-      <span style="color:#999;font-style:italic">//依格式中的「,」分割出時分後更新DOM,透過index下標去找目標元素
-</span><span style="color:#999;font-style:italic"></span>      <span style="color:#24909d">document</span>.querySelectorAll(<span style="color:#ed9d13">&#34;.location-info &gt; div:nth-of-type(2)&#34;</span>)[index].innerText = temp_clockInfo.split(<span style="color:#ed9d13">&#34;,&#34;</span>)[<span style="color:#3677a9">1</span>].trim();
-    });
-  }
-  world_clock();
-  <span style="color:#999;font-style:italic">// 每秒鐘調用一次判斷getSeconds()是否為59，為59示1分鐘要到可以調用函數更新時間
-</span><span style="color:#999;font-style:italic"></span>  <span style="color:#6ab825;font-weight:bold">var</span> clock_timer = setInterval(<span style="color:#6ab825;font-weight:bold">function</span>(){
-    <span style="color:#6ab825;font-weight:bold">if</span>(<span style="color:#6ab825;font-weight:bold">new</span> <span style="color:#24909d">Date</span>().getSeconds()===<span style="color:#3677a9">59</span>){
-      world_clock();
-    }
-  },<span style="color:#3677a9">1000</span>);
-</code></pre></div><h3 id="world-clock-codepen連結">world clock codepen連結</h3>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// 時區依序為美國、英國倫敦、曼谷、台北、澳洲雪梨
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  <span style="color:#6ab825;font-weight:bold">const</span> timeZones = [
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;America/New_York&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;Europe/London&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;Asia/Bangkok&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;Asia/Taipei&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;Australia/Sydney&#34;</span>
+</span></span><span style="display:flex;"><span>  ];
+</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// toLocaleString options參數 
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  <span style="color:#6ab825;font-weight:bold">const</span> options = {
+</span></span><span style="display:flex;"><span>    timeZone: <span style="color:#ed9d13">&#34;Asia/Taipei&#34;</span>, <span style="color:#999;font-style:italic">// 時區設定台北
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    hour12: <span style="color:#6ab825;font-weight:bold">false</span>, <span style="color:#999;font-style:italic">//不以12小時制顯示,會以24小時制顯示
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    year: <span style="color:#ed9d13">&#34;numeric&#34;</span>, <span style="color:#999;font-style:italic">//正常數字顯示
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    month: <span style="color:#ed9d13">&#34;short&#34;</span>, <span style="color:#999;font-style:italic">//short只會顯示三位英文 ex: February =&gt; Feb
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    day: <span style="color:#ed9d13">&#34;2-digit&#34;</span>, <span style="color:#999;font-style:italic">//顯示兩位 ex: 1 =&gt; 01
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    hour: <span style="color:#ed9d13">&#34;2-digit&#34;</span>, <span style="color:#999;font-style:italic">//顯示兩位
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    minute: <span style="color:#ed9d13">&#34;2-digit&#34;</span> <span style="color:#999;font-style:italic">//顯示兩位
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">function</span> world_clock() {
+</span></span><span style="display:flex;"><span>    timeZones.forEach((item, index) =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#6ab825;font-weight:bold">var</span> temp_clockInfo = <span style="color:#ed9d13">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#6ab825;font-weight:bold">var</span> temp_dateInfo = <span style="color:#ed9d13">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>      options.timeZone = item;
+</span></span><span style="display:flex;"><span>      <span style="color:#999;font-style:italic">// 時區使用英國(en-GB)顯示結果就會是日、月、年、時間
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      temp_clockInfo = <span style="color:#6ab825;font-weight:bold">new</span> <span style="color:#24909d">Date</span>().toLocaleString(<span style="color:#ed9d13">&#34;en-GB&#34;</span>, options);
+</span></span><span style="display:flex;"><span>      <span style="color:#999;font-style:italic">//月份後面添加「. 」後重新拼接日期字串
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      temp_dateInfo =
+</span></span><span style="display:flex;"><span>        temp_clockInfo.split(<span style="color:#ed9d13">&#34;,&#34;</span>)[<span style="color:#3677a9">0</span>].split(<span style="color:#ed9d13">&#34; &#34;</span>)[<span style="color:#3677a9">0</span>] +
+</span></span><span style="display:flex;"><span>        <span style="color:#ed9d13">&#34; &#34;</span> +
+</span></span><span style="display:flex;"><span>        temp_clockInfo.split(<span style="color:#ed9d13">&#34;,&#34;</span>)[<span style="color:#3677a9">0</span>].split(<span style="color:#ed9d13">&#34; &#34;</span>)[<span style="color:#3677a9">1</span>] +
+</span></span><span style="display:flex;"><span>        <span style="color:#ed9d13">&#34;. &#34;</span> +
+</span></span><span style="display:flex;"><span>        temp_clockInfo.split(<span style="color:#ed9d13">&#34;,&#34;</span>)[<span style="color:#3677a9">0</span>].split(<span style="color:#ed9d13">&#34; &#34;</span>)[<span style="color:#3677a9">2</span>];
+</span></span><span style="display:flex;"><span>      <span style="color:#999;font-style:italic">//更新年月日的元素
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#24909d">document</span>.querySelectorAll(<span style="color:#ed9d13">&#34;.location-info .location-date&#34;</span>)[index].innerText = temp_dateInfo;
+</span></span><span style="display:flex;"><span>      <span style="color:#999;font-style:italic">//依格式中的「,」分割出時分後更新DOM,透過index下標去找目標元素
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#24909d">document</span>.querySelectorAll(<span style="color:#ed9d13">&#34;.location-info &gt; div:nth-of-type(2)&#34;</span>)[index].innerText = temp_clockInfo.split(<span style="color:#ed9d13">&#34;,&#34;</span>)[<span style="color:#3677a9">1</span>].trim();
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  world_clock();
+</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// 每秒鐘調用一次判斷getSeconds()是否為59，為59示1分鐘要到可以調用函數更新時間
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  <span style="color:#6ab825;font-weight:bold">var</span> clock_timer = setInterval(<span style="color:#6ab825;font-weight:bold">function</span>(){
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">if</span>(<span style="color:#6ab825;font-weight:bold">new</span> <span style="color:#24909d">Date</span>().getSeconds()===<span style="color:#3677a9">59</span>){
+</span></span><span style="display:flex;"><span>      world_clock();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  },<span style="color:#3677a9">1000</span>);
+</span></span></code></pre></div><h3 id="world-clock-codepen連結">world clock codepen連結</h3>
 
 
 
@@ -284,19 +284,27 @@
 
 <script src="https://bjmqfg83.github.io/js/script.min.js"></script>
 <!-- google analitycs -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2T34DJBTW2"></script>
 <script>
-  (function (i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
-    i[r] = i[r] || function () {
-      (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date();
-    a = s.createElement(o),
-      m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-  ga('create', 'UA-176082228-1', 'auto');
-  ga('send', 'pageview');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2T34DJBTW2');
+</script>
+// <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script></body>
 </html>
