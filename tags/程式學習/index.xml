@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>程式學習 on Leo&#39;s blog</title>
+    <link>https://bjmqfg83.github.io/tags/%E7%A8%8B%E5%BC%8F%E5%AD%B8%E7%BF%92/</link>
+    <description>Recent content in 程式學習 on Leo&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Fri, 08 Oct 2021 05:05:00 +0800</lastBuildDate><atom:link href="https://bjmqfg83.github.io/tags/%E7%A8%8B%E5%BC%8F%E5%AD%B8%E7%BF%92/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>tailwindcss筆記</title>
+      <link>https://bjmqfg83.github.io/blog/tailwindcss/</link>
+      <pubDate>Fri, 08 Oct 2021 05:05:00 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/tailwindcss/</guid>
+      <description>從去年起tailwind在台灣熱度越來越高,另外最近也在HISKIO上買了tailwind的課程學習,所以想說也來蹭一下分享一下所學順便兼做筆記方便日後複習
+tailwindcss解決什麼問題? tailwindcss是一個utility-first的css框架,而且由於tailwind將絕大部分的css樣式通通寫成class使用(ex:mt、flex、grid&amp;hellip;),所以可以讓工程師在寫html的時候一併處理樣式而幾乎不用寫額外的css,跟bootstrap之間最大的不同是tailwind沒有像是「Accordion」、「Dropdown」之類的組件,全部都是功能性的class，另外由於使用tailwind等同於直接在html上寫style,所以可以避免樣式幾乎相同卻硬是要命名不同的class,大大減少多餘的css
+註:想要玩一下tailwind的話可以先到tailwindplay嚐嚐鮮
+tailwindcss配置 tailwind官方有提供三種配置方式
+cdn tailwind cli npm CDN &amp;lt;link href=&amp;#34;https://unpkg.</description>
+    </item>
+    
+    <item>
+      <title>Safari渲染問題</title>
+      <link>https://bjmqfg83.github.io/blog/safari-render-issue/</link>
+      <pubDate>Sat, 03 Jul 2021 17:14:00 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/safari-render-issue/</guid>
+      <description>之前在執行公司的專案時遇到兩個跟safari有關的問題
+透過js的click事件給元素添加class更改樣式以及執行transform後視覺上並無變化,但從開發者工具來看class以及裡面的樣式是有加上元素的 當使用者使用iphone播放影片「途中」突然待機後再開啟,畫面會直接停在待機前的畫面無法操作 這兩個問題嚴格意義上應該算一個問題,推測跟safari本身的渲染機制有關,不過不確定是什麼原因導致畫面沒有repaint就是了&amp;hellip;
+第一個問題是樣式沒有渲染上去,所以我們要做的是強行觸發瀏覽器的渲染機制,以下的屬性當js訪問時會先渲染dom後才會去獲得相關屬性
+offsetTop offsetLeft offsetWidth offsetHeight scrollTop scrollLeft scrollWidth scrollHeight clientTop clientLeft clientWidth clientHeight 我們先將元素的display設為「none」後訪問上述其中一個屬性再將元素的display設為「block」</description>
+    </item>
+    
+    <item>
+      <title>厲害了我的Safari-Safari影片播放踩坑</title>
+      <link>https://bjmqfg83.github.io/blog/videoissues/</link>
+      <pubDate>Sat, 03 Jul 2021 17:14:00 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/videoissues/</guid>
+      <description>最近公司接到一個案子,其中一個功能是當使用者進到網站時會自動播放一個滿版的影片,播放完後停在最後一卡不會重複播放，原本想說這應該穩穩的沒事,直到我遇到了那個萬惡的Safari
+當使用者進到頁面播放影片時,如果使用者使用行動裝置上的Safari播放影片的話,當使用者在影片播放「途中」讓手機待機會使影片直接停在待機前的狀態不會播放
+我們要讓safari在待機結束後可以繼續播放影片的話需要偵測手機是否待機,在待機時暫停播放、沒有在待機時繼續播放，雖然Javascript沒辦法偵測手機是否待機,但是Web APIs裡有提供一個可以做為替代方式的API
+Page Visibility API Page Visibility API會在網頁處於背景或是對於使用者來說看不到的情形下觸發,測試過手機待機時同樣有效，首先註冊 「visibilitychange」 的事件監聽,當使用者待機觸發事件時再透過 「document.</description>
+    </item>
+    
+    <item>
+      <title>移動時的殘影-CSS Motion Blur</title>
+      <link>https://bjmqfg83.github.io/blog/motionblur/</link>
+      <pubDate>Mon, 03 May 2021 12:00:30 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/motionblur/</guid>
+      <description>最近在專心看Vue3的東西所以疏於更新blog了 (其實是懶的&amp;hellip;) &amp;hellip;,想說在要寫Vue的文章之前先來寫點小東西練練手感,不然有點久沒寫部落格真的是會生疏。
+Motion Blur Motion blur又稱作動態模糊、運動模糊,主要是當相機拍攝一個快速移動的物體或是對拍攝物進行長時間的曝光所產生的模糊效果,那如果我們要讓網頁的元素做出物體移動時的模糊效果的話該怎麼做呢?
+我們可以透過CSS來達到類似的效果,將複數的元素包起來並設絕對定位讓元素堆疊起來並且給與元素不同的過渡或動畫延遲時間,這樣物體在移動時就會有那種好像因為動的很快所以產生殘引的感覺。
+Motionblurjs 如果不想要自己一個個新增物件的話可以使用MotionBlurJS提供的涵式庫來完成,只需要在元素上加上特定的class後自己定義CSS動畫即可</description>
+    </item>
+    
+    <item>
+      <title>Tic Tac Toe 井字遊戲-六角學院Javascript新手地下城</title>
+      <link>https://bjmqfg83.github.io/blog/tictactoe/</link>
+      <pubDate>Thu, 18 Mar 2021 17:14:00 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/tictactoe/</guid>
+      <description>BOSS 弱點 【特定技術】先手為 O，後手為 X，某方獲勝時，上方會紀錄各方的獲勝戰績 【特定技術】每回合結束後，會判定結果頁(平手、Ｏ 獲勝、X 獲勝) 【特定技術】需符合 RWD，能在低螢幕解析度也能遊玩，介面不能超出 x 軸，至少在以下解析度能夠遊玩。 iPhone SE 320px iPhone 8 375px iPhone PLUS 414px 【特定技術】請使用瀏覽器離線儲存技術，將戰績保留起來，重新打開遊戲也仍可觀看到歷史戰績。技術請任選以下幾種 Cookie LocalStorage 【書寫能力】請寫 BLOG，描述你在開發「滿足獲勝條件」解題思維來進行加強描述 上面三個 O 符合獲勝條件 斜線三個 X 符合獲勝條件 請先不要參考網路上的寫法，試著用自身開發能力來解題，進以提升開發思維。但這段並非強制，真的卡關到爆炸，就還是試圖尋找攻略吧，但我相信想立志成為前端之碑的樓主，一定辦得到的！（崇拜眼神 程式邏輯 這次要細心一點的是RWD的縮放,程式邏輯的部分倒是還好,而程式邏輯有兩個地方要注意</description>
+    </item>
+    
+    <item>
+      <title>畫板drawing board-六角學院Javascript新手地下城</title>
+      <link>https://bjmqfg83.github.io/blog/drawing_board/</link>
+      <pubDate>Wed, 03 Mar 2021 08:40:00 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/drawing_board/</guid>
+      <description>這座山終於快爬完一半了&amp;hellip;不得不說如果真的不知道該怎麼做時參考網路上類似的範例是一個還不錯的選擇,不然你可能卡在路上半天還在迷路&amp;hellip;
+Photo by pixabay
+BOSS 弱點 【特定技術】遊戲規則
+繪圖區請使用 Canvas 來設計，上方的控制列與下方的畫筆調整可不用 SAVE ：點擊後可直接下載轉出的 PNG 圖片 CLEAR ALL：清除畫版樣式 UNDO、REDO：上一步、下一步 點擊箭頭時，功能列介面皆可進行收闔 【擴充功能】請再自行增加「兩個功能」，我相信勇者們都是很有梗的~ Canvas DOM vs Canvas</description>
+    </item>
+    
+    <item>
+      <title>60秒算數遊戲-Javascript新手地下城</title>
+      <link>https://bjmqfg83.github.io/blog/mathgame/</link>
+      <pubDate>Thu, 25 Feb 2021 00:00:30 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/mathgame/</guid>
+      <description>遊戲規則 0~20 秒為 1位數計算 (5-3)，21~40 秒為 2 位數計算 (30*19)，41~60 秒為 3 位數計算 (332+312)，加減乘除規則請用隨機產生，不可寫死題目，60 秒內可無限次數答題。 0~40 秒答對加一分，41~60 秒答對加五分，答錯扣一分，最多僅能扣到零分 【特定技術】不可設計跳轉頁面，都得在同一頁內部切換頁面完成。 使用技術 JS : Vue、if else、Math、switch、localStorage、setInterval</description>
+    </item>
+    
+    <item>
+      <title>全台空氣指標儀表板-Javascript新手地下城</title>
+      <link>https://bjmqfg83.github.io/blog/air_quality/</link>
+      <pubDate>Fri, 19 Feb 2021 18:00:30 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/air_quality/</guid>
+      <description>使用技術 JS : Vue、axios、For迴圈、Regular expressions、Array
+CSS: SCSS(CSS前處理語言)、flex、customize scrollbar
+Others: google fonts、政府資料開放平台-空氣品質指標(AQI)</description>
+    </item>
+    
+    <item>
+      <title>WORLD CLOCK-Javascript新手地下城</title>
+      <link>https://bjmqfg83.github.io/blog/world_clock/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:30 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/world_clock/</guid>
+      <description>使用技術 JS : For迴圈、Date、string、setInterval
+CSS: SCSS(CSS前處理語言)、Grid Layout
+Others: google fonts</description>
+    </item>
+    
+    <item>
+      <title>計算機Calculator-Javascript新手地下城</title>
+      <link>https://bjmqfg83.github.io/blog/hex_calculator/</link>
+      <pubDate>Mon, 08 Feb 2021 11:20:30 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/hex_calculator/</guid>
+      <description>使用技術 JS : Vue、正規表達式、String(substring、replace、split)、For迴圈、Array(reverse)
+CSS: SCSS(CSS前處理語言)、Customize Scrollbar
+開發歷程 這次寫題目時想順便複習FrameWork所以使用了Vue做開發，花了滿多時間想怎麼在千分位前加上「,」以及避免計算結果出現「undefined」、「NAN」
+千分位資料處理 整數位數超過三位時要加上千分位符「,」需要使用正規表達式、字串、陣列的方法來處理</description>
+    </item>
+    
+    <item>
+      <title>時鐘clock-Javascript新手地下城</title>
+      <link>https://bjmqfg83.github.io/blog/clock/</link>
+      <pubDate>Sun, 31 Jan 2021 16:00:30 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/clock/</guid>
+      <description>使用技術: JS : Const變數、Date物件、SetInterval、Template literals樣板字串
+CSS: SCSS(CSS前處理語言)、clip-path
+開發歷程: JS的部分透過Date物件獲取當前的時間、setInterval更新時間並且在內部判斷指針的轉動、Template literals用於方便將計算指出來的旋轉角度整合進字串內</description>
+    </item>
+    
+    <item>
+      <title>愛的魔力轉圈圈-不斷重複的迴圈動態</title>
+      <link>https://bjmqfg83.github.io/blog/looping_ani/</link>
+      <pubDate>Fri, 25 Dec 2020 10:12:30 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/looping_ani/</guid>
+      <description>前一陣子同事丟了一個問題要我動動腦練習寫一個迴圈動態，規則如下
+以中心點做為起始點 不斷重複 不論版面是3x3、5x5、7x7、9x9甚至是以上都要能夠正常執行 開發歷程:
+開發的時候在元素上標示上數字可以在開發時幫忙找出中點以及跑迴圈的相關邏輯,建議標上去
+接下來就是找出所需的相關資訊，稍後會在說明要迴圈數、轉折點的主因
+起始點 迴圈數 轉折點 起始點直接除以2取最小整數即可</description>
+    </item>
+    
+    <item>
+      <title>如何在hugo上安裝utterances?</title>
+      <link>https://bjmqfg83.github.io/blog/hugo_unnerances/</link>
+      <pubDate>Tue, 08 Sep 2020 11:40:00 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/hugo_unnerances/</guid>
+      <description>如果想要讓訪客針對你的文章發表評論的話我們可以透過 Disqus 或是 Utterances 快速建立評論留言板
+其實一開始建立個人部落格時評論的套件我使用的是disqus，但是我丟到google的 PageSpeed 測試時發現整個網頁的載入時間有大半以上都花在disqus上面且有很多載入後卻沒有使用到，所以之後便決定改用utterances
+另外上網查了相關的文章說disqus有個資相關的問題，文章結尾會附上相關連結有興趣的可以看一下</description>
+    </item>
+    
+    <item>
+      <title>Css flex-shrink是怎麼縮的?</title>
+      <link>https://bjmqfg83.github.io/blog/flex-shrink/</link>
+      <pubDate>Tue, 25 Aug 2020 12:54:00 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/flex-shrink/</guid>
+      <description>當內部元素的寬度超過容器寬度時我們可以使用flex-shrink將內部元素的寬度縮減讓元素不會超過容器
+那flex-shrink到底是怎麼做寬度的縮減?
+基礎公式如下
+元素縮減的寬度 = 超出的總寬度 * 該元素的flex-shrink / 各元素flex-shrink總和</description>
+    </item>
+    
+    <item>
+      <title>99乘法表-Javascript新手地下城</title>
+      <link>https://bjmqfg83.github.io/blog/multiplication_table/</link>
+      <pubDate>Tue, 25 Aug 2020 10:12:30 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/multiplication_table/</guid>
+      <description>最近想複習HTML、CSS、Javascript的基礎概念
+所以開始寫六角學院的新手地下城題目
+使用技術:
+JS : let變數、Template literals樣板字串、for迴圈
+CSS: SCSS(CSS前處理語言)、BEM風格規範(其實這我不確定名稱是否有完全符合BEM的規範)
+開發歷程:</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>css on Leo&#39;s blog</title>
+    <link>https://bjmqfg83.github.io/tags/css/</link>
+    <description>Recent content in css on Leo&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Fri, 08 Oct 2021 05:05:00 +0800</lastBuildDate><atom:link href="https://bjmqfg83.github.io/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>tailwindcss筆記</title>
+      <link>https://bjmqfg83.github.io/blog/tailwindcss/</link>
+      <pubDate>Fri, 08 Oct 2021 05:05:00 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/tailwindcss/</guid>
+      <description>從去年起tailwind在台灣熱度越來越高,另外最近也在HISKIO上買了tailwind的課程學習,所以想說也來蹭一下分享一下所學順便兼做筆記方便日後複習
+tailwindcss解決什麼問題? tailwindcss是一個utility-first的css框架,而且由於tailwind將絕大部分的css樣式通通寫成class使用(ex:mt、flex、grid&amp;hellip;),所以可以讓工程師在寫html的時候一併處理樣式而幾乎不用寫額外的css,跟bootstrap之間最大的不同是tailwind沒有像是「Accordion」、「Dropdown」之類的組件,全部都是功能性的class，另外由於使用tailwind等同於直接在html上寫style,所以可以避免樣式幾乎相同卻硬是要命名不同的class,大大減少多餘的css
+註:想要玩一下tailwind的話可以先到tailwindplay嚐嚐鮮
+tailwindcss配置 tailwind官方有提供三種配置方式
+cdn tailwind cli npm CDN &amp;lt;link href=&amp;#34;https://unpkg.</description>
+    </item>
+    
+    <item>
+      <title>移動時的殘影-CSS Motion Blur</title>
+      <link>https://bjmqfg83.github.io/blog/motionblur/</link>
+      <pubDate>Mon, 03 May 2021 12:00:30 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/motionblur/</guid>
+      <description>最近在專心看Vue3的東西所以疏於更新blog了 (其實是懶的&amp;hellip;) &amp;hellip;,想說在要寫Vue的文章之前先來寫點小東西練練手感,不然有點久沒寫部落格真的是會生疏。
+Motion Blur Motion blur又稱作動態模糊、運動模糊,主要是當相機拍攝一個快速移動的物體或是對拍攝物進行長時間的曝光所產生的模糊效果,那如果我們要讓網頁的元素做出物體移動時的模糊效果的話該怎麼做呢?
+我們可以透過CSS來達到類似的效果,將複數的元素包起來並設絕對定位讓元素堆疊起來並且給與元素不同的過渡或動畫延遲時間,這樣物體在移動時就會有那種好像因為動的很快所以產生殘引的感覺。
+Motionblurjs 如果不想要自己一個個新增物件的話可以使用MotionBlurJS提供的涵式庫來完成,只需要在元素上加上特定的class後自己定義CSS動畫即可</description>
+    </item>
+    
+    <item>
+      <title>Css flex-shrink是怎麼縮的?</title>
+      <link>https://bjmqfg83.github.io/blog/flex-shrink/</link>
+      <pubDate>Tue, 25 Aug 2020 12:54:00 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/flex-shrink/</guid>
+      <description>當內部元素的寬度超過容器寬度時我們可以使用flex-shrink將內部元素的寬度縮減讓元素不會超過容器
+那flex-shrink到底是怎麼做寬度的縮減?
+基礎公式如下
+元素縮減的寬度 = 超出的總寬度 * 該元素的flex-shrink / 各元素flex-shrink總和</description>
+    </item>
+    
+  </channel>
+</rss>

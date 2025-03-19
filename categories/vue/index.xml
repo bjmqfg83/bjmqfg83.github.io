@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vue on Leo&#39;s blog</title>
+    <link>https://bjmqfg83.github.io/categories/vue/</link>
+    <description>Recent content in vue on Leo&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Fri, 09 Jul 2021 08:40:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://bjmqfg83.github.io/categories/vue/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>畫板drawing board-六角學院Javascript新手地下城</title>
+      <link>https://bjmqfg83.github.io/blog/vue_v_for/</link>
+      <pubDate>Fri, 09 Jul 2021 08:40:00 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/vue_v_for/</guid>
+      <description>這座山終於快爬完一半了&amp;hellip;不得不說如果真的不知道該怎麼做時參考網路上類似的範例是一個還不錯的選擇,不然你可能卡在路上半天還在迷路&amp;hellip;
+Photo by pixabay
+BOSS 弱點 Canvas DOM vs Canvas</description>
+    </item>
+    
+  </channel>
+</rss>

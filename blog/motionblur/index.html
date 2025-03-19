@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+  <meta charset="utf-8">
+  <title>
+    
+    移動時的殘影-CSS Motion Blur
+    
+  </title>
+  <!-- mobile responsive meta -->
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description"
+    content="透過CSS Motion blur產生移動時的殘影">
+  
+  <meta name="author"
+    content="Leo">
+  <meta name="generator" content="Hugo 0.101.0" />
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/bootstrap/bootstrap.min.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/slick/slick.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/themify-icons/themify-icons.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/venobox/venobox.css ">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/scss/style.min.css"
+    media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon"
+    href="https://bjmqfg83.github.io/images/favicon.png "
+    type="image/x-icon">
+  <link rel="icon"
+    href="https://bjmqfg83.github.io/images/favicon.png "
+    type="image/x-icon">
+
+  
+
+</head><body>
+<!-- preloader start -->
+<div class="preloader">
+  
+</div>
+<!-- preloader end -->
+<!-- navigation -->
+<header class="navigation">
+  <div class="container">
+    
+    <nav class="navbar navbar-expand-lg navbar-white bg-transparent border-bottom pl-0">
+      <a class="navbar-brand mobile-view text-dark"
+        href="https://bjmqfg83.github.io"><img class="img-fluid header-logo mr-3"
+          src="https://bjmqfg83.github.io/images/favicon.png"
+          alt="Leo&#39;s blog">Leo&#39;s blog</a>
+      <button class="navbar-toggler border-0"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navigation">
+        <i class="ti-menu h3"></i>
+      </button>
+
+      <div class="collapse navbar-collapse text-center"
+        id="navigation">
+        
+
+        <a class="navbar-brand mr-auto desktop-view text-dark"
+          href="https://bjmqfg83.github.io"><img class="img-fluid header-logo mr-3"
+            src="https://bjmqfg83.github.io/images/favicon.png"
+            alt="Leo&#39;s blog">Leo&#39;s blog</a>
+
+        <ul class="navbar-nav">
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+              href="https://bjmqfg83.github.io/">Home</a>
+          </li>
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+              href="https://bjmqfg83.github.io/about">About</a>
+          </li>
+          
+          
+        </ul>
+
+        
+        <!-- search -->
+        <div class="search pl-lg-4">
+          <button id="searchOpen"
+            class="search-btn"><i class="ti-search"></i></button>
+          <div class="search-wrapper">
+            <form action="https://bjmqfg83.github.io/search"
+              class="h-100">
+              <input class="search-box px-4"
+                id="search-query"
+                name="s"
+                type="search"
+                placeholder="Type & Hit Enter...">
+            </form>
+            <button id="searchClose"
+              class="search-close"><i class="ti-close text-dark"></i></button>
+          </div>
+        </div>
+        
+
+        
+      </div>
+    </nav>
+  </div>
+</header>
+<!-- /navigation -->
+<section class="section-sm article-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <h2 class="article-font">移動時的殘影-CSS Motion Blur</h2>
+        <div class="mb-3 post-meta">
+          <span>By Leo</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          <span>03 May 2021</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          
+          <a href="/categories/css"
+            class="text-primary">Css</a>
+          
+        </div>
+        
+        <img src="https://bjmqfg83.github.io/images/post/tom-smith-lXUJAjxHQ4I-unsplash.jpg"
+          class="img-fluid w-100 mb-4"
+          alt="移動時的殘影-CSS Motion Blur">
+        
+        <div class="content mb-5 article">
+          <p>最近在專心看Vue3的東西所以疏於更新blog了 <del>(其實是懶的&hellip;)</del> &hellip;,想說在要寫Vue的文章之前先來寫點小東西練練手感,不然有點久沒寫部落格真的是會生疏。</p>
+<h3 id="motion-blur">Motion Blur</h3>
+<p>Motion blur又稱作動態模糊、運動模糊,主要是當相機拍攝一個快速移動的物體或是對拍攝物進行長時間的曝光所產生的模糊效果,那如果我們要讓網頁的元素做出物體移動時的模糊效果的話該怎麼做呢?</p>
+<p>我們可以透過CSS來達到類似的效果,將複數的元素包起來並設絕對定位讓元素堆疊起來並且給與元素不同的過渡或動畫延遲時間,這樣物體在移動時就會有那種好像因為動的很快所以產生殘引的感覺。</p>
+
+
+
+
+
+
+
+<script
+    data-slug-hash="OJWKwvO"
+    data-user="mgnlhdsl"
+    data-height="700"
+    data-default-tab="result"
+    data-theme-id="8862"
+    class='codepen'
+    async
+    src="//codepen.io/assets/embed/ei.js"
+></script>
+<h3 id="motionblurjs">Motionblurjs</h3>
+<p>如果不想要自己一個個新增物件的話可以使用<a href="https://www.motionblurjs.com/">MotionBlurJS</a>提供的涵式庫來完成,只需要在元素上加上特定的class後自己定義CSS動畫即可</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#6ab825;font-weight:bold">div</span> <span style="color:#bbb">id</span>=<span style="color:#ed9d13">&#34;yourId&#34;</span> <span style="color:#bbb">class</span>=<span style="color:#ed9d13">&#34;blurjs&#34;</span>&gt;&lt;/<span style="color:#6ab825;font-weight:bold">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#6ab825;font-weight:bold">div</span> <span style="color:#bbb">id</span>=<span style="color:#ed9d13">&#34;yourId&#34;</span> <span style="color:#bbb">class</span>=<span style="color:#ed9d13">&#34;fadejs&#34;</span>&gt;&lt;/<span style="color:#6ab825;font-weight:bold">div</span>&gt;
+</span></span></code></pre></div><p><img src="/images/post/motionblur_theory.jpg" alt=""></p>
+<p><strong>註 : Motionblurjs所做的事情也是新增元素並且給元素不同的delay時間</strong></p>
+<h3 id="motionblurjs-demo">Motionblurjs demo</h3>
+
+
+
+
+
+
+
+<script
+    data-slug-hash="yLgmRZv"
+    data-user="mgnlhdsl"
+    data-height="700"
+    data-default-tab="result"
+    data-theme-id="8862"
+    class='codepen'
+    async
+    src="//codepen.io/assets/embed/ei.js"
+></script>
+<h4 id="參考資料">參考資料:</h4>
+<p><a href="https://www.motionblurjs.com/">MotionBlurJS</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/%E5%8B%95%E6%85%8B%E6%A8%A1%E7%B3%8A">MotionBlur維基百科</a></p>
+<p><a href="https://css-tricks.com/how-to-create-a-realistic-motion-blur-with-css-transitions/">How to Create a Realistic Motion Blur with CSS Transitions</a></p>
+
+        </div>
+
+        
+        
+        
+        
+        <script src="https://utteranc.es/client.js"
+          repo="bjmqfg83/comment-utterances"
+          issue-term="title"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+          </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<script>
+  var indexURL = "https://bjmqfg83.github.io/index.json"
+</script>
+
+<!-- JS Plugins -->
+
+<script src="https://bjmqfg83.github.io/plugins/jQuery/jquery.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/slick/slick.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/venobox/venobox.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/fuse.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/mark.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/search.js"></script>
+
+<!-- Main Script -->
+
+<script src="https://bjmqfg83.github.io/js/script.min.js"></script>
+<!-- google analitycs -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2T34DJBTW2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2T34DJBTW2');
+</script>
+// <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script></body>
+</html>
