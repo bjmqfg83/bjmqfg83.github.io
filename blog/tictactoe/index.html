@@ -1,64 +1,151 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="A minimal blog focused on excellent reading experience"><title>Tic Tac Toe 井字遊戲-六角學院Javascript新手地下城</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><script async src="https://www.googletagmanager.com/gtag/js?id=G-2T34DJBTW2">
-  // _
-</script> <script>(function(){const id = "G-2T34DJBTW2";
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+  <meta charset="utf-8">
+  <title>
+    
+    Tic Tac Toe 井字遊戲-六角學院Javascript新手地下城
+    
+  </title>
+  <!-- mobile responsive meta -->
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description"
+    content="六角學院Javascript新手地下城8F井字遊戲">
+  
+  <meta name="author"
+    content="Leo">
+  <meta name="generator" content="Hugo 0.101.0" />
 
-  (() => {
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', id);
-  })();
-})();</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CMTcOisY.js"></script><link rel="stylesheet" href="/_astro/archive.D5PqhWfd.css">
-<style>.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
-</style></head> <body class="min-h-screen bg-white dark:bg-gray-900"> <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8"> <header class="py-6"> <nav class="flex justify-between items-center flex-wrap"> <a href="/" class="text-2xl font-bold text-gray-900 dark:text-white">Leo&#39;s blog</a> <div class="flex items-center gap-6"> <ul class="flex gap-6"> <li> <a href="/" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white"> Home </a> </li><li> <a href="/blog" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white"> Blog </a> </li><li> <a href="/tags" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white"> Tags </a> </li><li> <a href="/archive" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white"> Archive </a> </li> </ul> <button id="search-button" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white" aria-label="Search"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="11" cy="11" r="8"></circle> <line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </button> <div id="search-modal" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 hidden flex items-start justify-center pt-24"> <div class="flex items-start bg-white dark:bg-gray-800 rounded-lg p-6 max-w-2xl w-full mx-4 flex-col"> <input type="text" id="search-input" class="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white mb-4" placeholder="Search posts..." autocomplete="off"> <div id="search-results" class="max-h-96 overflow-y-auto w-full"> <div class="p-4 text-gray-500 dark:text-gray-400">No results found</div> </div> </div> </div> <script type="module">let f=[],o,c,s,g,m,l;function v(a,e){return(...t)=>{clearTimeout(l),l=setTimeout(()=>a(...t),e)}}async function L(){f=await(await fetch("/api/search.json")).json(),o=document.getElementById("search-input"),c=document.getElementById("search-results"),s=document.getElementById("search-modal"),g=document.getElementById("search-button"),m=document.getElementById("close-search");const e=v(b,300);return o?.addEventListener("input",e),g?.addEventListener("click",p),m?.addEventListener("click",d),s?.addEventListener("click",t=>{t.target===s&&d()}),document.addEventListener("keydown",t=>{t.key==="Escape"&&!s?.classList.contains("hidden")&&d()}),()=>{clearTimeout(l)}}function p(){s?.classList.remove("hidden"),o?.focus()}function d(){s?.classList.add("hidden"),o.value="",c.innerHTML=`
-            <div class="p-4 text-gray-500 dark:text-gray-400">
-          No results found
+  <!-- plugins -->
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/bootstrap/bootstrap.min.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/slick/slick.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/themify-icons/themify-icons.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/venobox/venobox.css ">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/scss/style.min.css"
+    media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon"
+    href="https://bjmqfg83.github.io/images/favicon.png "
+    type="image/x-icon">
+  <link rel="icon"
+    href="https://bjmqfg83.github.io/images/favicon.png "
+    type="image/x-icon">
+
+  
+
+</head><body>
+<!-- preloader start -->
+<div class="preloader">
+  
+</div>
+<!-- preloader end -->
+<!-- navigation -->
+<header class="navigation">
+  <div class="container">
+    
+    <nav class="navbar navbar-expand-lg navbar-white bg-transparent border-bottom pl-0">
+      <a class="navbar-brand mobile-view text-dark"
+        href="https://bjmqfg83.github.io"><img class="img-fluid header-logo mr-3"
+          src="https://bjmqfg83.github.io/images/favicon.png"
+          alt="Leo&#39;s blog">Leo&#39;s blog</a>
+      <button class="navbar-toggler border-0"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navigation">
+        <i class="ti-menu h3"></i>
+      </button>
+
+      <div class="collapse navbar-collapse text-center"
+        id="navigation">
+        
+
+        <a class="navbar-brand mr-auto desktop-view text-dark"
+          href="https://bjmqfg83.github.io"><img class="img-fluid header-logo mr-3"
+            src="https://bjmqfg83.github.io/images/favicon.png"
+            alt="Leo&#39;s blog">Leo&#39;s blog</a>
+
+        <ul class="navbar-nav">
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+              href="https://bjmqfg83.github.io/">Home</a>
+          </li>
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+              href="https://bjmqfg83.github.io/about">About</a>
+          </li>
+          
+          
+        </ul>
+
+        
+        <!-- search -->
+        <div class="search pl-lg-4">
+          <button id="searchOpen"
+            class="search-btn"><i class="ti-search"></i></button>
+          <div class="search-wrapper">
+            <form action="https://bjmqfg83.github.io/search"
+              class="h-100">
+              <input class="search-box px-4"
+                id="search-query"
+                name="s"
+                type="search"
+                placeholder="Type & Hit Enter...">
+            </form>
+            <button id="searchClose"
+              class="search-close"><i class="ti-close text-dark"></i></button>
+          </div>
         </div>
-  `}function y(a,e){if(!e)return a;const t=new RegExp(`(${e})`,"gi");return a.replace(t,'<mark class="bg-yellow-200 dark:bg-yellow-800">$1</mark>')}function b(a){const e=a.target.value.toLowerCase();if(!e){c.innerHTML=`
-        <div class="p-4 text-gray-500 dark:text-gray-400">
-          No results found
+        
+
+        
+      </div>
+    </nav>
+  </div>
+</header>
+<!-- /navigation -->
+<section class="section-sm article-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <h2 class="article-font">Tic Tac Toe 井字遊戲-六角學院Javascript新手地下城</h2>
+        <div class="mb-3 post-meta">
+          <span>By Leo</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          <span>18 March 2021</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          
+          <a href="/categories/javascript"
+            class="text-primary">Javascript</a>
+          
         </div>
-      `;return}const t=f.filter(n=>`${n.title} ${n.description} ${n.content} ${n.tags?.join(" ")}`.toLowerCase().includes(e)).map(n=>{const i=n.content.toLowerCase().indexOf(e.toLowerCase());let r="";if(i!==-1){const u=Math.max(0,i-50),h=Math.min(n.content.length,i+e.length+50);r=n.content.slice(u,h),u>0&&(r="..."+r),h<n.content.length&&(r=r+"...")}const x=y(n.title,e),k=y(r,e);return{...n,matchedContent:k,matchedTitle:x}}).slice(0,5);E(t)}function E(a){a.length===0?c.innerHTML=`
-        <div class="p-4 text-gray-500 dark:text-gray-400">
-          No results found
-        </div>
-      `:c.innerHTML=a.map(e=>`
-            <a
-              href="/blog/${e.slug}"
-              class="block p-4 hover:bg-gray-100 dark:hover:bg-gray-700 hover:rounded transition-all duration-200 transform"
-            >
-              <h3 class="font-medium text-gray-900 dark:text-white">
-                ${e.matchedTitle||e.title}
-              </h3>
-              <p class="text-sm text-gray-500 dark:text-gray-400">
-                ${e.description||""}
-              </p>
-              ${e.matchedContent?`
-                <p class="text-sm text-gray-600 dark:text-gray-300 mt-2 font-mono">
-                  ${e.matchedContent}
-                </p>
-              `:""}
-              ${e.tags?.map(t=>`
-                  <span class="inline-block bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded-full mt-2 mr-2">
-                    ${t}
-                  </span>
-                  `).join("")}
-            </a>
-          `).join(""),c.classList.remove("hidden")}document.addEventListener("astro:page-load",L);</script> <button id="themeToggle" class="p-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white" aria-label="Toggle theme"> <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path> </svg> <svga id="moon-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path> </svga> </button> <script type="module">const t=()=>{const e=typeof localStorage<"u"&&localStorage.getItem("theme")?localStorage.getItem("theme"):window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";e==="light"?document.documentElement.classList.remove("dark"):document.documentElement.classList.add("dark"),window.localStorage.setItem("theme",e)},o=()=>{const e=document.documentElement;e.classList.toggle("dark");const a=e.classList.contains("dark");localStorage.setItem("theme",a?"dark":"light")};t();document.addEventListener("astro:after-swap",t);document.addEventListener("astro:page-load",()=>{document.getElementById("themeToggle")?.addEventListener("click",o)});</script> </div> </nav> </header> <main class="py-12">  <article class="max-w-3xl mx-auto px-4">  <header class="mb-12"> <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100"> Tic Tac Toe 井字遊戲-六角學院Javascript新手地下城 </h1> <div class="mb-6"> <time datetime="2021-03-18T00:00:00.000Z" class="text-gray-600 dark:text-gray-400"> March 18, 2021 </time> </div> <div class="flex gap-2"> <a href="/tags/程式學習" class="text-sm px-3 py-1 text-primary-700 hover:text-primary-600 bg-gray-50 dark:text-primary-400 dark:bg-gray-800 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600">
-#程式學習 </a><a href="/tags/javascript" class="text-sm px-3 py-1 text-primary-700 hover:text-primary-600 bg-gray-50 dark:text-primary-400 dark:bg-gray-800 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600">
-#javascript </a> </div> </header> <div class="prose prose-lg dark:prose-invert
-      prose-headings:text-gray-900 dark:prose-headings:text-gray-100
-      prose-p:text-gray-700 dark:prose-p:text-gray-300
-      prose-a:text-primary-600 dark:prose-a:text-primary-400
-      hover:prose-a:text-primary-500 dark:hover:prose-a:text-primary-300
-      prose-strong:text-gray-900 dark:prose-strong:text-gray-100
-      prose-code:text-gray-300 dark:prose-code:text-gray-400
-      prose-blockquote:text-gray-700 dark:prose-blockquote:text-gray-300
-      prose-span:text-gray-700 dark:prose-span:text-gray-300
-      prose-li:text-gray-700 dark:prose-li:text-gray-300
-      max-w-none">  <h3 id="boss-弱點">BOSS 弱點</h3>
+        
+        <img src="https://bjmqfg83.github.io/images/post/tictactoe.png"
+          class="img-fluid w-100 mb-4"
+          alt="Tic Tac Toe 井字遊戲-六角學院Javascript新手地下城">
+        
+        <div class="content mb-5 article">
+          <h3 id="boss-弱點">BOSS 弱點</h3>
 <ol>
 <li>【特定技術】先手為 O，後手為 X，某方獲勝時，上方會紀錄各方的獲勝戰績</li>
 <li>【特定技術】每回合結束後，會判定結果頁(平手、Ｏ 獲勝、X 獲勝)</li>
@@ -74,6 +161,7 @@
 <li>斜線三個 X 符合獲勝條件</li>
 <li>請先不要參考網路上的寫法，試著用自身開發能力來解題，進以提升開發思維。但這段並非強制，真的卡關到爆炸，就還是試圖尋找攻略吧，但我相信想立志成為前端之碑的樓主，一定辦得到的！（崇拜眼神</li>
 </ol>
+<!-- raw HTML omitted -->
 <h3 id="程式邏輯">程式邏輯</h3>
 <p>這次要細心一點的是RWD的縮放,程式邏輯的部分倒是還好,而程式邏輯有兩個地方要注意</p>
 <ol>
@@ -81,97 +169,97 @@
 <li>判斷獲勝以及平手</li>
 </ol>
 <p>由於一開始的設定是圈圈的回合而後是叉叉的回合反覆交替，以數學的概念來想圈圈是奇數回而叉叉是偶數回,所以我們程式可以這樣寫,透過counter的奇偶來判斷當前是屬於哪方的回合</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">  var</span><span style="color:#E1E4E8"> counter </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">//一開始預設為1,圈圈的回合</span></span>
-<span class="line"><span style="color:#F97583">  var</span><span style="color:#E1E4E8"> pos </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> e.target.dataset.pos; </span><span style="color:#6A737D">//綁在html上的自定義屬性,用於讓js添加class</span></span>
-<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (counter </span><span style="color:#F97583">%</span><span style="color:#79B8FF"> 2</span><span style="color:#F97583"> !==</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) { </span><span style="color:#6A737D">//圈圈的回合</span></span>
-<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">e.target.classList.</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;circle&quot;</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">&amp;&amp;</span><span style="color:#F97583"> !</span><span style="color:#E1E4E8">e.target.classList.</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;cross&quot;</span><span style="color:#E1E4E8">)) </span><span style="color:#6A737D">//已經下過就不能在同一位置下</span></span>
-<span class="line"><span style="color:#E1E4E8">    {</span></span>
-<span class="line"><span style="color:#E1E4E8">      e.target.classList.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;circle&quot;</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">//添加圈圈樣式</span></span>
-<span class="line"><span style="color:#E1E4E8">      document.</span><span style="color:#B392F0">querySelector</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;.turn .circle-turn&quot;</span><span style="color:#E1E4E8">).classList.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;op-0&quot;</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">//叉叉處顯示your turn</span></span>
-<span class="line"><span style="color:#E1E4E8">      document.</span><span style="color:#B392F0">querySelector</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;.turn .cross-turn&quot;</span><span style="color:#E1E4E8">).classList.</span><span style="color:#B392F0">remove</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;op-0&quot;</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">//圈圈處your turn隱藏</span></span>
-<span class="line"><span style="color:#E1E4E8">      counter </span><span style="color:#F97583">+=</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// +1表示下回合換叉叉下</span></span>
-<span class="line"><span style="color:#E1E4E8">    }</span></span>
-<span class="line"><span style="color:#E1E4E8">  } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> { </span><span style="color:#6A737D">//叉叉的回合</span></span>
-<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">e.target.classList.</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;circle&quot;</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">&amp;&amp;</span><span style="color:#F97583"> !</span><span style="color:#E1E4E8">e.target.classList.</span><span style="color:#B392F0">contains</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;cross&quot;</span><span style="color:#E1E4E8">))</span></span>
-<span class="line"><span style="color:#E1E4E8">        {</span></span>
-<span class="line"><span style="color:#E1E4E8">          e.target.classList.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;cross&quot;</span><span style="color:#E1E4E8">);</span></span>
-<span class="line"><span style="color:#E1E4E8">          document.</span><span style="color:#B392F0">querySelector</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;.turn .circle-turn&quot;</span><span style="color:#E1E4E8">).classList.</span><span style="color:#B392F0">remove</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;op-0&quot;</span><span style="color:#E1E4E8">);</span></span>
-<span class="line"><span style="color:#E1E4E8">          document.</span><span style="color:#B392F0">querySelector</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;.turn .cross-turn&quot;</span><span style="color:#E1E4E8">).classList.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;op-0&quot;</span><span style="color:#E1E4E8">);</span></span>
-<span class="line"><span style="color:#E1E4E8">          counter </span><span style="color:#F97583">+=</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">        }</span></span>
-<span class="line"><span style="color:#E1E4E8">    }</span></span></code></pre>
-<p>只要圈或叉可以連成一條線都算獲勝,總共有8種獲勝的條件</p>
-<p><img src="/images/post/tictactoe_judge.png" alt/></p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">var</span> counter = <span style="color:#3677a9">1</span>; <span style="color:#999;font-style:italic">//一開始預設為1,圈圈的回合
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  <span style="color:#6ab825;font-weight:bold">var</span> pos = e.target.dataset.pos; <span style="color:#999;font-style:italic">//綁在html上的自定義屬性,用於讓js添加class
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  <span style="color:#6ab825;font-weight:bold">if</span> (counter % <span style="color:#3677a9">2</span> !== <span style="color:#3677a9">0</span>) { <span style="color:#999;font-style:italic">//圈圈的回合
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#6ab825;font-weight:bold">if</span> (!e.target.classList.contains(<span style="color:#ed9d13">&#34;circle&#34;</span>) &amp;&amp; !e.target.classList.contains(<span style="color:#ed9d13">&#34;cross&#34;</span>)) <span style="color:#999;font-style:italic">//已經下過就不能在同一位置下
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    {
+</span></span><span style="display:flex;"><span>      e.target.classList.add(<span style="color:#ed9d13">&#34;circle&#34;</span>); <span style="color:#999;font-style:italic">//添加圈圈樣式
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#24909d">document</span>.querySelector(<span style="color:#ed9d13">&#34;.turn .circle-turn&#34;</span>).classList.add(<span style="color:#ed9d13">&#34;op-0&#34;</span>); <span style="color:#999;font-style:italic">//叉叉處顯示your turn
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#24909d">document</span>.querySelector(<span style="color:#ed9d13">&#34;.turn .cross-turn&#34;</span>).classList.remove(<span style="color:#ed9d13">&#34;op-0&#34;</span>); <span style="color:#999;font-style:italic">//圈圈處your turn隱藏
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      counter += <span style="color:#3677a9">1</span>; <span style="color:#999;font-style:italic">// +1表示下回合換叉叉下
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    }
+</span></span><span style="display:flex;"><span>  } <span style="color:#6ab825;font-weight:bold">else</span> { <span style="color:#999;font-style:italic">//叉叉的回合
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#6ab825;font-weight:bold">if</span> (!e.target.classList.contains(<span style="color:#ed9d13">&#34;circle&#34;</span>) &amp;&amp; !e.target.classList.contains(<span style="color:#ed9d13">&#34;cross&#34;</span>))
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>          e.target.classList.add(<span style="color:#ed9d13">&#34;cross&#34;</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#24909d">document</span>.querySelector(<span style="color:#ed9d13">&#34;.turn .circle-turn&#34;</span>).classList.remove(<span style="color:#ed9d13">&#34;op-0&#34;</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#24909d">document</span>.querySelector(<span style="color:#ed9d13">&#34;.turn .cross-turn&#34;</span>).classList.add(<span style="color:#ed9d13">&#34;op-0&#34;</span>);
+</span></span><span style="display:flex;"><span>          counter += <span style="color:#3677a9">1</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>只要圈或叉可以連成一條線都算獲勝,總共有8種獲勝的條件</p>
+<p><img src="/images/post/tictactoe_judge.png" alt=""></p>
 <p>分成三個圖比較方便看</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">    var</span><span style="color:#E1E4E8"> status </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">]; </span><span style="color:#6A737D">//用來判斷9個位置是否都已下完 true為circle false為cross</span></span>
-<span class="line"><span style="color:#F97583">    function</span><span style="color:#B392F0"> judge</span><span style="color:#E1E4E8">() {</span></span>
-<span class="line"><span style="color:#F97583">      var</span><span style="color:#E1E4E8"> result </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#6A737D">      // circle win</span></span>
-<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (status[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#E1E4E8">      {</span></span>
-<span class="line"><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (status[</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#E1E4E8">      {</span></span>
-<span class="line"><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (status[</span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">7</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">8</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#E1E4E8">      {</span></span>
-<span class="line"><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (status[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">8</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#E1E4E8">      {</span></span>
-<span class="line"><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (status[</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#E1E4E8">      {</span></span>
-<span class="line"><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (status[</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">7</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#E1E4E8">      {</span></span>
-<span class="line"><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (status[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#E1E4E8">      {</span></span>
-<span class="line"><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (status[</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">8</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#E1E4E8">      {</span></span>
-<span class="line"><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">      }</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#6A737D">      // cross win</span></span>
-<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (status[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#E1E4E8">      {</span></span>
-<span class="line"><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (status[</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#E1E4E8">      {</span></span>
-<span class="line"><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (status[</span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">7</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">8</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#E1E4E8">      {</span></span>
-<span class="line"><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (status[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">8</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#E1E4E8">      {</span></span>
-<span class="line"><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (status[</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#E1E4E8">      {</span></span>
-<span class="line"><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (status[</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">7</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#E1E4E8">      {</span></span>
-<span class="line"><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (status[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#E1E4E8">      {</span></span>
-<span class="line"><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (status[</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> status[</span><span style="color:#79B8FF">8</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">)</span></span>
-<span class="line"><span style="color:#E1E4E8">      {</span></span>
-<span class="line"><span style="color:#E1E4E8">        result </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">      }</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (result </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">) {</span></span>
-<span class="line"><span style="color:#6A737D">        // circle win</span></span>
-<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (result </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">) {</span></span>
-<span class="line"><span style="color:#6A737D">        // cross win</span></span>
-<span class="line"><span style="color:#E1E4E8">      }</span></span>
-<span class="line"><span style="color:#6A737D">       // 判斷9個空格是否都已佔用且result不是true也不是false為平手</span></span>
-<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.counter </span><span style="color:#F97583">-</span><span style="color:#79B8FF"> 1</span><span style="color:#F97583"> ===</span><span style="color:#79B8FF"> 9</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> result </span><span style="color:#F97583">!==</span><span style="color:#79B8FF"> true</span><span style="color:#F97583"> &amp;&amp;</span><span style="color:#E1E4E8"> result </span><span style="color:#F97583">!==</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">) {</span></span>
-<span class="line"><span style="color:#6A737D">        // draw平手</span></span>
-<span class="line"><span style="color:#E1E4E8">      }</span></span>
-<span class="line"><span style="color:#E1E4E8">    }</span></span></code></pre>
-<h3 id="vwvhvmaxvmin">vw、vh、vmax、vmin</h3>
-<p>我使用了vw來做網頁畫面的縮放,一個主要原因是這樣其實滿方便的 <del>(雖然要一直拿計算機計算)</del> ,另一個原因是做過一些活動跟產品介紹頁面,那些頁面的設計一定要用隨螢幕縮放的方式來做不然會有問題…</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">var</span> status = [<span style="color:#6ab825;font-weight:bold">null</span>,<span style="color:#6ab825;font-weight:bold">null</span>,<span style="color:#6ab825;font-weight:bold">null</span>,<span style="color:#6ab825;font-weight:bold">null</span>,<span style="color:#6ab825;font-weight:bold">null</span>,<span style="color:#6ab825;font-weight:bold">null</span>,<span style="color:#6ab825;font-weight:bold">null</span>,<span style="color:#6ab825;font-weight:bold">null</span>,<span style="color:#6ab825;font-weight:bold">null</span>]; <span style="color:#999;font-style:italic">//用來判斷9個位置是否都已下完 true為circle false為cross
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#6ab825;font-weight:bold">function</span> judge() {
+</span></span><span style="display:flex;"><span>      <span style="color:#6ab825;font-weight:bold">var</span> result = <span style="color:#6ab825;font-weight:bold">null</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#999;font-style:italic">// circle win
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#6ab825;font-weight:bold">if</span> (status[<span style="color:#3677a9">0</span>] === <span style="color:#6ab825;font-weight:bold">true</span> &amp;&amp; status[<span style="color:#3677a9">1</span>] === <span style="color:#6ab825;font-weight:bold">true</span> &amp;&amp; status[<span style="color:#3677a9">2</span>] === <span style="color:#6ab825;font-weight:bold">true</span>)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        result = <span style="color:#6ab825;font-weight:bold">true</span>;
+</span></span><span style="display:flex;"><span>      } <span style="color:#6ab825;font-weight:bold">else</span> <span style="color:#6ab825;font-weight:bold">if</span> (status[<span style="color:#3677a9">3</span>] === <span style="color:#6ab825;font-weight:bold">true</span> &amp;&amp; status[<span style="color:#3677a9">4</span>] === <span style="color:#6ab825;font-weight:bold">true</span> &amp;&amp; status[<span style="color:#3677a9">5</span>] === <span style="color:#6ab825;font-weight:bold">true</span>)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        result = <span style="color:#6ab825;font-weight:bold">true</span>;
+</span></span><span style="display:flex;"><span>      } <span style="color:#6ab825;font-weight:bold">else</span> <span style="color:#6ab825;font-weight:bold">if</span> (status[<span style="color:#3677a9">6</span>] === <span style="color:#6ab825;font-weight:bold">true</span> &amp;&amp; status[<span style="color:#3677a9">7</span>] === <span style="color:#6ab825;font-weight:bold">true</span> &amp;&amp; status[<span style="color:#3677a9">8</span>] === <span style="color:#6ab825;font-weight:bold">true</span>)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        result = <span style="color:#6ab825;font-weight:bold">true</span>;
+</span></span><span style="display:flex;"><span>      } <span style="color:#6ab825;font-weight:bold">else</span> <span style="color:#6ab825;font-weight:bold">if</span> (status[<span style="color:#3677a9">0</span>] === <span style="color:#6ab825;font-weight:bold">true</span> &amp;&amp; status[<span style="color:#3677a9">4</span>] === <span style="color:#6ab825;font-weight:bold">true</span> &amp;&amp; status[<span style="color:#3677a9">8</span>] === <span style="color:#6ab825;font-weight:bold">true</span>)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        result = <span style="color:#6ab825;font-weight:bold">true</span>;
+</span></span><span style="display:flex;"><span>      } <span style="color:#6ab825;font-weight:bold">else</span> <span style="color:#6ab825;font-weight:bold">if</span> (status[<span style="color:#3677a9">2</span>] === <span style="color:#6ab825;font-weight:bold">true</span> &amp;&amp; status[<span style="color:#3677a9">4</span>] === <span style="color:#6ab825;font-weight:bold">true</span> &amp;&amp; status[<span style="color:#3677a9">6</span>] === <span style="color:#6ab825;font-weight:bold">true</span>)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        result = <span style="color:#6ab825;font-weight:bold">true</span>;
+</span></span><span style="display:flex;"><span>      } <span style="color:#6ab825;font-weight:bold">else</span> <span style="color:#6ab825;font-weight:bold">if</span> (status[<span style="color:#3677a9">1</span>] === <span style="color:#6ab825;font-weight:bold">true</span> &amp;&amp; status[<span style="color:#3677a9">4</span>] === <span style="color:#6ab825;font-weight:bold">true</span> &amp;&amp; status[<span style="color:#3677a9">7</span>] === <span style="color:#6ab825;font-weight:bold">true</span>)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        result = <span style="color:#6ab825;font-weight:bold">true</span>;
+</span></span><span style="display:flex;"><span>      } <span style="color:#6ab825;font-weight:bold">else</span> <span style="color:#6ab825;font-weight:bold">if</span> (status[<span style="color:#3677a9">0</span>] === <span style="color:#6ab825;font-weight:bold">true</span> &amp;&amp; status[<span style="color:#3677a9">3</span>] === <span style="color:#6ab825;font-weight:bold">true</span> &amp;&amp; status[<span style="color:#3677a9">6</span>] === <span style="color:#6ab825;font-weight:bold">true</span>)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        result = <span style="color:#6ab825;font-weight:bold">true</span>;
+</span></span><span style="display:flex;"><span>      } <span style="color:#6ab825;font-weight:bold">else</span> <span style="color:#6ab825;font-weight:bold">if</span> (status[<span style="color:#3677a9">2</span>] === <span style="color:#6ab825;font-weight:bold">true</span> &amp;&amp; status[<span style="color:#3677a9">5</span>] === <span style="color:#6ab825;font-weight:bold">true</span> &amp;&amp; status[<span style="color:#3677a9">8</span>] === <span style="color:#6ab825;font-weight:bold">true</span>)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        result = <span style="color:#6ab825;font-weight:bold">true</span>;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#999;font-style:italic">// cross win
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#6ab825;font-weight:bold">if</span> (status[<span style="color:#3677a9">0</span>] === <span style="color:#6ab825;font-weight:bold">false</span> &amp;&amp; status[<span style="color:#3677a9">1</span>] === <span style="color:#6ab825;font-weight:bold">false</span> &amp;&amp; status[<span style="color:#3677a9">2</span>] === <span style="color:#6ab825;font-weight:bold">false</span>)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        result = <span style="color:#6ab825;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span>      } <span style="color:#6ab825;font-weight:bold">else</span> <span style="color:#6ab825;font-weight:bold">if</span> (status[<span style="color:#3677a9">3</span>] === <span style="color:#6ab825;font-weight:bold">false</span> &amp;&amp; status[<span style="color:#3677a9">4</span>] === <span style="color:#6ab825;font-weight:bold">false</span> &amp;&amp; status[<span style="color:#3677a9">5</span>] === <span style="color:#6ab825;font-weight:bold">false</span>)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        result = <span style="color:#6ab825;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span>      } <span style="color:#6ab825;font-weight:bold">else</span> <span style="color:#6ab825;font-weight:bold">if</span> (status[<span style="color:#3677a9">6</span>] === <span style="color:#6ab825;font-weight:bold">false</span> &amp;&amp; status[<span style="color:#3677a9">7</span>] === <span style="color:#6ab825;font-weight:bold">false</span> &amp;&amp; status[<span style="color:#3677a9">8</span>] === <span style="color:#6ab825;font-weight:bold">false</span>)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        result = <span style="color:#6ab825;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span>      } <span style="color:#6ab825;font-weight:bold">else</span> <span style="color:#6ab825;font-weight:bold">if</span> (status[<span style="color:#3677a9">0</span>] === <span style="color:#6ab825;font-weight:bold">false</span> &amp;&amp; status[<span style="color:#3677a9">4</span>] === <span style="color:#6ab825;font-weight:bold">false</span> &amp;&amp; status[<span style="color:#3677a9">8</span>] === <span style="color:#6ab825;font-weight:bold">false</span>)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        result = <span style="color:#6ab825;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span>      } <span style="color:#6ab825;font-weight:bold">else</span> <span style="color:#6ab825;font-weight:bold">if</span> (status[<span style="color:#3677a9">2</span>] === <span style="color:#6ab825;font-weight:bold">false</span> &amp;&amp; status[<span style="color:#3677a9">4</span>] === <span style="color:#6ab825;font-weight:bold">false</span> &amp;&amp; status[<span style="color:#3677a9">6</span>] === <span style="color:#6ab825;font-weight:bold">false</span>)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        result = <span style="color:#6ab825;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span>      } <span style="color:#6ab825;font-weight:bold">else</span> <span style="color:#6ab825;font-weight:bold">if</span> (status[<span style="color:#3677a9">1</span>] === <span style="color:#6ab825;font-weight:bold">false</span> &amp;&amp; status[<span style="color:#3677a9">4</span>] === <span style="color:#6ab825;font-weight:bold">false</span> &amp;&amp; status[<span style="color:#3677a9">7</span>] === <span style="color:#6ab825;font-weight:bold">false</span>)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        result = <span style="color:#6ab825;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span>      } <span style="color:#6ab825;font-weight:bold">else</span> <span style="color:#6ab825;font-weight:bold">if</span> (status[<span style="color:#3677a9">0</span>] === <span style="color:#6ab825;font-weight:bold">false</span> &amp;&amp; status[<span style="color:#3677a9">3</span>] === <span style="color:#6ab825;font-weight:bold">false</span> &amp;&amp; status[<span style="color:#3677a9">6</span>] === <span style="color:#6ab825;font-weight:bold">false</span>)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        result = <span style="color:#6ab825;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span>      } <span style="color:#6ab825;font-weight:bold">else</span> <span style="color:#6ab825;font-weight:bold">if</span> (status[<span style="color:#3677a9">2</span>] === <span style="color:#6ab825;font-weight:bold">false</span> &amp;&amp; status[<span style="color:#3677a9">5</span>] === <span style="color:#6ab825;font-weight:bold">false</span> &amp;&amp; status[<span style="color:#3677a9">8</span>] === <span style="color:#6ab825;font-weight:bold">false</span>)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        result = <span style="color:#6ab825;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#6ab825;font-weight:bold">if</span> (result === <span style="color:#6ab825;font-weight:bold">true</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic">// circle win
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      } <span style="color:#6ab825;font-weight:bold">else</span> <span style="color:#6ab825;font-weight:bold">if</span> (result === <span style="color:#6ab825;font-weight:bold">false</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic">// cross win
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      }
+</span></span><span style="display:flex;"><span>       <span style="color:#999;font-style:italic">// 判斷9個空格是否都已佔用且result不是true也不是false為平手
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#6ab825;font-weight:bold">if</span> (<span style="color:#6ab825;font-weight:bold">this</span>.counter - <span style="color:#3677a9">1</span> === <span style="color:#3677a9">9</span> &amp;&amp; result !== <span style="color:#6ab825;font-weight:bold">true</span> &amp;&amp; result !== <span style="color:#6ab825;font-weight:bold">false</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic">// draw平手
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><h3 id="vwvhvmaxvmin">vw、vh、vmax、vmin</h3>
+<p>我使用了vw來做網頁畫面的縮放,一個主要原因是這樣其實滿方便的 <del>(雖然要一直拿計算機計算)</del> ,另一個原因是做過一些活動跟產品介紹頁面,那些頁面的設計一定要用隨螢幕縮放的方式來做不然會有問題&hellip;</p>
 <h4 id="vw">vw</h4>
 <p>view width 抓取螢幕可視範圍寬度的百分比,比如說15vw指的是百分之15的螢幕可視範圍寬度</p>
 <h4 id="vh">vh</h4>
@@ -180,32 +268,31 @@
 <p>vmax 抓取長度或寬度較大的百分比,如果是pc螢幕抓取的就可能是寬度的百分比而mb抓取的可能就是高度的百分比</p>
 <h4 id="vmin">vmin</h4>
 <p>vmin 抓取長度或寬度較小的百分比,如果是pc螢幕抓取的就可能是高度的百分比而mb抓取的可能就是寬度的百分比</p>
-<div class="codepen" data-height="600" data-theme-id="dark" data-default-tab="result" data-user="mgnlhdsl" data-slug-hash="yLVWrry" style="height: 600px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"> <span>See the Pen <a href="https://codepen.io/mgnlhdsl/pen/yLVWrry/">test</a> by mgnlhdsl (<a href="https://codepen.io/mgnlhdsl">@mgnlhdsl</a>) on <a href="https://codepen.io">CodePen</a>.</span> </div> <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script> <script>
-  function initCodePen() {
-    if (window.__CPEmbed) {
-      window.__CPEmbed();
-      console.log('initCodePen');
-    } else {
-      setTimeout(() => {
-        if (window.__CPEmbed) {
-          window.__CPEmbed();
-        }
-      }, 1000);
-    }
-  }
 
-  // 只需要监听这两个事件
-  document.addEventListener('load', initCodePen);
-  document.addEventListener('astro:page-load', initCodePen);
-</script>
+
+
+
+
+
+
+<script
+    data-slug-hash="yLVWrry"
+    data-user="mgnlhdsl"
+    data-height="700"
+    data-default-tab="result"
+    data-theme-id="8862"
+    class='codepen'
+    async
+    src="//codepen.io/assets/embed/ei.js"
+></script>
 <h3 id="cookie-vs-localstorage-vs-sessionstorage">cookie vs localStorage vs sessionStorage</h3>
 <p><strong>cookie</strong></p>
 <p>Http協定是無狀態的，也就是說server端不會知道client端上一次做什麼，而cookie就是避開Http無狀態的手段之一，server可以設定或讀取cookies的資訊，藉此來維護client端跟server端對談中的狀態，另外當一個cookie沒有設定失效時間,會在使用者關閉瀏覽器後被自動刪除。</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">   document.cookie </span><span style="color:#6A737D">// 讀取cookie</span></span>
-<span class="line"><span style="color:#E1E4E8">   document.cookie </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> &quot;key1=value1;&quot;</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">//設定cookie</span></span></code></pre>
-<p>本來想說這次使用cookie來儲存資料並設定cookie過期的時間,不過vue存cookie貌似有問題，之後再找時間研究一下…</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>   <span style="color:#24909d">document</span>.cookie <span style="color:#999;font-style:italic">// 讀取cookie
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>   <span style="color:#24909d">document</span>.cookie = <span style="color:#ed9d13">&#34;key1=value1;&#34;</span>; <span style="color:#999;font-style:italic">//設定cookie
+</span></span></span></code></pre></div><p>本來想說這次使用cookie來儲存資料並設定cookie過期的時間,不過vue存cookie貌似有問題，之後再找時間研究一下&hellip;</p>
 <p><strong>localStorage、sessionStorage</strong></p>
-<p>localStorage、sessionStorage我直接把之前寫的文章內容複製貼上…</p>
+<p>localStorage、sessionStorage我直接把之前寫的文章內容複製貼上&hellip;</p>
 <ul>
 <li>
 <p>localStorage以及sessionStorage為客戶端的資料儲存技術容量大小都為5MB,透過設定key:value的方式來儲存資料進瀏覽器，跟cookie不同的是在與server溝通時不會被自動帶入</p>
@@ -214,40 +301,38 @@
 <p>localStorage以及sessionStorage兩者之間唯一的不同就是localStorage如果使用者不刪除資料該筆資料會永遠存在在瀏覽器內但sessionStorage只要該分頁關閉時資料就會清除掉</p>
 </li>
 </ul>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"></span>
-<span class="line"><span style="color:#6A737D">  // localStorage</span></span>
-<span class="line"><span style="color:#E1E4E8">  localStorage.</span><span style="color:#B392F0">setItem</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;myName&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;Tom&#39;</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 設定localStorage</span></span>
-<span class="line"><span style="color:#E1E4E8">  localStorage.</span><span style="color:#B392F0">getItem</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;myName&#39;</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 取得localStorage</span></span>
-<span class="line"><span style="color:#E1E4E8">  localStorage.</span><span style="color:#B392F0">removeItem</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;myName&#39;</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 移除localStorage</span></span>
-<span class="line"><span style="color:#E1E4E8">  localStorage.</span><span style="color:#B392F0">clear</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">//清除localStorage</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#6A737D">  // sessionStorage</span></span>
-<span class="line"><span style="color:#E1E4E8">  sessionStorage.</span><span style="color:#B392F0">setItem</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;myName&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;Tom&#39;</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 設定sessionStorage</span></span>
-<span class="line"><span style="color:#E1E4E8">  sessionStorage.</span><span style="color:#B392F0">getItem</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;myName&#39;</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 取得sessionStorage</span></span>
-<span class="line"><span style="color:#E1E4E8">  sessionStorage.</span><span style="color:#B392F0">removeItem</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;myName&#39;</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 移除sessionStorage</span></span>
-<span class="line"><span style="color:#E1E4E8">  sessionStorage.</span><span style="color:#B392F0">clear</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">//清除sessionStorage</span></span>
-<span class="line"></span></code></pre>
-<h3 id="8f井字遊戲-demo連結">8F井字遊戲 demo連結</h3>
-<div class="codepen" data-height="600" data-theme-id="dark" data-default-tab="result" data-user="mgnlhdsl" data-slug-hash="vYyvmEN" style="height: 600px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"> <span>See the Pen <a href="https://codepen.io/mgnlhdsl/pen/vYyvmEN/">test</a> by mgnlhdsl (<a href="https://codepen.io/mgnlhdsl">@mgnlhdsl</a>) on <a href="https://codepen.io">CodePen</a>.</span> </div> <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script> <script>
-  function initCodePen() {
-    if (window.__CPEmbed) {
-      window.__CPEmbed();
-      console.log('initCodePen');
-    } else {
-      setTimeout(() => {
-        if (window.__CPEmbed) {
-          window.__CPEmbed();
-        }
-      }, 1000);
-    }
-  }
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// localStorage
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  localStorage.setItem(<span style="color:#ed9d13">&#39;myName&#39;</span>, <span style="color:#ed9d13">&#39;Tom&#39;</span>); <span style="color:#999;font-style:italic">// 設定localStorage
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  localStorage.getItem(<span style="color:#ed9d13">&#39;myName&#39;</span>); <span style="color:#999;font-style:italic">// 取得localStorage
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  localStorage.removeItem(<span style="color:#ed9d13">&#39;myName&#39;</span>); <span style="color:#999;font-style:italic">// 移除localStorage
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  localStorage.clear(); <span style="color:#999;font-style:italic">//清除localStorage
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>
+</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// sessionStorage
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  sessionStorage.setItem(<span style="color:#ed9d13">&#39;myName&#39;</span>, <span style="color:#ed9d13">&#39;Tom&#39;</span>); <span style="color:#999;font-style:italic">// 設定sessionStorage
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  sessionStorage.getItem(<span style="color:#ed9d13">&#39;myName&#39;</span>); <span style="color:#999;font-style:italic">// 取得sessionStorage
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  sessionStorage.removeItem(<span style="color:#ed9d13">&#39;myName&#39;</span>); <span style="color:#999;font-style:italic">// 移除sessionStorage
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  sessionStorage.clear(); <span style="color:#999;font-style:italic">//清除sessionStorage
+</span></span></span></code></pre></div><h3 id="8f井字遊戲-demo連結">8F井字遊戲 demo連結</h3>
 
-  // 只需要监听这两个事件
-  document.addEventListener('load', initCodePen);
-  document.addEventListener('astro:page-load', initCodePen);
-</script>
-<p>剩下一半了…希望我身體還頂得住</p>
-<p><img src="/images/post/a8f51d417665827c2d4497d6765f99e8.jpg" alt/></p>
+
+
+
+
+
+
+<script
+    data-slug-hash="vYyvmEN"
+    data-user="mgnlhdsl"
+    data-height="700"
+    data-default-tab="result"
+    data-theme-id="8862"
+    class='codepen'
+    async
+    src="//codepen.io/assets/embed/ei.js"
+></script>
+<p>剩下一半了&hellip;希望我身體還頂得住</p>
+<p><img src="/images/post/a8f51d417665827c2d4497d6765f99e8.jpg" alt=""></p>
 <h2 id="補充資料">補充資料</h2>
 <p><a href="https://pjchender.blogspot.com/2015/04/css-3vh-vw.html">好用的css 3新單位vh vw</a></p>
 <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Window/localStorage">localStorage</a></p>
@@ -255,4 +340,75 @@
 <p><a href="https://zh.wikipedia.org/wiki/Cookie">cookie wikipedia</a></p>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie">cookie MDN</a></p>
 <p><a href="https://ithelp.ithome.com.tw/articles/10227602">[WEB] Cookie &amp; Session 是什麼？</a></p>
-<p><a href="https://www.fooish.com/javascript/cookie.html">JavaScript Cookie</a></p>  </div> </article>  </main> <footer class="py-6 text-center text-gray-600 dark:text-gray-400"> <p>&copy; 2025 Leo&#39;s blog. All rights reserved.</p> </footer> </div> </body></html>
+<p><a href="https://www.fooish.com/javascript/cookie.html">JavaScript Cookie</a></p>
+
+        </div>
+
+        
+        
+        
+        
+        <script src="https://utteranc.es/client.js"
+          repo="bjmqfg83/comment-utterances"
+          issue-term="title"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+          </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<script>
+  var indexURL = "https://bjmqfg83.github.io/index.json"
+</script>
+
+<!-- JS Plugins -->
+
+<script src="https://bjmqfg83.github.io/plugins/jQuery/jquery.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/slick/slick.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/venobox/venobox.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/fuse.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/mark.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/search.js"></script>
+
+<!-- Main Script -->
+
+<script src="https://bjmqfg83.github.io/js/script.min.js"></script>
+<!-- google analitycs -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2T34DJBTW2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2T34DJBTW2');
+</script>
+// <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script></body>
+</html>

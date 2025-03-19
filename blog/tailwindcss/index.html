@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+  <meta charset="utf-8">
+  <title>
+    
+    tailwindcss筆記
+    
+  </title>
+  <!-- mobile responsive meta -->
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description"
+    content="介紹tailwindcss兼做筆記">
+  
+  <meta name="author"
+    content="Leo">
+  <meta name="generator" content="Hugo 0.101.0" />
+
+  <!-- plugins -->
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/bootstrap/bootstrap.min.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/slick/slick.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/themify-icons/themify-icons.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/venobox/venobox.css ">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/scss/style.min.css"
+    media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon"
+    href="https://bjmqfg83.github.io/images/favicon.png "
+    type="image/x-icon">
+  <link rel="icon"
+    href="https://bjmqfg83.github.io/images/favicon.png "
+    type="image/x-icon">
+
+  
+
+</head><body>
+<!-- preloader start -->
+<div class="preloader">
+  
+</div>
+<!-- preloader end -->
+<!-- navigation -->
+<header class="navigation">
+  <div class="container">
+    
+    <nav class="navbar navbar-expand-lg navbar-white bg-transparent border-bottom pl-0">
+      <a class="navbar-brand mobile-view text-dark"
+        href="https://bjmqfg83.github.io"><img class="img-fluid header-logo mr-3"
+          src="https://bjmqfg83.github.io/images/favicon.png"
+          alt="Leo&#39;s blog">Leo&#39;s blog</a>
+      <button class="navbar-toggler border-0"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navigation">
+        <i class="ti-menu h3"></i>
+      </button>
+
+      <div class="collapse navbar-collapse text-center"
+        id="navigation">
+        
+
+        <a class="navbar-brand mr-auto desktop-view text-dark"
+          href="https://bjmqfg83.github.io"><img class="img-fluid header-logo mr-3"
+            src="https://bjmqfg83.github.io/images/favicon.png"
+            alt="Leo&#39;s blog">Leo&#39;s blog</a>
+
+        <ul class="navbar-nav">
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+              href="https://bjmqfg83.github.io/">Home</a>
+          </li>
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+              href="https://bjmqfg83.github.io/about">About</a>
+          </li>
+          
+          
+        </ul>
+
+        
+        <!-- search -->
+        <div class="search pl-lg-4">
+          <button id="searchOpen"
+            class="search-btn"><i class="ti-search"></i></button>
+          <div class="search-wrapper">
+            <form action="https://bjmqfg83.github.io/search"
+              class="h-100">
+              <input class="search-box px-4"
+                id="search-query"
+                name="s"
+                type="search"
+                placeholder="Type & Hit Enter...">
+            </form>
+            <button id="searchClose"
+              class="search-close"><i class="ti-close text-dark"></i></button>
+          </div>
+        </div>
+        
+
+        
+      </div>
+    </nav>
+  </div>
+</header>
+<!-- /navigation -->
+<section class="section-sm article-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <h2 class="article-font">tailwindcss筆記</h2>
+        <div class="mb-3 post-meta">
+          <span>By Leo</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          <span>08 October 2021</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          
+          <a href="/categories/css"
+            class="text-primary">Css</a>
+          
+        </div>
+        
+        <img src="https://bjmqfg83.github.io/images/post/tailwindcss.jfif"
+          class="img-fluid w-100 mb-4"
+          alt="tailwindcss筆記">
+        
+        <div class="content mb-5 article">
+          <p>從去年起<a href="https://tailwindcss.com/">tailwind</a>在台灣熱度越來越高,另外最近也在<a href="https://hiskio.com/">HISKIO</a>上買了tailwind的課程學習,所以想說也來<del>蹭一下</del>分享一下所學順便兼做筆記方便日後複習</p>
+<h3 id="tailwindcss解決什麼問題">tailwindcss解決什麼問題?</h3>
+<p>tailwindcss是一個utility-first的css框架,而且由於tailwind將絕大部分的css樣式通通寫成class使用(ex:mt、flex、grid&hellip;),所以可以讓工程師在寫html的時候一併處理樣式而幾乎不用寫額外的css,跟bootstrap之間最大的不同是tailwind沒有像是「Accordion」、「Dropdown」之類的組件,全部都是功能性的class，另外由於使用tailwind等同於直接在html上寫style,所以可以避免樣式幾乎相同卻硬是要命名不同的class,大大減少多餘的css</p>
+<p><strong>註:想要玩一下tailwind的話可以先到<a href="https://play.tailwindcss.com/">tailwindplay</a>嚐嚐鮮</strong></p>
+<h3 id="tailwindcss配置">tailwindcss配置</h3>
+<p>tailwind官方有提供三種配置方式</p>
+<ol>
+<li>cdn</li>
+<li>tailwind cli</li>
+<li>npm</li>
+</ol>
+<h4 id="cdn">CDN</h4>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#6ab825;font-weight:bold">link</span> <span style="color:#bbb">href</span>=<span style="color:#ed9d13">&#34;https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css&#34;</span> <span style="color:#bbb">rel</span>=<span style="color:#ed9d13">&#34;stylesheet&#34;</span>&gt;
+</span></span></code></pre></div><p>不過官方不推薦使用這個方式,主要是因為以下原因</p>
+<ul>
+<li>無法客製化tailwind的主題</li>
+<li>無法使用@apply、@variants等等的指令</li>
+<li>無法開啟如group-focus這種額外的變數</li>
+<li>無法安裝第三方的plugin</li>
+<li>無法進行tree shake移除沒使用的樣式</li>
+</ul>
+<p>個人認為最要命的是最後一點，雖然如果沒有要客製化的話直接使用也不是不行,但是tailwind沒做purge的話總共有3MB的大小,丟到vscode看將近有20萬行的css原始碼,這麼大包會出事的阿&hellip;</p>
+<p><img src="/images/post/w1200.jfif" alt=""></p>
+<h4 id="tailwind-clinodejs版本要在12130以上">tailwind cli(Node.js版本要在12.13.0以上)</h4>
+<p>使用以下指定建立tailwind.css (-o為output)</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>npx tailwindcss -o tailwind.css
+</span></span></code></pre></div><p>要讓自己寫的css跟tailwind一起編譯的話要先將tailwind的基礎樣式用@tailwind引入至自定義的css檔案內</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">/* ./src/index.css  */</span>
+</span></span><span style="display:flex;"><span>  @<span style="color:#6ab825;font-weight:bold">tailwind</span> <span style="color:#6ab825;font-weight:bold">base</span>; <span style="color:#999;font-style:italic">/* 基礎樣式 */</span>
+</span></span><span style="display:flex;"><span>  @<span style="color:#6ab825;font-weight:bold">tailwind</span> <span style="color:#6ab825;font-weight:bold">components</span>; <span style="color:#999;font-style:italic">/* 模組樣式 */</span>
+</span></span><span style="display:flex;"><span>  @<span style="color:#6ab825;font-weight:bold">tailwind</span> <span style="color:#6ab825;font-weight:bold">utilities</span>; <span style="color:#999;font-style:italic">/* 共用樣式 */</span>
+</span></span><span style="display:flex;"><span>  @<span style="color:#6ab825;font-weight:bold">layer</span> <span style="color:#6ab825;font-weight:bold">base</span> { ... }
+</span></span><span style="display:flex;"><span>  @<span style="color:#6ab825;font-weight:bold">layer</span> <span style="color:#6ab825;font-weight:bold">components</span> { ... }
+</span></span></code></pre></div><p>再使用以下指令匯出css( -i為input、-o為output)</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>  npx tailwindcss -i ./src/index.css -o ./dist/tailwind.css
+</span></span></code></pre></div><p>可透過tailwind.config.js對tailwind本身進行設定,用以下指令建立tailwind.config.js</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>npx tailwindcss init
+</span></span></code></pre></div><p>tailwind.config.js</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>  module.exports = {
+</span></span><span style="display:flex;"><span>    purge: [],
+</span></span><span style="display:flex;"><span>    darkMode: <span style="color:#6ab825;font-weight:bold">false</span>, <span style="color:#999;font-style:italic">// 也可以是 &#39;media&#39; 或 &#39;class&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    theme: {
+</span></span><span style="display:flex;"><span>      extend: {},
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    variants: {},
+</span></span><span style="display:flex;"><span>    plugins: [],
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div><p>使用tailwind cli時config檔會自動被讀取,另外如果要以production mode建置的話要在指令前面加上「NODE_ENV=production」這個環境變數</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>  NODE_ENV=production npx tailwindcss -i ./src/tailwind.css -o ./dist/tailwind.css --minify
+</span></span></code></pre></div><p><strong>註:&ndash;minify會把css檔案內的間距、空白移除掉,進一步壓縮css檔案的大小</strong></p>
+<p><strong>註:windows作業系統並不自帶NODE_ENV,使用windows的話記得要額外下載</strong></p>
+<h4 id="以postcss插件的方式來安裝tailwind">以PostCSS插件的方式來安裝Tailwind</h4>
+<p>透過Postcss來安裝tailwind，這個方式還可以透過webpack等打包工具整合其他第三方插件來協助開發</p>
+<p>透過npm載入tailwindcss、postcss、autoprefixer</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+</span></span></code></pre></div><p>postcss是一個加強處理css的js plugin,包括依照<a href="https://caniuse.com/">Can i use</a>添加瀏覽器前綴、使用新的css功能或是做圖片的處理,我們透過postcss整合tailwind並使用autoprefixer去添加瀏覽器前綴</p>
+<p>我本身是使用webpack打包,所以為了要讓webpack能夠讀取解析postcss需要載入postcss loader</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>  npm install -D postcss-loader
+</span></span></code></pre></div><p>新增postcss.config.js、tailwind.config.js、webpack.config.js</p>
+<p>postcss.config.js</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>  module.exports = {
+</span></span><span style="display:flex;"><span>  plugins: [
+</span></span><span style="display:flex;"><span>    require(<span style="color:#ed9d13">&#39;tailwindcss&#39;</span>),
+</span></span><span style="display:flex;"><span>    require(<span style="color:#ed9d13">&#39;autoprefixer&#39;</span>)
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>tailwind.config.js</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>  module.exports = {
+</span></span><span style="display:flex;"><span>    purge: [],
+</span></span><span style="display:flex;"><span>    darkMode: <span style="color:#6ab825;font-weight:bold">false</span>, <span style="color:#999;font-style:italic">// 也可以是 &#39;media&#39; 或 &#39;class&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    theme: {
+</span></span><span style="display:flex;"><span>      extend: {},
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    variants: {},
+</span></span><span style="display:flex;"><span>    plugins: [],
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div><p>跟tailwind cli一樣把tailwind的樣式引入到自訂義的index.css內</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">/* ./src/index.css  */</span>
+</span></span><span style="display:flex;"><span>  @<span style="color:#6ab825;font-weight:bold">tailwind</span> <span style="color:#6ab825;font-weight:bold">base</span>; <span style="color:#999;font-style:italic">/* 基礎樣式 */</span>
+</span></span><span style="display:flex;"><span>  @<span style="color:#6ab825;font-weight:bold">tailwind</span> <span style="color:#6ab825;font-weight:bold">components</span>; <span style="color:#999;font-style:italic">/* 模組樣式 */</span>
+</span></span><span style="display:flex;"><span>  @<span style="color:#6ab825;font-weight:bold">tailwind</span> <span style="color:#6ab825;font-weight:bold">utilities</span>; <span style="color:#999;font-style:italic">/* 共用樣式 */</span>
+</span></span><span style="display:flex;"><span>  @<span style="color:#6ab825;font-weight:bold">layer</span> <span style="color:#6ab825;font-weight:bold">base</span> { ... }
+</span></span><span style="display:flex;"><span>  @<span style="color:#6ab825;font-weight:bold">layer</span> <span style="color:#6ab825;font-weight:bold">components</span> { ... }
+</span></span></code></pre></div><p>webpack.config.js配置</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">const</span> path = require(<span style="color:#ed9d13">&#39;path&#39;</span>);
+</span></span><span style="display:flex;"><span>module.exports = {
+</span></span><span style="display:flex;"><span>  entry: <span style="color:#ed9d13">&#39;./src/index.js&#39;</span>,
+</span></span><span style="display:flex;"><span>  output: {
+</span></span><span style="display:flex;"><span>    path: path.resolve(__dirname, <span style="color:#ed9d13">&#39;dist&#39;</span>),
+</span></span><span style="display:flex;"><span>    filename: <span style="color:#ed9d13">&#39;index.js&#39;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  module: {
+</span></span><span style="display:flex;"><span>    rules: [
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        test: <span style="color:#ed9d13">/\.css$/</span>,
+</span></span><span style="display:flex;"><span>        use: [<span style="color:#ed9d13">&#39;style-loader&#39;</span>, <span style="color:#ed9d13">&#39;postcss-loader&#39;</span>],
+</span></span><span style="display:flex;"><span>      },...
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>註: 記得把index.css給import進index.js</strong></p>
+<h3 id="tailwind-css-intellisense">tailwind css intellisense</h3>
+<p>如果是用vscode開發可以安裝這個插件,在寫class時會出現提示</p>
+<p><img src="/images/post/tailwindcss_vscode.png" alt=""></p>
+<h3 id="purge-css">purge css</h3>
+<p>tailwind會把沒使用到的樣式移除掉來減少產生的css檔案大小,但是tailwind並不知道有哪些檔案內有使用到tailwind的class,所以如果有檔案使用tailwind的話要在purge內加上content的物件,這樣tailwind就會透過content內的路徑去看這些路徑內的檔案並把檔案內有使用到的class保留下來</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>module.exports = {
+</span></span><span style="display:flex;"><span>  purge: {
+</span></span><span style="display:flex;"><span>    content: [<span style="color:#ed9d13">&#39;./src/**/*.html&#39;</span>, <span style="color:#ed9d13">&#39;./src/**/*.{html,js}&#39;</span>]
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>有無purge的差別真的滿大的&hellip;
+<img src="/images/post/purge_diff_nopurge.png" alt=""></p>
+<p>雖然tailwind很貼心的把沒有使用到的css移除掉但是這會衍伸一個問題,如果今天html是透過後台編輯器產生的話就有可能使用到被移除掉的class,為了避免這個問題這時候我們可以在config檔內加上safelist,tailwind在產生css時會把safelist內的class保留下來</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>module.exports = {
+</span></span><span style="display:flex;"><span>  purge: {
+</span></span><span style="display:flex;"><span>    content: [<span style="color:#ed9d13">&#39;./src/**/*.html&#39;</span>, <span style="color:#ed9d13">&#39;./src/**/*.{html,js}&#39;</span>],
+</span></span><span style="display:flex;"><span>    safelist: [
+</span></span><span style="display:flex;"><span>      <span style="color:#ed9d13">&#39;bg-blue-500&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ed9d13">&#39;text-center&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ed9d13">&#39;hover:opacity-100&#39;</span>,
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>補充一下雖然tailwind第三版還沒有正式釋出不過第三版purge被移除掉了,content跟safelist直接寫就可以了</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>module.exports = {
+</span></span><span style="display:flex;"><span>    content: [<span style="color:#ed9d13">&#39;./src/**/*.html&#39;</span>, <span style="color:#ed9d13">&#39;./src/**/*.{html,js}&#39;</span>],
+</span></span><span style="display:flex;"><span>    safelist: [
+</span></span><span style="display:flex;"><span>      <span style="color:#ed9d13">&#39;bg-blue-500&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ed9d13">&#39;text-center&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#ed9d13">&#39;hover:opacity-100&#39;</span>,
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="base">base</h3>
+<p>base裡面主要是寫基礎的樣式,如h1的size以及margin之類的</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>@layer base {
+</span></span><span style="display:flex;"><span>  h1{
+</span></span><span style="display:flex;"><span>    font-size: 20px;
+</span></span><span style="display:flex;"><span>    margin: 1rem 0;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="apply">@apply</h3>
+<p>可能會有人覺得使用tailwind會讓class變得又臭又長,這時候我們可以透過tailwind的components、@apply將多個class群組起來</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>@layer components {
+</span></span><span style="display:flex;"><span>  .card{
+</span></span><span style="display:flex;"><span>    @apply rounded-lg mt-4 px-4 py-3 bg-fb-card;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>建議只將需要共用的class群組起來就好了</p>
+<h3 id="dark-mode">dark Mode</h3>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>module.exports = {
+</span></span><span style="display:flex;"><span>  darkMode: <span style="color:#ed9d13">&#39;false&#39;</span>, <span style="color:#999;font-style:italic">//參數可選填media or class
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>}
+</span></span></code></pre></div><p>dark mode就是所謂的夜間模式,接受「media」、「class」的字串參數,media會以電腦系統的設定來轉換夜間模式而class則是使用手動的方式轉換夜間模式
+,在<a href="https://play.tailwindcss.com/">tailwindplay</a>試一下會發現tailwind就是在html上添加dark的class</p>
+<p><img src="/images/post/dark_mode.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>@layer base {
+</span></span><span style="display:flex;"><span>  body {
+</span></span><span style="display:flex;"><span>    @apply dark:bg-black;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>需要在夜間模式顯示的樣式可以在html標籤內或是在自定義的index.css裡的base裡面寫「dark: + utility class」</p>
+<p>手動模式要透過js的click事件在html上添加dark的class</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">var</span> light_mode_btn = <span style="color:#24909d">document</span>.getElementById(<span style="color:#ed9d13">&#39;light&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">var</span> dark_mode_btn = <span style="color:#24909d">document</span>.getElementById(<span style="color:#ed9d13">&#39;dark&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  light_mode_btn.addEventListener(<span style="color:#ed9d13">&#39;click&#39;</span>, <span style="color:#6ab825;font-weight:bold">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#24909d">document</span>.documentElement.classList.remove(<span style="color:#ed9d13">&#39;dark&#39;</span>)
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  dark_mode_btn.addEventListener(<span style="color:#ed9d13">&#39;click&#39;</span>, <span style="color:#6ab825;font-weight:bold">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#24909d">document</span>.documentElement.classList.add(<span style="color:#ed9d13">&#39;dark&#39;</span>)
+</span></span><span style="display:flex;"><span>  })
+</span></span></code></pre></div><h3 id="variant變體">variant變體</h3>
+<p>variant又有人稱為偽類變體,所謂的偽類就是css裡的「:hover」、「:active」、「:focus」等&hellip;可以添加互動功能的pseudo-class，在tailwind裡面可以直接在html上寫上variant來增加頁面的互動效果,寫法是「variant: + utility class」</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#6ab825;font-weight:bold">input</span> <span style="color:#bbb">class</span>=<span style="color:#ed9d13">&#34;focus:bg-white hover:bg-black focus:border-white hover:border-black&#34;</span>&gt;
+</span></span></code></pre></div><p>在tailwindcss推出JIT之後只要JIT mode有開啟那麼所有class的variant都可以直接使用,但如果使用的是舊版本的tailwind(v1.96以前)又或是新版本的tailwindcss但是沒開啟JIT mode的話就要注意不是所有class的variant預設都是開啟的,可以從<a href="https://tailwindcss.com/docs/configuring-variants">Configuring Variants</a>裡面去看tailwind有支援的variant跟預設有開啟的variant</p>
+<h3 id="customize自定義">customize自定義</h3>
+<p>我們要添加自定義的樣式需要在tailwind.config.js裡面預先寫,記得一定要寫在extend裡面不然會把原先tailwind裡相對應的utility class整個洗掉&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>module.exports = {
+</span></span><span style="display:flex;"><span>  theme: {
+</span></span><span style="display:flex;"><span>    extend: {
+</span></span><span style="display:flex;"><span>      screens: {},
+</span></span><span style="display:flex;"><span>      spacing:{},
+</span></span><span style="display:flex;"><span>      colors: {},
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>自定義的範圍很廣,可以試RWD斷點(screens)、顏色(colors)、間距(spacing)&hellip;，相關的填寫方式直接看<a href="https://tailwindcss.com/">官網</a>會比較快，不過每次要自定義樣式就要在tailwind.config.js裡面預先寫其實是有點麻煩&hellip;，這時候tailwindcss在2.1版後推出了just in time的功能</p>
+<h3 id="jitv21">JIT(v2.1+)</h3>
+<h2 id="補充資料">補充資料</h2>
+<p>最後補充一下本身在使用webpack + tailwindcss時除了tailwind.config.js以外安裝的套件以及配置</p>
+<p><strong>package.json</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#ed9d13">&#34;name&#34;</span>: <span style="color:#ed9d13">&#34;tailwindProject&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ed9d13">&#34;version&#34;</span>: <span style="color:#ed9d13">&#34;1.0.0&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ed9d13">&#34;description&#34;</span>: <span style="color:#ed9d13">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ed9d13">&#34;main&#34;</span>: <span style="color:#ed9d13">&#34;index.js&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ed9d13">&#34;scripts&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;dev&#34;</span>: <span style="color:#ed9d13">&#34;cross-env NODE_ENV=development webpack serve --open&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;build&#34;</span>: <span style="color:#ed9d13">&#34;cross-env NODE_ENV=production webpack&#34;</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#ed9d13">&#34;author&#34;</span>: <span style="color:#ed9d13">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ed9d13">&#34;license&#34;</span>: <span style="color:#ed9d13">&#34;ISC&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#ed9d13">&#34;devDependencies&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;@babel/core&#34;</span>: <span style="color:#ed9d13">&#34;^7.14.6&#34;</span>,<span style="color:#999;font-style:italic">// 將js分析成ast,方便各個插件分析語法處理
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#ed9d13">&#34;@babel/preset-env&#34;</span>: <span style="color:#ed9d13">&#34;^7.14.5&#34;</span>, <span style="color:#999;font-style:italic">// 將尚未被大部分瀏覽器支援的js語法轉換成能被瀏覽器支援的語法，以及讓較舊的瀏覽器也能支援大部分瀏覽器能支援的語法
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#ed9d13">&#34;autoprefixer&#34;</span>: <span style="color:#ed9d13">&#34;^10.2.6&#34;</span>, <span style="color:#999;font-style:italic">// 給css添加瀏覽器前綴字
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#ed9d13">&#34;babel-loader&#34;</span>: <span style="color:#ed9d13">&#34;^8.2.2&#34;</span>, <span style="color:#999;font-style:italic">// 使webpack可以讀懂babel
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#ed9d13">&#34;clean-webpack-plugin&#34;</span>: <span style="color:#ed9d13">&#34;^4.0.0-alpha.0&#34;</span>, <span style="color:#999;font-style:italic">// 打包前先將output資料夾清空
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#ed9d13">&#34;compression-webpack-plugin&#34;</span>: <span style="color:#ed9d13">&#34;^8.0.0&#34;</span>, <span style="color:#999;font-style:italic">//將檔案進行壓縮產生壓縮檔
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#ed9d13">&#34;copy-webpack-plugin&#34;</span>: <span style="color:#ed9d13">&#34;^9.0.0&#34;</span>,<span style="color:#999;font-style:italic">// 將src內特定資料夾的檔案複製到dist內的特定資料夾(名稱可自定義也可指定多組)
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#ed9d13">&#34;cross-env&#34;</span>: <span style="color:#ed9d13">&#34;^7.0.3&#34;</span>, <span style="color:#999;font-style:italic">// windows系統不自帶cross-env環境變數時安裝
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#ed9d13">&#34;css-loader&#34;</span>: <span style="color:#ed9d13">&#34;^5.2.6&#34;</span>, <span style="color:#999;font-style:italic">// 使webpack可以讀懂css
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#ed9d13">&#34;cssnano&#34;</span>: <span style="color:#ed9d13">&#34;^5.0.8&#34;</span>, <span style="color:#999;font-style:italic">// 移除css內的空白
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#ed9d13">&#34;html-webpack-plugin&#34;</span>: <span style="color:#ed9d13">&#34;^5.3.1&#34;</span>, <span style="color:#999;font-style:italic">// 將html輸出至dist資料夾內並在html內引入js檔案
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#ed9d13">&#34;mini-css-extract-plugin&#34;</span>: <span style="color:#ed9d13">&#34;^1.6.0&#34;</span>, <span style="color:#999;font-style:italic">// 將css抽離成單獨的css檔案並在html內引入css檔案
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#ed9d13">&#34;postcss&#34;</span>: <span style="color:#ed9d13">&#34;^8.3.5&#34;</span>, <span style="color:#999;font-style:italic">// 加強處理css,包括添加前綴、將新語法轉換成通用的舊語法
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#ed9d13">&#34;postcss-loader&#34;</span>: <span style="color:#ed9d13">&#34;^6.1.0&#34;</span>, <span style="color:#999;font-style:italic">// 使webpack可以讀懂postcss
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#ed9d13">&#34;tailwindcss&#34;</span>: <span style="color:#ed9d13">&#34;^2.2.4&#34;</span>, <span style="color:#999;font-style:italic">// tailwindcss
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#ed9d13">&#34;webpack&#34;</span>: <span style="color:#ed9d13">&#34;^5.39.1&#34;</span>, <span style="color:#999;font-style:italic">//webpack打包工具
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#ed9d13">&#34;webpack-cli&#34;</span>: <span style="color:#ed9d13">&#34;^4.7.2&#34;</span>, <span style="color:#999;font-style:italic">// webpack cli工具,提供操作webpack相關的cli指令
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#ed9d13">&#34;webpack-dev-server&#34;</span>: <span style="color:#ed9d13">&#34;^3.11.2&#34;</span> <span style="color:#999;font-style:italic">// 透過webpack開啟本地server
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong><a href="https://github.com/postcss/postcss">postcss.config.js</a></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>module.exports = {
+</span></span><span style="display:flex;"><span>  plugins: [
+</span></span><span style="display:flex;"><span>    require(<span style="color:#ed9d13">&#39;tailwindcss&#39;</span>),
+</span></span><span style="display:flex;"><span>    require(<span style="color:#ed9d13">&#39;autoprefixer&#39;</span>),
+</span></span><span style="display:flex;"><span>    require(<span style="color:#ed9d13">&#39;cssnano&#39;</span>)({
+</span></span><span style="display:flex;"><span>      preset: <span style="color:#ed9d13">&#39;default&#39;</span>,
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong><a href="https://babeljs.io/">babel</a></strong></p>
+<p>babel.config.json</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">&#34;presets&#34;</span>: [<span style="color:#ed9d13">&#34;@babel/preset-env&#34;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong><a href="https://github.com/browserslist/browserslist">.browserslistrc</a></strong></p>
+<p>明確標示要支援的瀏覽器給如autoprefixer、Babel等等&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>last 2 versions
+</span></span><span style="display:flex;"><span>not dead
+</span></span><span style="display:flex;"><span>&gt; 0.2%
+</span></span></code></pre></div><p><strong><a href="https://webpack.js.org/">webpack.config.js</a></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">const</span> HtmlWebpackPlugin = require(<span style="color:#ed9d13">&#39;html-webpack-plugin&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">const</span> MiniCssExtractPlugin = require(<span style="color:#ed9d13">&#39;mini-css-extract-plugin&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">const</span> { CleanWebpackPlugin } = require(<span style="color:#ed9d13">&#39;clean-webpack-plugin&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">const</span> CopyPlugin = require(<span style="color:#ed9d13">&#34;copy-webpack-plugin&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">const</span> CompressionPlugin = require(<span style="color:#ed9d13">&#34;compression-webpack-plugin&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">const</span> webpack = require(<span style="color:#ed9d13">&#39;webpack&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#6ab825;font-weight:bold">const</span> path = require(<span style="color:#ed9d13">&#39;path&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>module.exports = {
+</span></span><span style="display:flex;"><span>  target: <span style="color:#ed9d13">&#39;web&#39;</span>,
+</span></span><span style="display:flex;"><span>  entry: {
+</span></span><span style="display:flex;"><span>    index: <span style="color:#ed9d13">&#39;./src/index.js&#39;</span>, <span style="color:#999;font-style:italic">//多個entry可以以物件形式輸入
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    ...
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  mode: process.env.NODE_ENV, <span style="color:#999;font-style:italic">// 如果是production mode會使用tree shaking,不會打包沒使用到的東西
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  output: {
+</span></span><span style="display:flex;"><span>    path: path.resolve(__dirname, <span style="color:#ed9d13">&#39;dist&#39;</span>),
+</span></span><span style="display:flex;"><span>    filename: <span style="color:#ed9d13">&#39;[name].[contenthash].js&#39;</span>, <span style="color:#999;font-style:italic">//name會去對應到entry裡物件的key值,hash為避免修改網頁時的快取
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  },
+</span></span><span style="display:flex;"><span>  devServer: {
+</span></span><span style="display:flex;"><span>    compress: <span style="color:#6ab825;font-weight:bold">true</span>,
+</span></span><span style="display:flex;"><span>    port: <span style="color:#3677a9">8080</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// loader
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  module: {
+</span></span><span style="display:flex;"><span>    rules: [
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        test: <span style="color:#ed9d13">/\.css$/i</span>,
+</span></span><span style="display:flex;"><span>        use: [
+</span></span><span style="display:flex;"><span>          MiniCssExtractPlugin.loader,
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            loader: <span style="color:#ed9d13">&#39;css-loader&#39;</span>,
+</span></span><span style="display:flex;"><span>            options: {
+</span></span><span style="display:flex;"><span>              importLoaders: <span style="color:#3677a9">1</span>, <span style="color:#999;font-style:italic">//如果在css檔案內使用@import要將importLoaders設為1,如果是sass則為2
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>            }
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            loader: <span style="color:#ed9d13">&#39;postcss-loader&#39;</span>
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        test: <span style="color:#ed9d13">/\.(jpe?g|png|gif)$/</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic">// webpack5透過asset module來使用資源而不需載入loader,
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        type: <span style="color:#ed9d13">&#39;asset/resource&#39;</span> <span style="color:#999;font-style:italic">// 將檔案輸出至output
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      },
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        test: <span style="color:#ed9d13">/\.m?js$/</span>,
+</span></span><span style="display:flex;"><span>        exclude: <span style="color:#ed9d13">/node_modules/</span>, <span style="color:#999;font-style:italic">//babel處理時忽略node_modules
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        use: {
+</span></span><span style="display:flex;"><span>          loader: <span style="color:#ed9d13">&#34;babel-loader&#34;</span>,
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// 插件
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  plugins: [
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">new</span> HtmlWebpackPlugin({
+</span></span><span style="display:flex;"><span>      template: <span style="color:#ed9d13">&#39;./src/index.html&#39;</span>
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">new</span> MiniCssExtractPlugin({
+</span></span><span style="display:flex;"><span>      filename: <span style="color:#ed9d13">&#39;[name].[contenthash].css&#39;</span>
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">new</span> CleanWebpackPlugin(),
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">new</span> CopyPlugin({
+</span></span><span style="display:flex;"><span>      patterns: [
+</span></span><span style="display:flex;"><span>        { from: <span style="color:#ed9d13">&#34;./static&#34;</span>, to: <span style="color:#ed9d13">&#34;./static&#34;</span> },
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">new</span> webpack.DefinePlugin({ <span style="color:#999;font-style:italic">// 在全域環境注入設定的變數,如果開發跟測試使用的config檔不同可以使用
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#999;font-style:italic">// Definitions...
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      PRODUCTION: JSON.stringify(<span style="color:#6ab825;font-weight:bold">false</span>),
+</span></span><span style="display:flex;"><span>      VERSION: JSON.stringify(<span style="color:#ed9d13">&#39;5fa3b9&#39;</span>),
+</span></span><span style="display:flex;"><span>      BROWSER_SUPPORTS_HTML5: <span style="color:#6ab825;font-weight:bold">true</span>
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">new</span> CompressionPlugin()
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  devtool: <span style="color:#ed9d13">&#39;source-map&#39;</span> <span style="color:#999;font-style:italic">// source-map參數會在console端顯示原始的程式碼而非打包過後的程式碼方便debug
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>}
+</span></span></code></pre></div>
+        </div>
+
+        
+        
+        
+        
+        <script src="https://utteranc.es/client.js"
+          repo="bjmqfg83/comment-utterances"
+          issue-term="title"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+          </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<script>
+  var indexURL = "https://bjmqfg83.github.io/index.json"
+</script>
+
+<!-- JS Plugins -->
+
+<script src="https://bjmqfg83.github.io/plugins/jQuery/jquery.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/slick/slick.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/venobox/venobox.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/fuse.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/mark.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/search.js"></script>
+
+<!-- Main Script -->
+
+<script src="https://bjmqfg83.github.io/js/script.min.js"></script>
+<!-- google analitycs -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2T34DJBTW2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2T34DJBTW2');
+</script>
+// <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script></body>
+</html>

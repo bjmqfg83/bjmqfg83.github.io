@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>flexbox on Leo&#39;s blog</title>
+    <link>https://bjmqfg83.github.io/tags/flexbox/</link>
+    <description>Recent content in flexbox on Leo&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Tue, 25 Aug 2020 12:54:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://bjmqfg83.github.io/tags/flexbox/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Css flex-shrink是怎麼縮的?</title>
+      <link>https://bjmqfg83.github.io/blog/flex-shrink/</link>
+      <pubDate>Tue, 25 Aug 2020 12:54:00 +0800</pubDate>
+      
+      <guid>https://bjmqfg83.github.io/blog/flex-shrink/</guid>
+      <description>當內部元素的寬度超過容器寬度時我們可以使用flex-shrink將內部元素的寬度縮減讓元素不會超過容器
+那flex-shrink到底是怎麼做寬度的縮減?
+基礎公式如下
+元素縮減的寬度 = 超出的總寬度 * 該元素的flex-shrink / 各元素flex-shrink總和</description>
+    </item>
+    
+  </channel>
+</rss>

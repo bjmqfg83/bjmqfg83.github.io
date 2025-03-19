@@ -1,153 +1,310 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="A minimal blog focused on excellent reading experience"><title>WORLD CLOCK-Javascript新手地下城</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><script async src="https://www.googletagmanager.com/gtag/js?id=G-2T34DJBTW2">
-  // _
-</script> <script>(function(){const id = "G-2T34DJBTW2";
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+  <meta charset="utf-8">
+  <title>
+    
+    WORLD CLOCK-Javascript新手地下城
+    
+  </title>
+  <!-- mobile responsive meta -->
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description"
+    content="六角學院Javscript新手地下城4F時區">
+  
+  <meta name="author"
+    content="Leo">
+  <meta name="generator" content="Hugo 0.101.0" />
 
-  (() => {
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', id);
-  })();
-})();</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CMTcOisY.js"></script><link rel="stylesheet" href="/_astro/archive.D5PqhWfd.css">
-<style>.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
-</style></head> <body class="min-h-screen bg-white dark:bg-gray-900"> <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8"> <header class="py-6"> <nav class="flex justify-between items-center flex-wrap"> <a href="/" class="text-2xl font-bold text-gray-900 dark:text-white">Leo&#39;s blog</a> <div class="flex items-center gap-6"> <ul class="flex gap-6"> <li> <a href="/" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white"> Home </a> </li><li> <a href="/blog" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white"> Blog </a> </li><li> <a href="/tags" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white"> Tags </a> </li><li> <a href="/archive" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white"> Archive </a> </li> </ul> <button id="search-button" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white" aria-label="Search"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="11" cy="11" r="8"></circle> <line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </button> <div id="search-modal" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 hidden flex items-start justify-center pt-24"> <div class="flex items-start bg-white dark:bg-gray-800 rounded-lg p-6 max-w-2xl w-full mx-4 flex-col"> <input type="text" id="search-input" class="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white mb-4" placeholder="Search posts..." autocomplete="off"> <div id="search-results" class="max-h-96 overflow-y-auto w-full"> <div class="p-4 text-gray-500 dark:text-gray-400">No results found</div> </div> </div> </div> <script type="module">let f=[],o,c,s,g,m,l;function v(a,e){return(...t)=>{clearTimeout(l),l=setTimeout(()=>a(...t),e)}}async function L(){f=await(await fetch("/api/search.json")).json(),o=document.getElementById("search-input"),c=document.getElementById("search-results"),s=document.getElementById("search-modal"),g=document.getElementById("search-button"),m=document.getElementById("close-search");const e=v(b,300);return o?.addEventListener("input",e),g?.addEventListener("click",p),m?.addEventListener("click",d),s?.addEventListener("click",t=>{t.target===s&&d()}),document.addEventListener("keydown",t=>{t.key==="Escape"&&!s?.classList.contains("hidden")&&d()}),()=>{clearTimeout(l)}}function p(){s?.classList.remove("hidden"),o?.focus()}function d(){s?.classList.add("hidden"),o.value="",c.innerHTML=`
-            <div class="p-4 text-gray-500 dark:text-gray-400">
-          No results found
+  <!-- plugins -->
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/bootstrap/bootstrap.min.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/slick/slick.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/themify-icons/themify-icons.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/venobox/venobox.css ">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/scss/style.min.css"
+    media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon"
+    href="https://bjmqfg83.github.io/images/favicon.png "
+    type="image/x-icon">
+  <link rel="icon"
+    href="https://bjmqfg83.github.io/images/favicon.png "
+    type="image/x-icon">
+
+  
+
+</head><body>
+<!-- preloader start -->
+<div class="preloader">
+  
+</div>
+<!-- preloader end -->
+<!-- navigation -->
+<header class="navigation">
+  <div class="container">
+    
+    <nav class="navbar navbar-expand-lg navbar-white bg-transparent border-bottom pl-0">
+      <a class="navbar-brand mobile-view text-dark"
+        href="https://bjmqfg83.github.io"><img class="img-fluid header-logo mr-3"
+          src="https://bjmqfg83.github.io/images/favicon.png"
+          alt="Leo&#39;s blog">Leo&#39;s blog</a>
+      <button class="navbar-toggler border-0"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navigation">
+        <i class="ti-menu h3"></i>
+      </button>
+
+      <div class="collapse navbar-collapse text-center"
+        id="navigation">
+        
+
+        <a class="navbar-brand mr-auto desktop-view text-dark"
+          href="https://bjmqfg83.github.io"><img class="img-fluid header-logo mr-3"
+            src="https://bjmqfg83.github.io/images/favicon.png"
+            alt="Leo&#39;s blog">Leo&#39;s blog</a>
+
+        <ul class="navbar-nav">
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+              href="https://bjmqfg83.github.io/">Home</a>
+          </li>
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+              href="https://bjmqfg83.github.io/about">About</a>
+          </li>
+          
+          
+        </ul>
+
+        
+        <!-- search -->
+        <div class="search pl-lg-4">
+          <button id="searchOpen"
+            class="search-btn"><i class="ti-search"></i></button>
+          <div class="search-wrapper">
+            <form action="https://bjmqfg83.github.io/search"
+              class="h-100">
+              <input class="search-box px-4"
+                id="search-query"
+                name="s"
+                type="search"
+                placeholder="Type & Hit Enter...">
+            </form>
+            <button id="searchClose"
+              class="search-close"><i class="ti-close text-dark"></i></button>
+          </div>
         </div>
-  `}function y(a,e){if(!e)return a;const t=new RegExp(`(${e})`,"gi");return a.replace(t,'<mark class="bg-yellow-200 dark:bg-yellow-800">$1</mark>')}function b(a){const e=a.target.value.toLowerCase();if(!e){c.innerHTML=`
-        <div class="p-4 text-gray-500 dark:text-gray-400">
-          No results found
+        
+
+        
+      </div>
+    </nav>
+  </div>
+</header>
+<!-- /navigation -->
+<section class="section-sm article-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <h2 class="article-font">WORLD CLOCK-Javascript新手地下城</h2>
+        <div class="mb-3 post-meta">
+          <span>By Leo</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          <span>10 February 2021</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          
+          <a href="/categories/javascript"
+            class="text-primary">Javascript</a>
+          
         </div>
-      `;return}const t=f.filter(n=>`${n.title} ${n.description} ${n.content} ${n.tags?.join(" ")}`.toLowerCase().includes(e)).map(n=>{const i=n.content.toLowerCase().indexOf(e.toLowerCase());let r="";if(i!==-1){const u=Math.max(0,i-50),h=Math.min(n.content.length,i+e.length+50);r=n.content.slice(u,h),u>0&&(r="..."+r),h<n.content.length&&(r=r+"...")}const x=y(n.title,e),k=y(r,e);return{...n,matchedContent:k,matchedTitle:x}}).slice(0,5);E(t)}function E(a){a.length===0?c.innerHTML=`
-        <div class="p-4 text-gray-500 dark:text-gray-400">
-          No results found
-        </div>
-      `:c.innerHTML=a.map(e=>`
-            <a
-              href="/blog/${e.slug}"
-              class="block p-4 hover:bg-gray-100 dark:hover:bg-gray-700 hover:rounded transition-all duration-200 transform"
-            >
-              <h3 class="font-medium text-gray-900 dark:text-white">
-                ${e.matchedTitle||e.title}
-              </h3>
-              <p class="text-sm text-gray-500 dark:text-gray-400">
-                ${e.description||""}
-              </p>
-              ${e.matchedContent?`
-                <p class="text-sm text-gray-600 dark:text-gray-300 mt-2 font-mono">
-                  ${e.matchedContent}
-                </p>
-              `:""}
-              ${e.tags?.map(t=>`
-                  <span class="inline-block bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded-full mt-2 mr-2">
-                    ${t}
-                  </span>
-                  `).join("")}
-            </a>
-          `).join(""),c.classList.remove("hidden")}document.addEventListener("astro:page-load",L);</script> <button id="themeToggle" class="p-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white" aria-label="Toggle theme"> <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path> </svg> <svga id="moon-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path> </svga> </button> <script type="module">const t=()=>{const e=typeof localStorage<"u"&&localStorage.getItem("theme")?localStorage.getItem("theme"):window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";e==="light"?document.documentElement.classList.remove("dark"):document.documentElement.classList.add("dark"),window.localStorage.setItem("theme",e)},o=()=>{const e=document.documentElement;e.classList.toggle("dark");const a=e.classList.contains("dark");localStorage.setItem("theme",a?"dark":"light")};t();document.addEventListener("astro:after-swap",t);document.addEventListener("astro:page-load",()=>{document.getElementById("themeToggle")?.addEventListener("click",o)});</script> </div> </nav> </header> <main class="py-12">  <article class="max-w-3xl mx-auto px-4">  <header class="mb-12"> <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100"> WORLD CLOCK-Javascript新手地下城 </h1> <div class="mb-6"> <time datetime="2021-02-10T00:00:00.000Z" class="text-gray-600 dark:text-gray-400"> February 10, 2021 </time> </div> <div class="flex gap-2"> <a href="/tags/程式學習" class="text-sm px-3 py-1 text-primary-700 hover:text-primary-600 bg-gray-50 dark:text-primary-400 dark:bg-gray-800 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600">
-#程式學習 </a><a href="/tags/javascript" class="text-sm px-3 py-1 text-primary-700 hover:text-primary-600 bg-gray-50 dark:text-primary-400 dark:bg-gray-800 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600">
-#javascript </a> </div> </header> <div class="prose prose-lg dark:prose-invert
-      prose-headings:text-gray-900 dark:prose-headings:text-gray-100
-      prose-p:text-gray-700 dark:prose-p:text-gray-300
-      prose-a:text-primary-600 dark:prose-a:text-primary-400
-      hover:prose-a:text-primary-500 dark:hover:prose-a:text-primary-300
-      prose-strong:text-gray-900 dark:prose-strong:text-gray-100
-      prose-code:text-gray-300 dark:prose-code:text-gray-400
-      prose-blockquote:text-gray-700 dark:prose-blockquote:text-gray-300
-      prose-span:text-gray-700 dark:prose-span:text-gray-300
-      prose-li:text-gray-700 dark:prose-li:text-gray-300
-      max-w-none">  <h3 id="使用技術">使用技術</h3>
+        
+        <img src="https://bjmqfg83.github.io/images/post/world_clock.png"
+          class="img-fluid w-100 mb-4"
+          alt="WORLD CLOCK-Javascript新手地下城">
+        
+        <div class="content mb-5 article">
+          <h3 id="使用技術">使用技術</h3>
 <p>JS : For迴圈、Date、string、setInterval</p>
 <p>CSS: SCSS(CSS前處理語言)、Grid Layout</p>
 <p>Others: google fonts</p>
 <h3 id="開發歷程">開發歷程</h3>
 <p>這次的切版跟程式邏輯都不算複雜,麻煩的是要找Date().toLocaleString的參數設定,有需要的可以看看參考資料的連結，現在這邊來跟各位分享相關知識</p>
 <h3 id="時間戳timestamp">時間戳timestamp</h3>
-<p>timestamp指的是從1970年1月1日0時0分0秒開始到現在總共經過多少豪秒數，可用於追蹤時間、計算時間差、日期排序等等…，在js內可透過new Date().getTime()取得，不過在查詢資料的時候看到有人說是經過的「秒數」，但使用相關函式獲取到的到底是毫秒還是秒這部分可能跟程式語言、系統環境有關，javascript獲取到的是「毫秒數」、php獲取到的是「秒數」，有興趣的可以到<a href="https://www.epochconverter.com/">epochconverter</a>、<a href="https://www.unixtimestamp.com/">unixtimestamp</a>看看</p>
+<p>timestamp指的是從1970年1月1日0時0分0秒開始到現在總共經過多少豪秒數，可用於追蹤時間、計算時間差、日期排序等等&hellip;，在js內可透過new Date().getTime()取得，不過在查詢資料的時候看到有人說是經過的「秒數」，但使用相關函式獲取到的到底是毫秒還是秒這部分可能跟程式語言、系統環境有關，javascript獲取到的是「毫秒數」、php獲取到的是「秒數」，有興趣的可以到<a href="https://www.epochconverter.com/">epochconverter</a>、<a href="https://www.unixtimestamp.com/">unixtimestamp</a>看看</p>
 <h3 id="gmtutc">GMT、UTC</h3>
 <p>GMT全稱為格林威治標準時間(Greenwich Mean Time)、UTC全稱為世界協調時間(Coordinated Universal Time),台灣所在的時區快八小時所以可以表示成「GMT+8」或是「UTC+8」，那至於GMT、UTC的差別詳細的可以參考泛科學的<a href="https://pansci.asia/archives/84978?fbclid=IwAR0O3OFctmf9szayS9dB-JcK-sfij-SlWJctwmorwFs4y0SS6Cro_ZyXkOg">到底是 GMT+8 還是 UTC+8 ?</a>，日常生活中兩者沒什麼區別可以混用,只是由於地球自轉速度在變慢導致GMT的1秒越來越長，UTC會在超過GMT快1秒時加入「閏秒」來抵消超前的量</p>
 <h3 id="world-clock時區">world clock時區</h3>
 <p>要獲取指定地區的日期時間我們可使用Date物件的toLocaleString</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>new Date().toLocaleString([locales[, options]])</span></span></code></pre>
-<p>locales為語言環境，簡單來說是讓時間以該語言的格式顯示，比如說你locales給’zh-tw(台灣)‘的話顯示的格式為”2021/2/10 下午1:42:31”，如果給’en-GB(英國)‘的話顯示的格式為”10/02/2021, 13:48:17”，但這只是顯示的格式而已,時區還是在使用者所在的地區,如果要顯示別的時區的時間需要透過options做設定</p>
+<pre tabindex="0"><code>new Date().toLocaleString([locales[, options]])
+</code></pre><p>locales為語言環境，簡單來說是讓時間以該語言的格式顯示，比如說你locales給'zh-tw(台灣)'的話顯示的格式為&quot;2021/2/10 下午1:42:31&quot;，如果給'en-GB(英國)'的話顯示的格式為&quot;10/02/2021, 13:48:17&quot;，但這只是顯示的格式而已,時區還是在使用者所在的地區,如果要顯示別的時區的時間需要透過options做設定</p>
 <p>options可以設定時區以及年、月、日等等的顯示格式，這邊列出有使用到的</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>    timeZone =&gt; 設定要顯示的地區時間</span></span>
-<span class="line"><span>    hour12 =&gt; 設定顯示是否為12小時制</span></span>
-<span class="line"><span>    year  =&gt; 設定顯示年分格式</span></span>
-<span class="line"><span>    month  =&gt; 設定顯示月份格式,可為英文或數字</span></span>
-<span class="line"><span>    day   =&gt; 設定顯示日期格式</span></span>
-<span class="line"><span>    hour  =&gt; 設定顯示小時格式</span></span>
-<span class="line"><span>    minute =&gt; 設定顯示分鐘格式</span></span></code></pre>
-<p><strong>注: locales、options內詳細的參數設定可以直接看最後面的參考資料</strong></p>
+<pre tabindex="0"><code>    timeZone =&gt; 設定要顯示的地區時間
+    hour12 =&gt; 設定顯示是否為12小時制
+    year  =&gt; 設定顯示年分格式
+    month  =&gt; 設定顯示月份格式,可為英文或數字
+    day   =&gt; 設定顯示日期格式
+    hour  =&gt; 設定顯示小時格式
+    minute =&gt; 設定顯示分鐘格式
+</code></pre><p><strong>注: locales、options內詳細的參數設定可以直接看最後面的參考資料</strong></p>
 <h4 id="js程式邏輯">JS程式邏輯</h4>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">  // 時區依序為美國、英國倫敦、曼谷、台北、澳洲雪梨</span></span>
-<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> timeZones</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span></span>
-<span class="line"><span style="color:#9ECBFF">    &quot;America/New_York&quot;</span><span style="color:#E1E4E8">,</span></span>
-<span class="line"><span style="color:#9ECBFF">    &quot;Europe/London&quot;</span><span style="color:#E1E4E8">,</span></span>
-<span class="line"><span style="color:#9ECBFF">    &quot;Asia/Bangkok&quot;</span><span style="color:#E1E4E8">,</span></span>
-<span class="line"><span style="color:#9ECBFF">    &quot;Asia/Taipei&quot;</span><span style="color:#E1E4E8">,</span></span>
-<span class="line"><span style="color:#9ECBFF">    &quot;Australia/Sydney&quot;</span></span>
-<span class="line"><span style="color:#E1E4E8">  ];</span></span>
-<span class="line"><span style="color:#6A737D">  // toLocaleString options參數 </span></span>
-<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> options</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
-<span class="line"><span style="color:#E1E4E8">    timeZone: </span><span style="color:#9ECBFF">&quot;Asia/Taipei&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 時區設定台北</span></span>
-<span class="line"><span style="color:#E1E4E8">    hour12: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">//不以12小時制顯示,會以24小時制顯示</span></span>
-<span class="line"><span style="color:#E1E4E8">    year: </span><span style="color:#9ECBFF">&quot;numeric&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">//正常數字顯示</span></span>
-<span class="line"><span style="color:#E1E4E8">    month: </span><span style="color:#9ECBFF">&quot;short&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">//short只會顯示三位英文 ex: February =&gt; Feb</span></span>
-<span class="line"><span style="color:#E1E4E8">    day: </span><span style="color:#9ECBFF">&quot;2-digit&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">//顯示兩位 ex: 1 =&gt; 01</span></span>
-<span class="line"><span style="color:#E1E4E8">    hour: </span><span style="color:#9ECBFF">&quot;2-digit&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">//顯示兩位</span></span>
-<span class="line"><span style="color:#E1E4E8">    minute: </span><span style="color:#9ECBFF">&quot;2-digit&quot;</span><span style="color:#6A737D"> //顯示兩位</span></span>
-<span class="line"><span style="color:#E1E4E8">  };</span></span>
-<span class="line"><span style="color:#F97583">  function</span><span style="color:#B392F0"> world_clock</span><span style="color:#E1E4E8">() {</span></span>
-<span class="line"><span style="color:#E1E4E8">    timeZones.</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">item</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">index</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
-<span class="line"><span style="color:#F97583">      var</span><span style="color:#E1E4E8"> temp_clockInfo </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> &quot;&quot;</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#F97583">      var</span><span style="color:#E1E4E8"> temp_dateInfo </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> &quot;&quot;</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">      options.timeZone </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> item;</span></span>
-<span class="line"><span style="color:#6A737D">      // 時區使用英國(en-GB)顯示結果就會是日、月、年、時間</span></span>
-<span class="line"><span style="color:#E1E4E8">      temp_clockInfo </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Date</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">toLocaleString</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;en-GB&quot;</span><span style="color:#E1E4E8">, options);</span></span>
-<span class="line"><span style="color:#6A737D">      //月份後面添加「. 」後重新拼接日期字串</span></span>
-<span class="line"><span style="color:#E1E4E8">      temp_dateInfo </span><span style="color:#F97583">=</span></span>
-<span class="line"><span style="color:#E1E4E8">        temp_clockInfo.</span><span style="color:#B392F0">split</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;,&quot;</span><span style="color:#E1E4E8">)[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">].</span><span style="color:#B392F0">split</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot; &quot;</span><span style="color:#E1E4E8">)[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">+</span></span>
-<span class="line"><span style="color:#9ECBFF">        &quot; &quot;</span><span style="color:#F97583"> +</span></span>
-<span class="line"><span style="color:#E1E4E8">        temp_clockInfo.</span><span style="color:#B392F0">split</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;,&quot;</span><span style="color:#E1E4E8">)[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">].</span><span style="color:#B392F0">split</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot; &quot;</span><span style="color:#E1E4E8">)[</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">+</span></span>
-<span class="line"><span style="color:#9ECBFF">        &quot;. &quot;</span><span style="color:#F97583"> +</span></span>
-<span class="line"><span style="color:#E1E4E8">        temp_clockInfo.</span><span style="color:#B392F0">split</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;,&quot;</span><span style="color:#E1E4E8">)[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">].</span><span style="color:#B392F0">split</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot; &quot;</span><span style="color:#E1E4E8">)[</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">];</span></span>
-<span class="line"><span style="color:#6A737D">      //更新年月日的元素</span></span>
-<span class="line"><span style="color:#E1E4E8">      document.</span><span style="color:#B392F0">querySelectorAll</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;.location-info .location-date&quot;</span><span style="color:#E1E4E8">)[index].innerText </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> temp_dateInfo;</span></span>
-<span class="line"><span style="color:#6A737D">      //依格式中的「,」分割出時分後更新DOM,透過index下標去找目標元素</span></span>
-<span class="line"><span style="color:#E1E4E8">      document.</span><span style="color:#B392F0">querySelectorAll</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;.location-info &gt; div:nth-of-type(2)&quot;</span><span style="color:#E1E4E8">)[index].innerText </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> temp_clockInfo.</span><span style="color:#B392F0">split</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;,&quot;</span><span style="color:#E1E4E8">)[</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">].</span><span style="color:#B392F0">trim</span><span style="color:#E1E4E8">();</span></span>
-<span class="line"><span style="color:#E1E4E8">    });</span></span>
-<span class="line"><span style="color:#E1E4E8">  }</span></span>
-<span class="line"><span style="color:#B392F0">  world_clock</span><span style="color:#E1E4E8">();</span></span>
-<span class="line"><span style="color:#6A737D">  // 每秒鐘調用一次判斷getSeconds()是否為59，為59示1分鐘要到可以調用函數更新時間</span></span>
-<span class="line"><span style="color:#F97583">  var</span><span style="color:#E1E4E8"> clock_timer </span><span style="color:#F97583">=</span><span style="color:#B392F0"> setInterval</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">function</span><span style="color:#E1E4E8">(){</span></span>
-<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">new</span><span style="color:#B392F0"> Date</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">getSeconds</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">===</span><span style="color:#79B8FF">59</span><span style="color:#E1E4E8">){</span></span>
-<span class="line"><span style="color:#B392F0">      world_clock</span><span style="color:#E1E4E8">();</span></span>
-<span class="line"><span style="color:#E1E4E8">    }</span></span>
-<span class="line"><span style="color:#E1E4E8">  },</span><span style="color:#79B8FF">1000</span><span style="color:#E1E4E8">);</span></span></code></pre>
-<h3 id="world-clock-codepen連結">world clock codepen連結</h3>
-<div class="codepen" data-height="600" data-theme-id="dark" data-default-tab="result" data-user="mgnlhdsl" data-slug-hash="GRNqGjW" style="height: 600px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"> <span>See the Pen <a href="https://codepen.io/mgnlhdsl/pen/GRNqGjW/">test</a> by mgnlhdsl (<a href="https://codepen.io/mgnlhdsl">@mgnlhdsl</a>) on <a href="https://codepen.io">CodePen</a>.</span> </div> <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script> <script>
-  function initCodePen() {
-    if (window.__CPEmbed) {
-      window.__CPEmbed();
-      console.log('initCodePen');
-    } else {
-      setTimeout(() => {
-        if (window.__CPEmbed) {
-          window.__CPEmbed();
-        }
-      }, 1000);
-    }
-  }
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// 時區依序為美國、英國倫敦、曼谷、台北、澳洲雪梨
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  <span style="color:#6ab825;font-weight:bold">const</span> timeZones = [
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;America/New_York&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;Europe/London&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;Asia/Bangkok&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;Asia/Taipei&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ed9d13">&#34;Australia/Sydney&#34;</span>
+</span></span><span style="display:flex;"><span>  ];
+</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// toLocaleString options參數 
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  <span style="color:#6ab825;font-weight:bold">const</span> options = {
+</span></span><span style="display:flex;"><span>    timeZone: <span style="color:#ed9d13">&#34;Asia/Taipei&#34;</span>, <span style="color:#999;font-style:italic">// 時區設定台北
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    hour12: <span style="color:#6ab825;font-weight:bold">false</span>, <span style="color:#999;font-style:italic">//不以12小時制顯示,會以24小時制顯示
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    year: <span style="color:#ed9d13">&#34;numeric&#34;</span>, <span style="color:#999;font-style:italic">//正常數字顯示
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    month: <span style="color:#ed9d13">&#34;short&#34;</span>, <span style="color:#999;font-style:italic">//short只會顯示三位英文 ex: February =&gt; Feb
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    day: <span style="color:#ed9d13">&#34;2-digit&#34;</span>, <span style="color:#999;font-style:italic">//顯示兩位 ex: 1 =&gt; 01
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    hour: <span style="color:#ed9d13">&#34;2-digit&#34;</span>, <span style="color:#999;font-style:italic">//顯示兩位
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    minute: <span style="color:#ed9d13">&#34;2-digit&#34;</span> <span style="color:#999;font-style:italic">//顯示兩位
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  };
+</span></span><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">function</span> world_clock() {
+</span></span><span style="display:flex;"><span>    timeZones.forEach((item, index) =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#6ab825;font-weight:bold">var</span> temp_clockInfo = <span style="color:#ed9d13">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#6ab825;font-weight:bold">var</span> temp_dateInfo = <span style="color:#ed9d13">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>      options.timeZone = item;
+</span></span><span style="display:flex;"><span>      <span style="color:#999;font-style:italic">// 時區使用英國(en-GB)顯示結果就會是日、月、年、時間
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      temp_clockInfo = <span style="color:#6ab825;font-weight:bold">new</span> <span style="color:#24909d">Date</span>().toLocaleString(<span style="color:#ed9d13">&#34;en-GB&#34;</span>, options);
+</span></span><span style="display:flex;"><span>      <span style="color:#999;font-style:italic">//月份後面添加「. 」後重新拼接日期字串
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      temp_dateInfo =
+</span></span><span style="display:flex;"><span>        temp_clockInfo.split(<span style="color:#ed9d13">&#34;,&#34;</span>)[<span style="color:#3677a9">0</span>].split(<span style="color:#ed9d13">&#34; &#34;</span>)[<span style="color:#3677a9">0</span>] +
+</span></span><span style="display:flex;"><span>        <span style="color:#ed9d13">&#34; &#34;</span> +
+</span></span><span style="display:flex;"><span>        temp_clockInfo.split(<span style="color:#ed9d13">&#34;,&#34;</span>)[<span style="color:#3677a9">0</span>].split(<span style="color:#ed9d13">&#34; &#34;</span>)[<span style="color:#3677a9">1</span>] +
+</span></span><span style="display:flex;"><span>        <span style="color:#ed9d13">&#34;. &#34;</span> +
+</span></span><span style="display:flex;"><span>        temp_clockInfo.split(<span style="color:#ed9d13">&#34;,&#34;</span>)[<span style="color:#3677a9">0</span>].split(<span style="color:#ed9d13">&#34; &#34;</span>)[<span style="color:#3677a9">2</span>];
+</span></span><span style="display:flex;"><span>      <span style="color:#999;font-style:italic">//更新年月日的元素
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#24909d">document</span>.querySelectorAll(<span style="color:#ed9d13">&#34;.location-info .location-date&#34;</span>)[index].innerText = temp_dateInfo;
+</span></span><span style="display:flex;"><span>      <span style="color:#999;font-style:italic">//依格式中的「,」分割出時分後更新DOM,透過index下標去找目標元素
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#24909d">document</span>.querySelectorAll(<span style="color:#ed9d13">&#34;.location-info &gt; div:nth-of-type(2)&#34;</span>)[index].innerText = temp_clockInfo.split(<span style="color:#ed9d13">&#34;,&#34;</span>)[<span style="color:#3677a9">1</span>].trim();
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  world_clock();
+</span></span><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">// 每秒鐘調用一次判斷getSeconds()是否為59，為59示1分鐘要到可以調用函數更新時間
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  <span style="color:#6ab825;font-weight:bold">var</span> clock_timer = setInterval(<span style="color:#6ab825;font-weight:bold">function</span>(){
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">if</span>(<span style="color:#6ab825;font-weight:bold">new</span> <span style="color:#24909d">Date</span>().getSeconds()===<span style="color:#3677a9">59</span>){
+</span></span><span style="display:flex;"><span>      world_clock();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  },<span style="color:#3677a9">1000</span>);
+</span></span></code></pre></div><h3 id="world-clock-codepen連結">world clock codepen連結</h3>
 
-  // 只需要监听这两个事件
-  document.addEventListener('load', initCodePen);
-  document.addEventListener('astro:page-load', initCodePen);
-</script>
+
+
+
+
+
+
+<script
+    data-slug-hash="GRNqGjW"
+    data-user="mgnlhdsl"
+    data-height="700"
+    data-default-tab="result"
+    data-theme-id="8862"
+    class='codepen'
+    async
+    src="//codepen.io/assets/embed/ei.js"
+></script>
 <h4 id="參考資料">參考資料:</h4>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString</a></p>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat</a></p>
 <p><a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">https://en.wikipedia.org/wiki/List_of_tz_database_time_zones</a></p>
-<p><a href="https://blog.techbridge.cc/2020/12/26/javascript-date-time-and-timezone/">https://blog.techbridge.cc/2020/12/26/javascript-date-time-and-timezone/</a></p>  </div> </article>  </main> <footer class="py-6 text-center text-gray-600 dark:text-gray-400"> <p>&copy; 2025 Leo&#39;s blog. All rights reserved.</p> </footer> </div> </body></html>
+<p><a href="https://blog.techbridge.cc/2020/12/26/javascript-date-time-and-timezone/">https://blog.techbridge.cc/2020/12/26/javascript-date-time-and-timezone/</a></p>
+
+        </div>
+
+        
+        
+        
+        
+        <script src="https://utteranc.es/client.js"
+          repo="bjmqfg83/comment-utterances"
+          issue-term="title"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+          </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<script>
+  var indexURL = "https://bjmqfg83.github.io/index.json"
+</script>
+
+<!-- JS Plugins -->
+
+<script src="https://bjmqfg83.github.io/plugins/jQuery/jquery.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/slick/slick.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/venobox/venobox.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/fuse.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/mark.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/search.js"></script>
+
+<!-- Main Script -->
+
+<script src="https://bjmqfg83.github.io/js/script.min.js"></script>
+<!-- google analitycs -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2T34DJBTW2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2T34DJBTW2');
+</script>
+// <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script></body>
+</html>

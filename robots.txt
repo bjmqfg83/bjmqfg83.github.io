@@ -1,8 +1,0 @@
-
-User-agent: *
-Allow: /
-Allow: /blog/
-Allow: /tags/
-Allow: /archives/
-
-Sitemap: https://bjmqfg83.github.io/sitemap-index.xml

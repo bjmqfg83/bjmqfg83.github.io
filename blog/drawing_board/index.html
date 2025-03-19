@@ -1,65 +1,152 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="A minimal blog focused on excellent reading experience"><title>畫板drawing board-六角學院Javascript新手地下城</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><script async src="https://www.googletagmanager.com/gtag/js?id=G-2T34DJBTW2">
-  // _
-</script> <script>(function(){const id = "G-2T34DJBTW2";
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+  <meta charset="utf-8">
+  <title>
+    
+    畫板drawing board-六角學院Javascript新手地下城
+    
+  </title>
+  <!-- mobile responsive meta -->
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description"
+    content="六角學院Javscript新手地下城7F畫板">
+  
+  <meta name="author"
+    content="Leo">
+  <meta name="generator" content="Hugo 0.101.0" />
 
-  (() => {
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', id);
-  })();
-})();</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CMTcOisY.js"></script><link rel="stylesheet" href="/_astro/archive.D5PqhWfd.css">
-<style>.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
-</style></head> <body class="min-h-screen bg-white dark:bg-gray-900"> <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8"> <header class="py-6"> <nav class="flex justify-between items-center flex-wrap"> <a href="/" class="text-2xl font-bold text-gray-900 dark:text-white">Leo&#39;s blog</a> <div class="flex items-center gap-6"> <ul class="flex gap-6"> <li> <a href="/" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white"> Home </a> </li><li> <a href="/blog" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white"> Blog </a> </li><li> <a href="/tags" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white"> Tags </a> </li><li> <a href="/archive" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white"> Archive </a> </li> </ul> <button id="search-button" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white" aria-label="Search"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="11" cy="11" r="8"></circle> <line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </button> <div id="search-modal" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 hidden flex items-start justify-center pt-24"> <div class="flex items-start bg-white dark:bg-gray-800 rounded-lg p-6 max-w-2xl w-full mx-4 flex-col"> <input type="text" id="search-input" class="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white mb-4" placeholder="Search posts..." autocomplete="off"> <div id="search-results" class="max-h-96 overflow-y-auto w-full"> <div class="p-4 text-gray-500 dark:text-gray-400">No results found</div> </div> </div> </div> <script type="module">let f=[],o,c,s,g,m,l;function v(a,e){return(...t)=>{clearTimeout(l),l=setTimeout(()=>a(...t),e)}}async function L(){f=await(await fetch("/api/search.json")).json(),o=document.getElementById("search-input"),c=document.getElementById("search-results"),s=document.getElementById("search-modal"),g=document.getElementById("search-button"),m=document.getElementById("close-search");const e=v(b,300);return o?.addEventListener("input",e),g?.addEventListener("click",p),m?.addEventListener("click",d),s?.addEventListener("click",t=>{t.target===s&&d()}),document.addEventListener("keydown",t=>{t.key==="Escape"&&!s?.classList.contains("hidden")&&d()}),()=>{clearTimeout(l)}}function p(){s?.classList.remove("hidden"),o?.focus()}function d(){s?.classList.add("hidden"),o.value="",c.innerHTML=`
-            <div class="p-4 text-gray-500 dark:text-gray-400">
-          No results found
+  <!-- plugins -->
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/bootstrap/bootstrap.min.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/slick/slick.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/themify-icons/themify-icons.css ">
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/plugins/venobox/venobox.css ">
+  
+
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet"
+    href="https://bjmqfg83.github.io/scss/style.min.css"
+    media="screen">
+
+  <!--Favicon-->
+  <link rel="shortcut icon"
+    href="https://bjmqfg83.github.io/images/favicon.png "
+    type="image/x-icon">
+  <link rel="icon"
+    href="https://bjmqfg83.github.io/images/favicon.png "
+    type="image/x-icon">
+
+  
+
+</head><body>
+<!-- preloader start -->
+<div class="preloader">
+  
+</div>
+<!-- preloader end -->
+<!-- navigation -->
+<header class="navigation">
+  <div class="container">
+    
+    <nav class="navbar navbar-expand-lg navbar-white bg-transparent border-bottom pl-0">
+      <a class="navbar-brand mobile-view text-dark"
+        href="https://bjmqfg83.github.io"><img class="img-fluid header-logo mr-3"
+          src="https://bjmqfg83.github.io/images/favicon.png"
+          alt="Leo&#39;s blog">Leo&#39;s blog</a>
+      <button class="navbar-toggler border-0"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navigation">
+        <i class="ti-menu h3"></i>
+      </button>
+
+      <div class="collapse navbar-collapse text-center"
+        id="navigation">
+        
+
+        <a class="navbar-brand mr-auto desktop-view text-dark"
+          href="https://bjmqfg83.github.io"><img class="img-fluid header-logo mr-3"
+            src="https://bjmqfg83.github.io/images/favicon.png"
+            alt="Leo&#39;s blog">Leo&#39;s blog</a>
+
+        <ul class="navbar-nav">
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+              href="https://bjmqfg83.github.io/">Home</a>
+          </li>
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link"
+              href="https://bjmqfg83.github.io/about">About</a>
+          </li>
+          
+          
+        </ul>
+
+        
+        <!-- search -->
+        <div class="search pl-lg-4">
+          <button id="searchOpen"
+            class="search-btn"><i class="ti-search"></i></button>
+          <div class="search-wrapper">
+            <form action="https://bjmqfg83.github.io/search"
+              class="h-100">
+              <input class="search-box px-4"
+                id="search-query"
+                name="s"
+                type="search"
+                placeholder="Type & Hit Enter...">
+            </form>
+            <button id="searchClose"
+              class="search-close"><i class="ti-close text-dark"></i></button>
+          </div>
         </div>
-  `}function y(a,e){if(!e)return a;const t=new RegExp(`(${e})`,"gi");return a.replace(t,'<mark class="bg-yellow-200 dark:bg-yellow-800">$1</mark>')}function b(a){const e=a.target.value.toLowerCase();if(!e){c.innerHTML=`
-        <div class="p-4 text-gray-500 dark:text-gray-400">
-          No results found
+        
+
+        
+      </div>
+    </nav>
+  </div>
+</header>
+<!-- /navigation -->
+<section class="section-sm article-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <h2 class="article-font">畫板drawing board-六角學院Javascript新手地下城</h2>
+        <div class="mb-3 post-meta">
+          <span>By Leo</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          <span>03 March 2021</span>
+          
+          <span class="border-bottom border-primary px-2 mx-1"></span>
+          
+          <a href="/categories/javascript"
+            class="text-primary">Javascript</a>
+          
         </div>
-      `;return}const t=f.filter(n=>`${n.title} ${n.description} ${n.content} ${n.tags?.join(" ")}`.toLowerCase().includes(e)).map(n=>{const i=n.content.toLowerCase().indexOf(e.toLowerCase());let r="";if(i!==-1){const u=Math.max(0,i-50),h=Math.min(n.content.length,i+e.length+50);r=n.content.slice(u,h),u>0&&(r="..."+r),h<n.content.length&&(r=r+"...")}const x=y(n.title,e),k=y(r,e);return{...n,matchedContent:k,matchedTitle:x}}).slice(0,5);E(t)}function E(a){a.length===0?c.innerHTML=`
-        <div class="p-4 text-gray-500 dark:text-gray-400">
-          No results found
-        </div>
-      `:c.innerHTML=a.map(e=>`
-            <a
-              href="/blog/${e.slug}"
-              class="block p-4 hover:bg-gray-100 dark:hover:bg-gray-700 hover:rounded transition-all duration-200 transform"
-            >
-              <h3 class="font-medium text-gray-900 dark:text-white">
-                ${e.matchedTitle||e.title}
-              </h3>
-              <p class="text-sm text-gray-500 dark:text-gray-400">
-                ${e.description||""}
-              </p>
-              ${e.matchedContent?`
-                <p class="text-sm text-gray-600 dark:text-gray-300 mt-2 font-mono">
-                  ${e.matchedContent}
-                </p>
-              `:""}
-              ${e.tags?.map(t=>`
-                  <span class="inline-block bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded-full mt-2 mr-2">
-                    ${t}
-                  </span>
-                  `).join("")}
-            </a>
-          `).join(""),c.classList.remove("hidden")}document.addEventListener("astro:page-load",L);</script> <button id="themeToggle" class="p-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white" aria-label="Toggle theme"> <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path> </svg> <svga id="moon-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path> </svga> </button> <script type="module">const t=()=>{const e=typeof localStorage<"u"&&localStorage.getItem("theme")?localStorage.getItem("theme"):window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";e==="light"?document.documentElement.classList.remove("dark"):document.documentElement.classList.add("dark"),window.localStorage.setItem("theme",e)},o=()=>{const e=document.documentElement;e.classList.toggle("dark");const a=e.classList.contains("dark");localStorage.setItem("theme",a?"dark":"light")};t();document.addEventListener("astro:after-swap",t);document.addEventListener("astro:page-load",()=>{document.getElementById("themeToggle")?.addEventListener("click",o)});</script> </div> </nav> </header> <main class="py-12">  <article class="max-w-3xl mx-auto px-4">  <header class="mb-12"> <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100"> 畫板drawing board-六角學院Javascript新手地下城 </h1> <div class="mb-6"> <time datetime="2021-03-03T00:00:00.000Z" class="text-gray-600 dark:text-gray-400"> March 3, 2021 </time> </div> <div class="flex gap-2"> <a href="/tags/程式學習" class="text-sm px-3 py-1 text-primary-700 hover:text-primary-600 bg-gray-50 dark:text-primary-400 dark:bg-gray-800 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600">
-#程式學習 </a><a href="/tags/javascript" class="text-sm px-3 py-1 text-primary-700 hover:text-primary-600 bg-gray-50 dark:text-primary-400 dark:bg-gray-800 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600">
-#javascript </a> </div> </header> <div class="prose prose-lg dark:prose-invert
-      prose-headings:text-gray-900 dark:prose-headings:text-gray-100
-      prose-p:text-gray-700 dark:prose-p:text-gray-300
-      prose-a:text-primary-600 dark:prose-a:text-primary-400
-      hover:prose-a:text-primary-500 dark:hover:prose-a:text-primary-300
-      prose-strong:text-gray-900 dark:prose-strong:text-gray-100
-      prose-code:text-gray-300 dark:prose-code:text-gray-400
-      prose-blockquote:text-gray-700 dark:prose-blockquote:text-gray-300
-      prose-span:text-gray-700 dark:prose-span:text-gray-300
-      prose-li:text-gray-700 dark:prose-li:text-gray-300
-      max-w-none">  <p>這座山終於快爬完一半了…不得不說如果真的不知道該怎麼做時參考網路上類似的範例是一個還不錯的選擇,不然你可能卡在路上半天還在迷路…</p>
-<p><img src="/images/post/adventure-1807524_1920.jpg" alt/></p>
+        
+        <img src="https://bjmqfg83.github.io/images/post/drawing_board.png"
+          class="img-fluid w-100 mb-4"
+          alt="畫板drawing board-六角學院Javascript新手地下城">
+        
+        <div class="content mb-5 article">
+          <p>這座山終於快爬完一半了&hellip;不得不說如果真的不知道該怎麼做時參考網路上類似的範例是一個還不錯的選擇,不然你可能卡在路上半天還在迷路&hellip;</p>
+<p><img src="/images/post/adventure-1807524_1920.jpg" alt=""></p>
 <p>Photo by <a href="https://pixabay.com/">pixabay</a></p>
 <h3 id="boss-弱點">BOSS 弱點</h3>
 <p>【特定技術】遊戲規則</p>
@@ -76,171 +163,170 @@
 <p>DOM在繪製主要是透過瀏覽器的graphic api來做,因為實際的細節是由瀏覽器處理所以操作上較為簡單,但是DOM的操作是很耗內存的,DOM越多內存的消耗量越大,而canvas雖然操作上較為困難但是速度快且善於處理大量的元素</p>
 <p><strong>要使用時在html內加上canvas,之後js透過id做canvas的相關設定</strong></p>
 <p><strong>HTML</strong></p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">canvas</span><span style="color:#B392F0"> id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">&quot;canvas-panel&quot;</span><span style="color:#E1E4E8">&gt;&lt;/</span><span style="color:#85E89D">canvas</span><span style="color:#E1E4E8">&gt;</span></span></code></pre>
-<p><strong>Javascript</strong></p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">    // 基礎設定</span></span>
-<span class="line"><span style="color:#F97583">   function</span><span style="color:#B392F0"> canvas_setting</span><span style="color:#E1E4E8">() {</span></span>
-<span class="line"><span style="color:#6A737D">      //獲取2d畫筆物件</span></span>
-<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.canvas.getContext) {</span></span>
-<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.canvas.width </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> window.innerWidth; </span><span style="color:#6A737D">//設定canvas寬度為畫面寬度</span></span>
-<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.canvas.height </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> window.innerHeight; </span><span style="color:#6A737D">//設定canvas高度為畫面高度</span></span>
-<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.ctx </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.canvas.</span><span style="color:#B392F0">getContext</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;2d&quot;</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">//獲取canvas 2d畫筆</span></span>
-<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.ctx.lineWidth </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.line_width; </span><span style="color:#6A737D">//設定線條粗細</span></span>
-<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.ctx.strokeStyle </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.pen_color; </span><span style="color:#6A737D">//設定線條顏色</span></span>
-<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
-<span class="line"><span style="color:#B392F0">        alert</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Browser not support canvas&quot;</span><span style="color:#E1E4E8">);</span></span>
-<span class="line"><span style="color:#E1E4E8">      }</span></span>
-<span class="line"><span style="color:#E1E4E8">    }</span></span>
-<span class="line"><span style="color:#6A737D">    //繪畫設定 </span></span>
-<span class="line"><span style="color:#F97583">    function</span><span style="color:#B392F0"> drawImg</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">x1</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">y1</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">x2</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">y2</span><span style="color:#E1E4E8">) {</span><span style="color:#6A737D">//畫圖時需要畫筆以及兩點的x,y座標</span></span>
-<span class="line"><span style="color:#6A737D">        //設定線條的端點如何繪製,round為端點帶有一個半圓形的線蓋</span></span>
-<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.ctx.lineCap </span><span style="color:#F97583">!==</span><span style="color:#9ECBFF"> &quot;round&quot;</span><span style="color:#E1E4E8">) {</span></span>
-<span class="line"><span style="color:#79B8FF">          this</span><span style="color:#E1E4E8">.ctx.lineCap </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> &quot;round&quot;</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">        }</span></span>
-<span class="line"><span style="color:#6A737D">        // 設定線條與線條之間如何連結,round為圓弧形連接</span></span>
-<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.ctx.lineJoin </span><span style="color:#F97583">!==</span><span style="color:#9ECBFF"> &quot;round&quot;</span><span style="color:#E1E4E8">) {</span></span>
-<span class="line"><span style="color:#79B8FF">          this</span><span style="color:#E1E4E8">.ctx.lineJoin </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> &quot;round&quot;</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">        }</span></span>
-<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.ctx.</span><span style="color:#B392F0">beginPath</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">//開始繪製   </span></span>
-<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.ctx.</span><span style="color:#B392F0">moveTo</span><span style="color:#E1E4E8">(x1, y1); </span><span style="color:#6A737D">//設定開始位置</span></span>
-<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.ctx.</span><span style="color:#B392F0">lineTo</span><span style="color:#E1E4E8">(x2, y2); </span><span style="color:#6A737D">//設定移動位置</span></span>
-<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.ctx.</span><span style="color:#B392F0">closePath</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">//關閉路徑</span></span>
-<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.ctx.</span><span style="color:#B392F0">stroke</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">//路徑上色</span></span>
-<span class="line"><span style="color:#E1E4E8">    }</span></span></code></pre>
-<h3 id="mouse-event">Mouse Event</h3>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>  &lt;<span style="color:#6ab825;font-weight:bold">canvas</span> <span style="color:#bbb">id</span>=<span style="color:#ed9d13">&#34;canvas-panel&#34;</span>&gt;&lt;/<span style="color:#6ab825;font-weight:bold">canvas</span>&gt;
+</span></span></code></pre></div><p><strong>Javascript</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>    <span style="color:#999;font-style:italic">// 基礎設定
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>   <span style="color:#6ab825;font-weight:bold">function</span> canvas_setting() {
+</span></span><span style="display:flex;"><span>      <span style="color:#999;font-style:italic">//獲取2d畫筆物件
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#6ab825;font-weight:bold">if</span> (<span style="color:#6ab825;font-weight:bold">this</span>.canvas.getContext) {
+</span></span><span style="display:flex;"><span>        <span style="color:#6ab825;font-weight:bold">this</span>.canvas.width = <span style="color:#24909d">window</span>.innerWidth; <span style="color:#999;font-style:italic">//設定canvas寬度為畫面寬度
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        <span style="color:#6ab825;font-weight:bold">this</span>.canvas.height = <span style="color:#24909d">window</span>.innerHeight; <span style="color:#999;font-style:italic">//設定canvas高度為畫面高度
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        <span style="color:#6ab825;font-weight:bold">this</span>.ctx = <span style="color:#6ab825;font-weight:bold">this</span>.canvas.getContext(<span style="color:#ed9d13">&#34;2d&#34;</span>); <span style="color:#999;font-style:italic">//獲取canvas 2d畫筆
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        <span style="color:#6ab825;font-weight:bold">this</span>.ctx.lineWidth = <span style="color:#6ab825;font-weight:bold">this</span>.line_width; <span style="color:#999;font-style:italic">//設定線條粗細
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        <span style="color:#6ab825;font-weight:bold">this</span>.ctx.strokeStyle = <span style="color:#6ab825;font-weight:bold">this</span>.pen_color; <span style="color:#999;font-style:italic">//設定線條顏色
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      } <span style="color:#6ab825;font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>        alert(<span style="color:#ed9d13">&#34;Browser not support canvas&#34;</span>);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic">//繪畫設定 
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#6ab825;font-weight:bold">function</span> drawImg(x1, y1, x2, y2) {<span style="color:#999;font-style:italic">//畫圖時需要畫筆以及兩點的x,y座標
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        <span style="color:#999;font-style:italic">//設定線條的端點如何繪製,round為端點帶有一個半圓形的線蓋
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        <span style="color:#6ab825;font-weight:bold">if</span> (<span style="color:#6ab825;font-weight:bold">this</span>.ctx.lineCap !== <span style="color:#ed9d13">&#34;round&#34;</span>) {
+</span></span><span style="display:flex;"><span>          <span style="color:#6ab825;font-weight:bold">this</span>.ctx.lineCap = <span style="color:#ed9d13">&#34;round&#34;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic">// 設定線條與線條之間如何連結,round為圓弧形連接
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        <span style="color:#6ab825;font-weight:bold">if</span> (<span style="color:#6ab825;font-weight:bold">this</span>.ctx.lineJoin !== <span style="color:#ed9d13">&#34;round&#34;</span>) {
+</span></span><span style="display:flex;"><span>          <span style="color:#6ab825;font-weight:bold">this</span>.ctx.lineJoin = <span style="color:#ed9d13">&#34;round&#34;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#6ab825;font-weight:bold">this</span>.ctx.beginPath(); <span style="color:#999;font-style:italic">//開始繪製   
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        <span style="color:#6ab825;font-weight:bold">this</span>.ctx.moveTo(x1, y1); <span style="color:#999;font-style:italic">//設定開始位置
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        <span style="color:#6ab825;font-weight:bold">this</span>.ctx.lineTo(x2, y2); <span style="color:#999;font-style:italic">//設定移動位置
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        <span style="color:#6ab825;font-weight:bold">this</span>.ctx.closePath(); <span style="color:#999;font-style:italic">//關閉路徑
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        <span style="color:#6ab825;font-weight:bold">this</span>.ctx.stroke(); <span style="color:#999;font-style:italic">//路徑上色
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    }
+</span></span></code></pre></div><h3 id="mouse-event">Mouse Event</h3>
 <p>Mouse Event是完成畫板基本繪畫功能的一個非常重要的事件,要完成基本繪畫功能需要下列三個事件監聽</p>
 <ol>
 <li>mousedown - 滑鼠壓下</li>
 <li>mousemove - 滑鼠移動</li>
 <li>mouseup - 滑鼠放開</li>
 </ol>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.canvas.</span><span style="color:#B392F0">addEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;mousedown&quot;</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">e</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
-<span class="line"><span style="color:#6A737D">      //buttons為1表示為按下的滑鼠按鍵為左鍵-不讓其他鍵觸發事件</span></span>
-<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (e.buttons </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">) {</span></span>
-<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.pos_x </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> e.clientX; </span><span style="color:#6A737D">//抓取滑鼠水平位置</span></span>
-<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.pos_y </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> e.clientY; </span><span style="color:#6A737D">//抓取滑鼠垂直位置</span></span>
-<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.drawing </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#E1E4E8">      }</span></span>
-<span class="line"><span style="color:#E1E4E8">    });</span></span>
-<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.canvas.</span><span style="color:#B392F0">addEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;mousemove&quot;</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">e</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
-<span class="line"><span style="color:#6A737D">      // 要畫成線需要兩組x、y座標</span></span>
-<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">drawImg</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.pos_x,</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.pos_y,e.clientX,e.clientY);</span></span>
-<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.pos_x </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> e.clientX;</span></span>
-<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.pos_y </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> e.clientY;</span></span>
-<span class="line"><span style="color:#E1E4E8">    });</span></span>
-<span class="line"><span style="color:#6A737D">    // 滑鼠移開時畫筆位置重置,drawing狀態為false</span></span>
-<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.canvas.</span><span style="color:#B392F0">addEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;mouseup&quot;</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">e</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
-<span class="line"><span style="color:#6A737D">      // 避免繪畫時有放開其他滑鼠按鍵的狀況</span></span>
-<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (e.buttons </span><span style="color:#F97583">!==</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">) {</span></span>
-<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.pos_x </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">//抓取滑鼠水平位置歸0</span></span>
-<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.pos_y </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">//抓取滑鼠垂直位置歸0</span></span>
-<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.drawing </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#6A737D">        //儲存當前的狀態方便用於上一步、下一步</span></span>
-<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.step </span><span style="color:#F97583">+=</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">;  </span><span style="color:#6A737D">//歷史紀錄步驟+1</span></span>
-<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.record_Arr.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.canvas.</span><span style="color:#B392F0">toDataURL</span><span style="color:#E1E4E8">()); </span><span style="color:#6A737D">//將資料存成base64編碼後放進陣列,之後上一步、下一步會用到</span></span>
-<span class="line"><span style="color:#E1E4E8">      }</span></span>
-<span class="line"><span style="color:#E1E4E8">    });</span></span></code></pre>
-<h3 id="data-uri">Data URI</h3>
-<p>Data URI在網頁上的作用就是透過將圖片轉換為文字編碼的方式直接儲存在HTML、CSS內來降低Http請求次數(一張圖片就是一個請求)進而增進網頁載入效能的一個方式，但是同時他也有著無法快取、可讀性差、檔案變大(大約33%)以及如果圖檔有變化時需要重新編碼的缺點,所以要使用的話還是要依照當下狀況來看…,在這一題裡Data URI是用作「下載圖片」以及繪畫時的「上一步、下一步」用</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">this</span>.canvas.addEventListener(<span style="color:#ed9d13">&#34;mousedown&#34;</span>, (e) =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#999;font-style:italic">//buttons為1表示為按下的滑鼠按鍵為左鍵-不讓其他鍵觸發事件
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#6ab825;font-weight:bold">if</span> (e.buttons === <span style="color:#3677a9">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#6ab825;font-weight:bold">this</span>.pos_x = e.clientX; <span style="color:#999;font-style:italic">//抓取滑鼠水平位置
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        <span style="color:#6ab825;font-weight:bold">this</span>.pos_y = e.clientY; <span style="color:#999;font-style:italic">//抓取滑鼠垂直位置
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        <span style="color:#6ab825;font-weight:bold">this</span>.drawing = <span style="color:#6ab825;font-weight:bold">true</span>;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">this</span>.canvas.addEventListener(<span style="color:#ed9d13">&#34;mousemove&#34;</span>, (e) =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#999;font-style:italic">// 要畫成線需要兩組x、y座標
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#6ab825;font-weight:bold">this</span>.drawImg(<span style="color:#6ab825;font-weight:bold">this</span>.pos_x,<span style="color:#6ab825;font-weight:bold">this</span>.pos_y,e.clientX,e.clientY);
+</span></span><span style="display:flex;"><span>      <span style="color:#6ab825;font-weight:bold">this</span>.pos_x = e.clientX;
+</span></span><span style="display:flex;"><span>      <span style="color:#6ab825;font-weight:bold">this</span>.pos_y = e.clientY;
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic">// 滑鼠移開時畫筆位置重置,drawing狀態為false
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#6ab825;font-weight:bold">this</span>.canvas.addEventListener(<span style="color:#ed9d13">&#34;mouseup&#34;</span>, (e) =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#999;font-style:italic">// 避免繪畫時有放開其他滑鼠按鍵的狀況
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#6ab825;font-weight:bold">if</span> (e.buttons !== <span style="color:#3677a9">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#6ab825;font-weight:bold">this</span>.pos_x = <span style="color:#3677a9">0</span>; <span style="color:#999;font-style:italic">//抓取滑鼠水平位置歸0
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        <span style="color:#6ab825;font-weight:bold">this</span>.pos_y = <span style="color:#3677a9">0</span>; <span style="color:#999;font-style:italic">//抓取滑鼠垂直位置歸0
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        <span style="color:#6ab825;font-weight:bold">this</span>.drawing = <span style="color:#6ab825;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic">//儲存當前的狀態方便用於上一步、下一步
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        <span style="color:#6ab825;font-weight:bold">this</span>.step += <span style="color:#3677a9">1</span>;  <span style="color:#999;font-style:italic">//歷史紀錄步驟+1
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        <span style="color:#6ab825;font-weight:bold">this</span>.record_Arr.push(<span style="color:#6ab825;font-weight:bold">this</span>.canvas.toDataURL()); <span style="color:#999;font-style:italic">//將資料存成base64編碼後放進陣列,之後上一步、下一步會用到
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      }
+</span></span><span style="display:flex;"><span>    });
+</span></span></code></pre></div><h3 id="data-uri">Data URI</h3>
+<p>Data URI在網頁上的作用就是透過將圖片轉換為文字編碼的方式直接儲存在HTML、CSS內來降低Http請求次數(一張圖片就是一個請求)進而增進網頁載入效能的一個方式，但是同時他也有著無法快取、可讀性差、檔案變大(大約33%)以及如果圖檔有變化時需要重新編碼的缺點,所以要使用的話還是要依照當下狀況來看&hellip;,在這一題裡Data URI是用作「下載圖片」以及繪畫時的「上一步、下一步」用</p>
 <p>Data URI格式</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">  data</span><span style="color:#E1E4E8">:[&lt;</span><span style="color:#85E89D">mediatype</span><span style="color:#E1E4E8">&gt;][;base64],&lt;</span><span style="color:#85E89D">data</span><span style="color:#E1E4E8">&gt;</span></span></code></pre>
-<p>我們可以透過canvas內建的toDataURL將其轉換成Data URI後下載</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8"> canvas.</span><span style="color:#B392F0">toDataURL</span><span style="color:#E1E4E8">(type, encoderOptions);</span></span>
-<span class="line"><span style="color:#6A737D"> // type為類型 ex: image/png(默認)、image/jpeg、image/webp...</span></span>
-<span class="line"><span style="color:#6A737D"> // encoderOptions為圖片品質範圍為0~1,指定圖片格式為image/jpeg 或 image/webp</span></span></code></pre>
-<p>程式碼</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">    // 下載圖片</span></span>
-<span class="line"><span style="color:#F97583">    function</span><span style="color:#B392F0"> downloadImg</span><span style="color:#E1E4E8">() {</span></span>
-<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> dataUrl</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.canvas.</span><span style="color:#B392F0">toDataURL</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;image/png&quot;</span><span style="color:#E1E4E8">);</span></span>
-<span class="line"><span style="color:#E1E4E8">      document.</span><span style="color:#B392F0">querySelector</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;.save&quot;</span><span style="color:#E1E4E8">).href </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> dataUrl; </span><span style="color:#6A737D">//轉換完後丟給a標籤,之後只要點擊標籤就會下載</span></span>
-<span class="line"><span style="color:#E1E4E8">    }</span></span>
-<span class="line"><span style="color:#6A737D">    // 不論是上一步、下一步都需要先等待圖片載入完畢</span></span>
-<span class="line"><span style="color:#6A737D">    // 上一步</span></span>
-<span class="line"><span style="color:#F97583">    function</span><span style="color:#B392F0"> undo</span><span style="color:#E1E4E8">(){</span></span>
-<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.step </span><span style="color:#F97583">&gt;</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) {</span></span>
-<span class="line"><span style="color:#6A737D">        //先將狀態回到上一步</span></span>
-<span class="line"><span style="color:#F97583">        var</span><span style="color:#E1E4E8"> last_history </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Image</span><span style="color:#E1E4E8">();</span></span>
-<span class="line"><span style="color:#F97583">        var</span><span style="color:#E1E4E8"> window_width </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> window.innerWidth;</span></span>
-<span class="line"><span style="color:#F97583">        var</span><span style="color:#E1E4E8"> window_height </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> window.innerHeight;</span></span>
-<span class="line"><span style="color:#E1E4E8">        last_history.src </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.record_Arr[</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.step</span><span style="color:#F97583">-</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">]; </span><span style="color:#6A737D">//載入上一筆歷史紀錄</span></span>
-<span class="line"><span style="color:#E1E4E8">        last_history.</span><span style="color:#B392F0">onload</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
-<span class="line"><span style="color:#79B8FF">          this</span><span style="color:#E1E4E8">.ctx.</span><span style="color:#B392F0">clearRect</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">, window_width, window_height); </span><span style="color:#6A737D">//繪圖前必須先清除畫布</span></span>
-<span class="line"><span style="color:#79B8FF">          this</span><span style="color:#E1E4E8">.ctx.</span><span style="color:#B392F0">drawImage</span><span style="color:#E1E4E8">(last_history, </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">//載入圖片</span></span>
-<span class="line"><span style="color:#79B8FF">          this</span><span style="color:#E1E4E8">.step</span><span style="color:#F97583">-=</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">//歷史紀錄步驟-1</span></span>
-<span class="line"><span style="color:#E1E4E8">        };</span></span>
-<span class="line"><span style="color:#E1E4E8">      }</span></span>
-<span class="line"><span style="color:#E1E4E8">    }</span></span>
-<span class="line"><span style="color:#6A737D">    // 下一步</span></span>
-<span class="line"><span style="color:#F97583">    function</span><span style="color:#B392F0"> redo_canvas</span><span style="color:#E1E4E8">() {</span></span>
-<span class="line"><span style="color:#6A737D">      // 如果有上一步操作才可以下一步</span></span>
-<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.step </span><span style="color:#F97583">&lt;</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.record_Arr.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">) {</span></span>
-<span class="line"><span style="color:#F97583">        var</span><span style="color:#E1E4E8"> last_history </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Image</span><span style="color:#E1E4E8">();</span></span>
-<span class="line"><span style="color:#F97583">        var</span><span style="color:#E1E4E8"> window_width </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> window.innerWidth;</span></span>
-<span class="line"><span style="color:#F97583">        var</span><span style="color:#E1E4E8"> window_height </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> window.innerHeight;</span></span>
-<span class="line"><span style="color:#E1E4E8">        last_history.src </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.record_Arr[</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.step </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">]; </span><span style="color:#6A737D">//載入下一筆歷史紀錄</span></span>
-<span class="line"><span style="color:#E1E4E8">        last_history.</span><span style="color:#B392F0">onload</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
-<span class="line"><span style="color:#79B8FF">          this</span><span style="color:#E1E4E8">.ctx.</span><span style="color:#B392F0">clearRect</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">, window_width, window_height); </span><span style="color:#6A737D">//繪圖前必須先清除畫布</span></span>
-<span class="line"><span style="color:#79B8FF">          this</span><span style="color:#E1E4E8">.ctx.</span><span style="color:#B392F0">drawImage</span><span style="color:#E1E4E8">(last_history, </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">//載入圖片</span></span>
-<span class="line"><span style="color:#79B8FF">          this</span><span style="color:#E1E4E8">.step </span><span style="color:#F97583">+=</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8"> ; </span><span style="color:#6A737D">//歷史紀錄步驟+1</span></span>
-<span class="line"><span style="color:#E1E4E8">        };</span></span>
-<span class="line"><span style="color:#E1E4E8">      }</span></span>
-<span class="line"><span style="color:#E1E4E8">    }</span></span></code></pre>
-<h3 id="客製化功能">客製化功能</h3>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>  data:[&lt;mediatype&gt;][;base64],&lt;data&gt;
+</span></span></code></pre></div><p>我們可以透過canvas內建的toDataURL將其轉換成Data URI後下載</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span> canvas.toDataURL(type, encoderOptions);
+</span></span><span style="display:flex;"><span> <span style="color:#999;font-style:italic">// type為類型 ex: image/png(默認)、image/jpeg、image/webp...
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span> <span style="color:#999;font-style:italic">// encoderOptions為圖片品質範圍為0~1,指定圖片格式為image/jpeg 或 image/webp
+</span></span></span></code></pre></div><p>程式碼</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>    <span style="color:#999;font-style:italic">// 下載圖片
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#6ab825;font-weight:bold">function</span> downloadImg() {
+</span></span><span style="display:flex;"><span>      <span style="color:#6ab825;font-weight:bold">const</span> dataUrl = <span style="color:#6ab825;font-weight:bold">this</span>.canvas.toDataURL(<span style="color:#ed9d13">&#34;image/png&#34;</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#24909d">document</span>.querySelector(<span style="color:#ed9d13">&#34;.save&#34;</span>).href = dataUrl; <span style="color:#999;font-style:italic">//轉換完後丟給a標籤,之後只要點擊標籤就會下載
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic">// 不論是上一步、下一步都需要先等待圖片載入完畢
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#999;font-style:italic">// 上一步
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#6ab825;font-weight:bold">function</span> undo(){
+</span></span><span style="display:flex;"><span>      <span style="color:#6ab825;font-weight:bold">if</span> (<span style="color:#6ab825;font-weight:bold">this</span>.step &gt; <span style="color:#3677a9">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#999;font-style:italic">//先將狀態回到上一步
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        <span style="color:#6ab825;font-weight:bold">var</span> last_history = <span style="color:#6ab825;font-weight:bold">new</span> Image();
+</span></span><span style="display:flex;"><span>        <span style="color:#6ab825;font-weight:bold">var</span> window_width = <span style="color:#24909d">window</span>.innerWidth;
+</span></span><span style="display:flex;"><span>        <span style="color:#6ab825;font-weight:bold">var</span> window_height = <span style="color:#24909d">window</span>.innerHeight;
+</span></span><span style="display:flex;"><span>        last_history.src = <span style="color:#6ab825;font-weight:bold">this</span>.record_Arr[<span style="color:#6ab825;font-weight:bold">this</span>.step-<span style="color:#3677a9">1</span>]; <span style="color:#999;font-style:italic">//載入上一筆歷史紀錄
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        last_history.onload = () =&gt; {
+</span></span><span style="display:flex;"><span>          <span style="color:#6ab825;font-weight:bold">this</span>.ctx.clearRect(<span style="color:#3677a9">0</span>, <span style="color:#3677a9">0</span>, window_width, window_height); <span style="color:#999;font-style:italic">//繪圖前必須先清除畫布
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>          <span style="color:#6ab825;font-weight:bold">this</span>.ctx.drawImage(last_history, <span style="color:#3677a9">0</span>, <span style="color:#3677a9">0</span>); <span style="color:#999;font-style:italic">//載入圖片
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>          <span style="color:#6ab825;font-weight:bold">this</span>.step-=<span style="color:#3677a9">1</span>; <span style="color:#999;font-style:italic">//歷史紀錄步驟-1
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        };
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic">// 下一步
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#6ab825;font-weight:bold">function</span> redo_canvas() {
+</span></span><span style="display:flex;"><span>      <span style="color:#999;font-style:italic">// 如果有上一步操作才可以下一步
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#6ab825;font-weight:bold">if</span> (<span style="color:#6ab825;font-weight:bold">this</span>.step &lt; <span style="color:#6ab825;font-weight:bold">this</span>.record_Arr.length) {
+</span></span><span style="display:flex;"><span>        <span style="color:#6ab825;font-weight:bold">var</span> last_history = <span style="color:#6ab825;font-weight:bold">new</span> Image();
+</span></span><span style="display:flex;"><span>        <span style="color:#6ab825;font-weight:bold">var</span> window_width = <span style="color:#24909d">window</span>.innerWidth;
+</span></span><span style="display:flex;"><span>        <span style="color:#6ab825;font-weight:bold">var</span> window_height = <span style="color:#24909d">window</span>.innerHeight;
+</span></span><span style="display:flex;"><span>        last_history.src = <span style="color:#6ab825;font-weight:bold">this</span>.record_Arr[<span style="color:#6ab825;font-weight:bold">this</span>.step + <span style="color:#3677a9">1</span>]; <span style="color:#999;font-style:italic">//載入下一筆歷史紀錄
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        last_history.onload = () =&gt; {
+</span></span><span style="display:flex;"><span>          <span style="color:#6ab825;font-weight:bold">this</span>.ctx.clearRect(<span style="color:#3677a9">0</span>, <span style="color:#3677a9">0</span>, window_width, window_height); <span style="color:#999;font-style:italic">//繪圖前必須先清除畫布
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>          <span style="color:#6ab825;font-weight:bold">this</span>.ctx.drawImage(last_history, <span style="color:#3677a9">0</span>, <span style="color:#3677a9">0</span>); <span style="color:#999;font-style:italic">//載入圖片
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>          <span style="color:#6ab825;font-weight:bold">this</span>.step +=<span style="color:#3677a9">1</span> ; <span style="color:#999;font-style:italic">//歷史紀錄步驟+1
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>        };
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><h3 id="客製化功能">客製化功能</h3>
 <p>這次客製化了「顏色選取器」以及「橡皮擦」這兩個功能,我們直接來看程式碼</p>
 <p><strong>顏色選取器</strong></p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">  //選取色盤的顏色並變換畫筆顏色     </span></span>
-<span class="line"><span style="color:#F97583">  function</span><span style="color:#B392F0"> color_picker</span><span style="color:#E1E4E8">() {</span></span>
-<span class="line"><span style="color:#F97583">    var</span><span style="color:#E1E4E8"> color_picker </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> document.</span><span style="color:#B392F0">getElementById</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;color-panel&quot;</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">//抓取type為color的input</span></span>
-<span class="line"><span style="color:#E1E4E8">    color_picker.</span><span style="color:#B392F0">addEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;input&quot;</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">e</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
-<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.selected_color </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> e.target.value; </span><span style="color:#6A737D">//抓取選取到的顏色</span></span>
-<span class="line"><span style="color:#E1E4E8">      document.</span><span style="color:#B392F0">querySelector</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;.colors .show&#39;</span><span style="color:#E1E4E8">).parentElement.style.backgroundColor </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.selected_color; </span><span style="color:#6A737D">//將原先勾選到的顏色改成目前選取的顏色</span></span>
-<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.pen_color </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.selected_color; </span><span style="color:#6A737D">//改變畫筆顏色</span></span>
-<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.ctx.strokeStyle </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.pen_color; </span><span style="color:#6A737D">//改變畫筆顏色</span></span>
-<span class="line"><span style="color:#E1E4E8">    });</span></span>
-<span class="line"><span style="color:#E1E4E8">  }</span></span></code></pre>
-<p><strong>橡皮擦</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>  <span style="color:#999;font-style:italic">//選取色盤的顏色並變換畫筆顏色     
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>  <span style="color:#6ab825;font-weight:bold">function</span> color_picker() {
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">var</span> color_picker = <span style="color:#24909d">document</span>.getElementById(<span style="color:#ed9d13">&#34;color-panel&#34;</span>); <span style="color:#999;font-style:italic">//抓取type為color的input
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    color_picker.addEventListener(<span style="color:#ed9d13">&#34;input&#34;</span>, (e)=&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#6ab825;font-weight:bold">this</span>.selected_color = e.target.value; <span style="color:#999;font-style:italic">//抓取選取到的顏色
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#24909d">document</span>.querySelector(<span style="color:#ed9d13">&#39;.colors .show&#39;</span>).parentElement.style.backgroundColor = <span style="color:#6ab825;font-weight:bold">this</span>.selected_color; <span style="color:#999;font-style:italic">//將原先勾選到的顏色改成目前選取的顏色
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#6ab825;font-weight:bold">this</span>.pen_color = <span style="color:#6ab825;font-weight:bold">this</span>.selected_color; <span style="color:#999;font-style:italic">//改變畫筆顏色
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>      <span style="color:#6ab825;font-weight:bold">this</span>.ctx.strokeStyle = <span style="color:#6ab825;font-weight:bold">this</span>.pen_color; <span style="color:#999;font-style:italic">//改變畫筆顏色
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    });
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div><p><strong>橡皮擦</strong></p>
 <p>橡皮擦原先的想法是想說將畫筆的顏色直接改成跟背景顏色一樣就可以了,但是png檔的背景是透明的,所以輸出的圖片會變成這樣 <strong>(灰色的部分為橡皮擦擦過的路徑)</strong></p>
-<p><img src="/images/post/eraser_bug.png" alt/></p>
+<p><img src="/images/post/eraser_bug.png" alt=""></p>
 <p>所以單純改變畫筆顏色是不行的,但是我們可以透過canvas的clearRect來將滑鼠滑過的區域清除掉</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#79B8FF">  this</span><span style="color:#E1E4E8">.ctx.</span><span style="color:#B392F0">clearRect</span><span style="color:#E1E4E8">(x,y,width,height); </span><span style="color:#6A737D">//x、y為座標 width、height為清除的寬與高</span></span></code></pre>
-<p>這樣橡皮擦的功能就完成了,詳細的狀況可以去看我寫的code…</p>
-<p><img src="/images/post/eraser_working.png" alt/></p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>  <span style="color:#6ab825;font-weight:bold">this</span>.ctx.clearRect(x,y,width,height); <span style="color:#999;font-style:italic">//x、y為座標 width、height為清除的寬與高
+</span></span></span></code></pre></div><p>這樣橡皮擦的功能就完成了,詳細的狀況可以去看我寫的code&hellip;</p>
+<p><img src="/images/post/eraser_working.png" alt=""></p>
 <h3 id="額外補充">額外補充</h3>
-<p>canvas需要透過直接寫在HTML或是透過JS去設定寬高且無法透過CSS設定,在這樣的情況下如果要讓canvas的寬高隨螢幕resize時我們直覺會直接註冊一個resize的事件監聽，但是直接更改canvas的寬跟高會導致畫布被清空的bug…，想要解決這樣的問題我們可以透過undo、redo有用到的歷史紀錄，在螢幕resize時載入最新的一筆歷史紀錄,這樣即便在resize後畫布上的圖依然還會存在</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">    window.</span><span style="color:#B392F0">addEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;resize&quot;</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
-<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.canvas.width </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> window.innerWidth;</span></span>
-<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.canvas.height </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> window.innerHeight;</span></span>
-<span class="line"><span style="color:#6A737D">    //先將狀態回到上一步</span></span>
-<span class="line"><span style="color:#F97583">    var</span><span style="color:#E1E4E8"> last_history </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Image</span><span style="color:#E1E4E8">();</span></span>
-<span class="line"><span style="color:#F97583">    var</span><span style="color:#E1E4E8"> window_width </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> window.innerWidth;</span></span>
-<span class="line"><span style="color:#F97583">    var</span><span style="color:#E1E4E8"> window_height </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> window.innerHeight;</span></span>
-<span class="line"><span style="color:#E1E4E8">    last_history.src </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.record_Arr[</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.step];</span></span>
-<span class="line"><span style="color:#E1E4E8">    last_history.</span><span style="color:#B392F0">onload</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
-<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.ctx.</span><span style="color:#B392F0">clearRect</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">, window_width, window_height);</span></span>
-<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.ctx.</span><span style="color:#B392F0">drawImage</span><span style="color:#E1E4E8">(last_history, </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">);</span></span>
-<span class="line"><span style="color:#E1E4E8">    };</span></span>
-<span class="line"><span style="color:#E1E4E8">  });</span></span></code></pre>
-<h3 id="7f畫板-demo連結">7F畫板 demo連結</h3>
-<div class="codepen" data-height="600" data-theme-id="dark" data-default-tab="result" data-user="mgnlhdsl" data-slug-hash="GRNxgrP" style="height: 600px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"> <span>See the Pen <a href="https://codepen.io/mgnlhdsl/pen/GRNxgrP/">test</a> by mgnlhdsl (<a href="https://codepen.io/mgnlhdsl">@mgnlhdsl</a>) on <a href="https://codepen.io">CodePen</a>.</span> </div> <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script> <script>
-  function initCodePen() {
-    if (window.__CPEmbed) {
-      window.__CPEmbed();
-      console.log('initCodePen');
-    } else {
-      setTimeout(() => {
-        if (window.__CPEmbed) {
-          window.__CPEmbed();
-        }
-      }, 1000);
-    }
-  }
+<p>canvas需要透過直接寫在HTML或是透過JS去設定寬高且無法透過CSS設定,在這樣的情況下如果要讓canvas的寬高隨螢幕resize時我們直覺會直接註冊一個resize的事件監聽，但是直接更改canvas的寬跟高會導致畫布被清空的bug&hellip;，想要解決這樣的問題我們可以透過undo、redo有用到的歷史紀錄，在螢幕resize時載入最新的一筆歷史紀錄,這樣即便在resize後畫布上的圖依然還會存在</p>
+<div class="highlight"><pre tabindex="0" style="color:#d0d0d0;background-color:#202020;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>    <span style="color:#24909d">window</span>.addEventListener(<span style="color:#ed9d13">&#34;resize&#34;</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">this</span>.canvas.width = <span style="color:#24909d">window</span>.innerWidth;
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">this</span>.canvas.height = <span style="color:#24909d">window</span>.innerHeight;
+</span></span><span style="display:flex;"><span>    <span style="color:#999;font-style:italic">//先將狀態回到上一步
+</span></span></span><span style="display:flex;"><span><span style="color:#999;font-style:italic"></span>    <span style="color:#6ab825;font-weight:bold">var</span> last_history = <span style="color:#6ab825;font-weight:bold">new</span> Image();
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">var</span> window_width = <span style="color:#24909d">window</span>.innerWidth;
+</span></span><span style="display:flex;"><span>    <span style="color:#6ab825;font-weight:bold">var</span> window_height = <span style="color:#24909d">window</span>.innerHeight;
+</span></span><span style="display:flex;"><span>    last_history.src = <span style="color:#6ab825;font-weight:bold">this</span>.record_Arr[<span style="color:#6ab825;font-weight:bold">this</span>.step];
+</span></span><span style="display:flex;"><span>    last_history.onload = () =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#6ab825;font-weight:bold">this</span>.ctx.clearRect(<span style="color:#3677a9">0</span>, <span style="color:#3677a9">0</span>, window_width, window_height);
+</span></span><span style="display:flex;"><span>      <span style="color:#6ab825;font-weight:bold">this</span>.ctx.drawImage(last_history, <span style="color:#3677a9">0</span>, <span style="color:#3677a9">0</span>);
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>  });
+</span></span></code></pre></div><h3 id="7f畫板-demo連結">7F畫板 demo連結</h3>
 
-  // 只需要监听这两个事件
-  document.addEventListener('load', initCodePen);
-  document.addEventListener('astro:page-load', initCodePen);
-</script>
-<p>最近對於時間管理真的非常有感觸，有很多應該做以及想做的事情像是刷題目、寫文章、進修程式、運動、看課外書，這些全部都要花時間,懂得如何利用零碎的時間並增進做事效率真的很重要，希望有朝一日我也能夠成為一位專業的時間管理大師…</p>
-<p><img src="/images/post/clock-650753_1920.jpg" alt/></p>
+
+
+
+
+
+
+<script
+    data-slug-hash="GRNxgrP"
+    data-user="mgnlhdsl"
+    data-height="700"
+    data-default-tab="result"
+    data-theme-id="8862"
+    class='codepen'
+    async
+    src="//codepen.io/assets/embed/ei.js"
+></script>
+<p>最近對於時間管理真的非常有感觸，有很多應該做以及想做的事情像是刷題目、寫文章、進修程式、運動、看課外書、交女朋友&hellip;，這些全部都要花時間,懂得如何利用零碎的時間並增進做事效率真的很重要，希望有朝一日我也能夠成為一位專業的時間管理大師&hellip;</p>
+<p><img src="/images/post/clock-650753_1920.jpg" alt=""></p>
 <p>Photo by <a href="https://pixabay.com/">pixabay</a></p>
 <h2 id="補充資料">補充資料</h2>
 <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API/Tutorial">Canvas API MDN</a></p>
@@ -248,4 +334,75 @@
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/color">Input Color MDN</a></p>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/mousedown_event">Mousedown MDN</a></p>
 <p><a href="https://medium.com/@shizukuichi/mouse-event-%E5%B0%8F%E7%AD%86%E8%A8%98-feb5dd866b0">Mouse Event 小筆記</a></p>
-<p><a href="https://blog.gtwang.org/web-development/minimizing-http-request-using-data-uri/">使用 DATA URI 將圖片以 Base64 編碼並內崁至網頁中，加速載入速度</a></p>  </div> </article>  </main> <footer class="py-6 text-center text-gray-600 dark:text-gray-400"> <p>&copy; 2025 Leo&#39;s blog. All rights reserved.</p> </footer> </div> </body></html>
+<p><a href="https://blog.gtwang.org/web-development/minimizing-http-request-using-data-uri/">使用 DATA URI 將圖片以 Base64 編碼並內崁至網頁中，加速載入速度</a></p>
+
+        </div>
+
+        
+        
+        
+        
+        <script src="https://utteranc.es/client.js"
+          repo="bjmqfg83/comment-utterances"
+          issue-term="title"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+          </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<script>
+  var indexURL = "https://bjmqfg83.github.io/index.json"
+</script>
+
+<!-- JS Plugins -->
+
+<script src="https://bjmqfg83.github.io/plugins/jQuery/jquery.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/bootstrap/bootstrap.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/slick/slick.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/venobox/venobox.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/fuse.min.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/mark.js"></script>
+
+<script src="https://bjmqfg83.github.io/plugins/search/search.js"></script>
+
+<!-- Main Script -->
+
+<script src="https://bjmqfg83.github.io/js/script.min.js"></script>
+<!-- google analitycs -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2T34DJBTW2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2T34DJBTW2');
+</script>
+// <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script></body>
+</html>
