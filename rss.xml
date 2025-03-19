@@ -1,0 +1,1675 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Leo&apos;s blog</title><description>This is a blog that wish can share something about website Knowledge and life for you</description><link>https://bjmqfg83.github.io/</link><item><title>全台空氣指標儀表板-Javascript新手地下城</title><link>https://bjmqfg83.github.io/blog/air_quality</link><guid isPermaLink="true">https://bjmqfg83.github.io/blog/air_quality</guid><description>六角學院Javscript新手地下城5F空氣品質AQI</description><pubDate>Fri, 19 Feb 2021 00:00:00 GMT</pubDate><content:encoded>import CodePenEmbed from &apos;../../components/CodePenEmbed.astro&apos;;
+
+
+### 使用技術
+
+JS : Vue、axios、For迴圈、Regular expressions、Array
+
+CSS: SCSS(CSS前處理語言)、flex、customize scrollbar
+
+Others: google fonts、政府資料開放平台-空氣品質指標(AQI)
+
+### 開發歷程
+  想要專注在邏輯上所以使用框架開發,當資料更新時由Vue負責畫面渲染
+  
+  資料的取得使用axios這個套件串接[政府資料開放平台](https://data.gov.tw/dataset/40448)的API，另外頁面的部分做了一個假的selection方便客製化CSS樣式，其餘js程式邏輯使用forEach過濾出符合條件的資料、正規表示法調整更新時間顯示的格式
+
+### XMLHttpRequest
+  在提交表單資料、串接API這種非同步行為時會希望過程中仍可以對網頁進行操作及瀏覽
+
+  這時候我們可以透過[XMLHttpRequest](https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest)讓網頁在進行非同步的操作時不會卡住或是重整
+  ```javascript
+  //Step 1 創建異步物件
+   var xhr = new XMLHttpRequest(); //可以簡稱xhr物件
+  //Step 2 創建異步請求
+  // method為http請求(get、post...)、url為請求路徑、async為為非同步設定,true為非同步、false為同步
+  xhr.open(method, url, async);
+  //3.設定監聽事件
+  // 當xhr物件接受到server的嚮應且響應狀態為200(ok)時進行後續處理
+  xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 &amp;&amp; xhr.status === 200) {
+          // 取得響應的訊息
+          var resText = xhr.responseText;
+      }
+  }
+  // 4.送出請求，send參數除post以外都給null
+  xhr.send(null);
+  ```
+  如果是post請求的話需要額外設定**RequestHeader**，告知server要提交的資料類型並把資料放置send提交
+  ```javascript
+  // 以表單資料為例
+  xhr.setRequestHeader(&apos;Content-Type&apos;, &apos;application/x-www-form-urlencoded&apos;);
+  var msg = &apos;data1=&apos; + 資料1 +&apos;&amp;&apos;+ &apos;data2&apos; + 資料2... ;
+  xhr.send(msg);
+  ```
+  **註: 雖然是叫「XML」HttpRequest但也可以使用純文字或是JSON格式的資料**
+
+### Promise
+  在簡單的專案可能還沒關係，但如果專案的需求須要進行多個請求或是要在請求後進行很多程式的處理的話可能會變成下面這樣
+
+  ![](/images/post/callbackhell.jpg)
+
+  圖片來源: [Node 7.6 + Koa 2: asynchronous flow control made right](https://medium.com/ninjadevs/node-7-6-koa-2-asynchronous-flow-control-made-right-b0d41c6ba570)
+
+  這種波動拳的樣子有個別稱叫「**Callback hell 回調地獄**」，這會造成日後程式維護、擴充上的不便，我們可以透過ES6的Promise來改善,這邊簡單概述一下
+
+  Promise有以下三種狀態
+  * 擱置(pending)：初始狀態，表示操作進行中
+  * 實現(fulfilled) ：表示操作成功，執行resolve(),可透過then查看結果
+  * 拒絕(rejected)： 表示操作失敗，執行reject(),可透過catch查看結果
+
+  ![](/images/post/promise_intro.svg)
+
+  圖片來源: [Promise MDN](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+  ```javascript
+    function PromiseFn() {
+      return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        // 可以把api_key後面的參數改掉刻意引發CORS的錯誤來執行reject
+        xhr.open(&quot;get&quot;,&quot;https://data.epa.gov.tw/api/v1/aqx_p_432?limit=1000&amp;api_key=9be7b239-557b-4c10-9775-78cadfc555e9&amp;format=json&quot;);
+        // xhr.onreadystatechange可用onload取代
+        xhr.onload = function() {
+            resolve(JSON.parse(xhr.responseText));
+        }
+        xhr.onerror = function(){
+            reject(xhr);
+        }
+        xhr.send(null);
+        });
+    }
+    PromiseFn()
+      .then(function(res){
+        ...
+        return PromiseFn();
+    }).then(function(res2){
+        ...
+        return PromiseFn();
+    }).then(function(res3){
+        ...
+    }).catch(function(error){
+        ...
+  });
+  ```
+  這樣就避免了波動拳的產生，後續要繼續進行非同步操作時透過return一個Promise的方式進續進行
+
+  Promise還有其他如Promise.all()、Promise.race()等等的方法...甚至在ES7版本有更好用的Async/Await可以用同步的思維去做非同步的操作，有興趣的朋友可以研究看看
+### Fetch API
+  以前如果想要簡化XMLHttpRequest的寫法通常都會使用jQuery的ajax來做，現在在HTML5的標準內我們有原生的Fetch API可以使用
+
+  Fetch API有幾點特性
+  1. 使用Promise做回應
+  2. 使用then做下一步處理、catch作錯誤處理
+  3. 一開始的回傳為ReadableStream，需要針對不同的資料類型使用對應方法獲取資料ex:json()、text()、blob()...
+  4. 只要server有響應不論status code是**404**或是**500**Promise的狀態都會是fulfilled而不是rejected，這部分需要額外做處理
+
+  現在看一下程式碼
+  ```javascript
+    fetch(&apos;https://jsonplaceholder.typicode.com/todos/1&apos;)
+    .then(res =&gt; {
+      console.log(res); // response的body內可以看到ReadableStream
+      if(res.ok === true || (res.status &gt;= 200 &amp;&amp; res.status &lt; 300)){
+        return res.json(); // 將json資料用.json()解析回傳
+      }else{
+        throw new Error(&apos;Error happen&apos;);
+      }
+    })
+    .then(json =&gt; console.log(json))
+    .catch(err =&gt; {
+      console.error(&apos;錯誤&apos;, err);
+    });
+  ```
+  POST方法一樣要設定header跟body
+  ```javascript
+    fetch(url, {
+      method: &apos;POST&apos;,
+      // headers 加入 json 格式
+      headers: {
+        &apos;Content-Type&apos;: &apos;application/json&apos;
+      },
+      // body 將 json 轉字串送出
+      body: JSON.stringify({
+        data_A: &apos;xxxx&apos;,
+        data_B: &apos;xxxx&apos;
+      }).then(res =&gt;{
+        if(res.ok === true || (res.status &gt;= 200 &amp;&amp; res.status &lt; 300)){
+          return res.json(); // 將json資料用.json()解析回傳
+        }else{
+          throw new Error(&apos;Error happen&apos;);
+        }
+      }).then(jsonData =&gt; {console.log(jsonData)};
+      ).catch(err =&gt; {
+        console.log(&apos;錯誤:&apos;, err);
+      })
+  ```
+### CORS
+  CORS全稱為**Cross-Origin Resource Sharing 跨來源資源共享**，瀏覽器基於安全性的考量會限制使用者存取其他來源的資源
+
+  以下幾種情況會被當作不同來源
+  1. 不同協定 ex: \&quot;https\&quot;、\&quot;http\&quot;
+  2. 不同domain ex: \&quot;https://example.com\&quot;、\&quot;https://example_others.com\&quot;
+  3. 不同port ex: \&quot;https://example.com\&quot;、\&quot;https://example.com:8080\&quot;
+  
+  跟後端協作串接API時如果遇到CORS通常後端會去設定**Access-Control-Allow-Origin**來讓特定來源能夠存取資源或是乾脆使用*號(通配符)讓所有不同來源都能夠存取
+
+  但如果要串接的是第三方的API的話可以參考一下六角助教寫的[Google Apps Script](https://hsiangfeng.github.io/javascript/20190617/3829122039/)這篇文章去試看看，大概的理解是CORS是因為瀏覽器請求非同源的資源所發生，那就不用瀏覽器去請求來規避這個問題
+  
+  我用[新竹縣政府公務人員參訓人數](https://data.gov.tw/dataset/136489)這個API去試了之後沒問題，但是對於像是需要API_KEY金鑰的API如[空氣品質指標(AQI)](https://data.gov.tw/dataset/40448)一樣還是會有CORS的問題發生，所以Google Apps Script只是一個暫時性的方式，實作上還是要因應情況去做調整
+
+### AQI Demo連結
+
+&lt;CodePenEmbed hash=&quot;LYbbVJV&quot; /&gt;
+
+#### 參考資料:
+  [ReadyState MDN](https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest/readyState)
+
+  [Promise MDN](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+  [Fetch MDN](https://developer.mozilla.org/zh-TW/docs/Web/API/Fetch_API/Using_Fetch)
+
+  [OxxO STUDIO Fetch API 使用教學](https://www.oxxostudio.tw/articles/201908/js-fetch.html)</content:encoded></item><item><title>Asynchronous Race Condition</title><link>https://bjmqfg83.github.io/blog/async_racecondition</link><guid isPermaLink="true">https://bjmqfg83.github.io/blog/async_racecondition</guid><description>Asynchronous Race Condition</description><pubDate>Wed, 19 Mar 2025 00:00:00 GMT</pubDate><content:encoded>在之前公司上班的時候曾經遇到由於不同組件間的API請求行為的Race condition導致組件在切換時顯示了錯誤的資料，這邊簡單記錄一下
+
+### 什麼是Race condition?
+
+Race condition 指的是當多個執行緒或程序同時存取同一個共享資源，因缺乏適當處理導致執行順序不確定，進而造成不可預測或資料不一致的情況。
+
+我所遇到的屬於Request Race condition，在多個組件間的API請求行為中，前一次的API請求還沒有完成，後一次的API請求已經先完成導致錯誤的資料被顯示出來
+
+### AbortController
+
+AbortController是原生JavaScript API主要用來取消正在進行的異步操作(例如API請求)。它允許開發者在適當的時機中止請求，以避免不必要的網路流量或競態條件(Race Condition)。
+
+所以我們可以透過AbortController來避免組件切換時資料錯誤顯示的問題。
+
+### 範例程式碼
+
+```javascript
+const controller = new AbortController();
+const signal = controller.signal;
+
+fetch(&quot;https://jsonplaceholder.typicode.com/posts&quot;, { signal })
+    .then(response =&gt; response.json())
+    .then(data =&gt; console.log(&quot;成功取得資料:&quot;, data))
+    .catch(error =&gt; {
+        if (error.name === &quot;AbortError&quot;) {
+            console.log(&quot;請求已被取消&quot;);
+        } else {
+            console.error(&quot;其他錯誤:&quot;, error);
+        }
+    });
+
+setTimeout(() =&gt; {
+    controller.abort();
+}, 0);
+```
+注意當「廢棄」API請求時是會發生錯誤的，所以需要額外做try catch處理
+
+#### 參考資料:
+    [AbortController](https://developer.mozilla.org/zh-TW/docs/Web/API/AbortController)
+
+    [JSONPlaceholder](https://jsonplaceholder.typicode.com/)</content:encoded></item><item><title>時鐘clock-Javascript新手地下城</title><link>https://bjmqfg83.github.io/blog/clock</link><guid isPermaLink="true">https://bjmqfg83.github.io/blog/clock</guid><description>六角學院Javscript新手地下城2F時鐘心得分享</description><pubDate>Sun, 31 Jan 2021 00:00:00 GMT</pubDate><content:encoded>import CodePenEmbed from &apos;../../components/CodePenEmbed.astro&apos;;
+
+#### 使用技術:
+
+JS : Const變數、Date物件、SetInterval、Template literals樣板字串
+
+CSS: SCSS(CSS前處理語言)、clip-path
+
+#### 開發歷程:
+
+JS的部分透過Date物件獲取當前的時間、setInterval更新時間並且在內部判斷指針的轉動、Template literals用於方便將計算指出來的旋轉角度整合進字串內
+
+CSS的部分使用SCSS變數去存取顏色、mixin存取會大量使用到的CSS屬性、clip-path去繪製多邊形及秒針
+
+這次在CSS的部分卡了滿長的一段時間，主要是花在使用純CSS刻出秒針以及多邊形花了大部分的時間，其餘的排版、程式邏輯的部分相對來說不算太複雜
+
+在這邊簡單的跟大家分享一下怎麼透過clip-path去繪製時鐘所需的圖形
+
+### clip-path
+
+  clip-path會透過裁減的方式在元素內創建可顯示的區塊，顯示區塊外的部分則隱藏，本身有提供circle(圓形)、ellipse(橢圓形)、inset(內置矩形)、polygon(多邊形)等等的方式創建圖形
+
+  要創建秒針跟多邊形會需要使用到polygon，polygon可以設定多個「點」，點跟點之間會有線連接在一起形成多邊形，透過X(水平)、Y(垂直)來設定點的位置，單位可以使用「px」或是「百分比」，秒針針頭的部分另外做之後在外層用一個元素包起來就好
+
+  ![](/images/post/clippolygon.png)
+
+  解說圖就別太計較設計了，真的不太會畫畫...
+
+### 時鐘 codepen連結
+
+&lt;CodePenEmbed hash=&quot;YzpzqKg&quot; /&gt;
+
+### clip-path補充
+
+在前面有提到過clip-path會有顯示的區塊及隱藏的區塊，我們可以透過這個遮罩的效果搭配CSS做出遮蓋文字的特效
+
+我們需要透過inset內置矩形去做，inset可給2個值(上下、左右)或是4個值(上、右、下、左)，設定該方向的值就會由該方向由外往內推，單位同樣可以用px或是百分比
+
+![](/images/post/clipinset.png)
+
+### 文字動態 codepen連結
+
+&lt;CodePenEmbed hash=&quot;xxRbLLg&quot; /&gt;
+
+
+##### 參考資料:
+
+https://www.oxxostudio.tw/articles/201503/css-clip-path.html
+
+https://andyyou.github.io/2016/06/28/css-clip-path/
+
+https://developer.mozilla.org/zh-CN/docs/Web/CSS/clip-path
+
+https://css-tricks.com/almanac/properties/c/clip-path/</content:encoded></item><item><title>Astro框架介紹</title><link>https://bjmqfg83.github.io/blog/astro_intro</link><guid isPermaLink="true">https://bjmqfg83.github.io/blog/astro_intro</guid><description>Astro框架介紹</description><pubDate>Sat, 19 Oct 2024 00:00:00 GMT</pubDate><content:encoded>![image](https://hackmd.io/_uploads/rkPV5Ymxke.png)
+Astro 是一個現代前端框架，專注於構建靜態網站如部落格、產品介紹頁，提供零 JavaScript 加載的特性，並支持多種前端框架（如 React, Vue, Svelte, 等）的整合
+
+### 專案建立
+```bash
+# create a new project with npm
+npm create astro@latest
+
+# create a new project with pnpm
+pnpm create astro@latest
+
+# create a new project with yarn
+yarn create astro
+```
+
+### Astro組件
+結構分別為程式碼、模板、樣式
+Astro會將---包圍的部分裡所有的程式碼包含API調用在Server端全部執行完畢後帶入template裡
+```javascript
+
+---
+const message = &quot;Hello, Astro!&quot;;
+---
+
+&lt;div&gt;
+  &lt;h1&gt;{message}&lt;/h1&gt;
+  &lt;p&gt;This is a default Astro component structure.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+  div {
+    background-color: #f0f0f0;
+    padding: 1rem;
+  }
+  h1 {
+    color: #333;
+  }
+&lt;/style&gt;
+
+```
+從上方組件來看，Astro其實並不是完全沒有 JavaScript，畢竟 const message = &quot;Hello, Astro!&quot;就是一段程式碼
+所謂的0 Javascript其實是指Astro會在伺服器端的編譯階段執行---內的程式碼後將結果渲染成靜態HTML，這樣客戶端就是純靜態了
+
+### 孤島架構 Islands Architecture
+![image](https://hackmd.io/_uploads/BJh9qonyJg.png)
+在靜態HTML頁面裡面可交互的UI組件被稱為「Astro Island」
+而因為每個island島嶼都是獨立且不會互相影響的關係所以可以在Astro內同時引入不同框架的組件進來使用
+```javascript
+---
+import VueCounter from &apos;@components/vue/VueCounter.vue&apos;;
+import ReactCounter from &apos;@components/react/ReactCounter&apos;;
+import SvelteCounter from &apos;@components/svelte/SvelteCounter.svelte&apos;;
+---
+&lt;main&gt;
+     &lt;VueCounter /&gt;
+     &lt;ReactCounter /&gt;
+     &lt;SvelteCounter /&gt;
+&lt;/main&gt;
+&lt;style&gt;&lt;/style&gt;
+```
+
+### 0 Javascript
+還記得前面講所謂的0 Javascript是Astro在server端生成純靜態的HTML回傳嗎?
+由於這個特性Astro也會將不同框架的組件內容通通處理成純HTML回傳,但這也導致組件內的程式邏輯無法運行
+```javascript
+&lt;!-- Counter.vue --&gt;
+&lt;script setup&gt;
+import { ref, onMounted } from &apos;vue&apos;;
+
+const count = ref(0);
+
+const increment = () =&gt; {
+    count.value++;
+};
+
+onMounted(() =&gt; {
+    console.log(&quot;Counter 元件在客戶端被渲染&quot;);
+});
+&lt;/script&gt;
+&lt;template&gt;
+    &lt;div&gt;
+        &lt;p&gt;計數：{{ count }}&lt;/p&gt;
+        &lt;button @click=&quot;increment&quot;&gt;
+            增加
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+```
+用上面組件測試會發現只有UI顯示是正常的,按鈕點擊完全沒有反應
+所以Astro提供了client的directives讓組件在client端再執行
+```javascript
+---
+import VueCounter from &apos;@components/vue/VueCounter.vue&apos;;
+import ReactCounter from &apos;@components/react/ReactCounter&apos;;
+import SvelteCounter from &apos;@components/svelte/SvelteCounter.svelte&apos;;
+---
+&lt;main&gt;
+     &lt;VueCounter client:load /&gt;
+     &lt;ReactCounter client:load /&gt;
+     &lt;SvelteCounter client:load /&gt;
+&lt;/main&gt;
+&lt;style&gt;&lt;/style&gt;
+```
+client:load這個directive會讓組件在client端的時候才去載入javascript程式碼，其他還有像是client:visible、client:only等等的[Astro directives](https://docs.astro.build/zh-tw/reference/directives-reference/)有興趣的可以看一下
+
+### 組件資料傳遞
+
+**Props**
+在 Astro 中，最常見的資料傳遞方式之一是使用 Props 這讓我們能從父組件傳遞資料到子組件
+
+在子組件中，我們可以透過 Astro.props 來取得父組件傳入的資料
+```javascript
+Layout.astro
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;{title}&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;
+        &lt;slot /&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+```
+
+在父組件中，將資料傳入子組件作為屬性
+```javascript
+demo.astro
+---
+import Layout from &apos;@layouts/Layout.astro&apos;;
+const title = &apos;Demo Page&apos;;
+---
+
+&lt;Layout title={title}&gt;
+    &lt;main&gt;
+        ...
+    &lt;/main&gt;
+&lt;/Layout&gt;
+```
+這樣，父組件透過 Props 傳入 title，並在子組件中使用 Astro.props 來接收並顯示。
+
+**Store全域狀態管理**
+Astro 並不像 Vue 或 React 內建全域狀態管理工具，但我們可以使用輕量級的 [Nano Stores](https://github.com/nanostores/nanostores) 來實現跨框架的狀態共享。
+
+第一步:根據你使用的框架安裝對應的套件
+```bash
+npx astro add vue
+npx astro add react
+npm install nanostores @nanostores/vue
+npm install nanostores @nanostores/react
+```
+第二步：定義全域狀態
+在 stores 資料夾中建立一個 store.js 並定義一個全域狀態變數 isOpen：
+```javascript
+import { atom } from &apos;nanostores&apos;;
+export const isOpen = atom(false);
+```
+第三步:在不同框架的組件內使用Store
+假設有一個Vue以及React的button組件,當使用者點擊時會去變更「isOpen」變數的狀態
+VueButton.vue
+```javascript
+&lt;script setup&gt;
+import { useStore } from &apos;@nanostores/vue&apos;;
+import { isOpen } from &apos;../../stores&apos;;
+
+const isOpenValue = useStore(isOpen);
+
+const toggle = () =&gt; {
+    isOpen.set(!isOpenValue.value);
+};
+&lt;/script&gt;
+
+&lt;template&gt;
+    &lt;button @click=&quot;toggle&quot;&gt;
+        {{ isOpenValue ? &apos;Close Vue Dialog&apos; : &apos;Open Vue Dialog&apos; }}
+    &lt;/button&gt;
+&lt;/template&gt;
+```
+ReactButton.tsx
+```javascript
+// src/components/ReactButton.tsx
+import React from &apos;react&apos;;
+import { useStore } from &apos;@nanostores/react&apos;;
+import { isOpen } from &apos;../../stores&apos;;
+
+const ReactButton: React.FC = () =&gt; {
+    const isOpenValue = useStore(isOpen);
+
+    return (
+        &lt;button onClick{()=&gt;isOpen.set(!isOpenValue)}&gt;
+            {isOpenValue ? &apos;Close React Dialog&apos; : &apos;Open React Dialog&apos;}
+        &lt;/button&gt;
+    );
+};
+
+export default ReactButton;
+
+```
+第四步：在 Astro 頁面中使用這些組件
+在 Button.astro 文件中引入並使用這兩個組件，實現跨框架的狀態同步：
+```javascript
+---
+import Layout from &apos;@layouts/Layout.astro&apos;;
+import ReactButton from &apos;@components/react/ReactButton&apos;;
+import VueButton from &apos;@components/vue/VueButton.vue&apos;;
+const title = &apos;Button Astro&apos;;
+---
+
+&lt;!-- store狀態管理 --&gt;
+&lt;Layout title={title}&gt;
+    &lt;main&gt;
+        &lt;h1&gt;{title}&lt;/h1&gt;
+        &lt;section&gt;
+            &lt;ReactButton client:load/&gt;
+            &lt;VueButton client:load/&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+&lt;/Layout&gt;
+&lt;style&gt;&lt;/style&gt;
+
+```
+當點擊 Vue 或 React 按鈕時，isOpen 狀態將會在這兩個框架中同步更新
+
+**客製化事件**
+可以透過自定義的事件在不同框架組件之間傳遞資訊這邊選擇使用Vue
+
+1. 建立 Vue 組件：根據需求建立一個 Vue 組件來處理使用者的輸入
+2. 註冊事件監聽：在組件內註冊 CustomEvent，用來捕捉特定的使用者操作
+3. 觸發自定義事件：當條件滿足時（例如按下 Enter 且有輸入值），將自定義事件 dispatch 以傳遞資訊
+4. 在其他要取得輸入的組件裡註冊 CustomEvent 的事件監聽
+
+Input.vue
+```javascript
+&lt;script setup&gt;
+
+const searchEvent = new CustomEvent(&apos;search&apos;, {
+  detail: { keyword: &apos;&apos; },
+});
+
+function dispatchSearchEvent(keyword) {
+  searchEvent.detail.keyword = keyword;
+  document.dispatchEvent(searchEvent);
+}
+
+function onKeyUp(event) {
+  const keyword = event.target.value.trim().toLowerCase();
+
+  if (event.key.toLowerCase() === &apos;enter&apos;) {
+    dispatchSearchEvent(keyword);
+  }
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;input
+      id=&quot;search&quot;
+      type=&quot;text&quot;
+      @keyup=&quot;onKeyUp&quot;
+      placeholder=&quot;Search...&quot;
+    /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+```
+ReactSearchDisplay.tsx
+```javascript
+import React, { useEffect, useState } from &apos;react&apos;;
+
+const SearchDisplay: React.FC = () =&gt; {
+  const [keyword, setKeyword] = useState&lt;string&gt;(&apos;&apos;);
+
+  const handleSearchEvent = (event: Event) =&gt; {
+    if (event instanceof CustomEvent) {
+      const searchKeyword = event.detail?.keyword || &apos;&apos;;
+      setKeyword(searchKeyword);
+    }
+  };
+
+  useEffect(() =&gt; {
+    document.addEventListener(&apos;search&apos;, handleSearchEvent);
+
+    return () =&gt; {
+      document.removeEventListener(&apos;search&apos;, handleSearchEvent);
+    };
+  }, []);
+
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Search Result:&lt;/h2&gt;
+      &lt;p&gt;{keyword ? keyword : &apos;No keyword entered&apos;}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+};
+
+export default ReactSearchDisplay;
+```
+在 Astro 組件裡面使用這些組件
+```javascript
+---
+import VueInput from &apos;@components/vue/Input.vue&apos;;
+import ReactSearchDisplay from &apos;@components/react/ReactSearchDisplay&apos;;
+const title = &apos;CustomEvent Page&apos;;
+---
+&lt;main&gt;
+    &lt;h1&gt;CustomEvent Page&lt;/h1&gt;
+    &lt;section&gt;
+        &lt;VueInput client:load /&gt;
+        &lt;ReactSearchDisplay client:load /&gt;
+    &lt;/section&gt;
+&lt;/main&gt;
+&lt;style&gt;&lt;/style&gt;
+```
+當 VueInput 輸入資訊時 ReactSearchDisplay 就會取得該輸入
+
+### 渲染模式
+Astro 預設支援靜態渲染 (SSG)，並且同時支援伺服器端渲染（SSR）和客戶端渲染（CSR）
+在astro.config.mjs進行SSR渲染設定，有以下設定模式
+
+server mode
+所有Astro組件預設都為SSR模式
+```javascript
+export default defineConfig({
+  output: &apos;server&apos;,
+  adapter: xxx
+});
+```
+hybrid mode
+預設仍然是SSG模式，但可以在需要SSR的頁面單獨設定
+```javascript
+export default defineConfig({
+  output: &apos;hybrid&apos;,
+  adapter: xxx
+});
+```
+adapter為當你要在不同環境使用 SSR 渲染時需要額外載入套件 ex: nodejs、vercel、Netlify
+
+CSR 渲染就如同之前的範例一樣加上client:* 關鍵字即可，另外，Astro 同時支援混合渲染（Hybrid Rendering），可以對特定組件啟用 (SSR)，而其他組件仍保持靜態生成（SSG）
+補充：https://docs.astro.build/zh-tw/guides/server-side-rendering/
+
+### 路由
+Astro 與 Nuxt.js 等 SSR 框架相似，提供基於檔案路徑結構的路由功能（File-Based Routing）。在 src/pages/ 目錄下，Astro 支援以下檔案類型作為頁面或 API 端點：
+* .astro
+* .md
+* .mdx (需安裝 MDX Integration)
+* .html
+* .js/.ts (作為 API 端點)
+
+### SSG動態路由
+Astro 預設為靜態網站生成（SSG，Static Site Generation），每個頁面會在打包時生成靜態 HTML 檔案。若需要在 SSG 模式下實現動態路由，需事先為所有可能的路徑定義 URL。
+
+在 src/pages/ 目錄下，建立一個動態路由檔案 [dynamicRoute].astro：
+```javascript
+---
+// 使用 Astro.params 物件來存取 URL 中的動態參數
+const { dynamicRoute } = Astro.params;
+
+// getStaticPaths 函數，用來指定動態路由的路徑(函數名稱無法自定義)
+export async function getStaticPaths() {
+
+    // 動態路徑的數據
+    const routes = [&apos;page1&apos;, &apos;page2&apos;, &apos;page3&apos;];
+    
+    // 返回包含每個路徑參數的Array
+    return routes.map((route) =&gt; ({
+        params: { dynamicRoute: route },
+    }));
+}
+---
+&lt;main&gt;
+    &lt;h1&gt;動態路由頁面&lt;/h1&gt;
+    &lt;div&gt;
+        &lt;p&gt;動態路由參數: {dynamicRoute}&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/main&gt;
+```
+動態路由的定義方式與其他框架相似，通過在檔案名稱中使用方括號 [] 包住 URL 參數名稱（如 [dynamicRoute].astro）來捕獲動態參數。需要注意的是，若在 SSG 模式下訪問未定義的頁面，將會跳轉至 404 頁面。
+
+### 動態路由
+若要使用真正的動態路由，需要在 astro.config.mjs 中設定 output 為 hybrid 或 server，開啟 SSR 模式,以下我們採用 Hybrid模式
+```javascript
+import { defineConfig } from &apos;astro/config&apos;;
+
+export default defineConfig({
+  output: &apos;hybrid&apos;,
+  adapter: xxx
+});
+```
+接著，在 src/pages/ 中建立一個動態路由檔案 [dynamicRoute].astro，並透過 export const prerender = false; 關閉 SSG，啟用 SSR 模式：
+```javascript
+---
+// 關閉預設的 SSG 模式,這意味者開啟 SSR 模式
+export const prerender = false;
+
+// 使用 Astro.params 物件來存取 URL 中的動態參數
+const { dynamicRoute } = Astro.params;
+---
+&lt;main&gt;
+  &lt;div&gt;
+    獲取動態路由參數: {dynamicRoute}
+  &lt;/div&gt;
+&lt;/main&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;&lt;/style&gt;
+```
+這樣當用戶訪問 /astro 時，dynamicRoute 的值將會是 astro，並且不需要再提前定義靜態路徑
+
+### 更多
+其他像是[SEO優化](https://astro.build/integrations?search=&amp;categories%5B%5D=performance%2Bseo&amp;categories%5B%5D=accessibility)或是[自動化部屬](https://docs.astro.build/en/guides/deploy/)相關功能有需要的話可以再做延伸學習</content:encoded></item><item><title>畫板drawing board-六角學院Javascript新手地下城</title><link>https://bjmqfg83.github.io/blog/drawing_board</link><guid isPermaLink="true">https://bjmqfg83.github.io/blog/drawing_board</guid><description>六角學院Javscript新手地下城7F畫板</description><pubDate>Wed, 03 Mar 2021 00:00:00 GMT</pubDate><content:encoded>import CodePenEmbed from &apos;../../components/CodePenEmbed.astro&apos;;
+
+這座山終於快爬完一半了...不得不說如果真的不知道該怎麼做時參考網路上類似的範例是一個還不錯的選擇,不然你可能卡在路上半天還在迷路...
+
+![](/images/post/adventure-1807524_1920.jpg)
+
+Photo by [pixabay](https://pixabay.com/)
+
+### BOSS 弱點
+【特定技術】遊戲規則
+
+1. 繪圖區請使用 Canvas 來設計，上方的控制列與下方的畫筆調整可不用
+2. SAVE ：點擊後可直接下載轉出的 PNG 圖片
+3. CLEAR ALL：清除畫版樣式
+4. UNDO、REDO：上一步、下一步
+5. 點擊箭頭時，功能列介面皆可進行收闔
+6. 【擴充功能】請再自行增加「兩個功能」，我相信勇者們都是很有梗的~
+
+### Canvas
+**DOM vs Canvas**
+
+DOM在繪製主要是透過瀏覽器的graphic api來做,因為實際的細節是由瀏覽器處理所以操作上較為簡單,但是DOM的操作是很耗內存的,DOM越多內存的消耗量越大,而canvas雖然操作上較為困難但是速度快且善於處理大量的元素
+
+**要使用時在html內加上canvas,之後js透過id做canvas的相關設定**
+
+**HTML**
+```html
+  &lt;canvas id=&quot;canvas-panel&quot;&gt;&lt;/canvas&gt;
+```
+**Javascript**
+```javascript
+    // 基礎設定
+   function canvas_setting() {
+      //獲取2d畫筆物件
+      if (this.canvas.getContext) {
+        this.canvas.width = window.innerWidth; //設定canvas寬度為畫面寬度
+        this.canvas.height = window.innerHeight; //設定canvas高度為畫面高度
+        this.ctx = this.canvas.getContext(&quot;2d&quot;); //獲取canvas 2d畫筆
+        this.ctx.lineWidth = this.line_width; //設定線條粗細
+        this.ctx.strokeStyle = this.pen_color; //設定線條顏色
+      } else {
+        alert(&quot;Browser not support canvas&quot;);
+      }
+    }
+    //繪畫設定 
+    function drawImg(x1, y1, x2, y2) {//畫圖時需要畫筆以及兩點的x,y座標
+        //設定線條的端點如何繪製,round為端點帶有一個半圓形的線蓋
+        if (this.ctx.lineCap !== &quot;round&quot;) {
+          this.ctx.lineCap = &quot;round&quot;;
+        }
+        // 設定線條與線條之間如何連結,round為圓弧形連接
+        if (this.ctx.lineJoin !== &quot;round&quot;) {
+          this.ctx.lineJoin = &quot;round&quot;;
+        }
+        this.ctx.beginPath(); //開始繪製   
+        this.ctx.moveTo(x1, y1); //設定開始位置
+        this.ctx.lineTo(x2, y2); //設定移動位置
+        this.ctx.closePath(); //關閉路徑
+        this.ctx.stroke(); //路徑上色
+    }
+```
+### Mouse Event
+  Mouse Event是完成畫板基本繪畫功能的一個非常重要的事件,要完成基本繪畫功能需要下列三個事件監聽
+
+  1. mousedown - 滑鼠壓下
+  2. mousemove - 滑鼠移動
+  3. mouseup - 滑鼠放開
+
+```javascript
+    this.canvas.addEventListener(&quot;mousedown&quot;, (e) =&gt; {
+      //buttons為1表示為按下的滑鼠按鍵為左鍵-不讓其他鍵觸發事件
+      if (e.buttons === 1) {
+        this.pos_x = e.clientX; //抓取滑鼠水平位置
+        this.pos_y = e.clientY; //抓取滑鼠垂直位置
+        this.drawing = true;
+      }
+    });
+    this.canvas.addEventListener(&quot;mousemove&quot;, (e) =&gt; {
+      // 要畫成線需要兩組x、y座標
+      this.drawImg(this.pos_x,this.pos_y,e.clientX,e.clientY);
+      this.pos_x = e.clientX;
+      this.pos_y = e.clientY;
+    });
+    // 滑鼠移開時畫筆位置重置,drawing狀態為false
+    this.canvas.addEventListener(&quot;mouseup&quot;, (e) =&gt; {
+      // 避免繪畫時有放開其他滑鼠按鍵的狀況
+      if (e.buttons !== 1) {
+        this.pos_x = 0; //抓取滑鼠水平位置歸0
+        this.pos_y = 0; //抓取滑鼠垂直位置歸0
+        this.drawing = false;
+        //儲存當前的狀態方便用於上一步、下一步
+        this.step += 1;  //歷史紀錄步驟+1
+        this.record_Arr.push(this.canvas.toDataURL()); //將資料存成base64編碼後放進陣列,之後上一步、下一步會用到
+      }
+    });
+```
+### Data URI
+  Data URI在網頁上的作用就是透過將圖片轉換為文字編碼的方式直接儲存在HTML、CSS內來降低Http請求次數(一張圖片就是一個請求)進而增進網頁載入效能的一個方式，但是同時他也有著無法快取、可讀性差、檔案變大(大約33%)以及如果圖檔有變化時需要重新編碼的缺點,所以要使用的話還是要依照當下狀況來看...,在這一題裡Data URI是用作「下載圖片」以及繪畫時的「上一步、下一步」用
+
+Data URI格式
+```javascript
+  data:[&lt;mediatype&gt;][;base64],&lt;data&gt;
+```
+我們可以透過canvas內建的toDataURL將其轉換成Data URI後下載
+```javascript
+ canvas.toDataURL(type, encoderOptions);
+ // type為類型 ex: image/png(默認)、image/jpeg、image/webp...
+ // encoderOptions為圖片品質範圍為0~1,指定圖片格式為image/jpeg 或 image/webp
+```
+程式碼
+```javascript
+    // 下載圖片
+    function downloadImg() {
+      const dataUrl = this.canvas.toDataURL(&quot;image/png&quot;);
+      document.querySelector(&quot;.save&quot;).href = dataUrl; //轉換完後丟給a標籤,之後只要點擊標籤就會下載
+    }
+    // 不論是上一步、下一步都需要先等待圖片載入完畢
+    // 上一步
+    function undo(){
+      if (this.step &gt; 0) {
+        //先將狀態回到上一步
+        var last_history = new Image();
+        var window_width = window.innerWidth;
+        var window_height = window.innerHeight;
+        last_history.src = this.record_Arr[this.step-1]; //載入上一筆歷史紀錄
+        last_history.onload = () =&gt; {
+          this.ctx.clearRect(0, 0, window_width, window_height); //繪圖前必須先清除畫布
+          this.ctx.drawImage(last_history, 0, 0); //載入圖片
+          this.step-=1; //歷史紀錄步驟-1
+        };
+      }
+    }
+    // 下一步
+    function redo_canvas() {
+      // 如果有上一步操作才可以下一步
+      if (this.step &lt; this.record_Arr.length) {
+        var last_history = new Image();
+        var window_width = window.innerWidth;
+        var window_height = window.innerHeight;
+        last_history.src = this.record_Arr[this.step + 1]; //載入下一筆歷史紀錄
+        last_history.onload = () =&gt; {
+          this.ctx.clearRect(0, 0, window_width, window_height); //繪圖前必須先清除畫布
+          this.ctx.drawImage(last_history, 0, 0); //載入圖片
+          this.step +=1 ; //歷史紀錄步驟+1
+        };
+      }
+    }
+```
+### 客製化功能
+這次客製化了「顏色選取器」以及「橡皮擦」這兩個功能,我們直接來看程式碼
+
+**顏色選取器**
+```javascript
+  //選取色盤的顏色並變換畫筆顏色     
+  function color_picker() {
+    var color_picker = document.getElementById(&quot;color-panel&quot;); //抓取type為color的input
+    color_picker.addEventListener(&quot;input&quot;, (e)=&gt; {
+      this.selected_color = e.target.value; //抓取選取到的顏色
+      document.querySelector(&apos;.colors .show&apos;).parentElement.style.backgroundColor = this.selected_color; //將原先勾選到的顏色改成目前選取的顏色
+      this.pen_color = this.selected_color; //改變畫筆顏色
+      this.ctx.strokeStyle = this.pen_color; //改變畫筆顏色
+    });
+  }
+```
+**橡皮擦**
+
+橡皮擦原先的想法是想說將畫筆的顏色直接改成跟背景顏色一樣就可以了,但是png檔的背景是透明的,所以輸出的圖片會變成這樣 **(灰色的部分為橡皮擦擦過的路徑)**
+
+![](/images/post/eraser_bug.png)
+
+所以單純改變畫筆顏色是不行的,但是我們可以透過canvas的clearRect來將滑鼠滑過的區域清除掉
+
+```javascript
+  this.ctx.clearRect(x,y,width,height); //x、y為座標 width、height為清除的寬與高
+```
+這樣橡皮擦的功能就完成了,詳細的狀況可以去看我寫的code...
+
+![](/images/post/eraser_working.png)
+
+### 額外補充
+  canvas需要透過直接寫在HTML或是透過JS去設定寬高且無法透過CSS設定,在這樣的情況下如果要讓canvas的寬高隨螢幕resize時我們直覺會直接註冊一個resize的事件監聽，但是直接更改canvas的寬跟高會導致畫布被清空的bug...，想要解決這樣的問題我們可以透過undo、redo有用到的歷史紀錄，在螢幕resize時載入最新的一筆歷史紀錄,這樣即便在resize後畫布上的圖依然還會存在
+
+  ```javascript
+      window.addEventListener(&quot;resize&quot;, () =&gt; {
+      this.canvas.width = window.innerWidth;
+      this.canvas.height = window.innerHeight;
+      //先將狀態回到上一步
+      var last_history = new Image();
+      var window_width = window.innerWidth;
+      var window_height = window.innerHeight;
+      last_history.src = this.record_Arr[this.step];
+      last_history.onload = () =&gt; {
+        this.ctx.clearRect(0, 0, window_width, window_height);
+        this.ctx.drawImage(last_history, 0, 0);
+      };
+    });
+  ```
+### 7F畫板 demo連結
+
+&lt;CodePenEmbed hash=&quot;GRNxgrP&quot; /&gt;
+
+最近對於時間管理真的非常有感觸，有很多應該做以及想做的事情像是刷題目、寫文章、進修程式、運動、看課外書，這些全部都要花時間,懂得如何利用零碎的時間並增進做事效率真的很重要，希望有朝一日我也能夠成為一位專業的時間管理大師...
+
+![](/images/post/clock-650753_1920.jpg)
+
+Photo by [pixabay](https://pixabay.com/)
+
+
+
+## 補充資料
+[Canvas API MDN](https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API/Tutorial)
+
+[DOM vs Canvas](https://zhuanlan.zhihu.com/p/143829714)
+
+[Input Color MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/color)
+
+[Mousedown MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/mousedown_event)
+
+[Mouse Event 小筆記](https://medium.com/@shizukuichi/mouse-event-%E5%B0%8F%E7%AD%86%E8%A8%98-feb5dd866b0)
+
+[使用 DATA URI 將圖片以 Base64 編碼並內崁至網頁中，加速載入速度](https://blog.gtwang.org/web-development/minimizing-http-request-using-data-uri/)</content:encoded></item><item><title>如何在hugo上安裝utterances?</title><link>https://bjmqfg83.github.io/blog/hugo_unnerances</link><guid isPermaLink="true">https://bjmqfg83.github.io/blog/hugo_unnerances</guid><description>介紹如何透過utterances在hugo上面添加可以給訪客留言的留言區塊</description><pubDate>Tue, 08 Sep 2020 00:00:00 GMT</pubDate><content:encoded>{/* 標題 */}
+如果想要讓訪客針對你的文章發表評論的話我們可以透過
+[Disqus](https://disqus.com/)
+或是
+[Utterances](https://utteranc.es/)
+快速建立評論留言板
+
+其實一開始建立個人部落格時評論的套件我使用的是disqus，但是我丟到google的
+[PageSpeed](https://utteranc.es/https://developers.google.com/speed/pagespeed/insights/?hl=zh-TW)
+測試時發現整個網頁的載入時間有大半以上都花在disqus上面且有很多載入後卻沒有使用到，所以之後便決定改用utterances
+
+![](/images/post/disqus_efficacy1.png)
+
+
+![](/images/post/disqus_efficacy2.png)
+
+另外上網查了相關的文章說disqus有個資相關的問題，文章結尾會附上相關連結有興趣的可以看一下
+
+## Utterances是什麼?
+
+utterances是一個基於github issue的套件，其原理是在github上建立一個公開的repo讓訪客可以針對文章在repo上建立相關的issue，接下來就來跟大家介紹如何在頁面上添加utterances
+
+1. 在github上建立公開的repository
+
+![](/images/post/utterances_step1.png)
+
+2. 到utterances[安裝頁面](https://github.com/apps/utterances)後點選install
+
+![](/images/post/utterances_step2.png)
+
+3. 選擇要安裝utterances的github repo
+
+![](/images/post/utterances_step3.png)
+
+4. 之後在[utterances](https://utteranc.es/)官網下可以找到區塊進行設置
+
+![](/images/post/utterances_step4.png)
+
+![](/images/post/utterances_step5.png)
+
+5. 選擇想要的主題樣式
+
+![](/images/post/utterances_step6.png)
+
+6. 將產生的script複製下來後放到想要的地方
+
+![](/images/post/utterances_step7.png)
+
+這樣就完成utterances的設置了
+
+但要注意utterances是基於github issue所以留言的人需要有github帳號才可以留言
+
+如果有問題的話歡迎在底下留言
+
+## 補充資料
+
+[移除disqus留言系統](https://creativecrap.com/article/news/leaving-disqus.html)
+
+[The Problem With Disqus](https://fadeyev.net/the-problem-with-disqus/)
+
+[Why I Deleted Disqus and Why You Should Too](https://fatfrogmedia.com/delete-disqus-comments-wordpress/)</content:encoded></item><item><title>計算機Calculator-Javascript新手地下城</title><link>https://bjmqfg83.github.io/blog/hex_calculator</link><guid isPermaLink="true">https://bjmqfg83.github.io/blog/hex_calculator</guid><description>六角學院Javscript新手地下城3F計算機心得分享</description><pubDate>Mon, 08 Feb 2021 00:00:00 GMT</pubDate><content:encoded>import CodePenEmbed from &apos;../../components/CodePenEmbed.astro&apos;;
+
+### 使用技術
+
+JS : Vue、正規表達式、String(substring、replace、split)、For迴圈、Array(reverse)
+
+CSS: SCSS(CSS前處理語言)、Customize Scrollbar
+
+### 開發歷程
+
+這次寫題目時想順便複習FrameWork所以使用了Vue做開發，花了滿多時間想怎麼在千分位前加上「,」以及避免計算結果出現「undefined」、「NAN」
+
+### 千分位資料處理
+  整數位數超過三位時要加上千分位符「,」需要使用正規表達式、字串、陣列的方法來處理
+  ```javascript
+  //當計算機輸入到加、減、乘、除時對運算符前的數字做千分位符的處理
+  // +號在正規表達式有特定意思所以要單純匹配需在前面加上「反斜線」
+  // g表示要找出所有符合條件的結果，不加的話只會找出第一筆符合條件的結果就結束
+  const comma_rule = /(\+|-|×|÷)/g;
+  let prev_comma = &quot;&quot;; //整數位
+  let after_comma = &quot;&quot;; //小數位
+  let comma_val = &quot;&quot;; //加上千分位的結果
+  function compute_comma(){
+      comma_arr = result.split(comma_rule); //依據規則分隔出符合條件的陣列資料
+      comma_arr.forEach((item, index) =&gt; {
+        if (!isNaN(parseFloat(item))) { // 判斷是否為加、減、乘、除,只處理非NAN的資料
+          prev_comma = (item.split(&quot;.&quot;)[0] || &quot;&quot;).split(&quot;&quot;).reverse(); //整數位轉成陣列處理
+          after_comma = item.split(&quot;.&quot;)[1] || &quot;&quot;; //小數點先暫存進變數等處理完整數之後再整合進去
+          comma_val = &quot;&quot;; //每次迴圈前先清空
+          //前面的reverse()用來方便拼接字串
+          //ex:[3,8,5,6].reverse() =&gt; [6,5,8,3]
+          for (let i = 0; i &lt; prev_comma.length; i++) {
+            //當到第四位時在第三位前加上千分位符「,」
+            if (i % 3 === 0 &amp;&amp; i !== 0) {
+              // step 4 =&gt; &quot;3&quot;+&quot;,&quot;+&quot;856&quot;
+              comma_val = prev_comma[i] + &quot;,&quot; + comma_val;
+            //非第四位則單純拼接
+            } else {
+              // step 1 =&gt; &quot;6&quot;+ &quot;&quot;、step 2 =&gt; &quot;5&quot; + &quot;6&quot;、step 3 =&gt; &quot;8&quot; + &quot;56&quot;
+              comma_val = prev_comma[i] + comma_val;
+            }
+          }
+        }
+      });
+  }
+  ```
+  其餘的輸入規則如避免「NAN」、「undefined」讀者可以稍微思考一下如何處理，這邊就不贅述
+
+#### Scrollbar客製化
+
+稍微看過其他人做的計算機在位數過多時滿多都是使用js調整字體大小來避免畫面破格,但我個人不太想要調整字體大小所以選擇用css處理位數過多的問題，在畫面位數過多時會出現scrollbar可以滑動，可能會有人覺得瀏覽器預設的不是很好看，這部分可以透過css去調整
+
+**注:scrollbar的調整Firefox要額外寫**
+
+##### Firefox
+
+```css
+scrollbar-width: auto | thin | none | 1em | inherit | initial | unset ;
+scrollbar-color: auto | dark | light | color1(滾動條本身的顏色thumb) color2(滾動條外容器的顏色track);
+```
+**注: color1、color2可以用關鍵字(red、blue...)或是色碼**
+
+##### Chrome、IE Edge、Safari
+
+```css
+/* 屬性前要加::-webkit-前綴字  */
+::-webkit-scrollbar: width | height ;
+::-webkit-scrollbar-thumb: background | box-shadow | ... ;
+```
+![](/images/post/scrollbar_nofirefox.png)
+
+**注: 這邊簡單列出有使用到的，有需要的話可參考底下連結**
+
+### 計算機 codepen連結
+
+&lt;CodePenEmbed hash=&quot;qBqEgNY&quot; /&gt;
+
+
+#### 參考資料:
+
+https://css-tricks.com/custom-scrollbars-in-webkit/
+
+https://css-tricks.com/examples/WebKitScrollbars/
+
+https://stackoverflow.com/questions/6165472/custom-css-scrollbar-for-firefox/53739309#53739309
+
+https://github.com/Aris-t2/CustomCSSforFx/issues/160</content:encoded></item><item><title>愛的魔力轉圈圈-不斷重複的迴圈動態</title><link>https://bjmqfg83.github.io/blog/looping_ani</link><guid isPermaLink="true">https://bjmqfg83.github.io/blog/looping_ani</guid><description>紀錄製作迴圈動態的過程</description><pubDate>Fri, 25 Dec 2020 00:00:00 GMT</pubDate><content:encoded>import CodePenEmbed from &apos;../../components/CodePenEmbed.astro&apos;;
+
+前一陣子同事丟了一個問題要我動動腦練習寫一個迴圈動態，規則如下
+
+1. 以中心點做為起始點
+2. 不斷重複
+3. 不論版面是3x3、5x5、7x7、9x9甚至是以上都要能夠正常執行
+
+開發歷程:
+
+  開發的時候在元素上標示上數字可以在開發時幫忙找出中點以及跑迴圈的相關邏輯,建議標上去
+
+  ![](/images/post/demo_cover1.jpg)
+
+  接下來就是找出所需的相關資訊，稍後會在說明要迴圈數、轉折點的主因
+  1. 起始點
+  2. 迴圈數
+  3. 轉折點
+  
+  起始點直接除以2取最小整數即可
+  ```javascript
+  var now_pos = Math.floor(元素總數 / 2);
+  ```
+  迴圈數思考一下可以發現3x3是跑一圈迴圈、5x5兩圈、7x7三圈...
+  
+  由此得出以下關係
+  ```javascript
+  var looptimes = (Math.sqrt(元素總數) - 1) / 2;
+  ```
+
+  轉折點是當中非常重要的關鍵，因為會需要轉折點讓程式判斷跑的方向
+  
+  我是取中心點的左右斜對角作為轉折點，並透過迴圈數求出所有轉折點
+  ```javascript
+    for (var i = 1; i &lt;= looptimes; i++) {
+      // 最後-1是為了對應陣列下標從0開始
+      // 左上
+      cp.push(Math.ceil(元素總數 / 2) - i * (Math.sqrt(元素總數) + 1) - 1);
+      // 右上
+      cp.push(Math.ceil(元素總數 / 2) - i * (Math.sqrt(元素總數) - 1) - 1);
+      //右下
+      cp.push(Math.ceil(元素總數 / 2) + i * (Math.sqrt(元素總數) + 1) - 1);
+      // 左下
+      cp.push(Math.ceil(元素總數 / 2) + i * (Math.sqrt(元素總數) - 1) - 1);
+  }
+  ```
+  求出所有的轉折點後可以開始做迴圈的邏輯判斷了
+
+  計算當前所在的點 **(最開始是中心點)** 與轉折點之間的差值之後求差值得商數及餘數
+
+  * **餘數作為左右的判斷**
+  * **商數作為上下的判斷**
+  * **當前的點大於轉折點迴圈的方向就為左或上**
+  * **當前的點小於轉折點迴圈的方向就為右或下**
+
+  重複執行的部分則透過setInterval去做就可以了
+
+  在測試的時候可以改成7x7或9x9看看，一樣可以正常的執行
+  
+  之後針對動態如果還有什麼問題都歡迎來找我討論~
+
+執行結果:
+
+&lt;CodePenEmbed hash=&quot;QWKONxM&quot; /&gt;</content:encoded></item><item><title>60秒算數遊戲-Javascript新手地下城</title><link>https://bjmqfg83.github.io/blog/mathgame</link><guid isPermaLink="true">https://bjmqfg83.github.io/blog/mathgame</guid><description>六角學院Javscript新手地下城6F60秒算數遊戲</description><pubDate>Thu, 25 Feb 2021 00:00:00 GMT</pubDate><content:encoded>import CodePenEmbed from &apos;../../components/CodePenEmbed.astro&apos;;
+
+### 遊戲規則
+  1. 0 ~ 20 秒為 1位數計算 (5-3)，21 ~ 40 秒為 2 位數計算 (30*19)，41 ~ 60 秒為 3 位數計算 (332+312)，加減乘除規則請用隨機產生，不可寫死題目，60 秒內可無限次數答題。
+  2. 0 ~ 40 秒答對加一分，41 ~ 60 秒答對加五分，答錯扣一分，最多僅能扣到零分
+  3. 【特定技術】不可設計跳轉頁面，都得在同一頁內部切換頁面完成。
+
+### 使用技術
+
+JS : Vue、if else、Math、switch、localStorage、setInterval
+
+CSS: SCSS(CSS前處理語言)、flex、Input Number customize
+
+Others: google fonts
+
+### 開發歷程
+  1. 使用Vue做開發(~~我就懶~~)，讓vue做畫面渲染並使開發過程專注在程式邏輯上
+  2. 時間上透過setInterval去執行60秒的倒數,時間倒數到0時清除週期性定時器Interval並跳至最後一個頁面，當使用者在最後的頁面點擊try again時重新開始遊戲
+  3. 使用Math.random亂數產生題目，使用者送出答案時除了對答案還會依據目前所剩時間給予相對應的分數並依所剩時間產生相對應難度的題目
+  4. 新增小功能為透過localStorage去儲存自己遊戲的最高分,這是純前端的作法，如果有跟後端配合的話可以延伸至分數排行榜等等...
+
+### Input Number customize
+  我們要讓使用者輸入數字時會使用 **\&lt;input type=&quot;number&quot;&gt;**這個HTML表單元件,這個元件會有預設的上下箭頭讓使用者去調整數字,但是元件的上下箭頭個人認為跟整體設計非常不搭所以移除掉，現在來看一下CSS語法吧
+  ```css
+    input[type=&quot;number&quot;] {
+      width: 255px;
+      height: 131px;
+      outline: none;
+      font-size: 112px;
+      font-weight: bold;
+      text-align: center;
+      border: none;
+      /* default style firefox */
+      -moz-appearance: textfield;
+      /* default style safari、chrome、ie */
+      &amp;::-webkit-inner-spin-button,&amp;::-webkit-outer-spin-button {
+        appearance: none;
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+  ```
+  **註:在客製化樣式方面發現firefox很常需要下跟其他瀏覽器不同的前綴字，想客製化元件樣式的時候要注意一下**
+    
+### localStorage、sessionStorage
+  * localStorage以及sessionStorage為客戶端的資料儲存技術容量大小都為5MB,透過設定key:value的方式來儲存資料進瀏覽器，跟cookie不同的是在與server溝通時不會被自動帶入
+
+  * localStorage以及sessionStorage兩者之間唯一的不同就是localStorage如果使用者不刪除資料該筆資料會永遠存在在瀏覽器內但sessionStorage只要該分頁關閉時資料就會清除掉
+  
+  ```javascript
+    // localStorage
+    localStorage.setItem(&apos;myName&apos;, &apos;Tom&apos;);
+    localStorage.getItem(&apos;myName&apos;);
+    localStorage.removeItem(&apos;myName&apos;);
+    localStorage.clear();
+
+    // sessionStorage
+    sessionStorage.setItem(&apos;myName&apos;, &apos;Tom&apos;);
+    sessionStorage.getItem(&apos;myName&apos;);
+    sessionStorage.removeItem(&apos;myName&apos;);
+    sessionStorage.clear();
+  ```
+  透過localStorage去儲存玩家遊戲的分數，如果當次分數比上次高就會儲存進去
+
+### 安全性
+  當我們要使用Vue時大多習慣這樣寫
+  ```vue
+  const app = new Vue({...});
+  ```
+  但這樣使用者其實可以打開瀏覽器的console端去把分數改掉
+
+  ![](/images/post/info_security.jpg)
+
+  ![](/images/post/info_security2.jpg)
+
+  可以把const app移除掉讓使用者沒辦法透過console端去修改資料
+
+  但是這樣還不夠，使用者可以透過瀏覽器去修改localStorage的值去更改最高紀錄的分數
+
+  ![](/images/post/info_security3.jpg)
+
+  這時候我們可以新增一個storage的事件監聽,只要在遊戲進行時偵測到localStorage的值被修改就將分數歸0並重新開始遊戲，只有在遊戲結束時分數要進行更新時允許更新localStorage,更新完後一樣禁止再次修改localStorage的值
+  ```javascript
+    function security(){
+        window.addEventListener(&apos;storage&apos;,()=&gt;{
+          if(this.higest !== localStorage.getItem(&quot;higestscore&quot;)){
+            alert(&quot;偵測到分數被修改，遊戲積分歸0&quot;);
+            localStorage.setItem(&quot;higestscore&quot;,0);
+            // history.go(0);
+            this.try_again();
+          }
+        });
+      }
+  ```
+  因為程式內部的賦值也是更新,所以遊戲結束要賦值前記得先將事件監聽移除，等到程式內部的更新完成後再重新註冊一次事件監聽
+  ```javascript
+    window.removeEventListener(&apos;storage&apos;);
+  ```
+  我個人是透過修改資料內的狀態來重新開始遊戲,不過可能會有人想透過history.go(0)或是window.reload()等方式重新開始遊戲，但是這在codepen會有問題,建議要試的可以將自己的檔案下載下來後再測試
+
+  ![](/images/post/codepen_error1.jpg)
+  
+  codepen針對reload頁面的說明我放在參考資料內
+  
+### Demo 連結
+
+&lt;CodePenEmbed hash=&quot;dyOzKam&quot; /&gt;
+
+#### 參考資料:
+  [Input Number 客製化](https://stackoverflow.com/questions/23372903/hide-spinner-in-input-number-firefox-29)
+
+  [Web Storage MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)
+
+  [localStorage MDN](https://developer.mozilla.org/zh-TW/docs/Web/API/Window/localStorage)
+
+  [sessionStorage MDN](https://developer.mozilla.org/zh-TW/docs/Web/API/Window/sessionStorage)
+
+  [referred-from-pen-message](https://blog.codepen.io/documentation/referred-from-pen-message/)</content:encoded></item><item><title>移動時的殘影-CSS Motion Blur</title><link>https://bjmqfg83.github.io/blog/motionblur</link><guid isPermaLink="true">https://bjmqfg83.github.io/blog/motionblur</guid><description>透過CSS Motion blur產生移動時的殘影</description><pubDate>Mon, 03 May 2021 00:00:00 GMT</pubDate><content:encoded>import CodePenEmbed from &apos;../../components/CodePenEmbed.astro&apos;;
+
+最近在專心看Vue3的東西所以疏於更新blog了 ~~(其實是懶的...)~~ ...,想說在要寫Vue的文章之前先來寫點小東西練練手感,不然有點久沒寫部落格真的是會生疏。
+
+### Motion Blur
+
+Motion blur又稱作動態模糊、運動模糊,主要是當相機拍攝一個快速移動的物體或是對拍攝物進行長時間的曝光所產生的模糊效果,那如果我們要讓網頁的元素做出物體移動時的模糊效果的話該怎麼做呢?
+
+我們可以透過CSS來達到類似的效果,將複數的元素包起來並設絕對定位讓元素堆疊起來並且給與元素不同的過渡或動畫延遲時間,這樣物體在移動時就會有那種好像因為動的很快所以產生殘引的感覺。
+
+&lt;CodePenEmbed hash=&quot;OJWKwvO&quot; /&gt;
+
+### Motionblurjs
+
+如果不想要自己一個個新增物件的話可以使用[MotionBlurJS](https://www.motionblurjs.com/)提供的涵式庫來完成,只需要在元素上加上特定的class後自己定義CSS動畫即可
+
+```html
+&lt;div id=&quot;yourId&quot; class=&quot;blurjs&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;yourId&quot; class=&quot;fadejs&quot;&gt;&lt;/div&gt;
+```
+
+![](/images/post/motionblur_theory.jpg)
+
+**註 : Motionblurjs所做的事情也是新增元素並且給元素不同的delay時間**
+
+### Motionblurjs demo
+
+&lt;CodePenEmbed hash=&quot;yLgmRZv&quot; /&gt;
+
+
+#### 參考資料:
+
+
+[MotionBlurJS](https://www.motionblurjs.com/)
+
+[MotionBlur維基百科](https://zh.wikipedia.org/wiki/%E5%8B%95%E6%85%8B%E6%A8%A1%E7%B3%8A)
+
+[How to Create a Realistic Motion Blur with CSS Transitions](https://css-tricks.com/how-to-create-a-realistic-motion-blur-with-css-transitions/)</content:encoded></item><item><title>99乘法表-Javascript新手地下城</title><link>https://bjmqfg83.github.io/blog/multiplication_table</link><guid isPermaLink="true">https://bjmqfg83.github.io/blog/multiplication_table</guid><description>Javscript新手地下城9x9乘法表心得分享</description><pubDate>Tue, 25 Aug 2020 00:00:00 GMT</pubDate><content:encoded>import CodePenEmbed from &apos;../../components/CodePenEmbed.astro&apos;;
+
+最近想複習HTML、CSS、Javascript的基礎概念
+
+所以開始寫六角學院的新手地下城題目
+
+使用技術:
+
+JS : let變數、Template literals樣板字串、for迴圈
+
+CSS: SCSS(CSS前處理語言)、BEM風格規範(其實這我不確定名稱是否有完全符合BEM的規範)
+
+開發歷程:
+
+寫的時候覺得麻煩的地方並不在程式邏輯的地方,反而在思考HTML結構、CSS變數命名的地方佔據的大半的時間,希望日後切板的技術可以越來越純熟
+
+&lt;CodePenEmbed hash=&quot;NWGObqo&quot; /&gt;
+
+程式碼:
+
+https://codepen.io/mgnlhdsl/full/NWGObqo
+
+https://bjmqfg83.github.io/multiplication_table/multiplication_table</content:encoded></item><item><title>Tic Tac Toe 井字遊戲-六角學院Javascript新手地下城</title><link>https://bjmqfg83.github.io/blog/tictactoe</link><guid isPermaLink="true">https://bjmqfg83.github.io/blog/tictactoe</guid><description>六角學院Javascript新手地下城8F井字遊戲</description><pubDate>Thu, 18 Mar 2021 00:00:00 GMT</pubDate><content:encoded>import CodePenEmbed from &apos;../../components/CodePenEmbed.astro&apos;;
+
+### BOSS 弱點
+1. 【特定技術】先手為 O，後手為 X，某方獲勝時，上方會紀錄各方的獲勝戰績
+2. 【特定技術】每回合結束後，會判定結果頁(平手、Ｏ 獲勝、X 獲勝)
+3. 【特定技術】需符合 RWD，能在低螢幕解析度也能遊玩，介面不能超出 x 軸，至少在以下解析度能夠遊玩。
+4. iPhone SE 320px
+5. iPhone 8 375px
+6. iPhone PLUS 414px
+7. 【特定技術】請使用瀏覽器離線儲存技術，將戰績保留起來，重新打開遊戲也仍可觀看到歷史戰績。技術請任選以下幾種
+8. Cookie
+9. LocalStorage
+10. 【書寫能力】請寫 BLOG，描述你在開發「滿足獲勝條件」解題思維來進行加強描述
+11. 上面三個 O 符合獲勝條件
+12. 斜線三個 X 符合獲勝條件
+13. 請先不要參考網路上的寫法，試著用自身開發能力來解題，進以提升開發思維。但這段並非強制，真的卡關到爆炸，就還是試圖尋找攻略吧，但我相信想立志成為前端之碑的樓主，一定辦得到的！（崇拜眼神
+
+### 程式邏輯
+這次要細心一點的是RWD的縮放,程式邏輯的部分倒是還好,而程式邏輯有兩個地方要注意
+
+1. 判斷當下是O或X的回合
+2. 判斷獲勝以及平手
+
+由於一開始的設定是圈圈的回合而後是叉叉的回合反覆交替，以數學的概念來想圈圈是奇數回而叉叉是偶數回,所以我們程式可以這樣寫,透過counter的奇偶來判斷當前是屬於哪方的回合
+```javascript
+  var counter = 1; //一開始預設為1,圈圈的回合
+  var pos = e.target.dataset.pos; //綁在html上的自定義屬性,用於讓js添加class
+  if (counter % 2 !== 0) { //圈圈的回合
+    if (!e.target.classList.contains(&quot;circle&quot;) &amp;&amp; !e.target.classList.contains(&quot;cross&quot;)) //已經下過就不能在同一位置下
+    {
+      e.target.classList.add(&quot;circle&quot;); //添加圈圈樣式
+      document.querySelector(&quot;.turn .circle-turn&quot;).classList.add(&quot;op-0&quot;); //叉叉處顯示your turn
+      document.querySelector(&quot;.turn .cross-turn&quot;).classList.remove(&quot;op-0&quot;); //圈圈處your turn隱藏
+      counter += 1; // +1表示下回合換叉叉下
+    }
+  } else { //叉叉的回合
+      if (!e.target.classList.contains(&quot;circle&quot;) &amp;&amp; !e.target.classList.contains(&quot;cross&quot;))
+        {
+          e.target.classList.add(&quot;cross&quot;);
+          document.querySelector(&quot;.turn .circle-turn&quot;).classList.remove(&quot;op-0&quot;);
+          document.querySelector(&quot;.turn .cross-turn&quot;).classList.add(&quot;op-0&quot;);
+          counter += 1;
+        }
+    }
+```
+只要圈或叉可以連成一條線都算獲勝,總共有8種獲勝的條件
+
+![](/images/post/tictactoe_judge.png)
+
+分成三個圖比較方便看
+
+```javascript
+    var status = [null,null,null,null,null,null,null,null,null]; //用來判斷9個位置是否都已下完 true為circle false為cross
+    function judge() {
+      var result = null;
+      // circle win
+      if (status[0] === true &amp;&amp; status[1] === true &amp;&amp; status[2] === true)
+      {
+        result = true;
+      } else if (status[3] === true &amp;&amp; status[4] === true &amp;&amp; status[5] === true)
+      {
+        result = true;
+      } else if (status[6] === true &amp;&amp; status[7] === true &amp;&amp; status[8] === true)
+      {
+        result = true;
+      } else if (status[0] === true &amp;&amp; status[4] === true &amp;&amp; status[8] === true)
+      {
+        result = true;
+      } else if (status[2] === true &amp;&amp; status[4] === true &amp;&amp; status[6] === true)
+      {
+        result = true;
+      } else if (status[1] === true &amp;&amp; status[4] === true &amp;&amp; status[7] === true)
+      {
+        result = true;
+      } else if (status[0] === true &amp;&amp; status[3] === true &amp;&amp; status[6] === true)
+      {
+        result = true;
+      } else if (status[2] === true &amp;&amp; status[5] === true &amp;&amp; status[8] === true)
+      {
+        result = true;
+      }
+
+      // cross win
+      if (status[0] === false &amp;&amp; status[1] === false &amp;&amp; status[2] === false)
+      {
+        result = false;
+      } else if (status[3] === false &amp;&amp; status[4] === false &amp;&amp; status[5] === false)
+      {
+        result = false;
+      } else if (status[6] === false &amp;&amp; status[7] === false &amp;&amp; status[8] === false)
+      {
+        result = false;
+      } else if (status[0] === false &amp;&amp; status[4] === false &amp;&amp; status[8] === false)
+      {
+        result = false;
+      } else if (status[2] === false &amp;&amp; status[4] === false &amp;&amp; status[6] === false)
+      {
+        result = false;
+      } else if (status[1] === false &amp;&amp; status[4] === false &amp;&amp; status[7] === false)
+      {
+        result = false;
+      } else if (status[0] === false &amp;&amp; status[3] === false &amp;&amp; status[6] === false)
+      {
+        result = false;
+      } else if (status[2] === false &amp;&amp; status[5] === false &amp;&amp; status[8] === false)
+      {
+        result = false;
+      }
+
+      if (result === true) {
+        // circle win
+      } else if (result === false) {
+        // cross win
+      }
+       // 判斷9個空格是否都已佔用且result不是true也不是false為平手
+      if (this.counter - 1 === 9 &amp;&amp; result !== true &amp;&amp; result !== false) {
+        // draw平手
+      }
+    }
+```
+### vw、vh、vmax、vmin
+  我使用了vw來做網頁畫面的縮放,一個主要原因是這樣其實滿方便的 ~~(雖然要一直拿計算機計算)~~ ,另一個原因是做過一些活動跟產品介紹頁面,那些頁面的設計一定要用隨螢幕縮放的方式來做不然會有問題...
+#### vw
+view width 抓取螢幕可視範圍寬度的百分比,比如說15vw指的是百分之15的螢幕可視範圍寬度
+#### vh
+view height 抓取螢幕可視範圍高度的百分比,比如說15vh指的是百分之15的螢幕可視範圍高度
+#### vmax
+vmax 抓取長度或寬度較大的百分比,如果是pc螢幕抓取的就可能是寬度的百分比而mb抓取的可能就是高度的百分比
+#### vmin
+vmin 抓取長度或寬度較小的百分比,如果是pc螢幕抓取的就可能是高度的百分比而mb抓取的可能就是寬度的百分比
+
+&lt;CodePenEmbed hash=&quot;yLVWrry&quot; /&gt;
+
+### cookie vs localStorage vs sessionStorage
+
+  **cookie**
+
+  Http協定是無狀態的，也就是說server端不會知道client端上一次做什麼，而cookie就是避開Http無狀態的手段之一，server可以設定或讀取cookies的資訊，藉此來維護client端跟server端對談中的狀態，另外當一個cookie沒有設定失效時間,會在使用者關閉瀏覽器後被自動刪除。
+
+  ```javascript
+     document.cookie // 讀取cookie
+     document.cookie = &quot;key1=value1;&quot;; //設定cookie
+  ```
+  
+  本來想說這次使用cookie來儲存資料並設定cookie過期的時間,不過vue存cookie貌似有問題，之後再找時間研究一下...
+
+  **localStorage、sessionStorage**
+
+  localStorage、sessionStorage我直接把之前寫的文章內容複製貼上...
+
+  * localStorage以及sessionStorage為客戶端的資料儲存技術容量大小都為5MB,透過設定key:value的方式來儲存資料進瀏覽器，跟cookie不同的是在與server溝通時不會被自動帶入
+
+  * localStorage以及sessionStorage兩者之間唯一的不同就是localStorage如果使用者不刪除資料該筆資料會永遠存在在瀏覽器內但sessionStorage只要該分頁關閉時資料就會清除掉
+  
+  ```javascript
+
+    // localStorage
+    localStorage.setItem(&apos;myName&apos;, &apos;Tom&apos;); // 設定localStorage
+    localStorage.getItem(&apos;myName&apos;); // 取得localStorage
+    localStorage.removeItem(&apos;myName&apos;); // 移除localStorage
+    localStorage.clear(); //清除localStorage
+
+    // sessionStorage
+    sessionStorage.setItem(&apos;myName&apos;, &apos;Tom&apos;); // 設定sessionStorage
+    sessionStorage.getItem(&apos;myName&apos;); // 取得sessionStorage
+    sessionStorage.removeItem(&apos;myName&apos;); // 移除sessionStorage
+    sessionStorage.clear(); //清除sessionStorage
+
+  ```
+
+### 8F井字遊戲 demo連結
+
+&lt;CodePenEmbed hash=&quot;vYyvmEN&quot; /&gt;
+
+剩下一半了...希望我身體還頂得住
+
+![](/images/post/a8f51d417665827c2d4497d6765f99e8.jpg)
+
+## 補充資料
+[好用的css 3新單位vh vw](https://pjchender.blogspot.com/2015/04/css-3vh-vw.html)
+
+[localStorage](https://developer.mozilla.org/zh-TW/docs/Web/API/Window/localStorage)
+
+[sessionStorage](https://developer.mozilla.org/zh-TW/docs/Web/API/Window/sessionStorage)
+
+[cookie wikipedia](https://zh.wikipedia.org/wiki/Cookie)
+
+[cookie MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)
+
+[[WEB] Cookie &amp; Session 是什麼？](https://ithelp.ithome.com.tw/articles/10227602)
+
+[JavaScript Cookie](https://www.fooish.com/javascript/cookie.html)</content:encoded></item><item><title>Safari渲染問題</title><link>https://bjmqfg83.github.io/blog/safari-render-issue</link><guid isPermaLink="true">https://bjmqfg83.github.io/blog/safari-render-issue</guid><description>Safari渲染問題</description><pubDate>Sat, 03 Jul 2021 00:00:00 GMT</pubDate><content:encoded>之前在執行公司的專案時遇到兩個跟safari有關的問題
+1. 透過js的click事件給元素添加class更改樣式以及執行transform後視覺上並無變化,但從開發者工具來看class以及裡面的樣式是有加上元素的
+2. 當使用者使用iphone播放影片「途中」突然待機後再開啟,畫面會直接停在待機前的畫面無法操作
+
+這兩個問題嚴格意義上應該算一個問題,推測跟safari本身的渲染機制有關,不過不確定是什麼原因導致畫面沒有repaint就是了...
+
+第一個問題是樣式沒有渲染上去,所以我們要做的是強行觸發瀏覽器的渲染機制,以下的屬性當js訪問時會先渲染dom後才會去獲得相關屬性
+
+* offsetTop
+* offsetLeft
+* offsetWidth
+* offsetHeight
+* scrollTop
+* scrollLeft
+* scrollWidth
+* scrollHeight
+* clientTop
+* clientLeft
+* clientWidth
+* clientHeight
+
+我們先將元素的display設為「none」後訪問上述其中一個屬性再將元素的display設為「block」
+
+```javascript
+	var target = document.getElementById(&apos;#target&apos;);
+	target.style.display=&apos;none&apos;;
+	target.offsetHeight;
+	target.style.display=&apos;block&apos;;
+```
+
+第二個問題要解決的話需要偵測手機是否待機，雖然Javascript沒辦法偵測手機是否待機,但是Web APIs裡有提供一個可以做為替代方式的API
+
+### Page Visibility API
+
+Page Visibility API會在網頁處於背景或是對於使用者來說看不到的情形下觸發,測試過手機待機時同樣有效，首先註冊 **「visibilitychange」** 的事件監聽,當使用者待機觸發事件時再透過 **「document.hidden」** 檢查畫面對於使用者來說是否被隱藏,為true時暫停播放、為false時繼續播放
+
+### Javascript程式邏輯
+```javascript
+
+  var videoplay_state = false;
+  var target_video = document.querySelector(&apos;#target-video&apos;);
+  var hidden, visibilityChange;
+
+  target_video.addEventListener(&apos;ended&apos;,function(){
+    videoplay_state = true;
+  });
+
+	if (typeof document.hidden !== undefined) {
+		// Opera 12.10 and Firefox 18 and later support
+		hidden = &apos;hidden&apos;;
+		visibilityChange = &apos;visibilitychange&apos;;
+	} else if (typeof document.msHidden !== undefined) {
+		hidden = &apos;msHidden&apos;;
+		visibilityChange = &apos;msvisibilitychange&apos;;
+	} else if (typeof document.webkitHidden !== undefined) {
+		hidden = &apos;webkitHidden&apos;;
+		visibilityChange = &apos;webkitvisibilitychange&apos;;
+	}
+  
+	// If the page is hidden, pause the video 、 if the page is shown, play the video
+	function handleVisibilityChange() {
+		if(videoplay_state){
+			return;
+		}
+		if (!document.hidden) {
+			target_video.play();
+		} else {
+			target_video.pause();
+		}
+	}
+
+	if (typeof document.addEventListener === undefined || hidden === undefined) {
+		alert(&apos;This demo requires a browser, such as Google Chrome or Firefox, that supports the Page Visibility API.&apos;);
+	} else {
+		document.addEventListener(&apos;visibilitychange&apos;, handleVisibilityChange, false);
+	}
+
+```
+另外影片播放結束後待機也有一個問題，當行動裝置上的Safari播放影片「結束」後再開啟會發現畫面整個是空白的，最快的解決方式是直接是在影片播放結束後放上一張影片最後一卡的蓋板圖片
+
+### Javascript程式邏輯
+```javascript
+
+  var video_Element = document.querySelector(&quot;#target-video&quot;); //目標影片
+  var cover_img = document.querySelector(&quot;#cover-img&quot;); //蓋版圖片，預設display為none
+
+  // 在影片上添加ended事件監聽偵測影片播放結束
+  video_Element.addEventListener(&apos;ended&apos;,function(){
+    cover_img.style.display = &apos;block&apos;;
+  });
+
+```
+之前曾在網路上看到有人寫說要不是有mac、iphone撐腰,不然Safari下場應該會跟IE差不多...，一開始我還不以為意,但隨著經手的案子越來越多我開始慢慢認同這件事了...
+
+不過雖然遇到這些坑真的很讓人煩躁，但是把這些坑填起來其實也有滿多幫助的,像是**Page Visibility API**除了用來填坑外還可以用來做效能上的優化,只能說事情有好有壞啦
+
+## 補充資料
+[Video play ended MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/ended_event)
+
+[Page Visibility API MDN](https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API)</content:encoded></item><item><title>WORLD CLOCK-Javascript新手地下城</title><link>https://bjmqfg83.github.io/blog/world_clock</link><guid isPermaLink="true">https://bjmqfg83.github.io/blog/world_clock</guid><description>六角學院Javscript新手地下城4F時區</description><pubDate>Wed, 10 Feb 2021 00:00:00 GMT</pubDate><content:encoded>import CodePenEmbed from &apos;../../components/CodePenEmbed.astro&apos;;
+
+### 使用技術
+
+JS : For迴圈、Date、string、setInterval
+
+CSS: SCSS(CSS前處理語言)、Grid Layout
+
+Others: google fonts
+
+### 開發歷程
+
+這次的切版跟程式邏輯都不算複雜,麻煩的是要找Date().toLocaleString的參數設定,有需要的可以看看參考資料的連結，現在這邊來跟各位分享相關知識
+
+### 時間戳timestamp
+  timestamp指的是從1970年1月1日0時0分0秒開始到現在總共經過多少豪秒數，可用於追蹤時間、計算時間差、日期排序等等...，在js內可透過new Date().getTime()取得，不過在查詢資料的時候看到有人說是經過的「秒數」，但使用相關函式獲取到的到底是毫秒還是秒這部分可能跟程式語言、系統環境有關，javascript獲取到的是「毫秒數」、php獲取到的是「秒數」，有興趣的可以到[epochconverter](https://www.epochconverter.com/)、[unixtimestamp](https://www.unixtimestamp.com/)看看
+
+### GMT、UTC
+  GMT全稱為格林威治標準時間(Greenwich Mean Time)、UTC全稱為世界協調時間(Coordinated Universal Time),台灣所在的時區快八小時所以可以表示成「GMT+8」或是「UTC+8」，那至於GMT、UTC的差別詳細的可以參考泛科學的[到底是 GMT+8 還是 UTC+8 ?](https://pansci.asia/archives/84978?fbclid=IwAR0O3OFctmf9szayS9dB-JcK-sfij-SlWJctwmorwFs4y0SS6Cro_ZyXkOg)，日常生活中兩者沒什麼區別可以混用,只是由於地球自轉速度在變慢導致GMT的1秒越來越長，UTC會在超過GMT快1秒時加入「閏秒」來抵消超前的量
+
+### world clock時區
+  要獲取指定地區的日期時間我們可使用Date物件的toLocaleString
+  ```
+  new Date().toLocaleString([locales[, options]])
+  ```
+  locales為語言環境，簡單來說是讓時間以該語言的格式顯示，比如說你locales給\&apos;zh-tw(台灣)\&apos;的話顯示的格式為&quot;2021/2/10 下午1:42:31\&quot;，如果給\&apos;en-GB(英國)\&apos;的話顯示的格式為&quot;10/02/2021, 13:48:17\&quot;，但這只是顯示的格式而已,時區還是在使用者所在的地區,如果要顯示別的時區的時間需要透過options做設定
+
+  options可以設定時區以及年、月、日等等的顯示格式，這邊列出有使用到的
+  ```
+      timeZone =&gt; 設定要顯示的地區時間
+      hour12 =&gt; 設定顯示是否為12小時制
+      year  =&gt; 設定顯示年分格式
+      month  =&gt; 設定顯示月份格式,可為英文或數字
+      day   =&gt; 設定顯示日期格式
+      hour  =&gt; 設定顯示小時格式
+      minute =&gt; 設定顯示分鐘格式
+  ```
+  **注: locales、options內詳細的參數設定可以直接看最後面的參考資料**
+
+#### JS程式邏輯
+  ```javascript
+    // 時區依序為美國、英國倫敦、曼谷、台北、澳洲雪梨
+    const timeZones = [
+      &quot;America/New_York&quot;,
+      &quot;Europe/London&quot;,
+      &quot;Asia/Bangkok&quot;,
+      &quot;Asia/Taipei&quot;,
+      &quot;Australia/Sydney&quot;
+    ];
+    // toLocaleString options參數 
+    const options = {
+      timeZone: &quot;Asia/Taipei&quot;, // 時區設定台北
+      hour12: false, //不以12小時制顯示,會以24小時制顯示
+      year: &quot;numeric&quot;, //正常數字顯示
+      month: &quot;short&quot;, //short只會顯示三位英文 ex: February =&gt; Feb
+      day: &quot;2-digit&quot;, //顯示兩位 ex: 1 =&gt; 01
+      hour: &quot;2-digit&quot;, //顯示兩位
+      minute: &quot;2-digit&quot; //顯示兩位
+    };
+    function world_clock() {
+      timeZones.forEach((item, index) =&gt; {
+        var temp_clockInfo = &quot;&quot;;
+        var temp_dateInfo = &quot;&quot;;
+        options.timeZone = item;
+        // 時區使用英國(en-GB)顯示結果就會是日、月、年、時間
+        temp_clockInfo = new Date().toLocaleString(&quot;en-GB&quot;, options);
+        //月份後面添加「. 」後重新拼接日期字串
+        temp_dateInfo =
+          temp_clockInfo.split(&quot;,&quot;)[0].split(&quot; &quot;)[0] +
+          &quot; &quot; +
+          temp_clockInfo.split(&quot;,&quot;)[0].split(&quot; &quot;)[1] +
+          &quot;. &quot; +
+          temp_clockInfo.split(&quot;,&quot;)[0].split(&quot; &quot;)[2];
+        //更新年月日的元素
+        document.querySelectorAll(&quot;.location-info .location-date&quot;)[index].innerText = temp_dateInfo;
+        //依格式中的「,」分割出時分後更新DOM,透過index下標去找目標元素
+        document.querySelectorAll(&quot;.location-info &gt; div:nth-of-type(2)&quot;)[index].innerText = temp_clockInfo.split(&quot;,&quot;)[1].trim();
+      });
+    }
+    world_clock();
+    // 每秒鐘調用一次判斷getSeconds()是否為59，為59示1分鐘要到可以調用函數更新時間
+    var clock_timer = setInterval(function(){
+      if(new Date().getSeconds()===59){
+        world_clock();
+      }
+    },1000);
+  ```
+
+### world clock codepen連結
+
+&lt;CodePenEmbed hash=&quot;GRNqGjW&quot; /&gt;
+
+
+
+#### 參考資料:
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat
+
+https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+https://blog.techbridge.cc/2020/12/26/javascript-date-time-and-timezone/</content:encoded></item></channel></rss>

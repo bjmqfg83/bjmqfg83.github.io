@@ -1,0 +1,419 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="A minimal blog focused on excellent reading experience"><title>Astro框架介紹</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><script async src="https://www.googletagmanager.com/gtag/js?id=G-2T34DJBTW2">
+  // _
+</script> <script>(function(){const id = "G-2T34DJBTW2";
+
+  (() => {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', id);
+  })();
+})();</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CMTcOisY.js"></script><link rel="stylesheet" href="/_astro/archive.D5PqhWfd.css">
+<style>.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
+</style></head> <body class="min-h-screen bg-white dark:bg-gray-900"> <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8"> <header class="py-6"> <nav class="flex justify-between items-center flex-wrap"> <a href="/" class="text-2xl font-bold text-gray-900 dark:text-white">Leo&#39;s blog</a> <div class="flex items-center gap-6"> <ul class="flex gap-6"> <li> <a href="/" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white"> Home </a> </li><li> <a href="/blog" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white"> Blog </a> </li><li> <a href="/tags" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white"> Tags </a> </li><li> <a href="/archive" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white"> Archive </a> </li> </ul> <button id="search-button" class="text-gray-700 dark:text-gray-100 hover:text-gray-900 dark:hover:text-white" aria-label="Search"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="11" cy="11" r="8"></circle> <line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </button> <div id="search-modal" class="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 hidden flex items-start justify-center pt-24"> <div class="flex items-start bg-white dark:bg-gray-800 rounded-lg p-6 max-w-2xl w-full mx-4 flex-col"> <input type="text" id="search-input" class="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white mb-4" placeholder="Search posts..." autocomplete="off"> <div id="search-results" class="max-h-96 overflow-y-auto w-full"> <div class="p-4 text-gray-500 dark:text-gray-400">No results found</div> </div> </div> </div> <script type="module">let f=[],o,c,s,g,m,l;function v(a,e){return(...t)=>{clearTimeout(l),l=setTimeout(()=>a(...t),e)}}async function L(){f=await(await fetch("/api/search.json")).json(),o=document.getElementById("search-input"),c=document.getElementById("search-results"),s=document.getElementById("search-modal"),g=document.getElementById("search-button"),m=document.getElementById("close-search");const e=v(b,300);return o?.addEventListener("input",e),g?.addEventListener("click",p),m?.addEventListener("click",d),s?.addEventListener("click",t=>{t.target===s&&d()}),document.addEventListener("keydown",t=>{t.key==="Escape"&&!s?.classList.contains("hidden")&&d()}),()=>{clearTimeout(l)}}function p(){s?.classList.remove("hidden"),o?.focus()}function d(){s?.classList.add("hidden"),o.value="",c.innerHTML=`
+            <div class="p-4 text-gray-500 dark:text-gray-400">
+          No results found
+        </div>
+  `}function y(a,e){if(!e)return a;const t=new RegExp(`(${e})`,"gi");return a.replace(t,'<mark class="bg-yellow-200 dark:bg-yellow-800">$1</mark>')}function b(a){const e=a.target.value.toLowerCase();if(!e){c.innerHTML=`
+        <div class="p-4 text-gray-500 dark:text-gray-400">
+          No results found
+        </div>
+      `;return}const t=f.filter(n=>`${n.title} ${n.description} ${n.content} ${n.tags?.join(" ")}`.toLowerCase().includes(e)).map(n=>{const i=n.content.toLowerCase().indexOf(e.toLowerCase());let r="";if(i!==-1){const u=Math.max(0,i-50),h=Math.min(n.content.length,i+e.length+50);r=n.content.slice(u,h),u>0&&(r="..."+r),h<n.content.length&&(r=r+"...")}const x=y(n.title,e),k=y(r,e);return{...n,matchedContent:k,matchedTitle:x}}).slice(0,5);E(t)}function E(a){a.length===0?c.innerHTML=`
+        <div class="p-4 text-gray-500 dark:text-gray-400">
+          No results found
+        </div>
+      `:c.innerHTML=a.map(e=>`
+            <a
+              href="/blog/${e.slug}"
+              class="block p-4 hover:bg-gray-100 dark:hover:bg-gray-700 hover:rounded transition-all duration-200 transform"
+            >
+              <h3 class="font-medium text-gray-900 dark:text-white">
+                ${e.matchedTitle||e.title}
+              </h3>
+              <p class="text-sm text-gray-500 dark:text-gray-400">
+                ${e.description||""}
+              </p>
+              ${e.matchedContent?`
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-2 font-mono">
+                  ${e.matchedContent}
+                </p>
+              `:""}
+              ${e.tags?.map(t=>`
+                  <span class="inline-block bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded-full mt-2 mr-2">
+                    ${t}
+                  </span>
+                  `).join("")}
+            </a>
+          `).join(""),c.classList.remove("hidden")}document.addEventListener("astro:page-load",L);</script> <button id="themeToggle" class="p-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white" aria-label="Toggle theme"> <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path> </svg> <svga id="moon-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path> </svga> </button> <script type="module">const t=()=>{const e=typeof localStorage<"u"&&localStorage.getItem("theme")?localStorage.getItem("theme"):window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";e==="light"?document.documentElement.classList.remove("dark"):document.documentElement.classList.add("dark"),window.localStorage.setItem("theme",e)},o=()=>{const e=document.documentElement;e.classList.toggle("dark");const a=e.classList.contains("dark");localStorage.setItem("theme",a?"dark":"light")};t();document.addEventListener("astro:after-swap",t);document.addEventListener("astro:page-load",()=>{document.getElementById("themeToggle")?.addEventListener("click",o)});</script> </div> </nav> </header> <main class="py-12">  <article class="max-w-3xl mx-auto px-4">  <header class="mb-12"> <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100"> Astro框架介紹 </h1> <div class="mb-6"> <time datetime="2024-10-19T00:00:00.000Z" class="text-gray-600 dark:text-gray-400"> October 19, 2024 </time> </div> <div class="flex gap-2"> <a href="/tags/程式學習" class="text-sm px-3 py-1 text-primary-700 hover:text-primary-600 bg-gray-50 dark:text-primary-400 dark:bg-gray-800 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600">
+#程式學習 </a><a href="/tags/Astro" class="text-sm px-3 py-1 text-primary-700 hover:text-primary-600 bg-gray-50 dark:text-primary-400 dark:bg-gray-800 rounded-full hover:bg-gray-100 dark:hover:bg-gray-600">
+#Astro </a> </div> </header> <div class="prose prose-lg dark:prose-invert
+      prose-headings:text-gray-900 dark:prose-headings:text-gray-100
+      prose-p:text-gray-700 dark:prose-p:text-gray-300
+      prose-a:text-primary-600 dark:prose-a:text-primary-400
+      hover:prose-a:text-primary-500 dark:hover:prose-a:text-primary-300
+      prose-strong:text-gray-900 dark:prose-strong:text-gray-100
+      prose-code:text-gray-300 dark:prose-code:text-gray-400
+      prose-blockquote:text-gray-700 dark:prose-blockquote:text-gray-300
+      prose-span:text-gray-700 dark:prose-span:text-gray-300
+      prose-li:text-gray-700 dark:prose-li:text-gray-300
+      max-w-none">  <p><img src="https://hackmd.io/_uploads/rkPV5Ymxke.png" alt="image"/>
+Astro 是一個現代前端框架，專注於構建靜態網站如部落格、產品介紹頁，提供零 JavaScript 加載的特性，並支持多種前端框架（如 React, Vue, Svelte, 等）的整合</p>
+<h3 id="專案建立">專案建立</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># create a new project with npm</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> astro@latest</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># create a new project with pnpm</span></span>
+<span class="line"><span style="color:#B392F0">pnpm</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> astro@latest</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># create a new project with yarn</span></span>
+<span class="line"><span style="color:#B392F0">yarn</span><span style="color:#9ECBFF"> create</span><span style="color:#9ECBFF"> astro</span></span></code></pre>
+<h3 id="astro組件">Astro組件</h3>
+<p>結構分別為程式碼、模板、樣式
+Astro會將---包圍的部分裡所有的程式碼包含API調用在Server端全部執行完畢後帶入template裡</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"></span>
+<span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> message</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &quot;Hello, Astro!&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">&gt;{message}&lt;/</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">&gt;This is a default Astro component structure.&lt;/</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">style</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  div {</span></span>
+<span class="line"><span style="color:#E1E4E8">    background</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">color: #f0f0f0;</span></span>
+<span class="line"><span style="color:#E1E4E8">    padding: 1rem;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">  h1 {</span></span>
+<span class="line"><span style="color:#E1E4E8">    color: #</span><span style="color:#79B8FF">333</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">style</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"></span></code></pre>
+<p>從上方組件來看，Astro其實並不是完全沒有 JavaScript，畢竟 const message = “Hello, Astro!”就是一段程式碼
+所謂的0 Javascript其實是指Astro會在伺服器端的編譯階段執行---內的程式碼後將結果渲染成靜態HTML，這樣客戶端就是純靜態了</p>
+<h3 id="孤島架構-islands-architecture">孤島架構 Islands Architecture</h3>
+<p><img src="https://hackmd.io/_uploads/BJh9qonyJg.png" alt="image"/>
+在靜態HTML頁面裡面可交互的UI組件被稱為「Astro Island」
+而因為每個island島嶼都是獨立且不會互相影響的關係所以可以在Astro內同時引入不同框架的組件進來使用</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> VueCounter </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;@components/vue/VueCounter.vue&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> ReactCounter </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;@components/react/ReactCounter&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> SvelteCounter </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;@components/svelte/SvelteCounter.svelte&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">main</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">     &lt;</span><span style="color:#79B8FF">VueCounter</span><span style="color:#E1E4E8"> /&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">     &lt;</span><span style="color:#79B8FF">ReactCounter</span><span style="color:#E1E4E8"> /&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">     &lt;</span><span style="color:#79B8FF">SvelteCounter</span><span style="color:#E1E4E8"> /&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">main</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">style</span><span style="color:#E1E4E8">&gt;&lt;/</span><span style="color:#85E89D">style</span><span style="color:#E1E4E8">&gt;</span></span></code></pre>
+<h3 id="0-javascript">0 Javascript</h3>
+<p>還記得前面講所謂的0 Javascript是Astro在server端生成純靜態的HTML回傳嗎?
+由於這個特性Astro也會將不同框架的組件內容通通處理成純HTML回傳,但這也導致組件內的程式邏輯無法運行</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">&lt;!--</span><span style="color:#E1E4E8"> Counter.vue </span><span style="color:#F97583">--&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">script</span><span style="color:#B392F0"> setup</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">import { ref, onMounted } from &#39;vue&#39;;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">const count = ref(0);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">const increment = () =&gt; {</span></span>
+<span class="line"><span style="color:#E1E4E8">    count.value</span><span style="color:#F97583">++</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">onMounted(() =&gt; {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Counter 元件在客戶端被渲染&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">script</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">template</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">        &lt;</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">&gt;計數：{{ count }}&lt;/</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">        &lt;</span><span style="color:#85E89D">button</span><span style="color:#FDAEB7;font-style:italic"> @click=&quot;increment&quot;&gt;</span></span>
+<span class="line"><span style="color:#B392F0">            增加</span></span>
+<span class="line"><span style="color:#FDAEB7;font-style:italic">        &lt;/button&gt;</span></span>
+<span class="line"><span style="color:#FDAEB7;font-style:italic">    &lt;/div&gt;</span></span>
+<span class="line"><span style="color:#FDAEB7;font-style:italic">&lt;/template&gt;</span></span></code></pre>
+<p>用上面組件測試會發現只有UI顯示是正常的,按鈕點擊完全沒有反應
+所以Astro提供了client的directives讓組件在client端再執行</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> VueCounter </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;@components/vue/VueCounter.vue&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> ReactCounter </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;@components/react/ReactCounter&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> SvelteCounter </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;@components/svelte/SvelteCounter.svelte&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">main</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">     &lt;</span><span style="color:#79B8FF">VueCounter</span><span style="color:#B392F0"> client</span><span style="color:#E1E4E8">:</span><span style="color:#B392F0">load</span><span style="color:#E1E4E8"> /&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">     &lt;</span><span style="color:#79B8FF">ReactCounter</span><span style="color:#B392F0"> client</span><span style="color:#E1E4E8">:</span><span style="color:#B392F0">load</span><span style="color:#E1E4E8"> /&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">     &lt;</span><span style="color:#79B8FF">SvelteCounter</span><span style="color:#B392F0"> client</span><span style="color:#E1E4E8">:</span><span style="color:#B392F0">load</span><span style="color:#E1E4E8"> /&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">main</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">style</span><span style="color:#E1E4E8">&gt;&lt;/</span><span style="color:#85E89D">style</span><span style="color:#E1E4E8">&gt;</span></span></code></pre>
+<p>client:load這個directive會讓組件在client端的時候才去載入javascript程式碼，其他還有像是client:visible、client:only等等的<a href="https://docs.astro.build/zh-tw/reference/directives-reference/">Astro directives</a>有興趣的可以看一下</p>
+<h3 id="組件資料傳遞">組件資料傳遞</h3>
+<p><strong>Props</strong>
+在 Astro 中，最常見的資料傳遞方式之一是使用 Props 這讓我們能從父組件傳遞資料到子組件</p>
+<p>在子組件中，我們可以透過 Astro.props 來取得父組件傳入的資料</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">Layout.astro</span></span>
+<span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> Props</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  title</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">title</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Astro.props;</span></span>
+<span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"><span style="color:#F97583">&lt;!</span><span style="color:#E1E4E8">doctype html</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">html</span><span style="color:#B392F0"> lang</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">&quot;en&quot;</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;</span><span style="color:#85E89D">title</span><span style="color:#E1E4E8">&gt;{title}&lt;/</span><span style="color:#85E89D">title</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">        &lt;</span><span style="color:#85E89D">slot</span><span style="color:#E1E4E8"> /&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">html</span><span style="color:#E1E4E8">&gt;</span></span></code></pre>
+<p>在父組件中，將資料傳入子組件作為屬性</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">demo.astro</span></span>
+<span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Layout </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;@layouts/Layout.astro&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> title</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &#39;Demo Page&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#79B8FF">Layout</span><span style="color:#B392F0"> title</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{title}&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;</span><span style="color:#85E89D">main</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">        ...</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;/</span><span style="color:#85E89D">main</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#79B8FF">Layout</span><span style="color:#E1E4E8">&gt;</span></span></code></pre>
+<p>這樣，父組件透過 Props 傳入 title，並在子組件中使用 Astro.props 來接收並顯示。</p>
+<p><strong>Store全域狀態管理</strong>
+Astro 並不像 Vue 或 React 內建全域狀態管理工具，但我們可以使用輕量級的 <a href="https://github.com/nanostores/nanostores">Nano Stores</a> 來實現跨框架的狀態共享。</p>
+<p>第一步:根據你使用的框架安裝對應的套件</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">npx</span><span style="color:#9ECBFF"> astro</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> vue</span></span>
+<span class="line"><span style="color:#B392F0">npx</span><span style="color:#9ECBFF"> astro</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> react</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> nanostores</span><span style="color:#9ECBFF"> @nanostores/vue</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> nanostores</span><span style="color:#9ECBFF"> @nanostores/react</span></span></code></pre>
+<p>第二步：定義全域狀態
+在 stores 資料夾中建立一個 store.js 並定義一個全域狀態變數 isOpen：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { atom } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;nanostores&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> isOpen</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> atom</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>第三步:在不同框架的組件內使用Store
+假設有一個Vue以及React的button組件,當使用者點擊時會去變更「isOpen」變數的狀態
+VueButton.vue</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">script</span><span style="color:#B392F0"> setup</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">import { useStore } from &#39;@nanostores/vue&#39;;</span></span>
+<span class="line"><span style="color:#E1E4E8">import { isOpen } from &#39;../../stores&#39;;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">const isOpenValue = useStore(isOpen);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">const toggle = () =&gt; {</span></span>
+<span class="line"><span style="color:#E1E4E8">    isOpen.</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">isOpenValue.value);</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">script</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">template</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;</span><span style="color:#85E89D">button</span><span style="color:#FDAEB7;font-style:italic"> @click=&quot;toggle&quot;&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">        {{ isOpenValue ? </span><span style="color:#9ECBFF">&#39;Close Vue Dialog&#39;</span><span style="color:#E1E4E8"> : </span><span style="color:#9ECBFF">&#39;Open Vue Dialog&#39;</span><span style="color:#E1E4E8"> }}</span></span>
+<span class="line"><span style="color:#FDAEB7;font-style:italic">    &lt;/button&gt;</span></span>
+<span class="line"><span style="color:#FDAEB7;font-style:italic">&lt;/template&gt;</span></span></code></pre>
+<p>ReactButton.tsx</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// src/components/ReactButton.tsx</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> React </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;react&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { useStore } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;@nanostores/react&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { isOpen } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;../../stores&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> ReactButton</span><span style="color:#F97583">:</span><span style="color:#B392F0"> React</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">FC</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> isOpenValue</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useStore</span><span style="color:#E1E4E8">(isOpen);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">        &lt;</span><span style="color:#85E89D">button</span><span style="color:#FDAEB7;font-style:italic"> onClick{()=&gt;isOpen.set(!isOpenValue)}&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">            {isOpenValue </span><span style="color:#F97583">?</span><span style="color:#9ECBFF"> &#39;Close React Dialog&#39;</span><span style="color:#F97583"> :</span><span style="color:#9ECBFF"> &#39;Open React Dialog&#39;</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#FDAEB7;font-style:italic">        &lt;/button&gt;</span></span>
+<span class="line"><span style="color:#FDAEB7;font-style:italic">    );</span></span>
+<span class="line"><span style="color:#FDAEB7;font-style:italic">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">export</span><span style="color:#B392F0"> default</span><span style="color:#FDAEB7;font-style:italic"> ReactButton;</span></span>
+<span class="line"></span></code></pre>
+<p>第四步：在 Astro 頁面中使用這些組件
+在 Button.astro 文件中引入並使用這兩個組件，實現跨框架的狀態同步：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Layout </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;@layouts/Layout.astro&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> ReactButton </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;@components/react/ReactButton&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> VueButton </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;@components/vue/VueButton.vue&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> title</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &#39;Button Astro&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">&lt;!--</span><span style="color:#E1E4E8"> store狀態管理 </span><span style="color:#F97583">--&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#79B8FF">Layout</span><span style="color:#B392F0"> title</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{title}&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;</span><span style="color:#85E89D">main</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">        &lt;</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">&gt;{title}&lt;/</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">        &lt;</span><span style="color:#85E89D">section</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">            &lt;</span><span style="color:#79B8FF">ReactButton</span><span style="color:#B392F0"> client</span><span style="color:#E1E4E8">:</span><span style="color:#B392F0">load</span><span style="color:#E1E4E8">/&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">            &lt;</span><span style="color:#79B8FF">VueButton</span><span style="color:#B392F0"> client</span><span style="color:#E1E4E8">:</span><span style="color:#B392F0">load</span><span style="color:#E1E4E8">/&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">        &lt;/</span><span style="color:#85E89D">section</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;/</span><span style="color:#85E89D">main</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#79B8FF">Layout</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">style</span><span style="color:#E1E4E8">&gt;&lt;/</span><span style="color:#85E89D">style</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"></span></code></pre>
+<p>當點擊 Vue 或 React 按鈕時，isOpen 狀態將會在這兩個框架中同步更新</p>
+<p><strong>客製化事件</strong>
+可以透過自定義的事件在不同框架組件之間傳遞資訊這邊選擇使用Vue</p>
+<ol>
+<li>建立 Vue 組件：根據需求建立一個 Vue 組件來處理使用者的輸入</li>
+<li>註冊事件監聽：在組件內註冊 CustomEvent，用來捕捉特定的使用者操作</li>
+<li>觸發自定義事件：當條件滿足時（例如按下 Enter 且有輸入值），將自定義事件 dispatch 以傳遞資訊</li>
+<li>在其他要取得輸入的組件裡註冊 CustomEvent 的事件監聽</li>
+</ol>
+<p>Input.vue</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">script</span><span style="color:#B392F0"> setup</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">const searchEvent = new CustomEvent(&#39;search&#39;, {</span></span>
+<span class="line"><span style="color:#E1E4E8">  detail: { keyword: </span><span style="color:#9ECBFF">&#39;&#39;</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">function dispatchSearchEvent(keyword) {</span></span>
+<span class="line"><span style="color:#E1E4E8">  searchEvent.detail.keyword </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> keyword;</span></span>
+<span class="line"><span style="color:#E1E4E8">  document.</span><span style="color:#B392F0">dispatchEvent</span><span style="color:#E1E4E8">(searchEvent);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">function onKeyUp(event) {</span></span>
+<span class="line"><span style="color:#E1E4E8">  const keyword </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> event.target.value.</span><span style="color:#B392F0">trim</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">toLowerCase</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  if</span><span style="color:#E1E4E8"> (event.key.</span><span style="color:#B392F0">toLowerCase</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> &#39;enter&#39;</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">    dispatchSearchEvent</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">keyword</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">script</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">template</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;</span><span style="color:#85E89D">input</span></span>
+<span class="line"><span style="color:#B392F0">      id</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">&quot;search&quot;</span></span>
+<span class="line"><span style="color:#B392F0">      type</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">&quot;text&quot;</span></span>
+<span class="line"><span style="color:#FDAEB7;font-style:italic">      @keyup=&quot;onKeyUp&quot;</span></span>
+<span class="line"><span style="color:#B392F0">      placeholder</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">&quot;Search...&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">    /&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">template</span><span style="color:#E1E4E8">&gt;</span></span></code></pre>
+<p>ReactSearchDisplay.tsx</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> React, { useEffect, useState } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;react&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> SearchDisplay</span><span style="color:#F97583">:</span><span style="color:#B392F0"> React</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">FC</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">keyword</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setKeyword</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">&lt;</span><span style="color:#79B8FF">string</span><span style="color:#E1E4E8">&gt;(</span><span style="color:#9ECBFF">&#39;&#39;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#B392F0"> handleSearchEvent</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">event</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Event</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (event </span><span style="color:#F97583">instanceof</span><span style="color:#B392F0"> CustomEvent</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> searchKeyword</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> event.detail?.keyword </span><span style="color:#F97583">||</span><span style="color:#9ECBFF"> &#39;&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">      setKeyword</span><span style="color:#E1E4E8">(searchKeyword);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    document.</span><span style="color:#B392F0">addEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;search&#39;</span><span style="color:#E1E4E8">, handleSearchEvent);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      document.</span><span style="color:#B392F0">removeEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&#39;search&#39;</span><span style="color:#E1E4E8">, handleSearchEvent);</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, []);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">      &lt;</span><span style="color:#85E89D">h2</span><span style="color:#E1E4E8">&gt;Search Result:&lt;/</span><span style="color:#85E89D">h2</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">      &lt;</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">&gt;{keyword </span><span style="color:#F97583">?</span><span style="color:#E1E4E8"> keyword </span><span style="color:#F97583">:</span><span style="color:#9ECBFF"> &#39;No keyword entered&#39;</span><span style="color:#E1E4E8">}&lt;/</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#E1E4E8"> ReactSearchDisplay;</span></span></code></pre>
+<p>在 Astro 組件裡面使用這些組件</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> VueInput </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;@components/vue/Input.vue&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> ReactSearchDisplay </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;@components/react/ReactSearchDisplay&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> title</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &#39;CustomEvent Page&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">main</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">&gt;CustomEvent Page&lt;/</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;</span><span style="color:#85E89D">section</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">        &lt;</span><span style="color:#79B8FF">VueInput</span><span style="color:#B392F0"> client</span><span style="color:#E1E4E8">:</span><span style="color:#B392F0">load</span><span style="color:#E1E4E8"> /&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">        &lt;</span><span style="color:#79B8FF">ReactSearchDisplay</span><span style="color:#B392F0"> client</span><span style="color:#E1E4E8">:</span><span style="color:#B392F0">load</span><span style="color:#E1E4E8"> /&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;/</span><span style="color:#85E89D">section</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">main</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">style</span><span style="color:#E1E4E8">&gt;&lt;/</span><span style="color:#85E89D">style</span><span style="color:#E1E4E8">&gt;</span></span></code></pre>
+<p>當 VueInput 輸入資訊時 ReactSearchDisplay 就會取得該輸入</p>
+<h3 id="渲染模式">渲染模式</h3>
+<p>Astro 預設支援靜態渲染 (SSG)，並且同時支援伺服器端渲染（SSR）和客戶端渲染（CSR）
+在astro.config.mjs進行SSR渲染設定，有以下設定模式</p>
+<p>server mode
+所有Astro組件預設都為SSR模式</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#B392F0"> defineConfig</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  output: </span><span style="color:#9ECBFF">&#39;server&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  adapter: xxx</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>hybrid mode
+預設仍然是SSG模式，但可以在需要SSR的頁面單獨設定</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#B392F0"> defineConfig</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  output: </span><span style="color:#9ECBFF">&#39;hybrid&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  adapter: xxx</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>adapter為當你要在不同環境使用 SSR 渲染時需要額外載入套件 ex: nodejs、vercel、Netlify</p>
+<p>CSR 渲染就如同之前的範例一樣加上client:* 關鍵字即可，另外，Astro 同時支援混合渲染（Hybrid Rendering），可以對特定組件啟用 (SSR)，而其他組件仍保持靜態生成（SSG）
+補充：<a href="https://docs.astro.build/zh-tw/guides/server-side-rendering/">https://docs.astro.build/zh-tw/guides/server-side-rendering/</a></p>
+<h3 id="路由">路由</h3>
+<p>Astro 與 Nuxt.js 等 SSR 框架相似，提供基於檔案路徑結構的路由功能（File-Based Routing）。在 src/pages/ 目錄下，Astro 支援以下檔案類型作為頁面或 API 端點：</p>
+<ul>
+<li>.astro</li>
+<li>.md</li>
+<li>.mdx (需安裝 MDX Integration)</li>
+<li>.html</li>
+<li>.js/.ts (作為 API 端點)</li>
+</ul>
+<h3 id="ssg動態路由">SSG動態路由</h3>
+<p>Astro 預設為靜態網站生成（SSG，Static Site Generation），每個頁面會在打包時生成靜態 HTML 檔案。若需要在 SSG 模式下實現動態路由，需事先為所有可能的路徑定義 URL。</p>
+<p>在 src/pages/ 目錄下，建立一個動態路由檔案 [dynamicRoute].astro：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"><span style="color:#6A737D">// 使用 Astro.params 物件來存取 URL 中的動態參數</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">dynamicRoute</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Astro.params;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// getStaticPaths 函數，用來指定動態路由的路徑(函數名稱無法自定義)</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> async</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> getStaticPaths</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // 動態路徑的數據</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> routes</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span><span style="color:#9ECBFF">&#39;page1&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;page2&#39;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&#39;page3&#39;</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#6A737D">    // 返回包含每個路徑參數的Array</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> routes.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">route</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#E1E4E8">        params: { dynamicRoute: route },</span></span>
+<span class="line"><span style="color:#E1E4E8">    }));</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">main</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">&gt;動態路由頁面&lt;/</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">        &lt;</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">&gt;動態路由參數: {dynamicRoute}&lt;/</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">main</span><span style="color:#E1E4E8">&gt;</span></span></code></pre>
+<p>動態路由的定義方式與其他框架相似，通過在檔案名稱中使用方括號 [] 包住 URL 參數名稱（如 [dynamicRoute].astro）來捕獲動態參數。需要注意的是，若在 SSG 模式下訪問未定義的頁面，將會跳轉至 404 頁面。</p>
+<h3 id="動態路由">動態路由</h3>
+<p>若要使用真正的動態路由，需要在 astro.config.mjs 中設定 output 為 hybrid 或 server，開啟 SSR 模式,以下我們採用 Hybrid模式</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { defineConfig } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &#39;astro/config&#39;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#B392F0"> defineConfig</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  output: </span><span style="color:#9ECBFF">&#39;hybrid&#39;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  adapter: xxx</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>接著，在 src/pages/ 中建立一個動態路由檔案 [dynamicRoute].astro，並透過 export const prerender = false; 關閉 SSG，啟用 SSR 模式：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"><span style="color:#6A737D">// 關閉預設的 SSG 模式,這意味者開啟 SSR 模式</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> prerender</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 使用 Astro.params 物件來存取 URL 中的動態參數</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">dynamicRoute</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Astro.params;</span></span>
+<span class="line"><span style="color:#F97583">---</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">main</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    獲取動態路由參數: {dynamicRoute}</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">main</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">style</span><span style="color:#B392F0"> lang</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">&quot;scss&quot;</span><span style="color:#B392F0"> scoped</span><span style="color:#E1E4E8">&gt;&lt;/</span><span style="color:#85E89D">style</span><span style="color:#E1E4E8">&gt;</span></span></code></pre>
+<p>這樣當用戶訪問 /astro 時，dynamicRoute 的值將會是 astro，並且不需要再提前定義靜態路徑</p>
+<h3 id="更多">更多</h3>
+<p>其他像是<a href="https://astro.build/integrations?search=&categories%5B%5D=performance%2Bseo&categories%5B%5D=accessibility">SEO優化</a>或是<a href="https://docs.astro.build/en/guides/deploy/">自動化部屬</a>相關功能有需要的話可以再做延伸學習</p>  </div> </article>  </main> <footer class="py-6 text-center text-gray-600 dark:text-gray-400"> <p>&copy; 2025 Leo&#39;s blog. All rights reserved.</p> </footer> </div> </body></html>
