@@ -1,0 +1,93 @@
+---
+title: "計算機Calculator-Javascript新手地下城"
+date: 2021-02-08
+description: "六角學院Javscript新手地下城3F計算機心得分享"
+tags: ["程式學習","javascript"]
+---
+import CodePenEmbed from '../../components/CodePenEmbed.astro';
+
+### 使用技術
+
+JS : Vue、正規表達式、String(substring、replace、split)、For迴圈、Array(reverse)
+
+CSS: SCSS(CSS前處理語言)、Customize Scrollbar
+
+### 開發歷程
+
+這次寫題目時想順便複習FrameWork所以使用了Vue做開發，花了滿多時間想怎麼在千分位前加上「,」以及避免計算結果出現「undefined」、「NAN」
+
+### 千分位資料處理
+  整數位數超過三位時要加上千分位符「,」需要使用正規表達式、字串、陣列的方法來處理
+  ```javascript
+  //當計算機輸入到加、減、乘、除時對運算符前的數字做千分位符的處理
+  // +號在正規表達式有特定意思所以要單純匹配需在前面加上「反斜線」
+  // g表示要找出所有符合條件的結果，不加的話只會找出第一筆符合條件的結果就結束
+  const comma_rule = /(\+|-|×|÷)/g;
+  let prev_comma = ""; //整數位
+  let after_comma = ""; //小數位
+  let comma_val = ""; //加上千分位的結果
+  function compute_comma(){
+      comma_arr = result.split(comma_rule); //依據規則分隔出符合條件的陣列資料
+      comma_arr.forEach((item, index) => {
+        if (!isNaN(parseFloat(item))) { // 判斷是否為加、減、乘、除,只處理非NAN的資料
+          prev_comma = (item.split(".")[0] || "").split("").reverse(); //整數位轉成陣列處理
+          after_comma = item.split(".")[1] || ""; //小數點先暫存進變數等處理完整數之後再整合進去
+          comma_val = ""; //每次迴圈前先清空
+          //前面的reverse()用來方便拼接字串
+          //ex:[3,8,5,6].reverse() => [6,5,8,3]
+          for (let i = 0; i < prev_comma.length; i++) {
+            //當到第四位時在第三位前加上千分位符「,」
+            if (i % 3 === 0 && i !== 0) {
+              // step 4 => "3"+","+"856"
+              comma_val = prev_comma[i] + "," + comma_val;
+            //非第四位則單純拼接
+            } else {
+              // step 1 => "6"+ ""、step 2 => "5" + "6"、step 3 => "8" + "56"
+              comma_val = prev_comma[i] + comma_val;
+            }
+          }
+        }
+      });
+  }
+  ```
+  其餘的輸入規則如避免「NAN」、「undefined」讀者可以稍微思考一下如何處理，這邊就不贅述
+
+#### Scrollbar客製化
+
+稍微看過其他人做的計算機在位數過多時滿多都是使用js調整字體大小來避免畫面破格,但我個人不太想要調整字體大小所以選擇用css處理位數過多的問題，在畫面位數過多時會出現scrollbar可以滑動，可能會有人覺得瀏覽器預設的不是很好看，這部分可以透過css去調整
+
+**注:scrollbar的調整Firefox要額外寫**
+
+##### Firefox
+
+```css
+scrollbar-width: auto | thin | none | 1em | inherit | initial | unset ;
+scrollbar-color: auto | dark | light | color1(滾動條本身的顏色thumb) color2(滾動條外容器的顏色track);
+```
+**注: color1、color2可以用關鍵字(red、blue...)或是色碼**
+
+##### Chrome、IE Edge、Safari
+
+```css
+/* 屬性前要加::-webkit-前綴字  */
+::-webkit-scrollbar: width | height ;
+::-webkit-scrollbar-thumb: background | box-shadow | ... ;
+```
+![](/images/post/scrollbar_nofirefox.png)
+
+**注: 這邊簡單列出有使用到的，有需要的話可參考底下連結**
+
+### 計算機 codepen連結
+
+<CodePenEmbed hash="qBqEgNY" />
+
+
+#### 參考資料:
+
+https://css-tricks.com/custom-scrollbars-in-webkit/
+
+https://css-tricks.com/examples/WebKitScrollbars/
+
+https://stackoverflow.com/questions/6165472/custom-css-scrollbar-for-firefox/53739309#53739309
+
+https://github.com/Aris-t2/CustomCSSforFx/issues/160

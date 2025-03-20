@@ -1,0 +1,124 @@
+---
+title: "60秒算數遊戲-Javascript新手地下城"
+date: 2021-02-25
+description: "六角學院Javscript新手地下城6F60秒算數遊戲"
+tags: ["程式學習","javascript"]
+---
+import CodePenEmbed from '../../components/CodePenEmbed.astro';
+
+### 遊戲規則
+  1. 0 ~ 20 秒為 1位數計算 (5-3)，21 ~ 40 秒為 2 位數計算 (30*19)，41 ~ 60 秒為 3 位數計算 (332+312)，加減乘除規則請用隨機產生，不可寫死題目，60 秒內可無限次數答題。
+  2. 0 ~ 40 秒答對加一分，41 ~ 60 秒答對加五分，答錯扣一分，最多僅能扣到零分
+  3. 【特定技術】不可設計跳轉頁面，都得在同一頁內部切換頁面完成。
+
+### 使用技術
+
+JS : Vue、if else、Math、switch、localStorage、setInterval
+
+CSS: SCSS(CSS前處理語言)、flex、Input Number customize
+
+Others: google fonts
+
+### 開發歷程
+  1. 使用Vue做開發(~~我就懶~~)，讓vue做畫面渲染並使開發過程專注在程式邏輯上
+  2. 時間上透過setInterval去執行60秒的倒數,時間倒數到0時清除週期性定時器Interval並跳至最後一個頁面，當使用者在最後的頁面點擊try again時重新開始遊戲
+  3. 使用Math.random亂數產生題目，使用者送出答案時除了對答案還會依據目前所剩時間給予相對應的分數並依所剩時間產生相對應難度的題目
+  4. 新增小功能為透過localStorage去儲存自己遊戲的最高分,這是純前端的作法，如果有跟後端配合的話可以延伸至分數排行榜等等...
+
+### Input Number customize
+  我們要讓使用者輸入數字時會使用 **\<input type="number">**這個HTML表單元件,這個元件會有預設的上下箭頭讓使用者去調整數字,但是元件的上下箭頭個人認為跟整體設計非常不搭所以移除掉，現在來看一下CSS語法吧
+  ```css
+    input[type="number"] {
+      width: 255px;
+      height: 131px;
+      outline: none;
+      font-size: 112px;
+      font-weight: bold;
+      text-align: center;
+      border: none;
+      /* default style firefox */
+      -moz-appearance: textfield;
+      /* default style safari、chrome、ie */
+      &::-webkit-inner-spin-button,&::-webkit-outer-spin-button {
+        appearance: none;
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+  ```
+  **註:在客製化樣式方面發現firefox很常需要下跟其他瀏覽器不同的前綴字，想客製化元件樣式的時候要注意一下**
+    
+### localStorage、sessionStorage
+  * localStorage以及sessionStorage為客戶端的資料儲存技術容量大小都為5MB,透過設定key:value的方式來儲存資料進瀏覽器，跟cookie不同的是在與server溝通時不會被自動帶入
+
+  * localStorage以及sessionStorage兩者之間唯一的不同就是localStorage如果使用者不刪除資料該筆資料會永遠存在在瀏覽器內但sessionStorage只要該分頁關閉時資料就會清除掉
+  
+  ```javascript
+    // localStorage
+    localStorage.setItem('myName', 'Tom');
+    localStorage.getItem('myName');
+    localStorage.removeItem('myName');
+    localStorage.clear();
+
+    // sessionStorage
+    sessionStorage.setItem('myName', 'Tom');
+    sessionStorage.getItem('myName');
+    sessionStorage.removeItem('myName');
+    sessionStorage.clear();
+  ```
+  透過localStorage去儲存玩家遊戲的分數，如果當次分數比上次高就會儲存進去
+
+### 安全性
+  當我們要使用Vue時大多習慣這樣寫
+  ```vue
+  const app = new Vue({...});
+  ```
+  但這樣使用者其實可以打開瀏覽器的console端去把分數改掉
+
+  ![](/images/post/info_security.jpg)
+
+  ![](/images/post/info_security2.jpg)
+
+  可以把const app移除掉讓使用者沒辦法透過console端去修改資料
+
+  但是這樣還不夠，使用者可以透過瀏覽器去修改localStorage的值去更改最高紀錄的分數
+
+  ![](/images/post/info_security3.jpg)
+
+  這時候我們可以新增一個storage的事件監聽,只要在遊戲進行時偵測到localStorage的值被修改就將分數歸0並重新開始遊戲，只有在遊戲結束時分數要進行更新時允許更新localStorage,更新完後一樣禁止再次修改localStorage的值
+  ```javascript
+    function security(){
+        window.addEventListener('storage',()=>{
+          if(this.higest !== localStorage.getItem("higestscore")){
+            alert("偵測到分數被修改，遊戲積分歸0");
+            localStorage.setItem("higestscore",0);
+            // history.go(0);
+            this.try_again();
+          }
+        });
+      }
+  ```
+  因為程式內部的賦值也是更新,所以遊戲結束要賦值前記得先將事件監聽移除，等到程式內部的更新完成後再重新註冊一次事件監聽
+  ```javascript
+    window.removeEventListener('storage');
+  ```
+  我個人是透過修改資料內的狀態來重新開始遊戲,不過可能會有人想透過history.go(0)或是window.reload()等方式重新開始遊戲，但是這在codepen會有問題,建議要試的可以將自己的檔案下載下來後再測試
+
+  ![](/images/post/codepen_error1.jpg)
+  
+  codepen針對reload頁面的說明我放在參考資料內
+  
+### Demo 連結
+
+<CodePenEmbed hash="dyOzKam" />
+
+#### 參考資料:
+  [Input Number 客製化](https://stackoverflow.com/questions/23372903/hide-spinner-in-input-number-firefox-29)
+
+  [Web Storage MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)
+
+  [localStorage MDN](https://developer.mozilla.org/zh-TW/docs/Web/API/Window/localStorage)
+
+  [sessionStorage MDN](https://developer.mozilla.org/zh-TW/docs/Web/API/Window/sessionStorage)
+
+  [referred-from-pen-message](https://blog.codepen.io/documentation/referred-from-pen-message/)

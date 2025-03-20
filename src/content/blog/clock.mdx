@@ -1,0 +1,60 @@
+---
+title: "時鐘clock-Javascript新手地下城"
+date: 2021-01-31
+description: "六角學院Javscript新手地下城2F時鐘心得分享"
+tags: ["程式學習","javascript"]
+---
+import CodePenEmbed from '../../components/CodePenEmbed.astro';
+
+#### 使用技術:
+
+JS : Const變數、Date物件、SetInterval、Template literals樣板字串
+
+CSS: SCSS(CSS前處理語言)、clip-path
+
+#### 開發歷程:
+
+JS的部分透過Date物件獲取當前的時間、setInterval更新時間並且在內部判斷指針的轉動、Template literals用於方便將計算指出來的旋轉角度整合進字串內
+
+CSS的部分使用SCSS變數去存取顏色、mixin存取會大量使用到的CSS屬性、clip-path去繪製多邊形及秒針
+
+這次在CSS的部分卡了滿長的一段時間，主要是花在使用純CSS刻出秒針以及多邊形花了大部分的時間，其餘的排版、程式邏輯的部分相對來說不算太複雜
+
+在這邊簡單的跟大家分享一下怎麼透過clip-path去繪製時鐘所需的圖形
+
+### clip-path
+
+  clip-path會透過裁減的方式在元素內創建可顯示的區塊，顯示區塊外的部分則隱藏，本身有提供circle(圓形)、ellipse(橢圓形)、inset(內置矩形)、polygon(多邊形)等等的方式創建圖形
+
+  要創建秒針跟多邊形會需要使用到polygon，polygon可以設定多個「點」，點跟點之間會有線連接在一起形成多邊形，透過X(水平)、Y(垂直)來設定點的位置，單位可以使用「px」或是「百分比」，秒針針頭的部分另外做之後在外層用一個元素包起來就好
+
+  ![](/images/post/clippolygon.png)
+
+  解說圖就別太計較設計了，真的不太會畫畫...
+
+### 時鐘 codepen連結
+
+<CodePenEmbed hash="YzpzqKg" />
+
+### clip-path補充
+
+在前面有提到過clip-path會有顯示的區塊及隱藏的區塊，我們可以透過這個遮罩的效果搭配CSS做出遮蓋文字的特效
+
+我們需要透過inset內置矩形去做，inset可給2個值(上下、左右)或是4個值(上、右、下、左)，設定該方向的值就會由該方向由外往內推，單位同樣可以用px或是百分比
+
+![](/images/post/clipinset.png)
+
+### 文字動態 codepen連結
+
+<CodePenEmbed hash="xxRbLLg" />
+
+
+##### 參考資料:
+
+https://www.oxxostudio.tw/articles/201503/css-clip-path.html
+
+https://andyyou.github.io/2016/06/28/css-clip-path/
+
+https://developer.mozilla.org/zh-CN/docs/Web/CSS/clip-path
+
+https://css-tricks.com/almanac/properties/c/clip-path/

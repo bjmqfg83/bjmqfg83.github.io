@@ -1,0 +1,198 @@
+---
+title: "Tic Tac Toe 井字遊戲-六角學院Javascript新手地下城"
+date: 2021-03-18
+description: "六角學院Javascript新手地下城8F井字遊戲"
+tags: ["程式學習","javascript"]
+---
+import CodePenEmbed from '../../components/CodePenEmbed.astro';
+
+### BOSS 弱點
+1. 【特定技術】先手為 O，後手為 X，某方獲勝時，上方會紀錄各方的獲勝戰績
+2. 【特定技術】每回合結束後，會判定結果頁(平手、Ｏ 獲勝、X 獲勝)
+3. 【特定技術】需符合 RWD，能在低螢幕解析度也能遊玩，介面不能超出 x 軸，至少在以下解析度能夠遊玩。
+4. iPhone SE 320px
+5. iPhone 8 375px
+6. iPhone PLUS 414px
+7. 【特定技術】請使用瀏覽器離線儲存技術，將戰績保留起來，重新打開遊戲也仍可觀看到歷史戰績。技術請任選以下幾種
+8. Cookie
+9. LocalStorage
+10. 【書寫能力】請寫 BLOG，描述你在開發「滿足獲勝條件」解題思維來進行加強描述
+11. 上面三個 O 符合獲勝條件
+12. 斜線三個 X 符合獲勝條件
+13. 請先不要參考網路上的寫法，試著用自身開發能力來解題，進以提升開發思維。但這段並非強制，真的卡關到爆炸，就還是試圖尋找攻略吧，但我相信想立志成為前端之碑的樓主，一定辦得到的！（崇拜眼神
+
+### 程式邏輯
+這次要細心一點的是RWD的縮放,程式邏輯的部分倒是還好,而程式邏輯有兩個地方要注意
+
+1. 判斷當下是O或X的回合
+2. 判斷獲勝以及平手
+
+由於一開始的設定是圈圈的回合而後是叉叉的回合反覆交替，以數學的概念來想圈圈是奇數回而叉叉是偶數回,所以我們程式可以這樣寫,透過counter的奇偶來判斷當前是屬於哪方的回合
+```javascript
+  var counter = 1; //一開始預設為1,圈圈的回合
+  var pos = e.target.dataset.pos; //綁在html上的自定義屬性,用於讓js添加class
+  if (counter % 2 !== 0) { //圈圈的回合
+    if (!e.target.classList.contains("circle") && !e.target.classList.contains("cross")) //已經下過就不能在同一位置下
+    {
+      e.target.classList.add("circle"); //添加圈圈樣式
+      document.querySelector(".turn .circle-turn").classList.add("op-0"); //叉叉處顯示your turn
+      document.querySelector(".turn .cross-turn").classList.remove("op-0"); //圈圈處your turn隱藏
+      counter += 1; // +1表示下回合換叉叉下
+    }
+  } else { //叉叉的回合
+      if (!e.target.classList.contains("circle") && !e.target.classList.contains("cross"))
+        {
+          e.target.classList.add("cross");
+          document.querySelector(".turn .circle-turn").classList.remove("op-0");
+          document.querySelector(".turn .cross-turn").classList.add("op-0");
+          counter += 1;
+        }
+    }
+```
+只要圈或叉可以連成一條線都算獲勝,總共有8種獲勝的條件
+
+![](/images/post/tictactoe_judge.png)
+
+分成三個圖比較方便看
+
+```javascript
+    var status = [null,null,null,null,null,null,null,null,null]; //用來判斷9個位置是否都已下完 true為circle false為cross
+    function judge() {
+      var result = null;
+      // circle win
+      if (status[0] === true && status[1] === true && status[2] === true)
+      {
+        result = true;
+      } else if (status[3] === true && status[4] === true && status[5] === true)
+      {
+        result = true;
+      } else if (status[6] === true && status[7] === true && status[8] === true)
+      {
+        result = true;
+      } else if (status[0] === true && status[4] === true && status[8] === true)
+      {
+        result = true;
+      } else if (status[2] === true && status[4] === true && status[6] === true)
+      {
+        result = true;
+      } else if (status[1] === true && status[4] === true && status[7] === true)
+      {
+        result = true;
+      } else if (status[0] === true && status[3] === true && status[6] === true)
+      {
+        result = true;
+      } else if (status[2] === true && status[5] === true && status[8] === true)
+      {
+        result = true;
+      }
+
+      // cross win
+      if (status[0] === false && status[1] === false && status[2] === false)
+      {
+        result = false;
+      } else if (status[3] === false && status[4] === false && status[5] === false)
+      {
+        result = false;
+      } else if (status[6] === false && status[7] === false && status[8] === false)
+      {
+        result = false;
+      } else if (status[0] === false && status[4] === false && status[8] === false)
+      {
+        result = false;
+      } else if (status[2] === false && status[4] === false && status[6] === false)
+      {
+        result = false;
+      } else if (status[1] === false && status[4] === false && status[7] === false)
+      {
+        result = false;
+      } else if (status[0] === false && status[3] === false && status[6] === false)
+      {
+        result = false;
+      } else if (status[2] === false && status[5] === false && status[8] === false)
+      {
+        result = false;
+      }
+
+      if (result === true) {
+        // circle win
+      } else if (result === false) {
+        // cross win
+      }
+       // 判斷9個空格是否都已佔用且result不是true也不是false為平手
+      if (this.counter - 1 === 9 && result !== true && result !== false) {
+        // draw平手
+      }
+    }
+```
+### vw、vh、vmax、vmin
+  我使用了vw來做網頁畫面的縮放,一個主要原因是這樣其實滿方便的 ~~(雖然要一直拿計算機計算)~~ ,另一個原因是做過一些活動跟產品介紹頁面,那些頁面的設計一定要用隨螢幕縮放的方式來做不然會有問題...
+#### vw
+view width 抓取螢幕可視範圍寬度的百分比,比如說15vw指的是百分之15的螢幕可視範圍寬度
+#### vh
+view height 抓取螢幕可視範圍高度的百分比,比如說15vh指的是百分之15的螢幕可視範圍高度
+#### vmax
+vmax 抓取長度或寬度較大的百分比,如果是pc螢幕抓取的就可能是寬度的百分比而mb抓取的可能就是高度的百分比
+#### vmin
+vmin 抓取長度或寬度較小的百分比,如果是pc螢幕抓取的就可能是高度的百分比而mb抓取的可能就是寬度的百分比
+
+<CodePenEmbed hash="yLVWrry" />
+
+### cookie vs localStorage vs sessionStorage
+
+  **cookie**
+
+  Http協定是無狀態的，也就是說server端不會知道client端上一次做什麼，而cookie就是避開Http無狀態的手段之一，server可以設定或讀取cookies的資訊，藉此來維護client端跟server端對談中的狀態，另外當一個cookie沒有設定失效時間,會在使用者關閉瀏覽器後被自動刪除。
+
+  ```javascript
+     document.cookie // 讀取cookie
+     document.cookie = "key1=value1;"; //設定cookie
+  ```
+  
+  本來想說這次使用cookie來儲存資料並設定cookie過期的時間,不過vue存cookie貌似有問題，之後再找時間研究一下...
+
+  **localStorage、sessionStorage**
+
+  localStorage、sessionStorage我直接把之前寫的文章內容複製貼上...
+
+  * localStorage以及sessionStorage為客戶端的資料儲存技術容量大小都為5MB,透過設定key:value的方式來儲存資料進瀏覽器，跟cookie不同的是在與server溝通時不會被自動帶入
+
+  * localStorage以及sessionStorage兩者之間唯一的不同就是localStorage如果使用者不刪除資料該筆資料會永遠存在在瀏覽器內但sessionStorage只要該分頁關閉時資料就會清除掉
+  
+  ```javascript
+
+    // localStorage
+    localStorage.setItem('myName', 'Tom'); // 設定localStorage
+    localStorage.getItem('myName'); // 取得localStorage
+    localStorage.removeItem('myName'); // 移除localStorage
+    localStorage.clear(); //清除localStorage
+
+    // sessionStorage
+    sessionStorage.setItem('myName', 'Tom'); // 設定sessionStorage
+    sessionStorage.getItem('myName'); // 取得sessionStorage
+    sessionStorage.removeItem('myName'); // 移除sessionStorage
+    sessionStorage.clear(); //清除sessionStorage
+
+  ```
+
+### 8F井字遊戲 demo連結
+
+<CodePenEmbed hash="vYyvmEN" />
+
+剩下一半了...希望我身體還頂得住
+
+![](/images/post/a8f51d417665827c2d4497d6765f99e8.jpg)
+
+## 補充資料
+[好用的css 3新單位vh vw](https://pjchender.blogspot.com/2015/04/css-3vh-vw.html)
+
+[localStorage](https://developer.mozilla.org/zh-TW/docs/Web/API/Window/localStorage)
+
+[sessionStorage](https://developer.mozilla.org/zh-TW/docs/Web/API/Window/sessionStorage)
+
+[cookie wikipedia](https://zh.wikipedia.org/wiki/Cookie)
+
+[cookie MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)
+
+[[WEB] Cookie & Session 是什麼？](https://ithelp.ithome.com.tw/articles/10227602)
+
+[JavaScript Cookie](https://www.fooish.com/javascript/cookie.html)

@@ -1,0 +1,107 @@
+---
+title: "Safari渲染問題"
+date: 2021-07-03
+description: "Safari渲染問題"
+tags: ["程式學習","javascript"]
+---
+
+之前在執行公司的專案時遇到兩個跟safari有關的問題
+1. 透過js的click事件給元素添加class更改樣式以及執行transform後視覺上並無變化,但從開發者工具來看class以及裡面的樣式是有加上元素的
+2. 當使用者使用iphone播放影片「途中」突然待機後再開啟,畫面會直接停在待機前的畫面無法操作
+
+這兩個問題嚴格意義上應該算一個問題,推測跟safari本身的渲染機制有關,不過不確定是什麼原因導致畫面沒有repaint就是了...
+
+第一個問題是樣式沒有渲染上去,所以我們要做的是強行觸發瀏覽器的渲染機制,以下的屬性當js訪問時會先渲染dom後才會去獲得相關屬性
+
+* offsetTop
+* offsetLeft
+* offsetWidth
+* offsetHeight
+* scrollTop
+* scrollLeft
+* scrollWidth
+* scrollHeight
+* clientTop
+* clientLeft
+* clientWidth
+* clientHeight
+
+我們先將元素的display設為「none」後訪問上述其中一個屬性再將元素的display設為「block」
+
+```javascript
+	var target = document.getElementById('#target');
+	target.style.display='none';
+	target.offsetHeight;
+	target.style.display='block';
+```
+
+第二個問題要解決的話需要偵測手機是否待機，雖然Javascript沒辦法偵測手機是否待機,但是Web APIs裡有提供一個可以做為替代方式的API
+
+### Page Visibility API
+
+Page Visibility API會在網頁處於背景或是對於使用者來說看不到的情形下觸發,測試過手機待機時同樣有效，首先註冊 **「visibilitychange」** 的事件監聽,當使用者待機觸發事件時再透過 **「document.hidden」** 檢查畫面對於使用者來說是否被隱藏,為true時暫停播放、為false時繼續播放
+
+### Javascript程式邏輯
+```javascript
+
+  var videoplay_state = false;
+  var target_video = document.querySelector('#target-video');
+  var hidden, visibilityChange;
+
+  target_video.addEventListener('ended',function(){
+    videoplay_state = true;
+  });
+
+	if (typeof document.hidden !== undefined) {
+		// Opera 12.10 and Firefox 18 and later support
+		hidden = 'hidden';
+		visibilityChange = 'visibilitychange';
+	} else if (typeof document.msHidden !== undefined) {
+		hidden = 'msHidden';
+		visibilityChange = 'msvisibilitychange';
+	} else if (typeof document.webkitHidden !== undefined) {
+		hidden = 'webkitHidden';
+		visibilityChange = 'webkitvisibilitychange';
+	}
+  
+	// If the page is hidden, pause the video 、 if the page is shown, play the video
+	function handleVisibilityChange() {
+		if(videoplay_state){
+			return;
+		}
+		if (!document.hidden) {
+			target_video.play();
+		} else {
+			target_video.pause();
+		}
+	}
+
+	if (typeof document.addEventListener === undefined || hidden === undefined) {
+		alert('This demo requires a browser, such as Google Chrome or Firefox, that supports the Page Visibility API.');
+	} else {
+		document.addEventListener('visibilitychange', handleVisibilityChange, false);
+	}
+
+```
+另外影片播放結束後待機也有一個問題，當行動裝置上的Safari播放影片「結束」後再開啟會發現畫面整個是空白的，最快的解決方式是直接是在影片播放結束後放上一張影片最後一卡的蓋板圖片
+
+### Javascript程式邏輯
+```javascript
+
+  var video_Element = document.querySelector("#target-video"); //目標影片
+  var cover_img = document.querySelector("#cover-img"); //蓋版圖片，預設display為none
+
+  // 在影片上添加ended事件監聽偵測影片播放結束
+  video_Element.addEventListener('ended',function(){
+    cover_img.style.display = 'block';
+  });
+
+```
+之前曾在網路上看到有人寫說要不是有mac、iphone撐腰,不然Safari下場應該會跟IE差不多...，一開始我還不以為意,但隨著經手的案子越來越多我開始慢慢認同這件事了...
+
+不過雖然遇到這些坑真的很讓人煩躁，但是把這些坑填起來其實也有滿多幫助的,像是**Page Visibility API**除了用來填坑外還可以用來做效能上的優化,只能說事情有好有壞啦
+
+## 補充資料
+[Video play ended MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/ended_event)
+
+[Page Visibility API MDN](https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API)

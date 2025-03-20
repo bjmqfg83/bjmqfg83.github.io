@@ -1,0 +1,48 @@
+---
+title: "Asynchronous Race Condition"
+date: 2025-03-19
+description: "Asynchronous Race Condition"
+tags: ["程式學習","javascript"]
+---
+
+在之前公司上班的時候曾經遇到由於不同組件間的API請求行為的Race condition導致組件在切換時顯示了錯誤的資料，這邊簡單記錄一下
+
+### 什麼是Race condition?
+
+Race condition 指的是當多個執行緒或程序同時存取同一個共享資源，因缺乏適當處理導致執行順序不確定，進而造成不可預測或資料不一致的情況。
+
+我所遇到的屬於Request Race condition，在多個組件間的API請求行為中，前一次的API請求還沒有完成，後一次的API請求已經先完成導致錯誤的資料被顯示出來
+
+### AbortController
+
+AbortController是原生JavaScript API主要用來取消正在進行的異步操作(例如API請求)。它允許開發者在適當的時機中止請求，以避免不必要的網路流量或競態條件(Race Condition)。
+
+所以我們可以透過AbortController來避免組件切換時資料錯誤顯示的問題。
+
+### 範例程式碼
+
+```javascript
+const controller = new AbortController();
+const signal = controller.signal;
+
+fetch("https://jsonplaceholder.typicode.com/posts", { signal })
+    .then(response => response.json())
+    .then(data => console.log("成功取得資料:", data))
+    .catch(error => {
+        if (error.name === "AbortError") {
+            console.log("請求已被取消");
+        } else {
+            console.error("其他錯誤:", error);
+        }
+    });
+
+setTimeout(() => {
+    controller.abort();
+}, 0);
+```
+注意當「廢棄」API請求時是會發生錯誤的，所以需要額外做try catch處理
+
+#### 參考資料:
+    [AbortController](https://developer.mozilla.org/zh-TW/docs/Web/API/AbortController)
+
+    [JSONPlaceholder](https://jsonplaceholder.typicode.com/)

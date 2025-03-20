@@ -1,0 +1,40 @@
+---
+const { hash } = Astro.props;
+---
+
+<div
+    class='codepen'
+    data-height='600'
+    data-theme-id='dark'
+    data-default-tab='result'
+    data-user='mgnlhdsl'
+    data-slug-hash={hash}
+    style={`height: 600px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;`}
+>
+    <span
+        >See the Pen <a href={`https://codepen.io/mgnlhdsl/pen/${hash}/`}
+            >test</a
+        > by mgnlhdsl (<a href={`https://codepen.io/mgnlhdsl`}>@mgnlhdsl</a>) on <a
+            href='https://codepen.io'>CodePen</a
+        >.</span
+    >
+</div>
+<script async src='https://cpwebassets.codepen.io/assets/embed/ei.js'></script>
+<script is:inline>
+  function initCodePen() {
+    if (window.__CPEmbed) {
+      window.__CPEmbed();
+      console.log('initCodePen');
+    } else {
+      setTimeout(() => {
+        if (window.__CPEmbed) {
+          window.__CPEmbed();
+        }
+      }, 1000);
+    }
+  }
+
+  // 只需要监听这两个事件
+  document.addEventListener('load', initCodePen);
+  document.addEventListener('astro:page-load', initCodePen);
+</script>

@@ -1,0 +1,109 @@
+---
+title: "WORLD CLOCK-Javascript新手地下城"
+date: 2021-02-10
+description: "六角學院Javscript新手地下城4F時區"
+tags: ["程式學習","javascript"]
+---
+import CodePenEmbed from '../../components/CodePenEmbed.astro';
+
+### 使用技術
+
+JS : For迴圈、Date、string、setInterval
+
+CSS: SCSS(CSS前處理語言)、Grid Layout
+
+Others: google fonts
+
+### 開發歷程
+
+這次的切版跟程式邏輯都不算複雜,麻煩的是要找Date().toLocaleString的參數設定,有需要的可以看看參考資料的連結，現在這邊來跟各位分享相關知識
+
+### 時間戳timestamp
+  timestamp指的是從1970年1月1日0時0分0秒開始到現在總共經過多少豪秒數，可用於追蹤時間、計算時間差、日期排序等等...，在js內可透過new Date().getTime()取得，不過在查詢資料的時候看到有人說是經過的「秒數」，但使用相關函式獲取到的到底是毫秒還是秒這部分可能跟程式語言、系統環境有關，javascript獲取到的是「毫秒數」、php獲取到的是「秒數」，有興趣的可以到[epochconverter](https://www.epochconverter.com/)、[unixtimestamp](https://www.unixtimestamp.com/)看看
+
+### GMT、UTC
+  GMT全稱為格林威治標準時間(Greenwich Mean Time)、UTC全稱為世界協調時間(Coordinated Universal Time),台灣所在的時區快八小時所以可以表示成「GMT+8」或是「UTC+8」，那至於GMT、UTC的差別詳細的可以參考泛科學的[到底是 GMT+8 還是 UTC+8 ?](https://pansci.asia/archives/84978?fbclid=IwAR0O3OFctmf9szayS9dB-JcK-sfij-SlWJctwmorwFs4y0SS6Cro_ZyXkOg)，日常生活中兩者沒什麼區別可以混用,只是由於地球自轉速度在變慢導致GMT的1秒越來越長，UTC會在超過GMT快1秒時加入「閏秒」來抵消超前的量
+
+### world clock時區
+  要獲取指定地區的日期時間我們可使用Date物件的toLocaleString
+  ```
+  new Date().toLocaleString([locales[, options]])
+  ```
+  locales為語言環境，簡單來說是讓時間以該語言的格式顯示，比如說你locales給\'zh-tw(台灣)\'的話顯示的格式為"2021/2/10 下午1:42:31\"，如果給\'en-GB(英國)\'的話顯示的格式為"10/02/2021, 13:48:17\"，但這只是顯示的格式而已,時區還是在使用者所在的地區,如果要顯示別的時區的時間需要透過options做設定
+
+  options可以設定時區以及年、月、日等等的顯示格式，這邊列出有使用到的
+  ```
+      timeZone => 設定要顯示的地區時間
+      hour12 => 設定顯示是否為12小時制
+      year  => 設定顯示年分格式
+      month  => 設定顯示月份格式,可為英文或數字
+      day   => 設定顯示日期格式
+      hour  => 設定顯示小時格式
+      minute => 設定顯示分鐘格式
+  ```
+  **注: locales、options內詳細的參數設定可以直接看最後面的參考資料**
+
+#### JS程式邏輯
+  ```javascript
+    // 時區依序為美國、英國倫敦、曼谷、台北、澳洲雪梨
+    const timeZones = [
+      "America/New_York",
+      "Europe/London",
+      "Asia/Bangkok",
+      "Asia/Taipei",
+      "Australia/Sydney"
+    ];
+    // toLocaleString options參數 
+    const options = {
+      timeZone: "Asia/Taipei", // 時區設定台北
+      hour12: false, //不以12小時制顯示,會以24小時制顯示
+      year: "numeric", //正常數字顯示
+      month: "short", //short只會顯示三位英文 ex: February => Feb
+      day: "2-digit", //顯示兩位 ex: 1 => 01
+      hour: "2-digit", //顯示兩位
+      minute: "2-digit" //顯示兩位
+    };
+    function world_clock() {
+      timeZones.forEach((item, index) => {
+        var temp_clockInfo = "";
+        var temp_dateInfo = "";
+        options.timeZone = item;
+        // 時區使用英國(en-GB)顯示結果就會是日、月、年、時間
+        temp_clockInfo = new Date().toLocaleString("en-GB", options);
+        //月份後面添加「. 」後重新拼接日期字串
+        temp_dateInfo =
+          temp_clockInfo.split(",")[0].split(" ")[0] +
+          " " +
+          temp_clockInfo.split(",")[0].split(" ")[1] +
+          ". " +
+          temp_clockInfo.split(",")[0].split(" ")[2];
+        //更新年月日的元素
+        document.querySelectorAll(".location-info .location-date")[index].innerText = temp_dateInfo;
+        //依格式中的「,」分割出時分後更新DOM,透過index下標去找目標元素
+        document.querySelectorAll(".location-info > div:nth-of-type(2)")[index].innerText = temp_clockInfo.split(",")[1].trim();
+      });
+    }
+    world_clock();
+    // 每秒鐘調用一次判斷getSeconds()是否為59，為59示1分鐘要到可以調用函數更新時間
+    var clock_timer = setInterval(function(){
+      if(new Date().getSeconds()===59){
+        world_clock();
+      }
+    },1000);
+  ```
+
+### world clock codepen連結
+
+<CodePenEmbed hash="GRNqGjW" />
+
+
+
+#### 參考資料:
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat
+
+https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+https://blog.techbridge.cc/2020/12/26/javascript-date-time-and-timezone/

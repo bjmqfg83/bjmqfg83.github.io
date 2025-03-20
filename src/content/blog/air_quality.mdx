@@ -1,0 +1,176 @@
+---
+title: "全台空氣指標儀表板-Javascript新手地下城"
+date: 2021-02-19
+description: "六角學院Javscript新手地下城5F空氣品質AQI"
+tags: ["程式學習","javascript"]
+---
+import CodePenEmbed from '../../components/CodePenEmbed.astro';
+
+
+### 使用技術
+
+JS : Vue、axios、For迴圈、Regular expressions、Array
+
+CSS: SCSS(CSS前處理語言)、flex、customize scrollbar
+
+Others: google fonts、政府資料開放平台-空氣品質指標(AQI)
+
+### 開發歷程
+  想要專注在邏輯上所以使用框架開發,當資料更新時由Vue負責畫面渲染
+  
+  資料的取得使用axios這個套件串接[政府資料開放平台](https://data.gov.tw/dataset/40448)的API，另外頁面的部分做了一個假的selection方便客製化CSS樣式，其餘js程式邏輯使用forEach過濾出符合條件的資料、正規表示法調整更新時間顯示的格式
+
+### XMLHttpRequest
+  在提交表單資料、串接API這種非同步行為時會希望過程中仍可以對網頁進行操作及瀏覽
+
+  這時候我們可以透過[XMLHttpRequest](https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest)讓網頁在進行非同步的操作時不會卡住或是重整
+  ```javascript
+  //Step 1 創建異步物件
+   var xhr = new XMLHttpRequest(); //可以簡稱xhr物件
+  //Step 2 創建異步請求
+  // method為http請求(get、post...)、url為請求路徑、async為為非同步設定,true為非同步、false為同步
+  xhr.open(method, url, async);
+  //3.設定監聽事件
+  // 當xhr物件接受到server的嚮應且響應狀態為200(ok)時進行後續處理
+  xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+          // 取得響應的訊息
+          var resText = xhr.responseText;
+      }
+  }
+  // 4.送出請求，send參數除post以外都給null
+  xhr.send(null);
+  ```
+  如果是post請求的話需要額外設定**RequestHeader**，告知server要提交的資料類型並把資料放置send提交
+  ```javascript
+  // 以表單資料為例
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  var msg = 'data1=' + 資料1 +'&'+ 'data2' + 資料2... ;
+  xhr.send(msg);
+  ```
+  **註: 雖然是叫「XML」HttpRequest但也可以使用純文字或是JSON格式的資料**
+
+### Promise
+  在簡單的專案可能還沒關係，但如果專案的需求須要進行多個請求或是要在請求後進行很多程式的處理的話可能會變成下面這樣
+
+  ![](/images/post/callbackhell.jpg)
+
+  圖片來源: [Node 7.6 + Koa 2: asynchronous flow control made right](https://medium.com/ninjadevs/node-7-6-koa-2-asynchronous-flow-control-made-right-b0d41c6ba570)
+
+  這種波動拳的樣子有個別稱叫「**Callback hell 回調地獄**」，這會造成日後程式維護、擴充上的不便，我們可以透過ES6的Promise來改善,這邊簡單概述一下
+
+  Promise有以下三種狀態
+  * 擱置(pending)：初始狀態，表示操作進行中
+  * 實現(fulfilled) ：表示操作成功，執行resolve(),可透過then查看結果
+  * 拒絕(rejected)： 表示操作失敗，執行reject(),可透過catch查看結果
+
+  ![](/images/post/promise_intro.svg)
+
+  圖片來源: [Promise MDN](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+  ```javascript
+    function PromiseFn() {
+      return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        // 可以把api_key後面的參數改掉刻意引發CORS的錯誤來執行reject
+        xhr.open("get","https://data.epa.gov.tw/api/v1/aqx_p_432?limit=1000&api_key=9be7b239-557b-4c10-9775-78cadfc555e9&format=json");
+        // xhr.onreadystatechange可用onload取代
+        xhr.onload = function() {
+            resolve(JSON.parse(xhr.responseText));
+        }
+        xhr.onerror = function(){
+            reject(xhr);
+        }
+        xhr.send(null);
+        });
+    }
+    PromiseFn()
+      .then(function(res){
+        ...
+        return PromiseFn();
+    }).then(function(res2){
+        ...
+        return PromiseFn();
+    }).then(function(res3){
+        ...
+    }).catch(function(error){
+        ...
+  });
+  ```
+  這樣就避免了波動拳的產生，後續要繼續進行非同步操作時透過return一個Promise的方式進續進行
+
+  Promise還有其他如Promise.all()、Promise.race()等等的方法...甚至在ES7版本有更好用的Async/Await可以用同步的思維去做非同步的操作，有興趣的朋友可以研究看看
+### Fetch API
+  以前如果想要簡化XMLHttpRequest的寫法通常都會使用jQuery的ajax來做，現在在HTML5的標準內我們有原生的Fetch API可以使用
+
+  Fetch API有幾點特性
+  1. 使用Promise做回應
+  2. 使用then做下一步處理、catch作錯誤處理
+  3. 一開始的回傳為ReadableStream，需要針對不同的資料類型使用對應方法獲取資料ex:json()、text()、blob()...
+  4. 只要server有響應不論status code是**404**或是**500**Promise的狀態都會是fulfilled而不是rejected，這部分需要額外做處理
+
+  現在看一下程式碼
+  ```javascript
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
+    .then(res => {
+      console.log(res); // response的body內可以看到ReadableStream
+      if(res.ok === true || (res.status >= 200 && res.status < 300)){
+        return res.json(); // 將json資料用.json()解析回傳
+      }else{
+        throw new Error('Error happen');
+      }
+    })
+    .then(json => console.log(json))
+    .catch(err => {
+      console.error('錯誤', err);
+    });
+  ```
+  POST方法一樣要設定header跟body
+  ```javascript
+    fetch(url, {
+      method: 'POST',
+      // headers 加入 json 格式
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      // body 將 json 轉字串送出
+      body: JSON.stringify({
+        data_A: 'xxxx',
+        data_B: 'xxxx'
+      }).then(res =>{
+        if(res.ok === true || (res.status >= 200 && res.status < 300)){
+          return res.json(); // 將json資料用.json()解析回傳
+        }else{
+          throw new Error('Error happen');
+        }
+      }).then(jsonData => {console.log(jsonData)};
+      ).catch(err => {
+        console.log('錯誤:', err);
+      })
+  ```
+### CORS
+  CORS全稱為**Cross-Origin Resource Sharing 跨來源資源共享**，瀏覽器基於安全性的考量會限制使用者存取其他來源的資源
+
+  以下幾種情況會被當作不同來源
+  1. 不同協定 ex: \"https\"、\"http\"
+  2. 不同domain ex: \"https://example.com\"、\"https://example_others.com\"
+  3. 不同port ex: \"https://example.com\"、\"https://example.com:8080\"
+  
+  跟後端協作串接API時如果遇到CORS通常後端會去設定**Access-Control-Allow-Origin**來讓特定來源能夠存取資源或是乾脆使用*號(通配符)讓所有不同來源都能夠存取
+
+  但如果要串接的是第三方的API的話可以參考一下六角助教寫的[Google Apps Script](https://hsiangfeng.github.io/javascript/20190617/3829122039/)這篇文章去試看看，大概的理解是CORS是因為瀏覽器請求非同源的資源所發生，那就不用瀏覽器去請求來規避這個問題
+  
+  我用[新竹縣政府公務人員參訓人數](https://data.gov.tw/dataset/136489)這個API去試了之後沒問題，但是對於像是需要API_KEY金鑰的API如[空氣品質指標(AQI)](https://data.gov.tw/dataset/40448)一樣還是會有CORS的問題發生，所以Google Apps Script只是一個暫時性的方式，實作上還是要因應情況去做調整
+
+### AQI Demo連結
+
+<CodePenEmbed hash="LYbbVJV" />
+
+#### 參考資料:
+  [ReadyState MDN](https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest/readyState)
+
+  [Promise MDN](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+  [Fetch MDN](https://developer.mozilla.org/zh-TW/docs/Web/API/Fetch_API/Using_Fetch)
+
+  [OxxO STUDIO Fetch API 使用教學](https://www.oxxostudio.tw/articles/201908/js-fetch.html)
