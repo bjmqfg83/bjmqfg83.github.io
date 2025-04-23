@@ -24,7 +24,6 @@ const { hash } = Astro.props;
   function initCodePen() {
     if (window.__CPEmbed) {
       window.__CPEmbed();
-      console.log('initCodePen');
     } else {
       setTimeout(() => {
         if (window.__CPEmbed) {

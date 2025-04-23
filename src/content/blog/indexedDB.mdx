@@ -1,0 +1,126 @@
+---
+title: "本地端儲存資訊的另一個選擇-indexedDB"
+date: 2025-04-23
+description: "本地端儲存資訊的另一個選擇-indexedDB"
+tags: ["程式學習","javascript"]
+---
+
+對於不熟悉後端語言的前端開發者來說，練習時常因為缺乏資料來源而受限，無法完整體驗資料流與互動流程。
+IndexedDB 作為一種瀏覽器端的 noSQL 資料庫，提供了前端模擬資料存取的能力，使得無需後端也能進行完整的開發練習。
+本篇將介紹 IndexedDB的基本概念、實作方式，以及使用情境。
+
+### 什麼是indexedDB
+
+IndexedDB 是一種瀏覽器端的 NoSQL database(另一個說法是transactional database)，提供了一種可靠且高效的方式來儲存大量結構化資料。
+
+特點：
+- 可以儲存一般型別資料、結構化資料（例如物件）、圖片等等...
+- 支援索引、事務（transaction）
+- 非同步操作（Promise / event-based）
+
+**註：索引是為了加速資料查找的效率，事務則是讓一組資料操作具備「原子性」的保證：要嘛全部成功，要嘛全部失敗，資料不會只改一半。**
+
+### 如何使用
+    由於原生indexedDB的操作相較於其他本地端儲存方式較為複雜，我們使用[idb](https://github.com/jakearchibald/idb)這個套件來簡化操作。
+
+    安裝idb
+    ```bash
+    npm install idb
+    ```
+
+    建立indexedDB
+    ```typescript
+    import { openDB } from 'idb';
+
+    const DB_NAME = 'UserDB'; // 資料庫名稱
+    const DB_VERSION = 1; // 資料庫版本
+    const STORE_NAME = 'users'; // 資料表名稱
+
+    export interface User {
+        id?: number;
+        name: string;
+        age: number;
+    }
+
+    let dbPromise: ReturnType<typeof openDB<User>>;
+
+    export const getDB = () => {
+        // 如果資料庫不存在，則建立資料庫
+        if (!dbPromise) {
+            dbPromise = openDB(DB_NAME, DB_VERSION, {
+                // upgrade是當第一次建立資料庫或是資料庫版本有變更時會執行的函式
+                // 可以在此處建立資料表、索引等。
+                upgrade(db) {
+                    if (!db.objectStoreNames.contains(STORE_NAME)) {
+                        db.createObjectStore(STORE_NAME, {
+                            keyPath: 'id',
+                            autoIncrement: true,
+                        });
+                    }
+                },
+            });
+        }
+        return dbPromise;
+    };
+
+    // create
+    export const addUser = async (user: User) => {
+        const db = await getDB();
+        return db.add(STORE_NAME, user);
+    };
+
+    // read
+    export const getUser = async (id: number) => {
+        const db = await getDB();
+        return db.get(STORE_NAME, id);
+    };
+
+    // read all
+    export const getAllUsers = async () => {
+        const db = await getDB();
+        return db.getAll(STORE_NAME);
+    };
+
+    // update
+    export const updateUser = async (user: User) => {
+        const db = await getDB();
+        return db.put(STORE_NAME, user);
+    };
+
+    // delete
+    export const deleteUser = async (id: number) => {
+        const db = await getDB();
+        return db.delete(STORE_NAME, id);
+    };
+    ```
+    由於idb幫忙簡化了indexedDB的操作，因此我們可以簡單的用「get」、「add」、「put」、「delete」等方法來操作資料庫。
+
+### 與其他本地端儲存方式的比較
+    indexedDB 與 localStorage 、sessionStorage 的比較
+    | 特性 | indexedDB | localStorage | sessionStorage |
+    | --- | --- | --- | --- |
+    | 容量 | 數十 MB ~ 數 GB（依瀏覽器而異） | 5MB | 5MB |
+    | 型別 | 一般型別、結構化資料、圖片等 | 只能儲存字串 | 只能儲存字串 |
+    | 操作 | 非同步操作 | 同步操作 | 同步操作 |
+    | 安全性 | 安全性較高 | 安全性較低 | 安全性較低 |
+    
+### 應用情境
+
+- 前端開發練習，無需後端也能進行完整的開發練習
+- Demo開發
+- 離線操作
+- 儲存大量資料
+- 快速存取資料
+
+### 結語
+
+在前端開發過程中，常常因為缺乏後端或資料來源而受限，導致練習不完整、開發不順暢。IndexedDB 提供了一個安全且彈性的資料儲存方式，讓我們即使沒有後端支援，也能模擬出完整的資料流操作，進而打造更真實的應用情境。
+
+無論是練習、開發 Demo、快取 API 結果或是實現離線功能，IndexedDB 都是一個值得掌握的工具！
+
+
+
+### 參考資料
+[indexedDB](https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API/Using_IndexedDB)
+[你知道 localStorage 但你知道 IndexedDB 嗎？](https://www.explainthis.io/zh-hant/swe/what-is-indexeddb)
+[前端如何緩存大筆資料：IndexedDB 介紹/應用](https://www.yasssssblog.com/2020/08/19/web-indexeddb/)
